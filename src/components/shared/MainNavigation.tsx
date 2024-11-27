@@ -2,15 +2,17 @@ import { Link } from "react-router-dom";
 
 const MainNavigation = () => {
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="bg-white p-4">
       <div className="max-w-screen-xl mx-auto flex items-center justify-between">
         {" "}
         {/* Justify betwen gjør at det er mellomrom mellom tittelen og resten av navbaren */}
         {/* Tittel */}
-        <div className="text-white font-semibold text-2xl">
-          {" "}
-          {/* 2 xl gjør teksten dobbelt så stor */}
-          <Link to="/">Trump Things?</Link>
+        <div>
+          <img
+            className="w-36"
+            src="./src/assets/image/trumplogo.png"
+            alt="trump logo"
+          />
         </div>
         {/* Navigasjonsmeny */}
         <ul className="flex space-x-8">
@@ -19,7 +21,7 @@ const MainNavigation = () => {
           <li>
             <Link
               to="/"
-              className="text-white hover:text-green-400 transition duration-300"
+              className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
             >
               Register Thought
             </Link>
@@ -27,7 +29,7 @@ const MainNavigation = () => {
           <li>
             <Link
               to="/register"
-              className="text-white hover:text-green-400 transition duration-300"
+              className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
             >
               Merch Shop
             </Link>
@@ -35,13 +37,14 @@ const MainNavigation = () => {
           <li>
             <Link
               to="/staff"
-              className="text-white hover:text-green-400 transition duration-300"
+              className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
             >
               Staff Members
             </Link>
           </li>
         </ul>
       </div>
+      <hr className="bg-red-700" />
     </nav>
   );
 };

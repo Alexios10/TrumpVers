@@ -40,50 +40,54 @@ const RegisterThought = () => {
     <section className="flex">
       <header></header>
 
-      <div className="flex-1 bg-blue-100 h-screen flex flex-col">
+      <div className="flex-1 bg-white h-screen flex flex-col">
         <div className="flex-1/2 flex flex-col items-center">
-          <h3> Register new thought</h3>
+          <h3 className="m-4"> Register new thought</h3>
+          <div className="w-96 items-start">
+            <div className="mb-2 flex flex-col">
+              <label className="w-24 mr-2 text-xs">Name</label>
+              <input
+                className="w-full bg-gray-200"
+                type="text"
+                name="name"
+                value={name}
+                onChange={handleChange}
+              />
+            </div>
 
-          <div className="flex items-center mb-2">
-            <label className="mr-2">Name</label>
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={handleChange}
-            />
-          </div>
+            <div className="mb-2 fflex flex-col">
+              <label className="w-24 mr-2 text-xs">Thought</label>
+              <input
+                className="w-full bg-gray-200"
+                type="text"
+                name="thought"
+                value={thought}
+                onChange={handleChange}
+              />
+            </div>
 
-          <div className="flex items-center mb-2">
-            <label className="mr-2">Thought</label>
-            <input
-              type="text"
-              name="thought"
-              value={thought}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="flex items-center mb-2">
-            <label className="mr-2">Category</label>
-            {/* legge til dropdown senere */}
-            <input
-              type="text"
-              name="category"
-              value={category}
-              onChange={handleChange}
-            />
+            <div className="mb-2 flex flex-col">
+              <label className="w-24 mr-2 text-xs">Category</label>
+              {/* legge til dropdown senere */}
+              <input
+                className="w-full bg-gray-200"
+                type="text"
+                name="category"
+                value={category}
+                onChange={handleChange}
+              />
+            </div>
           </div>
 
           <button
             onClick={registerThought}
-            className="mt-2 bg-blue-400 text-white p-2 rounded hover:bg-blue-500"
+            className="m-4 bg-blue-400 text-white p-2 rounded hover:bg-blue-500 shadow-lg"
           >
             Register Thought
           </button>
         </div>
-
-        <div className="flex-1">plassen som skal inneholde thought</div>
+        <hr className="w-3/4 h-0.5 mx-auto rounded m-4 bg-slate-400" />
+        <div>plassen som skal inneholde thought</div>
       </div>
 
       <div className="flex-1 bg-green-100 h-screen"></div>
