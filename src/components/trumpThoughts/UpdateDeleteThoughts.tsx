@@ -4,7 +4,7 @@ import IThoughtsContext from "../../interfaces/IThoughtsContext";
 import IThoughts from "../../interfaces/IThoughts";
 
 const UpdateDeleteThoughts = () => {
-  const { getThoughtById, putThought, deleteThought } = useContext(
+  const { getByName, putThought, deleteThought } = useContext(
     ThoughtsContext
   ) as IThoughtsContext;
 
@@ -31,7 +31,7 @@ const UpdateDeleteThoughts = () => {
   }
 
   const getByIdFromContext = async () => {
-    const thought = await getThoughtById(parseInt(id));
+    const thought = await getByName(name);
 
     if (thought?.name != null) {
       setName(thought?.name);
@@ -65,14 +65,11 @@ const UpdateDeleteThoughts = () => {
       <header>Thoughts</header>
       <section>
         <div>
-          <label>Get thought by id</label>
-          <input type="number" name="id" value={id} onChange={handleChange} />
+          <label>Get thought by name</label>
+          <input type="text" name="name" value={name} onChange={handleChange} />
           <button onClick={getByIdFromContext}>Get thought</button>
         </div>
-        <div>
-          <label>name</label>
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </div>
+
         <div>
           <label>thought</label>
           <input

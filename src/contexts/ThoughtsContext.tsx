@@ -18,8 +18,8 @@ export const ThoughtsProvider: FC<IProps> = ({ children }) => {
     setThoughts(thoughtsFromService);
   };
 
-  const getThoughtById = async (id: number) => {
-    const thoughtsFromService = await ThoughtsService.getById(id);
+  const getByName = async (name: string) => {
+    const thoughtsFromService = await ThoughtsService.getByName(name);
     return thoughtsFromService;
   };
 
@@ -52,7 +52,7 @@ export const ThoughtsProvider: FC<IProps> = ({ children }) => {
       value={{
         thoughts,
         postThought,
-        getThoughtById,
+        getByName,
         putThought,
         deleteThought,
       }}

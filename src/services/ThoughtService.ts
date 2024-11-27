@@ -9,8 +9,8 @@ const ThoughtsService = (() => {
     return result.data as IThoughts[];
   };
 
-  const getById = async (id: number): Promise<IThoughts | null> => {
-    const result = await axios.get(thoughtContollerEndpoint + id);
+  const getByName = async (name: string): Promise<IThoughts | null> => {
+    const result = await axios.get(thoughtContollerEndpoint + name);
     return result.data as IThoughts;
   };
 
@@ -35,7 +35,7 @@ const ThoughtsService = (() => {
 
   return {
     getAllThoughts,
-    getById,
+    getByName,
     postThought,
     putThought,
     deleteThought,
