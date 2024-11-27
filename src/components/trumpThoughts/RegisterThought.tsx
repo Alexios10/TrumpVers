@@ -1,48 +1,73 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { ThoughtsContext } from "../../contexts/ThoughtsContext";
 import IThoughtsContext from "../../interfaces/IThoughtsContext";
+import ThoughtList from "./ThoughtList";
 
 const RegisterThought = () => {
-  const { postThought } = useContext(ThoughtsContext) as IThoughtsContext;
+  const { postThought, thoughts } = useContext(
+    ThoughtsContext
+  ) as IThoughtsContext;
 
   const [name, setName] = useState<string>("");
   const [thought, setThought] = useState<string>("");
-  const [category, setCategory] = useState<string>("");
-  //const [DatePublished, setDatePublished] = useState<string>("");
+  const [category, setCategory] = useState<string>(""); // For registering a new thought
+  const [filterCategory, setFilterCategory] = useState<string>("All"); // For filtering displayed thoughts
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    switch (e.target.name) {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    switch (name) {
       case "name":
-        setName(e.target.value);
+        setName(value);
         break;
 
       case "thought":
-        setThought(e.target.value);
+        setThought(value);
         break;
 
       case "category":
-        setCategory(e.target.value);
+        setCategory(value);
+        break;
+
+      case "filterCategory":
+        setFilterCategory(value);
+        break;
+
+      default:
         break;
     }
   };
 
   const registerThought = () => {
     const newThought = {
-      name: name,
-      thought: thought,
-      category: category,
+      name,
+      thought,
+      category,
+      dateCreated: new Date(),
     };
 
     postThought(newThought);
+    alert("Thought registered successfully!");
+    setName("");
+    setThought("");
+    setCategory("");
   };
+
+  const categories = ["All", "Politic", "Economy", "History"]; // categories
+
+  const filteredThoughts =
+    filterCategory === "All"
+      ? thoughts
+      : thoughts.filter((thought) => thought.category === filterCategory);
 
   return (
     <section className="flex">
-      <header></header>
-
       <div className="flex-1 bg-white h-screen flex flex-col">
         <div className="flex-1/2 flex flex-col items-center">
-          <h3 className="m-4"> Register new thought</h3>
+          <header>
+            <h3 className="m-4 text-3xl">Register new thought</h3>
+          </header>
           <div className="w-96 items-start">
             <div className="mb-2 flex flex-col">
               <label className="w-24 mr-2 text-xs">Name</label>
@@ -55,26 +80,31 @@ const RegisterThought = () => {
               />
             </div>
 
-            <div className="mb-2 fflex flex-col">
-              <label className="w-24 mr-2 text-xs">Thought</label>
-              <input
-                className="w-full bg-gray-200"
-                type="text"
-                name="thought"
-                value={thought}
-                onChange={handleChange}
-              />
-            </div>
-
             <div className="mb-2 flex flex-col">
               <label className="w-24 mr-2 text-xs">Category</label>
-              {/* legge til dropdown senere */}
-              <input
+              <select
                 className="w-full bg-gray-200"
-                type="text"
                 name="category"
                 value={category}
                 onChange={handleChange}
+              >
+                <option value="">Select Category</option>
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="mb-2 flex flex-col">
+              <label className="w-24 mr-2 text-xs">Thought</label>
+              <textarea
+                className="w-full bg-gray-200"
+                name="thought"
+                value={thought}
+                onChange={handleChange}
+                rows={4}
               />
             </div>
           </div>
@@ -87,7 +117,28 @@ const RegisterThought = () => {
           </button>
         </div>
         <hr className="w-3/4 h-0.5 mx-auto rounded m-4 bg-slate-400" />
-        <div>plassen som skal inneholde thought</div>
+
+        {/* Dropdown to filter thoughts */}
+        <div className="w-96 mx-auto">
+          <label className="w-24 mr-2 text-xs">Filter by Category</label>
+          <select
+            className="w-full bg-gray-200"
+            name="filterCategory"
+            value={filterCategory}
+            onChange={handleChange}
+          >
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Filtered thoughts list */}
+        <div>
+          <ThoughtList thoughts={filteredThoughts} />
+        </div>
       </div>
 
       <div className="flex-1 bg-green-100 h-screen"></div>

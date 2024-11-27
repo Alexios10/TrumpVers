@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: wheat;
-  
+/* body {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+} */
+
+.input {
+  @apply bg-gray-50 font-medium border mx-2 border-gray-300 text-gray-900 text-sm rounded-lg p-1;
 }

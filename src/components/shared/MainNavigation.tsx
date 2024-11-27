@@ -9,7 +9,7 @@ const MainNavigation = () => {
         {/* Tittel */}
         <div>
           <img
-            className="w-36"
+            className="w-36 mb-4"
             src="./src/assets/image/trumplogo.png"
             alt="trump logo"
           />
@@ -22,7 +22,15 @@ const MainNavigation = () => {
               to="/"
               className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
             >
-              Register Thought
+              HOME
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/"
+              className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
+            >
+              REGISTER THOUGHTS
             </Link>
           </li>
           <li>
@@ -30,7 +38,7 @@ const MainNavigation = () => {
               to="/register"
               className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
             >
-              Merch Shop
+              SHOP
             </Link>
           </li>
           <li>
@@ -38,20 +46,20 @@ const MainNavigation = () => {
               to="/staff"
               className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
             >
-              Staff Members
+              STAFF
             </Link>
           </li>
           <li>
             <Link
-              className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
+              className=" text-sky-950 hover:text-green-400 transition duration-300"
               to="/thoughtsAdmin"
             >
-              Thoughts Admin
+              ADMINS THOUGHTS
             </Link>
           </li>
         </ul>
       </div>
-      <hr className="bg-red-700" />
+      <hr className="border-red-600" />
     </nav>
   );
 };
