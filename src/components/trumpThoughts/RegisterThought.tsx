@@ -37,39 +37,56 @@ const RegisterThought = () => {
   };
 
   return (
-    <section>
-      <header>
-        <h3> Register new thought</h3>
-      </header>
+    <section className="flex">
+      <header></header>
 
-      <section>
-        <div>
-          <label>Name</label>
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Thought</label>
-          <input
-            type="text"
-            name="thought"
-            value={thought}
-            onChange={handleChange}
-          />
+      <div className="flex-1 bg-blue-100 h-screen flex flex-col">
+        <div className="flex-1/2 flex flex-col items-center">
+          <h3> Register new thought</h3>
+
+          <div className="flex items-center mb-2">
+            <label className="mr-2">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="flex items-center mb-2">
+            <label className="mr-2">Thought</label>
+            <input
+              type="text"
+              name="thought"
+              value={thought}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="flex items-center mb-2">
+            <label className="mr-2">Category</label>
+            {/* legge til dropdown senere */}
+            <input
+              type="text"
+              name="category"
+              value={category}
+              onChange={handleChange}
+            />
+          </div>
+
+          <button
+            onClick={registerThought}
+            className="mt-2 bg-blue-400 text-white p-2 rounded hover:bg-blue-500"
+          >
+            Register Thought
+          </button>
         </div>
 
-        <div>
-          <label>Category</label>
-          {/* legge til dropdown senere */}
-          <input
-            type="text"
-            name="category"
-            value={category}
-            onChange={handleChange}
-          />
-        </div>
+        <div className="flex-1">plassen som skal inneholde thought</div>
+      </div>
 
-        <button onClick={registerThought}>Register Thought</button>
-      </section>
+      <div className="flex-1 bg-green-100 h-screen"></div>
     </section>
   );
 };
