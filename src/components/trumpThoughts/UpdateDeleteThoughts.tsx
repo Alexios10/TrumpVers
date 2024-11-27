@@ -4,7 +4,7 @@ import IThoughtsContext from "../../interfaces/IThoughtsContext";
 import IThoughts from "../../interfaces/IThoughts";
 
 const UpdateDeleteThoughts = () => {
-  const { getThoughtById, putThought } = useContext(
+  const { getThoughtById, putThought, deleteThought } = useContext(
     ThoughtsContext
   ) as IThoughtsContext;
 
@@ -33,18 +33,18 @@ const UpdateDeleteThoughts = () => {
   const getByIdFromContext = async () => {
     const thought = await getThoughtById(parseInt(id));
 
-    if (thought != null) {
+    if (thought?.name != null) {
       setName(thought?.name);
     }
     if (thought?.thought != null) {
-      setThought(thought?.category);
+      setThought(thought?.thought);
     }
     if (thought?.category != null) {
       setCategory(thought?.category);
     }
   };
 
-  const updateThoughtWithContext = () => {
+  const updateThoughtWithContext = async () => {
     const thoughtToUpdate: IThoughts = {
       id: parseInt(id),
       name: name,
@@ -52,8 +52,50 @@ const UpdateDeleteThoughts = () => {
       category: category,
     };
 
-    putThought(thoughtToUpdate);
+    const result = await putThought(thoughtToUpdate);
+    return result;
   };
 
-  return <section></section>;
+  const deleteThoughtWithContext = () => {
+    deleteThought(parseInt(id));
+  };
+
+  return (
+    <section>
+      <header>Thoughts</header>
+      <section>
+        <div>
+          <label>Get thought by id</label>
+          <input type="number" name="id" value={id} onChange={handleChange} />
+          <button onClick={getByIdFromContext}>Get thought</button>
+        </div>
+        <div>
+          <label>name</label>
+          <input type="text" name="name" value={name} onChange={handleChange} />
+        </div>
+        <div>
+          <label>thought</label>
+          <input
+            type="text"
+            name="thought"
+            value={thought}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Category</label>
+          <input
+            type="text"
+            name="category"
+            value={category}
+            onChange={handleChange}
+          />
+        </div>
+        <button onClick={updateThoughtWithContext}>Update thought</button>
+        <button onClick={deleteThoughtWithContext}>delete</button>
+      </section>
+    </section>
+  );
 };
+
+export default UpdateDeleteThoughts;
