@@ -42,7 +42,7 @@ const RegisterThought = () => {
 
       <div className="flex-1 bg-white h-screen flex flex-col">
         <div className="flex-1/2 flex flex-col items-center">
-          <h3 className="m-4"> Register new thought</h3>
+          <h3 className="m-4 text-3xl"> Register new thought</h3>
           <div className="w-96 items-start">
             <div className="mb-2 flex flex-col">
               <label className="w-24 mr-2 text-xs">Name</label>
@@ -55,6 +55,20 @@ const RegisterThought = () => {
               />
             </div>
 
+            {/* legge til dropdown senere (Options) */}
+            <div className="mb-2 flex flex-col">
+              <label className="w-24 mr-2 text-xs">Category</label>
+
+              <input
+                className="w-full bg-gray-200"
+                type="text"
+                name="category"
+                value={category}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* legge til text area */}
             <div className="mb-2 fflex flex-col">
               <label className="w-24 mr-2 text-xs">Thought</label>
               <input
@@ -62,18 +76,6 @@ const RegisterThought = () => {
                 type="text"
                 name="thought"
                 value={thought}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-2 flex flex-col">
-              <label className="w-24 mr-2 text-xs">Category</label>
-              {/* legge til dropdown senere */}
-              <input
-                className="w-full bg-gray-200"
-                type="text"
-                name="category"
-                value={category}
                 onChange={handleChange}
               />
             </div>
