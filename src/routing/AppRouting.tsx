@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainNavigation from "../components/shared/MainNavigation";
 import HomePage from "../pages/HomePage";
+import UpdateDeleteThoughts from "../components/trumpThoughts/UpdateDeleteThoughts";
 
 const AppRouting = () => {
   return (
@@ -8,7 +9,7 @@ const AppRouting = () => {
       <MainNavigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="register" element={}></Route> */}
+        <Route path="/thoughtsAdmin" element={<UpdateDeleteThoughts />}></Route>
       </Routes>
     </BrowserRouter>
   );

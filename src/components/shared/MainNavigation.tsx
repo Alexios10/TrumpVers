@@ -42,6 +42,14 @@ const MainNavigation = () => {
               Staff Members
             </Link>
           </li>
+          <li>
+            <Link
+              className="text-white hover:text-green-400 transition duration-300"
+              to="/thoughtsAdmin"
+            >
+              Thoughts Admin
+            </Link>
+          </li>
         </ul>
       </div>
       <hr className="bg-red-700" />

@@ -35,7 +35,7 @@ export const ThoughtsProvider: FC<IProps> = ({ children }) => {
 
   const putThought = async (updateThought: IThoughts) => {
     const result = await ThoughtsService.putThought(updateThought);
-    if (result != result) {
+    if (result != null) {
       getAndSetThoughtsFromService();
       return updateThought;
     }
