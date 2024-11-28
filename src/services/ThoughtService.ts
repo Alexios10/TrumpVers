@@ -1,5 +1,5 @@
 import axios from "axios";
-import IThoughts from "../interfaces/IThoughts";
+import IThoughts from "../interfaces/thoughts/IThoughts";
 
 const ThoughtsService = (() => {
   const thoughtContollerEndpoint = "http://localhost:5068/api/TrumpThoughts/";

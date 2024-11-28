@@ -1,7 +1,7 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { ThoughtsContext } from "../../contexts/ThoughtsContext";
-import IThoughtsContext from "../../interfaces/IThoughtsContext";
-import IThoughts from "../../interfaces/IThoughts";
+import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
+import IThoughts from "../../interfaces/thoughts/IThoughts";
 
 const UpdateDeleteThoughts = () => {
   const { getThoughtByName, putThought, deleteThought } = useContext(

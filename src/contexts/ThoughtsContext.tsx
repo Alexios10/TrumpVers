@@ -1,7 +1,7 @@
 import { useState, useEffect, createContext, FC } from "react";
-import IThoughtsContext from "../interfaces/IThoughtsContext";
+import IThoughtsContext from "../interfaces/thoughts/IThoughtsContext";
 import IProps from "../interfaces/IProps";
-import IThoughts from "../interfaces/IThoughts";
+import IThoughts from "../interfaces/thoughts/IThoughts";
 import ThoughtsService from "../services/ThoughtService";
 
 export const ThoughtsContext = createContext<IThoughtsContext | null>(null);

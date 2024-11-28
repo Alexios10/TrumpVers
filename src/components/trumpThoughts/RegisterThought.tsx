@@ -1,6 +1,6 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { ThoughtsContext } from "../../contexts/ThoughtsContext";
-import IThoughtsContext from "../../interfaces/IThoughtsContext";
+import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 import ThoughtList from "./ThoughtList";
 
 const RegisterThought = () => {

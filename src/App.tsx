@@ -1,14 +1,14 @@
-import "./App.css";
 import { ThoughtsProvider } from "./contexts/ThoughtsContext";
+import { MerchandiseProvider } from "./contexts/MerchandiseContext";
 import AppRouting from "./routing/AppRouting";
 
 function App() {
   return (
-    <>
-      <ThoughtsProvider>
+    <ThoughtsProvider>
+      <MerchandiseProvider>
         <AppRouting />
-      </ThoughtsProvider>
-    </>
+      </MerchandiseProvider>
+    </ThoughtsProvider>
   );
 }
 

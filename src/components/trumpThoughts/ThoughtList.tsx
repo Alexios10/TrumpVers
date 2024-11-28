@@ -1,5 +1,5 @@
 import { FC } from "react";
-import IThoughts from "../../interfaces/IThoughts";
+import IThoughts from "../../interfaces/thoughts/IThoughts";
 import ThoughtItem from "./ThoughtsItems";
 
 interface ThoughtListProps {

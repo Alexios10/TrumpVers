@@ -27,15 +27,7 @@ const MainNavigation = () => {
           </li>
           <li>
             <Link
-              to="/"
-              className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
-            >
-              REGISTER THOUGHTS
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/register"
+              to="/shop"
               className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
             >
               SHOP
