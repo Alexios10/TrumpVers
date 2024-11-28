@@ -2,7 +2,7 @@ import axios from "axios";
 import IThoughts from "../interfaces/IThoughts";
 
 const ThoughtsService = (() => {
-  const thoughtContollerEndpoint = "http://localhost:5275/api/TrumpThoughts/";
+  const thoughtContollerEndpoint = "http://localhost:5068/api/TrumpThoughts/";
 
   const getAllThoughts = async (): Promise<IThoughts[]> => {
     const result = await axios.get(thoughtContollerEndpoint);
