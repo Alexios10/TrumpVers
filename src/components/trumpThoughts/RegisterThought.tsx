@@ -54,7 +54,24 @@ const RegisterThought = () => {
     setCategory("");
   };
 
-  const categories = ["All", "Politic", "Economy", "History"]; // categories
+  const categories = [
+    "All",
+    "Politic",
+    "Economy",
+    "History",
+    "Country",
+    "Philosophy",
+    "Facts",
+  ]; // categories
+  const choosenCategoriy = [
+    "",
+    "Politic",
+    "Economy",
+    "History",
+    "Country",
+    "Philosophy",
+    "Facts",
+  ];
 
   const filteredThoughts =
     filterCategory === "All"
@@ -64,21 +81,18 @@ const RegisterThought = () => {
   return (
     <section className="flex">
       <div
-        className=" bg-white h-screen flex flex-col"
+        className=" bg-white h-screen flex flex-col border-r-2 border-slate-400"
         style={{ flex: "1 1 40%" }}
       >
         <div className="flex flex-col items-center">
-          <h3 className="m-4 text-3xl"> Register new thought</h3>
+          <h3 className="text-3xl mb-2 text-blue-950"> Register new thought</h3>
           <div className="flex-1 bg-white h-screen flex flex-col">
             <div className="flex-1/2 flex flex-col items-center">
-              <header>
-                <h3 className="m-4 text-3xl">Register new thought</h3>
-              </header>
               <div className="w-96 items-start">
                 <div className="mb-2 flex flex-col">
-                  <label className="w-24 mr-2 text-xs">Name</label>
+                  <label className="w-24 mr-2 text-[0.625rem]">Name</label>
                   <input
-                    className="w-full bg-gray-200"
+                    className="w-full text-zinc-700 bg-gray-200"
                     type="text"
                     name="name"
                     value={name}
@@ -86,25 +100,29 @@ const RegisterThought = () => {
                   />
                 </div>
 
-                {/* legge til dropdown senere (Options) */}
                 <div className="mb-2 flex flex-col">
-                  <label className="w-24 mr-2 text-xs">Category</label>
+                  <label className="w-24 mr-2 text-[0.625rem]">
+                    Select Catagory
+                  </label>
 
-                  <input
-                    className="w-full bg-gray-200"
-                    type="text"
+                  <select
+                    className="w-full text-zinc-700 bg-gray-200 "
                     name="category"
                     value={category}
                     onChange={handleChange}
-                  />
+                  >
+                    {choosenCategoriy.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
-                {/* legge til text area */}
                 <div className="mb-2 flex flex-col">
-                  <label className="w-24 mr-2 text-xs">Thought</label>
-                  <input
-                    className="w-full bg-gray-200"
-                    type="text"
+                  <label className="w-24 mr-2 text-[0.625rem]">Thought</label>
+                  <textarea
+                    className="w-full h-24  text-zinc-700 bg-gray-200 "
                     name="thought"
                     value={thought}
                     onChange={handleChange}
@@ -114,20 +132,23 @@ const RegisterThought = () => {
 
               <button
                 onClick={registerThought}
-                className="m-4 bg-blue-400 text-white p-2 rounded hover:bg-blue-500 shadow-lg"
+                className="mb-2 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
               >
-                Register Thought
+                PUBLISH
               </button>
             </div>
-            <hr className="w-3/4 h-0.5 mx-auto rounded m-4 bg-slate-400" />
           </div>
-          <div>
-            <div>plassen som skal inneholde thought</div>
+
+          <hr className="w-4/5 h-0.5 mx-auto rounded m-2 bg-slate-400" />
+
+          <div className="h-96 overflow-x-hidden overflow-y-auto">
             {/* Dropdown to filter thoughts */}
             <div className="w-96 mx-auto">
-              <label className="w-24 mr-2 text-xs">Filter by Category</label>
+              <label className="flex flex-col w-32 mr-2 text-xs">
+                Filter by Category
+              </label>
               <select
-                className="w-full bg-gray-200"
+                className="w-1/4 bg-gray-200 text-xs"
                 name="filterCategory"
                 value={filterCategory}
                 onChange={handleChange}
@@ -146,8 +167,9 @@ const RegisterThought = () => {
           </div>
         </div>
       </div>
+
       <div
-        className="flex-1 bg-green-100 h-screen"
+        className=" m-8 flex-1 bg-green-100 h-screen"
         style={{ flex: "1 1 60%" }}
       ></div>
     </section>
