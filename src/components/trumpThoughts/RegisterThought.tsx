@@ -40,8 +40,11 @@ const RegisterThought = () => {
     <section className="flex">
       <header></header>
 
-      <div className="flex-1 bg-white h-screen flex flex-col">
-        <div className="flex-1/2 flex flex-col items-center">
+      <div
+        className=" bg-white h-screen flex flex-col"
+        style={{ flex: "1 1 40%" }}
+      >
+        <div className="flex flex-col items-center">
           <h3 className="m-4 text-3xl"> Register new thought</h3>
           <div className="w-96 items-start">
             <div className="mb-2 flex flex-col">
@@ -89,10 +92,13 @@ const RegisterThought = () => {
           </button>
         </div>
         <hr className="w-3/4 h-0.5 mx-auto rounded m-4 bg-slate-400" />
-        <div>plassen som skal inneholde thought</div>
+
+        <div>
+          <div>plassen som skal inneholde thought</div>
+        </div>
       </div>
 
-      <div className="flex-1 bg-green-100 h-screen"></div>
+      <div className=" bg-green-100 h-screen" style={{ flex: "1 1 60%" }}></div>
     </section>
   );
 };
