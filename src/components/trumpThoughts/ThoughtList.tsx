@@ -3,7 +3,7 @@ import IThoughts from "../../interfaces/IThoughts";
 import ThoughtItem from "./ThoughtsItems";
 
 interface ThoughtListProps {
-  thoughts: IThoughts[]; // Declare the prop type
+  thoughts: IThoughts[]; // deklarere prop type
 }
 
 const ThoughtList: FC<ThoughtListProps> = ({ thoughts }) => {
