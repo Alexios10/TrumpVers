@@ -56,6 +56,7 @@ const RegisterThought = () => {
 
   const categories = ["All", "Politic", "Economy", "History"]; // categories
 
+  //  filtrere gjennom thoughts
   const filteredThoughts =
     filterCategory === "All"
       ? thoughts
