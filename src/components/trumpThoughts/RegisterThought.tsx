@@ -56,7 +56,6 @@ const RegisterThought = () => {
 
   const categories = ["All", "Politic", "Economy", "History"]; // categories
 
-  //  filtrere gjennom thoughts
   const filteredThoughts =
     filterCategory === "All"
       ? thoughts
@@ -95,7 +94,7 @@ const RegisterThought = () => {
             </div>
 
             {/* legge til text area */}
-            <div className="mb-2 fflex flex-col">
+            <div className="mb-2 flex flex-col">
               <label className="w-24 mr-2 text-xs">Thought</label>
               <input
                 className="w-full bg-gray-200"
