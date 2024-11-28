@@ -4,20 +4,17 @@ import IThoughtsContext from "../../interfaces/IThoughtsContext";
 import IThoughts from "../../interfaces/IThoughts";
 
 const UpdateDeleteThoughts = () => {
-  const { getThoughtById, putThought, deleteThought } = useContext(
+  const { getThoughtByName, putThought, deleteThought } = useContext(
     ThoughtsContext
   ) as IThoughtsContext;
 
-  const [id, setId] = useState<string>("");
+  const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
   const [thought, setThought] = useState<string>("");
   const [category, setCategory] = useState<string>("");
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     switch (e.target.name) {
-      case "id":
-        setId(e.target.value);
-        break;
       case "name":
         setName(e.target.value);
         break;
@@ -30,70 +27,119 @@ const UpdateDeleteThoughts = () => {
     }
   }
 
-  const getByIdFromContext = async () => {
-    const thought = await getThoughtById(parseInt(id));
+  const getByNameFromContext = async () => {
+    const thought = await getThoughtByName(name);
 
-    if (thought?.name != null) {
-      setName(thought?.name);
-    }
-    if (thought?.thought != null) {
-      setThought(thought?.thought);
-    }
-    if (thought?.category != null) {
-      setCategory(thought?.category);
+    if (thought) {
+      setId(thought.id ?? null); // Use null if id is undefined
+      setThought(thought.thought ?? ""); // Use empty string if undefined
+      setCategory(thought.category ?? ""); // Use empty string if undefined
+    } else {
+      alert(`Thought with name "${name}" not found.`);
     }
   };
 
   const updateThoughtWithContext = async () => {
+    if (id === null) {
+      alert("Cannot update. Thought not found.");
+      return;
+    }
+
     const thoughtToUpdate: IThoughts = {
-      id: parseInt(id),
+      id: id,
       name: name,
       thought: thought,
       category: category,
     };
 
     const result = await putThought(thoughtToUpdate);
-    return result;
+    if (result) {
+      alert("Thought updated successfully.");
+    }
   };
 
-  const deleteThoughtWithContext = () => {
-    deleteThought(parseInt(id));
+  const deleteThoughtWithContext = async () => {
+    if (id === null) {
+      alert("Cannot delete. Thought not found.");
+      return;
+    }
+
+    deleteThought(id);
+    alert(`Thought with ID ${id} deleted.`);
   };
 
   return (
-    <section>
+    <section className="ml-5">
       <header>Thoughts</header>
-      <section>
-        <div>
-          <label>Get thought by id</label>
-          <input type="number" name="id" value={id} onChange={handleChange} />
-          <button onClick={getByIdFromContext}>Get thought</button>
-        </div>
-        <div>
-          <label>name</label>
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </div>
-        <div>
-          <label>thought</label>
+      <section className="my-5 ">
+        <div className="flex">
+          <label>Get thought by name:</label>
           <input
+            className="input"
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+          />
+          <button
+            className="border border-red-700 mx-2 rounded-lg p-1 bg-cyan-200"
+            onClick={getByNameFromContext}
+          >
+            Get thought
+          </button>
+        </div>
+
+        <div className="flex my-2">
+          <label>Thought:</label>
+          <input
+            className="input"
             type="text"
             name="thought"
             value={thought}
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Category</label>
+
+        <div className="flex my-2">
+          <label>Category:</label>
           <input
+            className="input"
             type="text"
             name="category"
             value={category}
             onChange={handleChange}
           />
         </div>
-        <button onClick={updateThoughtWithContext}>Update thought</button>
-        <button onClick={deleteThoughtWithContext}>delete</button>
+        <button
+          className="border border-red-700 mr-10 rounded-lg p-1 bg-cyan-200"
+          onClick={updateThoughtWithContext}
+        >
+          Update
+        </button>
+        <button
+          className="border rounded-lg p-1 border-red-700 bg-cyan-200"
+          onClick={deleteThoughtWithContext}
+        >
+          delete
+        </button>
       </section>
+
+      {thought !== null && (
+        <div className="space-y-2">
+          <div>
+            <span className="font-bold mr-2">Id:</span>
+            <span>{id}</span>
+          </div>
+          <div>
+            <span className="font-bold mr-2">Category:</span>
+            <span>{category}</span>
+          </div>
+          <div>
+            <span className="font-bold mr-2">Thought:</span>
+            <span>{thought}</span>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

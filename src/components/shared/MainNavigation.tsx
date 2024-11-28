@@ -16,7 +16,6 @@ const MainNavigation = () => {
         </div>
         {/* Navigasjonsmeny */}
         <ul className="flex space-x-8">
-          {" "}
           {/* Gjør at alle navbar delene kommer 8 px mellom hverandre med flexbox*/}
           <li>
             <Link

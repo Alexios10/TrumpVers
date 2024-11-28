@@ -19,8 +19,13 @@ export const ThoughtsProvider: FC<IProps> = ({ children }) => {
   };
 
   const getThoughtById = async (id: number) => {
-    const thoughtsFromService = await ThoughtsService.getById(id);
+    const thoughtsFromService = await ThoughtsService.getThoughtById(id);
     return thoughtsFromService;
+  };
+
+  const getThoughtByName = async (name: string) => {
+    const thoughtFromService = await ThoughtsService.getThoughtByName(name); // New method integration
+    return thoughtFromService;
   };
 
   const postThought = async (
@@ -53,6 +58,7 @@ export const ThoughtsProvider: FC<IProps> = ({ children }) => {
         thoughts,
         postThought,
         getThoughtById,
+        getThoughtByName,
         putThought,
         deleteThought,
       }}
