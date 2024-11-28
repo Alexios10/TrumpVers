@@ -145,8 +145,11 @@ const RegisterThought = () => {
             </div>
           </div>
         </div>
-        <div className="flex-1 bg-green-100 h-screen"></div>
       </div>
+      <div
+        className="flex-1 bg-green-100 h-screen"
+        style={{ flex: "1 1 60%" }}
+      ></div>
     </section>
   );
 };
