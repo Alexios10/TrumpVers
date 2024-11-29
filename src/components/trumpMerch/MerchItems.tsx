@@ -10,22 +10,27 @@ const MerchItem: FC<IMerch> = ({
   quantity,
 }) => {
   return (
-    <article className="mx-5 my-4 rounded-sm p-4 shadow-lg min-h-40 min-w-96 border-solid border-2 border-blue-950 border-opacity-20">
-      <div className="m-2">
-        <div className="flex justify-between items-center">
-          <h3 className="text-sm font-semibold truncate">{name}</h3>
+    <article className="flex justify-center my-4">
+      <div className="w-[19.44rem] h-[31.25rem] cursor-pointer flex flex-col rounded-sm p-1 shadow-lg border-solid border-2 border-blue-950 border-opacity-20 hover:border-4">
+        <div className="flex-1 m-8">
           <img
             src={MerchService.getImageEndpoint() + image}
             alt={name}
-            className="h-16 w-16 object-cover rounded"
+            className="object-contain w-full h-full"
           />
         </div>
-        <p className="text-xs line-clamp-3">{description}</p>
-        <p className="mt-2 text-base font-medium">{price}$</p>
-        <p className="mt-1 text-sm text-gray-700">Quantity: {quantity}</p>
-        <button className="mt-2 bg-blue-600 text-white px-3 py-1 rounded text-xs font-bold hover:bg-blue-700">
-          Buy
-        </button>
+
+        <div className="h-[10.25rem] bg-white p-4 flex flex-col justify-between">
+          <h3 className="text-xl font-semibold text-gray-800">{name}</h3>
+          <p className="text-sm text-gray-600 mt-2 line-clamp-3">
+            {description}
+          </p>
+          <div className="flex justify-between items-center">
+            <p className="text-lg font-medium text-gray-900">{price} $</p>
+            <p className="text-sm text-gray-500">{quantity} left</p>
+          </div>
+        </div>
+        <button>Buy</button>
       </div>
     </article>
   );
