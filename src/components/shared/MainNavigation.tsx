@@ -46,7 +46,23 @@ const MainNavigation = () => {
               className=" text-sky-950 hover:text-green-400 transition duration-300"
               to="/thoughtsAdmin"
             >
-              ADMINS THOUGHTS
+              THOUGHTS ADMIN
+            </Link>
+          </li>
+          <li>
+            <Link
+              className=" text-sky-950 hover:text-green-400 transition duration-300"
+              to="/membersAdmin"
+            >
+              MEMBERS ADMIN
+            </Link>
+          </li>{" "}
+          <li>
+            <Link
+              className=" text-sky-950 hover:text-green-400 transition duration-300"
+              to="/registerMembers"
+            >
+              REGISTER NEW MEMBERS
             </Link>
           </li>
         </ul>

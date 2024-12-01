@@ -3,23 +3,26 @@ import IThoughts from "../../interfaces/thoughts/IThoughts";
 import ThoughtItem from "./ThoughtsItems";
 
 interface ThoughtListProps {
-  thoughts: IThoughts[]; // deklarere prop type
+  thoughts: IThoughts[];
 }
 
 const ThoughtList: FC<ThoughtListProps> = ({ thoughts }) => {
-  return (
-    <section>
-      {thoughts.map((thought, id) => (
+  const createAndGetThoughtJSX = () => {
+    const thoughtJSX = thoughts.map((thought) => {
+      return (
         <ThoughtItem
-          key={"thought" + id}
+          key={thought.id}
           name={thought.name}
-          thought={thought.thought}
           category={thought.category}
           dateCreated={thought.dateCreated}
         />
-      ))}
-    </section>
-  );
+      );
+    });
+
+    return thoughtJSX;
+  };
+
+  return <section>{createAndGetThoughtJSX()}</section>;
 };
 
 export default ThoughtList;
