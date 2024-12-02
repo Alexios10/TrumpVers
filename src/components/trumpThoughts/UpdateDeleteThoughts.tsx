@@ -4,14 +4,34 @@ import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 import IThoughts from "../../interfaces/thoughts/IThoughts";
 
 const UpdateDeleteThoughts = () => {
-  const { getThoughtByName, putThought, deleteThought } = useContext(
+  const { getThoughtByName, putThought, deleteThought, thoughts } = useContext(
     ThoughtsContext
   ) as IThoughtsContext;
 
   const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
   const [thought, setThought] = useState<string>("");
-  const [category, setCategory] = useState<string>("");
+  const [category, setCategory] = useState<string>(""); // For updating thought
+  const [filterCategory, setFilterCategory] = useState<string>("All"); // For filtering thoughts
+
+  const categories = [
+    "All",
+    "Politic",
+    "Economy",
+    "History",
+    "Country",
+    "Philosophy",
+    "Facts",
+  ];
+  const choosenCategories = [
+    "",
+    "Politic",
+    "Economy",
+    "History",
+    "Country",
+    "Philosophy",
+    "Facts",
+  ];
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -26,6 +46,9 @@ const UpdateDeleteThoughts = () => {
         break;
       case "category":
         setCategory(value);
+        break;
+      case "filterCategory":
+        setFilterCategory(value);
         break;
     }
   };
@@ -75,6 +98,12 @@ const UpdateDeleteThoughts = () => {
     setCategory("");
   };
 
+  // Filter thoughts by category
+  const filteredThoughts =
+    filterCategory === "All"
+      ? thoughts
+      : thoughts.filter((t) => t.category === filterCategory);
+
   return (
     <section className="flex flex-col items-center">
       <h3 className="text-3xl mb-2 text-blue-950">Thoughts Admin</h3>
@@ -111,13 +140,18 @@ const UpdateDeleteThoughts = () => {
 
         <div className="mb-4 flex flex-col">
           <label className="text-[0.625rem] mb-1">Category</label>
-          <input
-            className="w-full p-2 text-zinc-700 bg-gray-200 rounded"
-            type="text"
+          <select
+            className="w-full p-2 bg-gray-200 rounded"
             name="category"
             value={category}
             onChange={handleChange}
-          />
+          >
+            {choosenCategories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="flex gap-4">
@@ -136,20 +170,30 @@ const UpdateDeleteThoughts = () => {
         </div>
       </div>
 
-      {thought !== null && id !== null && (
-        <div className="mt-6 w-96 bg-gray-100 p-4 rounded shadow">
-          <h4 className="font-bold text-lg mb-2">Thought Details</h4>
-          <p>
-            <span className="font-bold">ID:</span> {id}
+      <hr className="w-4/5 h-0.5 mx-auto rounded m-4 bg-slate-400" />
+
+      <div className="h-96 overflow-x-hidden overflow-y-auto w-96">
+        {id && (
+          <div
+            key={id}
+            className="bg-gray-100 p-4 rounded shadow mb-2 flex flex-col"
+          >
+            <h4 className="font-bold text-lg">{name}</h4>
+            <p>
+              <span className="font-bold">Category:</span> {category}
+            </p>
+            <p>
+              <span className="font-bold">Thought:</span> {thought}
+            </p>
+          </div>
+        )}
+        {!id && (
+          <p className="text-gray-500 text-center mt-4">
+            No thought selected. Use the "Get" button to fetch a thought by
+            name.
           </p>
-          <p>
-            <span className="font-bold">Category:</span> {category}
-          </p>
-          <p>
-            <span className="font-bold">Thought:</span> {thought}
-          </p>
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 };
