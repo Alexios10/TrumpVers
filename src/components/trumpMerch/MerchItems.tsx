@@ -11,7 +11,7 @@ const MerchItem: FC<IMerch> = ({
 }) => {
   return (
     <article className="flex justify-center my-4">
-      <div className="w-80 h-auto cursor-pointer flex flex-col rounded-sm p-1 shadow-lg border-solid border-2 border-blue-950 border-opacity-20 hover:border-4">
+      <div className="w-80 h-auto cursor-pointer flex flex-col rounded-sm p-1 shadow-lg border-solid border-2 border-blue-800 border-opacity-20 hover:border-4">
         <div className="flex-1 m-8">
           <img
             src={MerchService.getImageEndpoint() + image}
