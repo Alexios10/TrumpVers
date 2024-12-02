@@ -2,25 +2,26 @@ import { Link } from "react-router-dom";
 
 const MainNavigation = () => {
   return (
-    <nav className="bg-white p-4">
-      <div className="max-w-screen-xl mx-auto flex items-center justify-between">
+    <nav className="bg-white p-4 m-4">
+      <div className="max-w-screen-2xl mx-auto flex items-center justify-between">
         {" "}
         {/* Justify betwen gjør at det er mellomrom mellom tittelen og resten av navbaren */}
         {/* Tittel */}
         <div>
           <img
-            className="w-36 mb-4"
+            className="w-56 mb-4"
             src="./src/assets/image/trumplogo.png"
             alt="trump logo"
           />
         </div>
         {/* Navigasjonsmeny */}
-        <ul className="flex space-x-8">
+        
+        <ul className="flex space-x-8 text-xl text-sky-950">
           {/* Gjør at alle navbar delene kommer 8 px mellom hverandre med flexbox*/}
           <li>
             <Link
               to="/"
-              className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
+              className=" hover:text-red-600 transition duration-150"
             >
               HOME
             </Link>
@@ -28,7 +29,8 @@ const MainNavigation = () => {
           <li>
             <Link
               to="/shop"
-              className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
+              className=" hover:text-red-600 transition duration-150"
+              
             >
               SHOP
             </Link>
@@ -36,31 +38,32 @@ const MainNavigation = () => {
           <li>
             <Link
               to="/staff"
-              className="text-lg text-sky-950 hover:text-red-600 transition duration-150"
+              className=" hover:text-red-600 transition duration-150"
+             
             >
               STAFF
             </Link>
           </li>
           <li>
             <Link
-              className=" text-sky-950 hover:text-green-400 transition duration-300"
               to="/thoughtsAdmin"
+              className=" hover:text-red-600 transition duration-150"
             >
               THOUGHTS ADMIN
             </Link>
           </li>
           <li>
             <Link
-              className=" text-sky-950 hover:text-green-400 transition duration-300"
               to="/membersAdmin"
+              className=" hover:text-red-600 transition duration-150"
             >
               MEMBERS ADMIN
             </Link>
           </li>{" "}
           <li>
             <Link
-              className=" text-sky-950 hover:text-green-400 transition duration-300"
               to="/registerMembers"
+              className=" hover:text-red-600 transition duration-150"
             >
               REGISTER NEW MEMBERS
             </Link>
