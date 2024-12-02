@@ -42,6 +42,8 @@ const UpdateDeleteThoughts = () => {
       alert(`No thoughts found with the name "${name}".`);
       setMatchingThoughts([]);
     }
+    setThought("");
+    setCategory("");
   };
 
   const handleThoughtClick = (selectedThought: IThoughts) => {
