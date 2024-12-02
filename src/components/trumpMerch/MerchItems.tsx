@@ -16,7 +16,7 @@ const MerchItem: FC<IMerch> = ({
           <img
             src={MerchService.getImageEndpoint() + image}
             alt={name}
-            className="object-contain w-full h-full"
+            className="object-contain w-full"
           />
         </div>
         <hr />
