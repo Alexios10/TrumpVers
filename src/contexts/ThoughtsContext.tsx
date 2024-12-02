@@ -24,7 +24,7 @@ export const ThoughtsProvider: FC<IProps> = ({ children }) => {
   };
 
   const getThoughtByName = async (name: string) => {
-    const thoughtFromService = await ThoughtsService.getThoughtByName(name); // New method integration
+    const thoughtFromService = await ThoughtsService.getThoughtByName(name);
     return thoughtFromService;
   };
 

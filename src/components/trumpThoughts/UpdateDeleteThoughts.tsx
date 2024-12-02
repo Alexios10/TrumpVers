@@ -4,25 +4,16 @@ import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 import IThoughts from "../../interfaces/thoughts/IThoughts";
 
 const UpdateDeleteThoughts = () => {
-  const { getThoughtByName, putThought, deleteThought, thoughts } = useContext(
+  const { getThoughtByName, putThought, deleteThought } = useContext(
     ThoughtsContext
   ) as IThoughtsContext;
 
   const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
   const [thought, setThought] = useState<string>("");
-  const [category, setCategory] = useState<string>(""); // For updating thought
-  const [filterCategory, setFilterCategory] = useState<string>("All"); // For filtering thoughts
+  const [category, setCategory] = useState<string>("");
+  const [matchingThoughts, setMatchingThoughts] = useState<IThoughts[]>([]);
 
-  const categories = [
-    "All",
-    "Politic",
-    "Economy",
-    "History",
-    "Country",
-    "Philosophy",
-    "Facts",
-  ];
   const choosenCategories = [
     "",
     "Politic",
@@ -37,32 +28,27 @@ const UpdateDeleteThoughts = () => {
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    switch (name) {
-      case "name":
-        setName(value);
-        break;
-      case "thought":
-        setThought(value);
-        break;
-      case "category":
-        setCategory(value);
-        break;
-      case "filterCategory":
-        setFilterCategory(value);
-        break;
-    }
+    if (name === "name") setName(value);
+    if (name === "thought") setThought(value);
+    if (name === "category") setCategory(value);
   };
 
   const getByNameFromContext = async () => {
-    const thought = await getThoughtByName(name);
+    const thoughtResults = await getThoughtByName(name);
 
-    if (thought) {
-      setId(thought.id ?? null);
-      setThought(thought.thought ?? "");
-      setCategory(thought.category ?? "");
+    if (thoughtResults && thoughtResults.length > 0) {
+      setMatchingThoughts(thoughtResults);
     } else {
-      alert(`Thought with name "${name}" not found.`);
+      alert(`No thoughts found with the name "${name}".`);
+      setMatchingThoughts([]);
     }
+  };
+
+  const handleThoughtClick = (selectedThought: IThoughts) => {
+    setId(selectedThought.id || null);
+    setName(selectedThought.name || "");
+    setThought(selectedThought.thought || "");
+    setCategory(selectedThought.category || "");
   };
 
   const updateThoughtWithContext = async () => {
@@ -71,17 +57,9 @@ const UpdateDeleteThoughts = () => {
       return;
     }
 
-    const thoughtToUpdate: IThoughts = {
-      id: id,
-      name: name,
-      thought: thought,
-      category: category,
-    };
-
+    const thoughtToUpdate: IThoughts = { id, name, thought, category };
     const result = await putThought(thoughtToUpdate);
-    if (result) {
-      alert("Thought updated successfully.");
-    }
+    if (result) alert("Thought updated successfully.");
   };
 
   const deleteThoughtWithContext = async () => {
@@ -90,24 +68,22 @@ const UpdateDeleteThoughts = () => {
       return;
     }
 
-    deleteThought(id);
+    await deleteThought(id);
     alert(`Thought with ID ${id} deleted.`);
     setId(null);
     setName("");
     setThought("");
     setCategory("");
+    setMatchingThoughts([]);
   };
-
-  // Filter thoughts by category
-  const filteredThoughts =
-    filterCategory === "All"
-      ? thoughts
-      : thoughts.filter((t) => t.category === filterCategory);
 
   return (
     <section className="flex flex-col items-center">
       <h3 className="text-3xl mb-2 text-blue-950">Thoughts Admin</h3>
+
+      {/* Input and Buttons */}
       <div className="w-96 flex flex-col items-start">
+        {/* Get Thought by Name */}
         <div className="mb-4 flex flex-col">
           <label className="text-[0.625rem] mb-1">Get Thought by Name</label>
           <div className="flex gap-2">
@@ -127,6 +103,7 @@ const UpdateDeleteThoughts = () => {
           </div>
         </div>
 
+        {/* Thought Input */}
         <div className="mb-4 flex flex-col">
           <label className="text-[0.625rem] mb-1">Thought</label>
           <input
@@ -138,6 +115,7 @@ const UpdateDeleteThoughts = () => {
           />
         </div>
 
+        {/* Category Input */}
         <div className="mb-4 flex flex-col">
           <label className="text-[0.625rem] mb-1">Category</label>
           <select
@@ -146,14 +124,15 @@ const UpdateDeleteThoughts = () => {
             value={category}
             onChange={handleChange}
           >
-            {choosenCategories.map((cat) => (
-              <option key={cat} value={cat}>
-                {cat}
+            {choosenCategories.map((category) => (
+              <option key={category} value={category}>
+                {category}
               </option>
             ))}
           </select>
         </div>
 
+        {/* Action Buttons */}
         <div className="flex gap-4">
           <button
             className="p-2 bg-blue-900 text-white rounded hover:bg-blue-500 shadow-lg text-xs"
@@ -172,25 +151,27 @@ const UpdateDeleteThoughts = () => {
 
       <hr className="w-4/5 h-0.5 mx-auto rounded m-4 bg-slate-400" />
 
+      {/* Display Matching Thoughts */}
       <div className="h-96 overflow-x-hidden overflow-y-auto w-96">
-        {id && (
-          <div
-            key={id}
-            className="bg-gray-100 p-4 rounded shadow mb-2 flex flex-col"
-          >
-            <h4 className="font-bold text-lg">{name}</h4>
-            <p>
-              <span className="font-bold">Category:</span> {category}
-            </p>
-            <p>
-              <span className="font-bold">Thought:</span> {thought}
-            </p>
-          </div>
-        )}
-        {!id && (
+        {matchingThoughts.length > 0 ? (
+          matchingThoughts.map((thought) => (
+            <div
+              key={thought.id}
+              className="bg-gray-100 p-4 rounded shadow mb-2 flex flex-col cursor-pointer"
+              onClick={() => handleThoughtClick(thought)}
+            >
+              <h4 className="font-bold text-lg">{thought.name}</h4>
+              <p>
+                <strong>Category:</strong> {thought.category}
+              </p>
+              <p>
+                <strong>Thought:</strong> {thought.thought}
+              </p>
+            </div>
+          ))
+        ) : (
           <p className="text-gray-500 text-center mt-4">
-            No thought selected. Use the "Get" button to fetch a thought by
-            name.
+            Use the "Get" button to search for a thought by name.
           </p>
         )}
       </div>

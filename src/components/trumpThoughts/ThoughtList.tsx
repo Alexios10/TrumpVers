@@ -4,26 +4,21 @@ import ThoughtItem from "./ThoughtsItems";
 
 interface ThoughtListProps {
   thoughts: IThoughts[];
+  onThoughtClick: (thought: IThoughts) => void; // Callback for item clicks
 }
 
-const ThoughtList: FC<ThoughtListProps> = ({ thoughts }) => {
-  const createAndGetThoughtJSX = () => {
-    const thoughtJSX = thoughts.map((thought) => {
-      return (
+const ThoughtList: FC<ThoughtListProps> = ({ thoughts, onThoughtClick }) => {
+  return (
+    <section>
+      {thoughts.map((thought) => (
         <ThoughtItem
           key={thought.id}
-          name={thought.name}
-          thought={thought.thought}
-          category={thought.category}
-          dateCreated={thought.dateCreated}
+          {...thought}
+          onClick={() => onThoughtClick(thought)} // Pass the clicked thought
         />
-      );
-    });
-
-    return thoughtJSX;
-  };
-
-  return <section>{createAndGetThoughtJSX()}</section>;
+      ))}
+    </section>
+  );
 };
 
 export default ThoughtList;

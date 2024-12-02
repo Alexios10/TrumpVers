@@ -3,6 +3,7 @@ import { ThoughtsContext } from "../../contexts/ThoughtsContext";
 import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 import ThoughtList from "./ThoughtList";
 import UpdateDeleteThoughts from "./UpdateDeleteThoughts";
+import IThoughts from "../../interfaces/thoughts/IThoughts";
 
 const RegisterThought = () => {
   const { postThought, thoughts } = useContext(
@@ -11,11 +12,16 @@ const RegisterThought = () => {
 
   const [name, setName] = useState<string>("");
   const [thought, setThought] = useState<string>("");
-  const [category, setCategory] = useState<string>(""); // For registering a new thought
-  const [filterCategory, setFilterCategory] = useState<string>("All"); // For filtering displayed thoughts
+  const [category, setCategory] = useState<string>("");
+  const [filterCategory, setFilterCategory] = useState<string>("All");
   const [activePage, setActivePage] = useState<"register" | "admin">(
     "register"
-  ); // Single state for page control
+  );
+
+  // State to manage selected thought
+  const [selectedThought, setSelectedThought] = useState<IThoughts | null>(
+    null
+  );
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -25,19 +31,15 @@ const RegisterThought = () => {
       case "name":
         setName(value);
         break;
-
       case "thought":
         setThought(value);
         break;
-
       case "category":
         setCategory(value);
         break;
-
       case "filterCategory":
         setFilterCategory(value);
         break;
-
       default:
         break;
     }
@@ -56,6 +58,10 @@ const RegisterThought = () => {
     setName("");
     setThought("");
     setCategory("");
+  };
+
+  const handleThoughtClick = (thought: IThoughts) => {
+    setSelectedThought(thought);
   };
 
   const categories = [
@@ -82,7 +88,6 @@ const RegisterThought = () => {
       ? thoughts
       : thoughts.filter((thought) => thought.category === filterCategory);
 
-  // Switch active page
   const switchPage = (page: "register" | "admin") => {
     setActivePage(page);
   };
@@ -90,10 +95,10 @@ const RegisterThought = () => {
   return (
     <section className="flex">
       <div
-        className=" bg-white h-screen flex flex-col border-r-2 border-slate-400"
+        className="bg-white h-screen flex flex-col border-r-2 border-slate-400"
         style={{ flex: "1 1 40%" }}
       >
-        <div className="flex gap-4 p-4">
+        <div className="flex gap-4 mx-3 mb-5">
           <button
             onClick={() => switchPage("register")}
             className={`p-2 bg-blue-900 text-white rounded hover:bg-blue-500 shadow-lg text-sm ${
@@ -117,12 +122,12 @@ const RegisterThought = () => {
 
         {activePage === "register" && (
           <div
-            className=" bg-white h-screen flex flex-col border-r-2 border-slate-400"
+            className="bg-white h-screen flex flex-col border-slate-400"
             style={{ flex: "1 1 40%" }}
           >
             <div className="flex flex-col items-center">
               <h3 className="text-3xl mb-2 text-blue-950">
-                Register new thought
+                Register New Thought
               </h3>
               <div className="flex-1 bg-white h-screen flex flex-col">
                 <div className="flex-1/2 flex flex-col items-center">
@@ -140,11 +145,11 @@ const RegisterThought = () => {
 
                     <div className="mb-2 flex flex-col">
                       <label className="w-24 mr-2 text-[0.625rem]">
-                        Select Catagory
+                        Select Category
                       </label>
 
                       <select
-                        className="w-full text-zinc-700 bg-gray-200 "
+                        className="w-full text-zinc-700 bg-gray-200"
                         name="category"
                         value={category}
                         onChange={handleChange}
@@ -162,7 +167,7 @@ const RegisterThought = () => {
                         Thought
                       </label>
                       <textarea
-                        className="w-full h-24  text-zinc-700 bg-gray-200 "
+                        className="w-full h-24 text-zinc-700 bg-gray-200"
                         name="thought"
                         value={thought}
                         onChange={handleChange}
@@ -197,10 +202,13 @@ const RegisterThought = () => {
                   ))}
                 </select>
               </div>
-              <hr className=" w-2/3 h-0.5 mx-auto rounded m-2 bg-slate-100" />
+              <hr className="w-2/3 h-0.5 mx-auto rounded m-2 bg-slate-100" />
               <div className="h-96 overflow-x-hidden overflow-y-auto">
                 <div>
-                  <ThoughtList thoughts={filteredThoughts} />
+                  <ThoughtList
+                    thoughts={filteredThoughts}
+                    onThoughtClick={handleThoughtClick}
+                  />
                 </div>
               </div>
             </div>
@@ -208,10 +216,20 @@ const RegisterThought = () => {
         )}
       </div>
 
+      {/* Right Container for Selected Thought */}
       <div
-        className="m-8 flex-1 bg-green-100 h-screen"
+        className="mx-8 flex-1 bg-green-100 p-4 rounded shadow"
         style={{ flex: "1 1 60%" }}
-      ></div>
+      >
+        {selectedThought ? (
+          <div>
+            <h2 className="text-xl font-bold">{selectedThought.name}</h2>
+            <p className="mt-2 text-gray-700">{selectedThought.thought}</p>
+          </div>
+        ) : (
+          <p className="text-gray-500">Select a thought to view its details.</p>
+        )}
+      </div>
     </section>
   );
 };

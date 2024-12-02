@@ -14,11 +14,11 @@ const ThoughtsService = (() => {
     return result.data as IThoughts;
   };
 
-  const getThoughtByName = async (name: string): Promise<IThoughts | null> => {
-    const result = await axios.get(
+  const getThoughtByName = async (name: string): Promise<IThoughts[]> => {
+    const result = await axios.get<IThoughts>(
       thoughtContollerEndpoint + "byname/" + encodeURIComponent(name)
     );
-    return result.data as IThoughts;
+    return result.data as IThoughts[];
   };
 
   const postThought = async (
