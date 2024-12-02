@@ -11,7 +11,7 @@ const MerchItem: FC<IMerch> = ({
 }) => {
   return (
     <article className="flex justify-center my-4">
-      <div className="w-[19.44rem] h-[31.25rem] cursor-pointer flex flex-col rounded-sm p-1 shadow-lg border-solid border-2 border-blue-950 border-opacity-20 hover:border-4">
+      <div className="w-80 h-96 cursor-pointer flex flex-col rounded-sm p-1 shadow-lg border-solid border-2 border-blue-950 border-opacity-20 hover:border-4">
         <div className="flex-1 m-8">
           <img
             src={MerchService.getImageEndpoint() + image}
@@ -20,7 +20,7 @@ const MerchItem: FC<IMerch> = ({
           />
         </div>
 
-        <div className="h-[10.25rem] bg-white p-4 flex flex-col justify-between">
+        <div className="h-40 bg-white p-4 flex flex-col justify-between">
           <h3 className="text-xl font-semibold text-gray-800">{name}</h3>
           <p className="text-sm text-gray-600 mt-2 line-clamp-3">
             {description}
@@ -30,7 +30,7 @@ const MerchItem: FC<IMerch> = ({
             <p className="text-sm text-gray-500">{quantity} left</p>
           </div>
         </div>
-        <button>Buy</button>
+        <button>Add to Cart</button>
       </div>
     </article>
   );
