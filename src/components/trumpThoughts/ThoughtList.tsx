@@ -13,6 +13,7 @@ const ThoughtList: FC<ThoughtListProps> = ({ thoughts }) => {
         <ThoughtItem
           key={thought.id}
           name={thought.name}
+          thought={thought.thought}
           category={thought.category}
           dateCreated={thought.dateCreated}
         />
