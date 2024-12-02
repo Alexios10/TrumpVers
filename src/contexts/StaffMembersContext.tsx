@@ -42,8 +42,11 @@ export const StaffProvider: FC<IProps> = ({ children }) => {
     return result;
   };
 
-  const putMember = async (updateMember: IStaff) => {
-    const result = await StaffMembersService.putMember(updateMember);
+  const putMember = async (updateMember: IStaff, newStaffImage: IStaff) => {
+    const result = await StaffMembersService.putMember(
+      updateMember,
+      newStaffImage
+    );
     if (result != null) {
       getAndSetMemberFromService();
       return updateMember;

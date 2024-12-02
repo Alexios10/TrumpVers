@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import IStaffContext from "../../interfaces/staffMembers/IStaffContext";
 import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaff from "../../interfaces/staffMembers/Istaff";
@@ -11,7 +11,7 @@ const UpdateDeleteMember = () => {
 
   const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
-  const [image, setImage] = useState<string>("");
+  const [image, setImage] = useState<null | File>(null);
   const [description, setDescription] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -22,7 +22,8 @@ const UpdateDeleteMember = () => {
         setName(e.target.value);
         break;
       case "image":
-        setImage(e.target.value);
+        const file = e.target.files ? e.target.files[0] : null;
+        setImage(file);
         break;
       case "description":
         setDescription(e.target.value);
@@ -42,7 +43,7 @@ const UpdateDeleteMember = () => {
       if (member) {
         setId(member.id ?? null);
         setName(member.name ?? "");
-        setImage(member.image ?? "");
+        setImage(member.image ?? null);
         setDescription(member.description ?? "");
         setTitle(member.title ?? "");
         setEmail(member.email ?? "");
@@ -64,13 +65,13 @@ const UpdateDeleteMember = () => {
     const memberToUpdate: IStaff = {
       id: id,
       name: name,
-      image: image,
+      image: image.name,
       description: description,
       title: title,
       email: email,
     };
 
-    const result = await putMember(memberToUpdate);
+    const result = await putMember(memberToUpdate, image);
     if (result) {
       alert("Member updated successfully.");
     }
@@ -107,12 +108,11 @@ const UpdateDeleteMember = () => {
           </button>
         </div>
         <div className="flex my-2">
-          <label>Description:</label>
+          <label>Image:</label>
           <input
             className="input"
-            type="text"
-            name="description"
-            value={description}
+            type="file"
+            name="image"
             onChange={handleChange}
           />
         </div>
@@ -149,8 +149,7 @@ const UpdateDeleteMember = () => {
           delete
         </button>
       </section>
-
-      {name !== null && (
+      {image !== null && (
         <div className="space-y-2">
           <div>
             <span className="font-bold mr-2">Name:</span>

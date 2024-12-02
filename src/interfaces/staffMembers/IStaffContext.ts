@@ -8,7 +8,10 @@ interface IStaffContext {
     newMember: IStaff,
     newStaffImage: IStaff
   ) => Promise<IStaff | null>;
-  putMember: (updateMember: IStaff) => Promise<IStaff | null>;
+  putMember: (
+    updateMember: IStaff,
+    newStaffImage: IStaff
+  ) => Promise<IStaff | null>;
   deleteMember: (id: number) => void;
 }
 

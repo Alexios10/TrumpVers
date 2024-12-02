@@ -43,7 +43,7 @@ const RegisterMember = () => {
 
     const newMember = {
       name,
-      image: image.name, // You can adjust the backend handling of this value
+      image: image.name,
       title,
       email,
     };

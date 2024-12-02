@@ -49,8 +49,23 @@ const StaffMembersService = (() => {
     return imageEndpoint;
   };
 
-  const putMember = async (updateMember: IStaff): Promise<IStaff | null> => {
+  const putMember = async (
+    updateMember: IStaff,
+    updateImage: IStaff
+  ): Promise<IStaff | null> => {
     const result = await axios.put(staffContollerEndpoint, updateMember);
+
+    const formData = new FormData();
+    formData.append("file", updateImage);
+
+    const resultUpload = await axios({
+      url: imageUploadControllerEndpoint,
+      method: "POST",
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    formData.delete("file");
     return result.data;
   };
 
