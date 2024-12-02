@@ -140,27 +140,25 @@ const RegisterThought = () => {
           </div>
 
           <hr className="w-4/5 h-0.5 mx-auto rounded m-2 bg-slate-400" />
-
+          <div className="w-96 mx-auto">
+            <label className="flex flex-col w-32 mr-2 text-xs">
+              Filter by Category
+            </label>
+            <select
+              className="w-1/4 bg-gray-200 text-xs"
+              name="filterCategory"
+              value={filterCategory}
+              onChange={handleChange}
+            >
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+          <hr className=" w-2/3 h-0.5 mx-auto rounded m-2 bg-slate-100" />
           <div className="h-96 overflow-x-hidden overflow-y-auto">
-            {/* Dropdown to filter thoughts */}
-            <div className="w-96 mx-auto">
-              <label className="flex flex-col w-32 mr-2 text-xs">
-                Filter by Category
-              </label>
-              <select
-                className="w-1/4 bg-gray-200 text-xs"
-                name="filterCategory"
-                value={filterCategory}
-                onChange={handleChange}
-              >
-                {categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
-            {/* Filtered thoughts list */}
             <div>
               <ThoughtList thoughts={filteredThoughts} />
             </div>
