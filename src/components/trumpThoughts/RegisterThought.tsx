@@ -62,7 +62,7 @@ const RegisterThought = () => {
     "Country",
     "Philosophy",
     "Facts",
-  ]; // categories
+  ];
   const choosenCategoriy = [
     "",
     "Politic",
