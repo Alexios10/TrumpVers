@@ -13,27 +13,30 @@ const UpdateDeleteThoughts = () => {
   const [thought, setThought] = useState<string>("");
   const [category, setCategory] = useState<string>("");
 
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    switch (e.target.name) {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    switch (name) {
       case "name":
-        setName(e.target.value);
+        setName(value);
         break;
       case "thought":
-        setThought(e.target.value);
+        setThought(value);
         break;
       case "category":
-        setCategory(e.target.value);
+        setCategory(value);
         break;
     }
-  }
+  };
 
   const getByNameFromContext = async () => {
     const thought = await getThoughtByName(name);
 
     if (thought) {
-      setId(thought.id ?? null); // Use null if id is undefined
-      setThought(thought.thought ?? ""); // Use empty string if undefined
-      setCategory(thought.category ?? ""); // Use empty string if undefined
+      setId(thought.id ?? null);
+      setThought(thought.thought ?? "");
+      setCategory(thought.category ?? "");
     } else {
       alert(`Thought with name "${name}" not found.`);
     }
@@ -66,33 +69,39 @@ const UpdateDeleteThoughts = () => {
 
     deleteThought(id);
     alert(`Thought with ID ${id} deleted.`);
+    setId(null);
+    setName("");
+    setThought("");
+    setCategory("");
   };
 
   return (
-    <section className="ml-5">
-      <header>Thoughts</header>
-      <section className="my-5 ">
-        <div className="flex">
-          <label>Get thought by name:</label>
-          <input
-            className="input"
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-          />
-          <button
-            className="border border-red-700 mx-2 rounded-lg p-1 bg-cyan-200"
-            onClick={getByNameFromContext}
-          >
-            Get thought
-          </button>
+    <section className="flex flex-col items-center">
+      <h3 className="text-3xl mb-2 text-blue-950">Thoughts Admin</h3>
+      <div className="w-96 flex flex-col items-start">
+        <div className="mb-4 flex flex-col">
+          <label className="text-[0.625rem] mb-1">Get Thought by Name</label>
+          <div className="flex gap-2">
+            <input
+              className="w-full p-2 text-zinc-700 bg-gray-200 rounded"
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleChange}
+            />
+            <button
+              className="p-2 bg-blue-900 text-white rounded hover:bg-blue-500 shadow-lg text-xs"
+              onClick={getByNameFromContext}
+            >
+              Get
+            </button>
+          </div>
         </div>
 
-        <div className="flex my-2">
-          <label>Thought:</label>
+        <div className="mb-4 flex flex-col">
+          <label className="text-[0.625rem] mb-1">Thought</label>
           <input
-            className="input"
+            className="w-full p-2 text-zinc-700 bg-gray-200 rounded"
             type="text"
             name="thought"
             value={thought}
@@ -100,44 +109,45 @@ const UpdateDeleteThoughts = () => {
           />
         </div>
 
-        <div className="flex my-2">
-          <label>Category:</label>
+        <div className="mb-4 flex flex-col">
+          <label className="text-[0.625rem] mb-1">Category</label>
           <input
-            className="input"
+            className="w-full p-2 text-zinc-700 bg-gray-200 rounded"
             type="text"
             name="category"
             value={category}
             onChange={handleChange}
           />
         </div>
-        <button
-          className="border border-red-700 mr-10 rounded-lg p-1 bg-cyan-200"
-          onClick={updateThoughtWithContext}
-        >
-          Update
-        </button>
-        <button
-          className="border rounded-lg p-1 border-red-700 bg-cyan-200"
-          onClick={deleteThoughtWithContext}
-        >
-          delete
-        </button>
-      </section>
 
-      {thought !== null && (
-        <div className="space-y-2">
-          <div>
-            <span className="font-bold mr-2">Id:</span>
-            <span>{id}</span>
-          </div>
-          <div>
-            <span className="font-bold mr-2">Category:</span>
-            <span>{category}</span>
-          </div>
-          <div>
-            <span className="font-bold mr-2">Thought:</span>
-            <span>{thought}</span>
-          </div>
+        <div className="flex gap-4">
+          <button
+            className="p-2 bg-blue-900 text-white rounded hover:bg-blue-500 shadow-lg text-xs"
+            onClick={updateThoughtWithContext}
+          >
+            Update
+          </button>
+          <button
+            className="p-2 bg-red-700 text-white rounded hover:bg-red-500 shadow-lg text-xs"
+            onClick={deleteThoughtWithContext}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+
+      {thought !== null && id !== null && (
+        <div className="mt-6 w-96 bg-gray-100 p-4 rounded shadow">
+          <h4 className="font-bold text-lg mb-2">Thought Details</h4>
+          <p>
+            <span className="font-bold">ID:</span> {id}
+          </p>
+          <p>
+            <span className="font-bold">Category:</span> {category}
+          </p>
+          <p>
+            <span className="font-bold">Thought:</span> {thought}
+          </p>
         </div>
       )}
     </section>
