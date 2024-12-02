@@ -17,7 +17,6 @@ const RegisterThought = () => {
   const [activePage, setActivePage] = useState<"register" | "admin">(
     "register"
   );
-
   // State to manage selected thought
   const [selectedThought, setSelectedThought] = useState<IThoughts | null>(
     null
@@ -223,8 +222,20 @@ const RegisterThought = () => {
       >
         {selectedThought ? (
           <div>
-            <h2 className="text-xl font-bold">{selectedThought.name}</h2>
-            <p className="mt-2 text-gray-700">{selectedThought.thought}</p>
+            <h3 className="text-lg font-bold mb-2">{selectedThought.name}</h3>
+            <p className="text-sm text-gray-700 mb-2">
+              {selectedThought.thought}
+            </p>
+            <p className="text-xs text-gray-500 mb-1">
+              <span className="font-semibold">Category:</span>{" "}
+              {selectedThought.category}
+            </p>
+            <p className="text-xs text-gray-500">
+              <span className="font-semibold">Date Created:</span>{" "}
+              {selectedThought.dateCreated
+                ? new Date(selectedThought.dateCreated).toLocaleDateString()
+                : "N/A"}
+            </p>
           </div>
         ) : (
           <p className="text-gray-500">Select a thought to view its details.</p>
