@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaffContext from "../../interfaces/staffMembers/IStaffContext";
 import StaffmemberList from "./StaffMemberList";
@@ -12,8 +12,14 @@ const RegisterMember = () => {
   const [title, setTitle] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [activePage, setActivePage] = useState<"register" | "admin">(
-    "register"
+    () =>
+      (localStorage.getItem("activePage") as "register" | "admin") || "register"
   );
+
+  useEffect(() => {
+    // Save activePage to localStorage whenever it changes
+    localStorage.setItem("activePage", activePage);
+  }, [activePage]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     switch (e.target.name) {
