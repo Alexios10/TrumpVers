@@ -105,6 +105,7 @@ const RegisterMember = () => {
             <div className="flex-1 bg-white h-screen flex flex-col">
               <div className="flex-1/2 flex flex-col items-center">
                 <div className="w-96 items-start">
+                  {/* navn input */}
                   <div className="mb-2 flex flex-col">
                     <label className="w-24 mr-2 text-[0.625rem]">Name</label>
                     <input
@@ -115,7 +116,7 @@ const RegisterMember = () => {
                       onChange={handleChange}
                     />
                   </div>
-
+                  {/* bildet input */}
                   <div className="mb-2 flex flex-col">
                     <label className="w-24 mr-2 text-[0.625rem]">Image</label>
                     <input
@@ -125,7 +126,7 @@ const RegisterMember = () => {
                       onChange={handleChange}
                     />
                   </div>
-
+                  {/*  tittel input */}
                   <div className="mb-2 flex flex-col">
                     <label className="w-24 mr-2 text-[0.625rem]">Title</label>
                     <input
@@ -135,7 +136,7 @@ const RegisterMember = () => {
                       onChange={handleChange}
                     />
                   </div>
-
+                  {/* epost input */}
                   <div className="mb-2 flex flex-col">
                     <label className="w-24 mr-2 text-[0.625rem]">Email</label>
                     <input
@@ -146,7 +147,7 @@ const RegisterMember = () => {
                     />
                   </div>
                 </div>
-
+                {/* legg til knappen */}
                 <button
                   onClick={registerMember}
                   className="mb-2 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
