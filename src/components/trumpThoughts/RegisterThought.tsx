@@ -147,7 +147,6 @@ const RegisterThought = () => {
                         onChange={handleChange}
                       />
                     </div>
-
                     <div className="mb-2 flex flex-col">
                       <label className="w-24 mr-2 text-[0.625rem]">
                         Select Category
@@ -166,7 +165,6 @@ const RegisterThought = () => {
                         ))}
                       </select>
                     </div>
-
                     <div className="mb-2 flex flex-col">
                       <label className="w-24 mr-2 text-[0.625rem]">
                         Thought
@@ -179,7 +177,6 @@ const RegisterThought = () => {
                       />
                     </div>
                   </div>
-
                   <button
                     onClick={registerThought}
                     className="mb-2 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
@@ -207,13 +204,17 @@ const RegisterThought = () => {
                   ))}
                 </select>
               </div>
+
               <hr className="w-2/3 h-0.5 mx-auto rounded m-2 bg-slate-100" />
-              <div className="h-60 overflow-x-hidden overflow-y-auto">
-                <div>
-                  <ThoughtList
-                    thoughts={filteredThoughts}
-                    onThoughtClick={handleThoughtClick}
-                  />
+
+              <div className="h-96 overflow-x-hidden overflow-y-auto">
+                <div className="h-60 overflow-x-hidden overflow-y-auto">
+                  <div>
+                    <ThoughtList
+                      thoughts={filteredThoughts}
+                      onThoughtClick={handleThoughtClick}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -241,7 +242,9 @@ const RegisterThought = () => {
             </div>
             <p className="text-xs text-gray-500 mb-1">
               <span className="font-semibold"></span> {selectedThought.category}
+              {selectedThought.category}
             </p>
+
             <p className="text-lg text-gray-700 mt-4">
               {selectedThought.thought}
             </p>
