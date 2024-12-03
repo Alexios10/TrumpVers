@@ -240,8 +240,7 @@ const RegisterThought = () => {
               </p>
             </div>
             <p className="text-xs text-gray-500 mb-1">
-              <span className="font-semibold">Category:</span>{" "}
-              {selectedThought.category}
+              <span className="font-semibold"></span> {selectedThought.category}
             </p>
             <p className="text-lg text-gray-700 mt-4">
               {selectedThought.thought}
