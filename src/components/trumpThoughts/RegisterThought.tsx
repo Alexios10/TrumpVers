@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { ThoughtsContext } from "../../contexts/ThoughtsContext";
 import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 import ThoughtList from "./ThoughtList";
@@ -15,12 +15,18 @@ const RegisterThought = () => {
   const [category, setCategory] = useState<string>("");
   const [filterCategory, setFilterCategory] = useState<string>("All");
   const [activePage, setActivePage] = useState<"register" | "admin">(
-    "register"
+    () =>
+      (localStorage.getItem("activePage") as "register" | "admin") || "register"
   );
   // State to manage selected thought
   const [selectedThought, setSelectedThought] = useState<IThoughts | null>(
     null
   );
+
+  useEffect(() => {
+    // Save activePage to localStorage whenever it changes
+    localStorage.setItem("activePage", activePage);
+  }, [activePage]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>

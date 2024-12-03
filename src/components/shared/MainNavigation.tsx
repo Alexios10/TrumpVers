@@ -43,14 +43,6 @@ const MainNavigation = () => {
           </li>
           <li>
             <Link
-              to="/membersAdmin"
-              className=" hover:text-red-600 transition duration-150"
-            >
-              MEMBERS ADMIN
-            </Link>
-          </li>{" "}
-          <li>
-            <Link
               to="/registerMembers"
               className=" hover:text-red-600 transition duration-150"
             >
