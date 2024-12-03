@@ -15,7 +15,6 @@ const MainNavigation = () => {
           />
         </div>
         {/* Navigasjonsmeny */}
-        
         <ul className="flex space-x-8 text-xl text-sky-950">
           {/* Gjør at alle navbar delene kommer 8 px mellom hverandre med flexbox*/}
           <li>
@@ -30,7 +29,6 @@ const MainNavigation = () => {
             <Link
               to="/shop"
               className=" hover:text-red-600 transition duration-150"
-              
             >
               SHOP
             </Link>
@@ -39,19 +37,10 @@ const MainNavigation = () => {
             <Link
               to="/staff"
               className=" hover:text-red-600 transition duration-150"
-             
             >
               STAFF
             </Link>
           </li>
-          <li>
-            <Link
-              to="/membersAdmin"
-              className=" hover:text-red-600 transition duration-150"
-            >
-              MEMBERS ADMIN
-            </Link>
-          </li>{" "}
           <li>
             <Link
               to="/registerMembers"

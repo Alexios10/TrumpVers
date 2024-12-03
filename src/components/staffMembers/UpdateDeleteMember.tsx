@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import IStaffContext from "../../interfaces/staffMembers/IStaffContext";
 import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaff from "../../interfaces/staffMembers/Istaff";
@@ -88,88 +88,85 @@ const UpdateDeleteMember = () => {
   };
 
   return (
-    <section className="ml-5">
-      <header>Staff Members</header>
-      <section className="my-5 ">
-        <div className="flex">
-          <label>Get Member by name:</label>
+    <section className="p-6 max-w-4xl mx-auto grid gap-6">
+      <header className="text-2xl font-bold text-center">Staff Members</header>
+      <section className="grid gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+          <label className="font-semibold">Get Member by Name:</label>
           <input
-            className="input"
             type="text"
             name="name"
             value={name}
             onChange={handleChange}
+            className="border rounded-md px-3 py-2 focus:ring focus:ring-cyan-500"
           />
           <button
-            className="border border-red-700 mx-2 rounded-lg p-1 bg-cyan-200"
+            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
             onClick={getByNameFromContext}
           >
             Get Member
           </button>
         </div>
-        <div className="flex my-2">
-          <label>Image:</label>
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+          <label className="font-semibold">Image:</label>
           <input
-            className="input"
             type="file"
             name="image"
             onChange={handleChange}
+            className="border rounded-md px-3 py-2 focus:ring focus:ring-cyan-500"
           />
         </div>
-        <div className="flex my-2">
-          <label>Title:</label>
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+          <label className="font-semibold">Title:</label>
           <input
-            className="input"
             type="text"
             name="title"
             value={title}
             onChange={handleChange}
+            className="border rounded-md px-3 py-2 focus:ring focus:ring-cyan-500"
           />
         </div>
-        <div className="flex my-2">
-          <label>Email:</label>
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+          <label className="font-semibold">Email:</label>
           <input
-            className="input"
             type="text"
             name="email"
             value={email}
             onChange={handleChange}
+            className="border rounded-md px-3 py-2 focus:ring focus:ring-cyan-500"
           />
         </div>
-        <button
-          className="border border-red-700 mr-10 rounded-lg p-1 bg-cyan-200"
-          onClick={updateMemberWithContext}
-        >
-          Update
-        </button>
-        <button
-          className="border rounded-lg p-1 border-red-700 bg-cyan-200"
-          onClick={deleteMemberWithContext}
-        >
-          delete
-        </button>
+        <div className="flex gap-4">
+          <button
+            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+            onClick={updateMemberWithContext}
+          >
+            Update
+          </button>
+          <button
+            className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+            onClick={deleteMemberWithContext}
+          >
+            Delete
+          </button>
+        </div>
       </section>
       {image !== null && (
-        <div className="space-y-2">
+        <div className="grid gap-4 text-center">
           <div>
-            <span className="font-bold mr-2">Name:</span>
-            <span>{name}</span>
-          </div>
-          <div>
-            <span className="font-bold mr-2">Email:</span>
-            <span>{email}</span>
+            <span className="font-bold mr-2">Name:</span> {name}
           </div>
           <div>
-            <span className="font-bold mr-2">Title:</span>
-            <span>{title}</span>
+            <span className="font-bold mr-2">Email:</span> {email}
           </div>
-          <div className="flex-1 m-8 w-52">
-            <img
-              src={StaffMembersService.getImageEndpoint() + image}
-              alt={name}
-              className="object-contain w-full h-full"
-            />
+          <div>
+            <span className="font-bold mr-2">Title:</span> {title}
           </div>
+          <img
+            src={StaffMembersService.getImageEndpoint() + image}
+            alt={name}
+            className="w-40 h-40 object-cover mx-auto border rounded-md"
+          />
         </div>
       )}
     </section>
