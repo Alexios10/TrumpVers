@@ -84,56 +84,58 @@ const UpdateDeleteThoughts = () => {
       <h3 className="text-3xl mb-2 text-blue-950">Thoughts Admin</h3>
 
       {/* Input and Buttons */}
-      <div className="w-96 flex flex-col items-start">
-        {/* Get Thought by Name */}
-        <div className="mb-4 flex flex-col">
-          <label className="text-[0.625rem] mb-1">Get Thought by Name</label>
-          <div className="flex gap-2">
-            <input
-              className="w-full p-2 text-zinc-700 bg-gray-200 rounded"
-              type="text"
-              name="name"
-              value={name}
+      <div className="flex-1/2 flex flex-col items-center">
+        <div className="w-96 items-start">
+          {/* Get Thought by Name */}
+          <div className="mb-2 flex flex-col">
+            <label className="w-36 mr-2 text-[0.625rem]">
+              Get Thought by Name
+            </label>
+            <div className="flex gap-2">
+              <input
+                className="w-full text-zinc-700 bg-gray-200"
+                type="text"
+                name="name"
+                value={name}
+                onChange={handleChange}
+              />
+              <button
+                className="px-4 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-xs"
+                onClick={getByNameFromContext}
+              >
+                GET
+              </button>
+            </div>
+          </div>
+
+          {/* Category Input */}
+          <div className="mb-2 flex flex-col">
+            <label className="w-24 mr-2 text-[0.625rem]">Category</label>
+            <select
+              className="w-full text-zinc-700 bg-gray-200"
+              name="category"
+              value={category}
+              onChange={handleChange}
+            >
+              {choosenCategories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Thought Input */}
+          <div className="mb-2 flex flex-col">
+            <label className="text-[0.625rem] mb-1">Thought</label>
+            <textarea
+              className="w-full h-24 text-zinc-700 bg-gray-200"
+              name="thought"
+              value={thought}
               onChange={handleChange}
             />
-            <button
-              className="p-2 bg-blue-900 text-white rounded hover:bg-blue-500 shadow-lg text-xs"
-              onClick={getByNameFromContext}
-            >
-              Get
-            </button>
           </div>
         </div>
-
-        {/* Thought Input */}
-        <div className="mb-4 flex flex-col">
-          <label className="text-[0.625rem] mb-1">Thought</label>
-          <input
-            className="w-full p-2 text-zinc-700 bg-gray-200 rounded"
-            type="text"
-            name="thought"
-            value={thought}
-            onChange={handleChange}
-          />
-        </div>
-
-        {/* Category Input */}
-        <div className="mb-4 flex flex-col">
-          <label className="text-[0.625rem] mb-1">Category</label>
-          <select
-            className="w-full p-2 bg-gray-200 rounded"
-            name="category"
-            value={category}
-            onChange={handleChange}
-          >
-            {choosenCategories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </div>
-
         {/* Action Buttons */}
         <div className="flex gap-4">
           <button
@@ -151,24 +153,27 @@ const UpdateDeleteThoughts = () => {
         </div>
       </div>
 
-      <hr className="w-4/5 h-0.5 mx-auto rounded m-4 bg-slate-400" />
+      <hr className="w-4/5 h-0.5 mx-auto rounded mt-4 bg-slate-400" />
 
       {/* Display Matching Thoughts */}
-      <div className="h-96 overflow-x-hidden overflow-y-auto w-96">
+      <div className=" h-60 overflow-x-hidden overflow-y-auto w-auto">
         {matchingThoughts.length > 0 ? (
           matchingThoughts.map((thought) => (
             <div
               key={thought.id}
-              className="bg-gray-100 p-4 rounded shadow mb-2 flex flex-col cursor-pointer"
+              className="mx-5 my-4 rounded-sm p-1 shadow-lg h-40 w-96 border-solid border-2 border-blue-950 border-opacity-20 flex flex-col overflow-x-hidden overflow-y-auto  "
               onClick={() => handleThoughtClick(thought)}
             >
-              <h4 className="font-bold text-lg">{thought.name}</h4>
-              <p>
-                <strong>Category:</strong> {thought.category}
-              </p>
-              <p>
-                <strong>Thought:</strong> {thought.thought}
-              </p>
+              <div className="flex justify-between">
+                <h3 className="text-sm align-text-top">{thought.name}</h3>
+                <p className="text-xs text-gray-500 mr-2 cursor-pointer">
+                  Edit
+                </p>
+              </div>
+
+              <p className="mb-2 text-[0.625rem]">{thought.category}</p>
+
+              <p className=""> {thought.thought}</p>
             </div>
           ))
         ) : (

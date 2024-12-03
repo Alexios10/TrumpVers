@@ -17,7 +17,7 @@ const ThoughtItem: FC<ThoughtItemProps> = ({
 
   return (
     <article
-      className="mx-5 my-4 rounded-sm p-1 shadow-lg h-40 w-96 border-solid border-2 border-blue-950 border-opacity-20 cursor-pointer overflow-hidden"
+      className="mx-5 my-4 rounded-sm p-1 shadow-lg h-40 w-96 border-solid border-2 border-blue-950 border-opacity-20 overflow-hidden"
       onClick={onClick} // Trigger the callback when the item is clicked
     >
       <div className="m-2">
@@ -33,7 +33,7 @@ const ThoughtItem: FC<ThoughtItemProps> = ({
         <p className="mt-2 text-base">{truncatedThought}</p>
         {thought.length > 100 && (
           <button
-            className="text-blue-800 font-bold text-xs"
+            className="text-blue-800 font-bold text-xs cursor-pointer"
             onClick={(e) => {
               e.stopPropagation(); // Prevent event bubbling to the parent
               onClick();
