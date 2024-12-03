@@ -154,8 +154,6 @@ const UpdateDeleteThoughts = () => {
       </div>
 
       <hr className="w-4/5 h-0.5 mx-auto rounded mt-4 bg-slate-400" />
-      <p className="text-gray-500 text-center">"click" post to edit</p>
-      <hr className="w-4/5 h-0.5 mx-auto rounded mb-4 bg-slate-400" />
 
       {/* Display Matching Thoughts */}
       <div className=" h-60 overflow-x-hidden overflow-y-auto w-auto">
@@ -163,14 +161,19 @@ const UpdateDeleteThoughts = () => {
           matchingThoughts.map((thought) => (
             <div
               key={thought.id}
-              className="mx-5 my-4 rounded-sm p-1 shadow-lg h-40 w-96 border-solid border-2 border-blue-950 border-opacity-20 flex flex-col overflow-x-hidden overflow-y-auto cursor-pointer "
+              className="mx-5 my-4 rounded-sm p-1 shadow-lg h-40 w-96 border-solid border-2 border-blue-950 border-opacity-20 flex flex-col overflow-x-hidden overflow-y-auto  "
               onClick={() => handleThoughtClick(thought)}
             >
-              <h3 className="text-sm align-text-top">{thought.name}</h3>
-              <p className="mb-2 text-[0.625rem]">
-                Category:{thought.category}
-              </p>
-              <p className="">Thought: {thought.thought}</p>
+              <div className="flex justify-between">
+                <h3 className="text-sm align-text-top">{thought.name}</h3>
+                <p className="text-xs text-gray-500 mr-2 cursor-pointer">
+                  Edit
+                </p>
+              </div>
+
+              <p className="mb-2 text-[0.625rem]">{thought.category}</p>
+
+              <p className=""> {thought.thought}</p>
             </div>
           ))
         ) : (
