@@ -137,16 +137,16 @@ const UpdateDeleteThoughts = () => {
         {/* Action Buttons */}
         <div className="flex gap-4">
           <button
-            className="p-2 bg-blue-900 text-white rounded hover:bg-blue-500 shadow-lg text-xs"
+            className="p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-xs"
             onClick={updateThoughtWithContext}
           >
-            Update
+            UPDATE
           </button>
           <button
-            className="p-2 bg-red-700 text-white rounded hover:bg-red-500 shadow-lg text-xs"
+            className="p-2 bg-red-700 text-white rounded-sm hover:bg-red-500 shadow-lg text-xs"
             onClick={deleteThoughtWithContext}
           >
-            Delete
+            DELETE
           </button>
         </div>
       </div>

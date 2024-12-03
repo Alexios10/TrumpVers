@@ -100,13 +100,13 @@ const RegisterThought = () => {
   return (
     <section className="flex">
       <div
-        className="bg-white h-screen flex flex-col border-r-2 border-slate-400"
+        className="bg-white min-h-fit flex flex-col border-r-2 border-slate-400"
         style={{ flex: "1 1 40%" }}
       >
-        <div className="flex gap-4 mx-3 mb-5">
+        <div className="flex justify-center gap-4 mx-3 mb-5">
           <button
             onClick={() => switchPage("register")}
-            className={`p-2 bg-blue-900 text-white rounded hover:bg-blue-500 shadow-lg text-sm ${
+            className={`p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm ${
               activePage === "register" ? "bg-blue-500" : ""
             }`}
           >
@@ -115,7 +115,7 @@ const RegisterThought = () => {
 
           <button
             onClick={() => switchPage("admin")}
-            className={`p-2 bg-blue-900 text-white rounded hover:bg-blue-500 shadow-lg text-sm ${
+            className={`p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm ${
               activePage === "admin" ? "bg-blue-500" : ""
             }`}
           >
@@ -208,11 +208,13 @@ const RegisterThought = () => {
               <hr className="w-2/3 h-0.5 mx-auto rounded m-2 bg-slate-100" />
 
               <div className="h-96 overflow-x-hidden overflow-y-auto">
-                <div>
-                  <ThoughtList
-                    thoughts={filteredThoughts}
-                    onThoughtClick={handleThoughtClick}
-                  />
+                <div className="h-60 overflow-x-hidden overflow-y-auto">
+                  <div>
+                    <ThoughtList
+                      thoughts={filteredThoughts}
+                      onThoughtClick={handleThoughtClick}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -222,28 +224,40 @@ const RegisterThought = () => {
 
       {/* Right Container for Selected Thought */}
       <div
-        className="mx-8 flex-1 bg-green-100 p-4 rounded shadow"
+        className="mx-8 flex-1 p-14 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-[42rem] overflow-x-hidden overflow-y-auto"
         style={{ flex: "1 1 60%" }}
       >
         {selectedThought ? (
           <div>
-            <h3 className="text-lg font-bold mb-2">{selectedThought.name}</h3>
-            <p className="text-sm text-gray-700 mb-2">
-              {selectedThought.thought}
-            </p>
+            <div className="flex justify-between">
+              <h3 className="text-lg font-bold mb-2 text-gray-700">
+                {selectedThought.name}
+              </h3>
+              <p className="text-xs text-gray-500">
+                <span className="font-semibold">Date Published: </span>{" "}
+                {selectedThought.dateCreated
+                  ? new Date(selectedThought.dateCreated).toLocaleDateString()
+                  : "N/A"}
+              </p>
+            </div>
             <p className="text-xs text-gray-500 mb-1">
               <span className="font-semibold">Category:</span>
               {selectedThought.category}
             </p>
             <p className="text-xs text-gray-500">
               <span className="font-semibold">Date Created:</span>
-              {selectedThought.dateCreated
-                ? new Date(selectedThought.dateCreated).toLocaleDateString()
-                : "N/A"}
+            </p>
+            {selectedThought.dateCreated
+              ? new Date(selectedThought.dateCreated).toLocaleDateString()
+              : "N/A"}
+            <p className="text-lg text-gray-700 mt-4">
+              {selectedThought.thought}
             </p>
           </div>
         ) : (
-          <p className="text-gray-500">Select a thought to view its details.</p>
+          <p className="flex justify-center  text-gray-500">
+            Select a thought to view its details.
+          </p>
         )}
       </div>
     </section>

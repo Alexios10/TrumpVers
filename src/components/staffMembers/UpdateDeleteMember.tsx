@@ -65,7 +65,7 @@ const UpdateDeleteMember = () => {
     const memberToUpdate: IStaff = {
       id: id,
       name: name,
-      image: image.name,
+      image: image?.name || "",
       description: description,
       title: title,
       email: email,
@@ -88,87 +88,104 @@ const UpdateDeleteMember = () => {
   };
 
   return (
-    <section className="p-6 max-w-4xl mx-auto grid gap-6">
-      <header className="text-2xl font-bold text-center">Staff Members</header>
-      <section className="grid gap-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
-          <label className="font-semibold">Get Member by Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-            className="border rounded-md px-3 py-2 focus:ring focus:ring-cyan-500"
-          />
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-            onClick={getByNameFromContext}
-          >
-            Get Member
-          </button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
-          <label className="font-semibold">Image:</label>
-          <input
-            type="file"
-            name="image"
-            onChange={handleChange}
-            className="border rounded-md px-3 py-2 focus:ring focus:ring-cyan-500"
-          />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
-          <label className="font-semibold">Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={handleChange}
-            className="border rounded-md px-3 py-2 focus:ring focus:ring-cyan-500"
-          />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
-          <label className="font-semibold">Email:</label>
-          <input
-            type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            className="border rounded-md px-3 py-2 focus:ring focus:ring-cyan-500"
-          />
-        </div>
-        <div className="flex gap-4">
-          <button
-            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
-            onClick={updateMemberWithContext}
-          >
-            Update
-          </button>
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
-            onClick={deleteMemberWithContext}
-          >
-            Delete
-          </button>
+    <section className="flex flex-col md:flex-row gap-6 p-4">
+      <section className="bg-white w-full md:w-1/3 p-6 shadow-md rounded-lg">
+        <header className="text-3xl mb-4 text-blue-950">
+          Update or Delete Member
+        </header>
+        <div className="space-y-4">
+          <div className="mb-4">
+            <label className="font-semibold text-sm">Get Member by Name:</label>
+            <div className="flex gap-4 items-center">
+              <input
+                type="text"
+                name="name"
+                value={name}
+                onChange={handleChange}
+                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+                aria-label="Member Name"
+              />
+              <button
+                className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-500 shadow-lg text-sm"
+                onClick={getByNameFromContext}
+              >
+                Get Member
+              </button>
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <label className="font-semibold text-sm">Image:</label>
+            <input
+              type="file"
+              name="image"
+              onChange={handleChange}
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              aria-label="Member Image"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="font-semibold text-sm">Title:</label>
+            <input
+              type="text"
+              name="title"
+              value={title}
+              onChange={handleChange}
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              aria-label="Member Title"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="font-semibold text-sm">Email:</label>
+            <input
+              type="text"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              aria-label="Member Email"
+            />
+          </div>
+
+          <div className="flex gap-4">
+            <button
+              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 shadow-lg text-sm"
+              onClick={updateMemberWithContext}
+            >
+              Update
+            </button>
+            <button
+              className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 shadow-lg text-sm"
+              onClick={deleteMemberWithContext}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </section>
-      {image !== null && (
-        <div className="grid gap-4 text-center">
-          <div>
-            <span className="font-bold mr-2">Name:</span> {name}
+
+      <div className="flex-1 p-6 bg-white shadow-md rounded-lg overflow-auto">
+        {image !== null && (
+          <div className="grid gap-4 text-center">
+            <div>
+              <span className="font-bold">Name:</span> {name}
+            </div>
+            <div>
+              <span className="font-bold">Email:</span> {email}
+            </div>
+            <div>
+              <span className="font-bold">Title:</span> {title}
+            </div>
+            <img
+              src={StaffMembersService.getImageEndpoint() + image}
+              alt={name}
+              className="w-40 h-40 object-cover mx-auto border rounded-md"
+            />
           </div>
-          <div>
-            <span className="font-bold mr-2">Email:</span> {email}
-          </div>
-          <div>
-            <span className="font-bold mr-2">Title:</span> {title}
-          </div>
-          <img
-            src={StaffMembersService.getImageEndpoint() + image}
-            alt={name}
-            className="w-40 h-40 object-cover mx-auto border rounded-md"
-          />
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 };

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const MainNavigation = () => {
   return (
-    <nav className="bg-white p-4 m-4">
+    <nav className="bg-white mx-8 mb-6">
       <div className="max-w-screen-2xl mx-auto flex items-center justify-between">
         {" "}
         {/* Justify betwen gjør at det er mellomrom mellom tittelen og resten av navbaren */}
