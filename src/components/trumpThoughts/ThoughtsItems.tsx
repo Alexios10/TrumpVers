@@ -31,15 +31,15 @@ const ThoughtItem: FC<ThoughtItemProps> = ({
 
         <p className="text-xs">{category}</p>
         <p className="mt-2 text-base">{truncatedThought}</p>
-        {thought.length > 50 && (
+        {thought.length > 100 && (
           <button
-            className="text-blue-600 font-bold text-xs mt-1"
+            className="text-blue-800 font-bold text-xs"
             onClick={(e) => {
               e.stopPropagation(); // Prevent event bubbling to the parent
               onClick();
             }}
           >
-            Read more
+            ... Read more
           </button>
         )}
       </div>
