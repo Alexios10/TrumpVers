@@ -13,7 +13,7 @@ const ThoughtItem: FC<ThoughtItemProps> = ({
   onClick,
 }) => {
   const truncatedThought =
-    thought.length > 50 ? `${thought.slice(0, 50)}...` : thought;
+    thought.length > 50 ? `${thought.slice(0, 100)}...` : thought;
 
   return (
     <article

@@ -23,7 +23,7 @@ const StaffmemberList = () => {
     return staffMemberJSX;
   };
 
-  return <section>{createAndGetThoughtJSX()}</section>;
+  return <section className="flex">{createAndGetThoughtJSX()}</section>;
 };
 
 export default StaffmemberList;

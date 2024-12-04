@@ -4,7 +4,6 @@ import IStaffContext from "../../interfaces/staffMembers/IStaffContext";
 import StaffmemberList from "./StaffMemberList";
 import UpdateDeleteMember from "./UpdateDeleteMember";
 import IStaff from "../../interfaces/staffMembers/Istaff";
-import StaffMembersService from "../../services/StaffMembersService";
 
 const RegisterMember = () => {
   const { members, postMember } = useContext(
@@ -19,7 +18,6 @@ const RegisterMember = () => {
     () =>
       (localStorage.getItem("activePage") as "register" | "admin") || "register"
   );
-  const [selectedMember, setSelectedMember] = useState<IStaff | null>(null);
   const [filterCategory, setFilterCategory] = useState<string>("All");
 
   useEffect(() => {
@@ -176,7 +174,6 @@ const RegisterMember = () => {
       {/* Right Container for Selected Member */}
       {activePage === "register" && (
         <>
-          {" "}
           <div
             className="mx-8 flex-1 p-14 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-[42rem] overflow-x-hidden overflow-y-auto"
             style={{ flex: "1 1 60%" }}
