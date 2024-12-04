@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import StaffMemberItems from "./StaffMemberItems";
 import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaffContext from "../../interfaces/staffMembers/IStaffContext";
