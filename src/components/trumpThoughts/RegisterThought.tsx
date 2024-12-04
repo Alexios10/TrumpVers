@@ -99,10 +99,7 @@ const RegisterThought = () => {
 
   return (
     <section className="flex">
-      <div
-        className="bg-white min-h-fit flex flex-col border-r-2 border-slate-400"
-        style={{ flex: "1 1 40%" }}
-      >
+      <div className="bg-white flex flex-col " style={{ flex: "1 1 40%" }}>
         <div className="flex justify-center gap-4 mx-3 mb-5">
           <button
             onClick={() => switchPage("register")}

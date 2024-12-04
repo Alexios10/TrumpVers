@@ -179,7 +179,7 @@ const UpdateDeleteMember = () => {
       </div>
 
       <div
-        className="flex-1 p-6 bg-white shadow-md rounded-lg overflow-auto"
+        className="flex-1 p-6 bg-white border-solid border-2 shadow-md border-blue-950 border-opacity-20 rounded-sm overflow-auto"
         style={{ flex: "1 1 60%" }}
       >
         {image !== null && (
