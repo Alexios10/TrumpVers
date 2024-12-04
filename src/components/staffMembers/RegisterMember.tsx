@@ -175,7 +175,7 @@ const RegisterMember = () => {
       {activePage === "register" && (
         <>
           <div
-            className="mx-8 flex-1 p-14 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-[42rem] overflow-x-hidden overflow-y-auto"
+            className="mx-8 flex-1 p-14 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-[42rem] overflow-y-auto"
             style={{ flex: "1 1 60%" }}
           >
             <StaffmemberList />
