@@ -89,7 +89,7 @@ const UpdateDeleteMember = () => {
 
   return (
     <section className="flex flex-col md:flex-row gap-6 p-4">
-      <section className="bg-white w-full md:w-1/3 p-6 shadow-md rounded-lg">
+      <div className="bg-white  flex flex-col " style={{ flex: "1 1 40%" }}>
         <header className="text-3xl mb-4 text-blue-950">
           Update or Delete Member
         </header>
@@ -102,11 +102,11 @@ const UpdateDeleteMember = () => {
                 name="name"
                 value={name}
                 onChange={handleChange}
-                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
                 aria-label="Member Name"
               />
               <button
-                className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-500 shadow-lg text-sm"
+                className="bg-blue-900 text-white w-40 p-2 rounded-sm hover:bg-blue-500 shadow-lg text-sm"
                 onClick={getByNameFromContext}
               >
                 Get Member
@@ -120,7 +120,7 @@ const UpdateDeleteMember = () => {
               type="file"
               name="image"
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               aria-label="Member Image"
             />
           </div>
@@ -132,7 +132,7 @@ const UpdateDeleteMember = () => {
               name="title"
               value={title}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               aria-label="Member Title"
             />
           </div>
@@ -144,29 +144,32 @@ const UpdateDeleteMember = () => {
               name="email"
               value={email}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               aria-label="Member Email"
             />
           </div>
 
           <div className="flex gap-4">
             <button
-              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 shadow-lg text-sm"
+              className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow-lg text-sm"
               onClick={updateMemberWithContext}
             >
               Update
             </button>
             <button
-              className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 shadow-lg text-sm"
+              className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow-lg text-sm"
               onClick={deleteMemberWithContext}
             >
               Delete
             </button>
           </div>
         </div>
-      </section>
+      </div>
 
-      <div className="flex-1 p-6 bg-white shadow-md rounded-lg overflow-auto">
+      <div
+        className="flex-1 p-6 bg-white shadow-md rounded-lg overflow-auto"
+        style={{ flex: "1 1 60%" }}
+      >
         {image !== null && (
           <div className="grid gap-4 text-center">
             <div>
