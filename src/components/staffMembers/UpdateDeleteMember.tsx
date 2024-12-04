@@ -47,14 +47,14 @@ const UpdateDeleteMember = () => {
         setDescription(member.description ?? "");
         setTitle(member.title ?? "");
         setEmail(member.email ?? "");
-        setCurrentImageName(member.image ?? null); // Set the current image
-        setImage(null); // Clear the file input state
+        setCurrentImageName(member.image ?? null);
+        setImage(null);
       } else {
         alert(`Member with name "${name}" not found.`);
       }
     } catch (error) {
       console.error("Error fetching member:", error);
-      alert("An error occurred while fetching the member.");
+      alert(`Member with name "${name}" not found.`);
     }
   };
 
@@ -67,7 +67,7 @@ const UpdateDeleteMember = () => {
     const memberToUpdate: IStaff = {
       id: id,
       name: name,
-      image: image ? image.name : currentImageName, // Use current image if no new one
+      image: image ? image.name : currentImageName,
       description: description,
       title: title,
       email: email,

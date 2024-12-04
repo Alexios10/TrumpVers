@@ -16,7 +16,7 @@ const ThoughtsService = (() => {
 
   const getThoughtByName = async (name: string): Promise<IThoughts[]> => {
     const result = await axios.get<IThoughts>(
-      thoughtContollerEndpoint + "byname/" + encodeURIComponent(name)
+      thoughtContollerEndpoint + "byname/" + name // eventuelt encodeURIComponent(name)
     );
     return result.data as IThoughts[];
   };

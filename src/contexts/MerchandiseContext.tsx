@@ -23,13 +23,25 @@ export const MerchandiseProvider: FC<IProps> = ({ children }) => {
     return merchFromService;
   };
 
-  const putMerch = async (updateMerch: IMerch) => {
-    const result = await MerchService.putMerch(updateMerch);
-    if (result != null) {
-      getAndSetMerchsFromService();
-      return updateMerch;
+  const getMerchByName = async (name: string) => {
+    const MerchFromService = await MerchService.getMerchByName(name); // New method integration
+    return MerchFromService;
+  };
+
+  const postMerch = async (newMerch: IMerch, newMerchImage?: File) => {
+    const result = await MerchService.postMerch(newMerch, newMerchImage);
+    if (result) {
+      setMerchandise([result, ...merchandise]);
     }
-    return null;
+    return result;
+  };
+
+  const putMerch = async (updateMerch: IMerch, updateImage?: File) => {
+    const result = await MerchService.putMerch(updateMerch, updateImage);
+    if (result) {
+      getAndSetMerchsFromService();
+    }
+    return result;
   };
 
   const deleteMerch = async (id: number) => {
@@ -42,6 +54,8 @@ export const MerchandiseProvider: FC<IProps> = ({ children }) => {
       value={{
         merchandise,
         getMerchById,
+        getMerchByName,
+        postMerch,
         putMerch,
         deleteMerch,
       }}

@@ -12,6 +12,10 @@ const StaffMembersService = (() => {
     return result.data as IStaff[];
   };
 
+  const getImageEndpoint = () => {
+    return imageEndpoint;
+  };
+
   const getMemberById = async (id: number): Promise<IStaff | null> => {
     const result = await axios.get(staffContollerEndpoint + id);
     return result.data as IStaff;
@@ -68,10 +72,6 @@ const StaffMembersService = (() => {
       console.error("Error updating member:", error);
       return null;
     }
-  };
-
-  const getImageEndpoint = () => {
-    return imageEndpoint;
   };
 
   const deleteMember = async (id: number): Promise<IStaff | null> => {

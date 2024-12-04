@@ -55,7 +55,7 @@ const UpdateDeleteThoughts = () => {
 
   const updateThoughtWithContext = async () => {
     if (id === null) {
-      alert("Cannot update. Thought not found.");
+      alert("Cannot update. Please select one.");
       return;
     }
 
@@ -66,7 +66,7 @@ const UpdateDeleteThoughts = () => {
 
   const deleteThoughtWithContext = async () => {
     if (id === null) {
-      alert("Cannot delete. Thought not found.");
+      alert("Cannot delete. Please select one.");
       return;
     }
 

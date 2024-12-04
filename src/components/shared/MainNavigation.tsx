@@ -32,6 +32,14 @@ const MainNavigation = () => {
             >
               SHOP
             </Link>
+          </li>{" "}
+          <li>
+            <Link
+              to="/merchAdmin"
+              className=" hover:text-red-600 transition duration-150"
+            >
+              MERCHADMIN
+            </Link>
           </li>
           <li>
             <Link
