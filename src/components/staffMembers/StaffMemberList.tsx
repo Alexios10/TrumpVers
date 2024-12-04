@@ -23,7 +23,13 @@ const StaffmemberList = () => {
     return staffMemberJSX;
   };
 
-  return <section className="flex">{createAndGetThoughtJSX()}</section>;
+  return (
+    <section className="">
+      <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-2">
+        {createAndGetThoughtJSX()}
+      </div>
+    </section>
+  );
 };
 
 export default StaffmemberList;

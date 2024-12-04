@@ -180,9 +180,9 @@ const UpdateDeleteMember = () => {
         </div>
       </section>
 
-      <div className="flex-1 p-6 bg-white shadow-md rounded-lg overflow-auto">
+      <div className="flex-1 p-4 shadow-md rounded-sm h-[42rem] overflow-x-hidden overflow-y-auto">
         {currentImageName && (
-          <div className="grid gap-4 text-center">
+          <div className="grid gap-2 text-center">
             <div>
               <span className="font-bold">Name:</span> {name}
             </div>
