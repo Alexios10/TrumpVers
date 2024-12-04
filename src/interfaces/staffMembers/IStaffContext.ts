@@ -6,13 +6,13 @@ interface IStaffContext {
   getMemberByName: (name: string) => Promise<IStaff | null>;
   postMember: (
     newMember: IStaff,
-    newStaffImage: IStaff
+    newStaffImage?: File
   ) => Promise<IStaff | null>;
   putMember: (
     updateMember: IStaff,
-    newStaffImage: IStaff
+    newStaffImage?: File
   ) => Promise<IStaff | null>;
-  deleteMember: (id: number) => void;
+  deleteMember: (id: number) => Promise<void>;
 }
 
 export default IStaffContext;

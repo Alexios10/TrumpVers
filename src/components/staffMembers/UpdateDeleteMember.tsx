@@ -12,6 +12,7 @@ const UpdateDeleteMember = () => {
   const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
+  const [currentImageName, setCurrentImageName] = useState<string | null>(null); // Stores current image
   const [description, setDescription] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -43,10 +44,11 @@ const UpdateDeleteMember = () => {
       if (member) {
         setId(member.id ?? null);
         setName(member.name ?? "");
-        setImage(member.image ?? null);
         setDescription(member.description ?? "");
         setTitle(member.title ?? "");
         setEmail(member.email ?? "");
+        setCurrentImageName(member.image ?? null); // Set the current image
+        setImage(null); // Clear the file input state
       } else {
         alert(`Member with name "${name}" not found.`);
       }
@@ -65,7 +67,7 @@ const UpdateDeleteMember = () => {
     const memberToUpdate: IStaff = {
       id: id,
       name: name,
-      image: image?.name || "",
+      image: image ? image.name : currentImageName, // Use current image if no new one
       description: description,
       title: title,
       email: email,
@@ -167,7 +169,7 @@ const UpdateDeleteMember = () => {
       </section>
 
       <div className="flex-1 p-6 bg-white shadow-md rounded-lg overflow-auto">
-        {image !== null && (
+        {currentImageName && (
           <div className="grid gap-4 text-center">
             <div>
               <span className="font-bold">Name:</span> {name}
@@ -179,7 +181,7 @@ const UpdateDeleteMember = () => {
               <span className="font-bold">Title:</span> {title}
             </div>
             <img
-              src={StaffMembersService.getImageEndpoint() + image}
+              src={StaffMembersService.getImageEndpoint() + currentImageName}
               alt={name}
               className="w-40 h-40 object-cover mx-auto border rounded-md"
             />

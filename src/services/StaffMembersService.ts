@@ -26,47 +26,52 @@ const StaffMembersService = (() => {
 
   const postMember = async (
     newMember: IStaff,
-    newStaffImage: IStaff
+    newStaffImage?: File
   ): Promise<IStaff | null> => {
-    const result = await axios.post(staffContollerEndpoint, newMember);
+    try {
+      const result = await axios.post(staffContollerEndpoint, newMember);
 
-    const formData = new FormData();
-    formData.append("file", newStaffImage);
+      if (newStaffImage) {
+        const formData = new FormData();
+        formData.append("file", newStaffImage);
 
-    const resultUpload = await axios({
-      url: imageUploadControllerEndpoint,
-      method: "POST",
-      data: formData,
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+        await axios.post(imageUploadControllerEndpoint, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+      }
 
-    formData.delete("file");
-
-    return result.data;
-  };
-
-  const getImageEndpoint = () => {
-    return imageEndpoint;
+      return result.data;
+    } catch (error) {
+      console.error("Error posting member:", error);
+      return null;
+    }
   };
 
   const putMember = async (
     updateMember: IStaff,
-    updateImage: IStaff
+    updateImage?: File
   ): Promise<IStaff | null> => {
-    const result = await axios.put(staffContollerEndpoint, updateMember);
+    try {
+      const result = await axios.put(staffContollerEndpoint, updateMember);
 
-    const formData = new FormData();
-    formData.append("file", updateImage);
+      if (updateImage) {
+        const formData = new FormData();
+        formData.append("file", updateImage);
 
-    const resultUpload = await axios({
-      url: imageUploadControllerEndpoint,
-      method: "POST",
-      data: formData,
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+        await axios.post(imageUploadControllerEndpoint, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+      }
 
-    formData.delete("file");
-    return result.data;
+      return result.data;
+    } catch (error) {
+      console.error("Error updating member:", error);
+      return null;
+    }
+  };
+
+  const getImageEndpoint = () => {
+    return imageEndpoint;
   };
 
   const deleteMember = async (id: number): Promise<IStaff | null> => {

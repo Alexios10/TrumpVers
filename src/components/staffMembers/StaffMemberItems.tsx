@@ -23,7 +23,10 @@ const StaffMemberItems: FC<IStaff> = ({
         <p>
           <span className="font-bold">Title: </span> {title}
         </p>
-        {/* <p className="mt-2 text-base">{description}</p> */}
+        <p>
+          <span className="font-bold">Description: </span> {description}
+        </p>
+
         <p className="text-base">
           <span className="font-bold">Contact: </span> {email}
         </p>

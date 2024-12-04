@@ -28,30 +28,26 @@ export const StaffProvider: FC<IProps> = ({ children }) => {
     return MembersFromService;
   };
 
-  const postMember = async (
-    newMember: IStaff,
-    newStaffImage: IStaff
-  ): Promise<IStaff | null> => {
+  const postMember = async (newMember: IStaff, newStaffImage?: File) => {
     const result = await StaffMembersService.postMember(
       newMember,
       newStaffImage
     );
-    if (result != null) {
+    if (result) {
       setMembers([result, ...members]);
     }
     return result;
   };
 
-  const putMember = async (updateMember: IStaff, newStaffImage: IStaff) => {
+  const putMember = async (updateMember: IStaff, updateImage?: File) => {
     const result = await StaffMembersService.putMember(
       updateMember,
-      newStaffImage
+      updateImage
     );
-    if (result != null) {
+    if (result) {
       getAndSetMemberFromService();
-      return updateMember;
     }
-    return null;
+    return result;
   };
 
   const deleteMember = async (id: number) => {
