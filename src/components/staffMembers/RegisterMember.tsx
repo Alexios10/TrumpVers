@@ -13,6 +13,7 @@ const RegisterMember = () => {
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
   const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("")
   const [email, setEmail] = useState<string>("");
   const [activePage, setActivePage] = useState<"register" | "admin">(
     () =>
@@ -40,6 +41,10 @@ const RegisterMember = () => {
         setTitle(e.target.value);
         break;
 
+        case "description":
+          setDescription(e.target.value);
+        break;
+
       case "email":
         setEmail(e.target.value);
         break;
@@ -59,6 +64,7 @@ const RegisterMember = () => {
       name,
       image: image.name,
       title,
+      description,
       email,
     };
 
@@ -68,6 +74,7 @@ const RegisterMember = () => {
     setName("");
     setImage(null);
     setTitle("");
+    setDescription("");
     setEmail("");
   };
 
@@ -141,6 +148,18 @@ const RegisterMember = () => {
                     onChange={handleChange}
                   />
                 </div>
+
+                   {/* Description input */}
+                <div className="mb-4 flex flex-col">
+                  <label className="w-24 mr-2 text-sm">Description</label>
+                  <input
+                    className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
+                    name="description"
+                    value={description}
+                    onChange={handleChange}
+                  />
+                </div>
+
                 {/* Email input */}
                 <div className="mb-4 flex flex-col">
                   <label className="w-24 mr-2 text-sm">Email</label>

@@ -138,6 +138,18 @@ const UpdateDeleteMember = () => {
           </div>
 
           <div className="mb-4">
+            <label className="font-semibold text-sm">Description</label>
+            <input
+              type="text"
+              name="description"
+              value={description}
+              onChange={handleChange}
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              aria-label="Member Title"
+            />
+          </div>
+
+          <div className="mb-4">
             <label className="font-semibold text-sm">Email:</label>
             <input
               type="text"
@@ -174,6 +186,9 @@ const UpdateDeleteMember = () => {
           <div className="grid gap-4 text-center">
             <div>
               <span className="font-bold">Name:</span> {name}
+            </div>
+            <div>
+              <span className="font-bold">Description</span> {description}
             </div>
             <div>
               <span className="font-bold">Email:</span> {email}
