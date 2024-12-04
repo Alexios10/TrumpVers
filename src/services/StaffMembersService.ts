@@ -3,9 +3,9 @@ import IStaff from "../interfaces/staffMembers/Istaff";
 
 const StaffMembersService = (() => {
   const staffContollerEndpoint = "http://localhost:5068/api/staffmembers/";
-  const imageUploadControllerEndpoint =
-    "http://localhost:5068/api/imageUpload/";
   const imageEndpoint = "http://localhost:5068/images/staff-members/";
+  const imageUploadControllerEndpoint =
+    "http://localhost:5068/api/StaffImageUpload/";
 
   const getAllStaffMembers = async (): Promise<IStaff[]> => {
     const result = await axios.get(staffContollerEndpoint);
@@ -17,7 +17,7 @@ const StaffMembersService = (() => {
   };
 
   const getMemberById = async (id: number): Promise<IStaff | null> => {
-    const result = await axios.get(staffContollerEndpoint + id);
+    const result = await axios.get(staffContollerEndpoint + "byid/" + id);
     return result.data as IStaff;
   };
 

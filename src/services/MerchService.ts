@@ -5,7 +5,7 @@ const MerchService = (() => {
   const merchContollerEndpoint = "http://localhost:5068/api/TrumpMerch/";
   const imageEndpoint = "http://localhost:5068/images/merchandises/";
   const imageUploadControllerEndpoint =
-    "http://localhost:5068/api/imageUpload/";
+    "http://localhost:5068/api/MerchImageUpload/";
 
   const getAllMerchandises = async (): Promise<IMerch[]> => {
     const result = await axios.get(merchContollerEndpoint);

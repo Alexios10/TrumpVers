@@ -1,7 +1,7 @@
 interface IStaff {
   id?: number;
   name?: string;
-  image?: string;
+  image?: string | null;
   description?: string;
   title?: string;
   email?: string;

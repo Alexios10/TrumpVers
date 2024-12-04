@@ -5,9 +5,8 @@ import IStaff from "../../interfaces/staffMembers/Istaff";
 import StaffMembersService from "../../services/StaffMembersService";
 
 const UpdateDeleteMember = () => {
-  const { getMemberByName, putMember, deleteMember } = useContext(
-    StaffMemberContext
-  ) as IStaffContext;
+  const { getMemberById, getMemberByName, putMember, deleteMember } =
+    useContext(StaffMemberContext) as IStaffContext;
 
   const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
@@ -18,12 +17,15 @@ const UpdateDeleteMember = () => {
   const [email, setEmail] = useState<string>("");
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files ? e.target.files[0] : null;
     switch (e.target.name) {
+      case "id":
+        setId(Number(e.target.value));
+        break;
       case "name":
         setName(e.target.value);
         break;
       case "image":
-        const file = e.target.files ? e.target.files[0] : null;
         setImage(file);
         break;
       case "description":
@@ -38,7 +40,35 @@ const UpdateDeleteMember = () => {
     }
   }
 
+  const getByIdFromContext = async () => {
+    if (!id) {
+      alert("Please enter member id");
+      return;
+    }
+    try {
+      const member = await getMemberById(id);
+      if (member) {
+        setId(member.id ?? null);
+        setName(member.name ?? "");
+        setDescription(member.description ?? "");
+        setTitle(member.title ?? "");
+        setEmail(member.email ?? "");
+        setCurrentImageName(member.image ?? null);
+        setImage(null);
+      } else {
+        alert(`Member with id "${id}" not found.`);
+      }
+    } catch (error) {
+      console.error("Error fetching merch:", error);
+    }
+  };
+
   const getByNameFromContext = async () => {
+    if (!name) {
+      alert("Please enter members name");
+      return;
+    }
+
     try {
       const member = await getMemberByName(name);
       if (member) {
@@ -54,12 +84,11 @@ const UpdateDeleteMember = () => {
       }
     } catch (error) {
       console.error("Error fetching member:", error);
-      alert(`Member with name "${name}" not found.`);
     }
   };
 
   const updateMemberWithContext = async () => {
-    if (id === null) {
+    if (!id) {
       alert("Cannot update. Member not found.");
       return;
     }
@@ -111,7 +140,23 @@ const UpdateDeleteMember = () => {
                 className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-500 shadow-lg text-sm"
                 onClick={getByNameFromContext}
               >
-                Get Member
+                Get By Name
+              </button>
+            </div>
+            {/* get by ID */}
+            <div className="flex mt-5 gap-4 items-center">
+              <input
+                type="number"
+                name="id"
+                onChange={handleChange}
+                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+                aria-label="Member Name"
+              />
+              <button
+                className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-500 shadow-lg text-sm"
+                onClick={getByIdFromContext}
+              >
+                Get By ID
               </button>
             </div>
           </div>
@@ -183,6 +228,9 @@ const UpdateDeleteMember = () => {
       <div className="flex-1 p-4 shadow-md rounded-sm h-[42rem] overflow-x-hidden overflow-y-auto">
         {currentImageName && (
           <div className="grid gap-2 text-center">
+            <div>
+              <span className="font-bold">ID:</span> {id}
+            </div>
             <div>
               <span className="font-bold">Name:</span> {name}
             </div>

@@ -1,6 +1,4 @@
 import { ChangeEvent, useContext, useState } from "react";
-import IStaff from "../../interfaces/staffMembers/Istaff";
-import StaffMembersService from "../../services/StaffMembersService";
 import { MerchandiseContext } from "../../contexts/MerchandiseContext";
 import IMerchContext from "../../interfaces/merchandise/IMerchContexts";
 import IMerch from "../../interfaces/merchandise/IMerch";
@@ -14,33 +12,38 @@ const UpdateDeleteMerch = () => {
   const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
-  const [currentImageName, setCurrentImageName] = useState<string | null>(null); // Stores current image
+  const [currentImageName, setCurrentImageName] = useState<string | null>(null);
   const [description, setDescription] = useState<string>("");
-  const [price, setPrice] = useState<number | string>(""); // Default to empty string
-  const [quantity, setQuantity] = useState<number | string>(""); // Default to empty string
+  const [price, setPrice] = useState<number | string>("");
+  const [quantity, setQuantity] = useState<number | string>("");
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    const { name, value, files } = e.target;
-    switch (name) {
+    const file = e.target.files ? e.target.files[0] : null;
+    switch (e.target.name) {
       case "name":
-        setName(value);
+        setName(e.target.value);
         break;
       case "image":
-        setImage(files ? files[0] : null);
+        setImage(file);
         break;
       case "description":
-        setDescription(value);
+        setDescription(e.target.value);
         break;
       case "price":
-        setPrice(value === "" ? "" : parseFloat(value)); // Handle empty input gracefully
+        setPrice(e.target.value ?? parseFloat(e.target.value));
         break;
       case "quantity":
-        setQuantity(value === "" ? "" : parseInt(value)); // Handle empty input gracefully
+        setQuantity(e.target.value ?? parseInt(e.target.value));
         break;
     }
   }
 
   const getByNameFromContext = async () => {
+    if (!name) {
+      alert("Please enter members name");
+      return;
+    }
+
     try {
       const member = await getMerchByName(name);
       if (member) {
@@ -56,12 +59,11 @@ const UpdateDeleteMerch = () => {
       }
     } catch (error) {
       console.error("Error fetching merch:", error);
-      alert(`Merch with name "${name}" not found.`);
     }
   };
 
   const updateMerchWithContext = async () => {
-    if (id === null) {
+    if (!id) {
       alert("Cannot update. Merch not found.");
       return;
     }
@@ -71,8 +73,8 @@ const UpdateDeleteMerch = () => {
       name: name,
       image: image ? image.name : currentImageName,
       description: description,
-      price: price,
-      quantity: quantity,
+      price: parseInt(price.toString()),
+      quantity: parseInt(quantity.toString()),
     };
 
     const result = await putMerch(merchToUpdate, image);
@@ -113,7 +115,7 @@ const UpdateDeleteMerch = () => {
                 className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-500 shadow-lg text-sm"
                 onClick={getByNameFromContext}
               >
-                Get Merch
+                Get By Name
               </button>
             </div>
           </div>

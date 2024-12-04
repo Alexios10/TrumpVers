@@ -1,10 +1,10 @@
 interface IMerch {
   id?: number;
   name?: string;
-  image?: string;
+  image?: string | null;
   description?: string;
-  price?: number;
-  quantity?: number;
+  price?: number | string;
+  quantity?: number | string;
   category?: string;
 }
 
