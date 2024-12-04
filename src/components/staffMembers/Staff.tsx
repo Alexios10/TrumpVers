@@ -1,12 +1,12 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
+import StaffMemberItems from "./StaffMemberItems";
 import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaffContext from "../../interfaces/staffMembers/IStaffContext";
-import StaffMemberItems from "./StaffMemberItems";
 
-const StaffmemberList = () => {
+const Staff = () => {
   const { members } = useContext(StaffMemberContext) as IStaffContext;
 
-  const createAndGetThoughtJSX = () => {
+  const createAndGetStaffJSX = () => {
     const staffMemberJSX = members.map((member) => {
       return (
         <StaffMemberItems
@@ -23,13 +23,7 @@ const StaffmemberList = () => {
     return staffMemberJSX;
   };
 
-  return (
-    <section className="">
-      <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-2">
-        {createAndGetThoughtJSX()}
-      </div>
-    </section>
-  );
+  return <div>{createAndGetStaffJSX()}</div>;
 };
 
-export default StaffmemberList;
+export default Staff;
