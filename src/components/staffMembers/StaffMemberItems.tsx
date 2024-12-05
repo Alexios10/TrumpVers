@@ -31,19 +31,6 @@ const StaffMemberItems: FC<IStaff> = ({
               <LuMail className="mr-2" />D
             </p>
             <p className="flex justify-center text-sm">{email}</p>
-            <p className="flex justify-center text-sm">{email}</p>
-          </div>
-
-          <div className="flex flex-col justify-center text-center rounded-sm bg-blue-950 bg-opacity-30 text-white font-bold m-2 h-36 shadow-lg">
-            <h3 className="text-xl">{name}</h3>
-            <p>{title}</p>
-            <p>{description}</p>
-
-            <p className="flex items-center justify-center text-sm">
-              <LuMail className="mr-2" />
-            </p>
-            <p className="flex justify-center text-sm">{email}</p>
-            <p className="flex justify-center text-sm">{email}</p>
           </div>
         </div>
       </article>
