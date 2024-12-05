@@ -5,19 +5,19 @@ import IMerch from "../../interfaces/merchandise/IMerch";
 import MerchService from "../../services/MerchService";
 
 const UpdateDeleteMerch = () => {
-  const { getMerchByName, putMerch, deleteMerch } = useContext(
+  const { getMerchById, getMerchByName, putMerch, deleteMerch } = useContext(
     MerchandiseContext
   ) as IMerchContext;
 
   const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
-  const [currentImageName, setCurrentImageName] = useState<string | null>(null);
   const [price, setPrice] = useState<number | string>("");
   const [quantity, setQuantity] = useState<number | string>("");
   const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
-
+  // state for å beholder den eksisterende bilde hvis den ikke blir enderet
+  const [currentImageName, setCurrentImageName] = useState<string | null>(null);
   const choosenCategories = [
     "Select a category",
     "Hats",
@@ -29,6 +29,9 @@ const UpdateDeleteMerch = () => {
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const file = e.target.files ? e.target.files[0] : null;
     switch (e.target.name) {
+      case "id":
+        setId(Number(e.target.value));
+        break;
       case "name":
         setName(e.target.value);
         break;
@@ -49,6 +52,30 @@ const UpdateDeleteMerch = () => {
         break;
     }
   }
+
+  const getByIdFromContext = async () => {
+    if (!id) {
+      alert("Please enter merch id");
+      return;
+    }
+    try {
+      const merch = await getMerchById(id);
+      if (merch) {
+        setId(merch.id ?? null);
+        setName(merch.name ?? "");
+        setDescription(merch.description ?? "");
+        setPrice(merch.price ?? "");
+        setQuantity(merch.quantity ?? "");
+        setCategory(merch.category ?? "");
+        setCurrentImageName(merch.image ?? null);
+        setImage(null);
+      } else {
+        alert(`Member with id "${id}" not found.`);
+      }
+    } catch (error) {
+      console.error("Error fetching merch:", error);
+    }
+  };
 
   const getByNameFromContext = async () => {
     if (!name) {
@@ -132,6 +159,22 @@ const UpdateDeleteMerch = () => {
                 Get By Name
               </button>
             </div>
+          </div>
+          {/* get by ID */}
+          <div className="flex mt-5 gap-4 items-center">
+            <input
+              type="number"
+              name="id"
+              onChange={handleChange}
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              aria-label="Member Name"
+            />
+            <button
+              className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-500 shadow-lg text-sm"
+              onClick={getByIdFromContext}
+            >
+              Get By ID
+            </button>
           </div>
           <div className="mb-4">
             <label className="font-semibold text-sm">Image:</label>

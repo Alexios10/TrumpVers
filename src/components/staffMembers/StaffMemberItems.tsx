@@ -28,6 +28,7 @@ const StaffMemberItems: FC<IStaff> = ({
 
           <p className="flex items-center justify-center text-sm">
             <LuMail className="mr-2" />
+<<<<<<< HEAD
           </p>
           <p className="flex justify-center text-sm">
             <svg
@@ -46,7 +47,10 @@ const StaffMemberItems: FC<IStaff> = ({
               <polyline points="3 7 12 13 21 7" />
             </svg>{" "}
             {email}
+=======
+>>>>>>> eddeca265d451f96755aabb3cf989011dbf2ac3f
           </p>
+          <p className="flex justify-center text-sm">{email}</p>
         </div>
       </div>
     </article>
