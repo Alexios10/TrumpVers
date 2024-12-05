@@ -1,32 +1,26 @@
-import { useContext } from "react";
+import { FC } from "react";
 import MerchItem from "./MerchItems";
-import { MerchandiseContext } from "../../contexts/MerchandiseContext";
-import IMerchContext from "../../interfaces/merchandise/IMerchContexts";
+import IMerch from "../../interfaces/merchandise/IMerch";
 
-const MerchList = () => {
-  const { merchandise } = useContext(MerchandiseContext) as IMerchContext;
+interface MerchListProps {
+  merchs: IMerch[];
+}
 
-  const createAndGetMerchJSX = () => {
-    const merchJSX = merchandise.map((merchandise) => {
-      return (
-        <MerchItem
-          key={merchandise.id}
-          name={merchandise.name}
-          image={merchandise.image}
-          description={merchandise.description}
-          price={merchandise.price}
-          quantity={merchandise.quantity}
-        />
-      );
-    });
-
-    return merchJSX;
-  };
-
+const MerchList: FC<MerchListProps> = ({ merchs }) => {
   return (
     <section className="p-8">
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        {createAndGetMerchJSX()}
+        {merchs.map((merch) => (
+          <MerchItem
+            key={merch.id}
+            name={merch.name}
+            image={merch.image}
+            description={merch.description}
+            price={merch.price}
+            quantity={merch.quantity}
+            category={merch.category}
+          />
+        ))}
       </div>
     </section>
   );

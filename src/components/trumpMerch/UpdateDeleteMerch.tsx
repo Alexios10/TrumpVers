@@ -13,11 +13,20 @@ const UpdateDeleteMerch = () => {
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
   const [currentImageName, setCurrentImageName] = useState<string | null>(null);
-  const [description, setDescription] = useState<string>("");
   const [price, setPrice] = useState<number | string>("");
   const [quantity, setQuantity] = useState<number | string>("");
+  const [description, setDescription] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
 
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+  const choosenCategories = [
+    "Select a category",
+    "Hats",
+    "T-shirts",
+    "Hoodies",
+    "Accessories",
+  ];
+
+  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const file = e.target.files ? e.target.files[0] : null;
     switch (e.target.name) {
       case "name":
@@ -26,14 +35,17 @@ const UpdateDeleteMerch = () => {
       case "image":
         setImage(file);
         break;
-      case "description":
-        setDescription(e.target.value);
-        break;
       case "price":
         setPrice(e.target.value ?? parseFloat(e.target.value));
         break;
       case "quantity":
         setQuantity(e.target.value ?? parseInt(e.target.value));
+        break;
+      case "description":
+        setDescription(e.target.value);
+        break;
+      case "category":
+        setCategory(e.target.value);
         break;
     }
   }
@@ -52,6 +64,7 @@ const UpdateDeleteMerch = () => {
         setDescription(member.description ?? "");
         setPrice(member.price ?? "");
         setQuantity(member.quantity ?? "");
+        setCategory(member.category ?? "");
         setCurrentImageName(member.image ?? null);
         setImage(null);
       } else {
@@ -73,6 +86,7 @@ const UpdateDeleteMerch = () => {
       name: name,
       image: image ? image.name : currentImageName,
       description: description,
+      category: category,
       price: parseInt(price.toString()),
       quantity: parseInt(quantity.toString()),
     };
@@ -161,6 +175,23 @@ const UpdateDeleteMerch = () => {
               aria-label="Description"
             />
           </div>
+
+          {/* Category Input */}
+          <div className="mb-2 flex flex-col">
+            <label className="w-24 mr-2 text-[0.625rem]">Category</label>
+            <select
+              className="w-full text-zinc-700 bg-gray-200"
+              name="category"
+              value={category}
+              onChange={handleChange}
+            >
+              {choosenCategories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="flex gap-4">
             <button
               className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 shadow-lg text-sm"
@@ -192,6 +223,9 @@ const UpdateDeleteMerch = () => {
             </div>
             <div>
               <span className="font-bold">Description:</span> {description}
+            </div>
+            <div>
+              <span className="font-bold">Category:</span> {category}
             </div>
             <img
               src={MerchService.getImageEndpoint() + currentImageName}

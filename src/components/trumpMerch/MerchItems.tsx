@@ -8,6 +8,7 @@ const MerchItem: FC<IMerch> = ({
   description,
   price,
   quantity,
+  category,
 }) => {
   return (
     <article className="flex justify-center my-4">
@@ -32,6 +33,7 @@ const MerchItem: FC<IMerch> = ({
         </button>
         <div className="flex justify-between items-center text-xs">
           <p className="text-green-600">In stock</p>
+          <p className="mt-2  text-gray-500 text-end">{category}</p>
           <p className="mt-2  text-gray-500 text-end">{quantity} left</p>
         </div>
       </div>
