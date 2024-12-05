@@ -1,25 +1,17 @@
 import { FC } from "react";
 import IThoughts from "../../interfaces/thoughts/IThoughts";
 
-interface ThoughtItemProps extends IThoughts {
-  onClick: () => void; // Callback for handling click events
-}
-
-const ThoughtItem: FC<ThoughtItemProps> = ({
+const ThoughtItem: FC<IThoughts> = ({
   name,
   thought,
   category,
   dateCreated,
-  onClick,
 }) => {
   const truncatedThought =
     thought.length > 50 ? `${thought.slice(0, 100)}...` : thought;
 
   return (
-    <article
-      className="mx-5 my-4 rounded-sm p-1 shadow-lg h-40 w-96 border-solid border-2 border-blue-950 border-opacity-20 overflow-hidden"
-      onClick={onClick} // Trigger the callback when the item is clicked
-    >
+    <article className="mx-5 my-4 rounded-sm p-1 shadow-lg h-40 w-96 border-solid border-2 border-blue-950 border-opacity-20 overflow-hidden">
       <div className="m-2">
         <div className="flex justify-between items-center">
           <h3 className="text-sm align-text-top">{name}</h3>
@@ -36,7 +28,6 @@ const ThoughtItem: FC<ThoughtItemProps> = ({
             className="text-blue-800 font-bold text-xs cursor-pointer"
             onClick={(e) => {
               e.stopPropagation(); // Prevent event bubbling to the parent
-              onClick();
             }}
           >
             ... Read more
