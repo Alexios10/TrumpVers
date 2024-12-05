@@ -24,8 +24,10 @@ const StaffmemberList = () => {
   };
 
   return (
-    <section className="grid sm:grid-cols-1 lg:grid-cols-2 gap-2">
-      <div className="">{createAndGetStaffAdminJSX()}</div>
+    <section className="">
+      <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-2">
+        {createAndGetStaffAdminJSX()}
+      </div>
     </section>
   );
 };

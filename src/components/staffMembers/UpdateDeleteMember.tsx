@@ -119,7 +119,7 @@ const UpdateDeleteMember = () => {
   };
 
   return (
-    <section className="flex flex-col md:flex-row gap-6 p-4">
+    <section className="flex flex-col md:flex-row gap-6">
       <section
         className="flex flex-col items-center "
         style={{ flex: "1 1 40%" }}
@@ -129,7 +129,7 @@ const UpdateDeleteMember = () => {
         </header>
         <div className="mx-3 mb-5">
           <div className="mb-4">
-            <label className="font-semibold text-sm">Get Member by Name:</label>
+            <label className="text-sm">Get Member by Name:</label>
             <div className="flex gap-2 items-center">
               <input
                 type="text"
@@ -147,7 +147,8 @@ const UpdateDeleteMember = () => {
               </button>
             </div>
             {/* get by ID */}
-            <div className="flex mt-5 gap-2 items-center">
+            <label className="text-sm">Get Member by Id:</label>
+            <div className="flex  gap-2 items-center">
               <input
                 type="number"
                 name="id"
@@ -165,7 +166,7 @@ const UpdateDeleteMember = () => {
           </div>
 
           <div className="mb-4">
-            <label className="font-semibold text-sm">Image:</label>
+            <label className="text-sm">Image:</label>
             <input
               type="file"
               name="image"
@@ -176,7 +177,7 @@ const UpdateDeleteMember = () => {
           </div>
 
           <div className="mb-4">
-            <label className="font-semibold text-sm">Title:</label>
+            <label className="text-sm">Title:</label>
             <input
               type="text"
               name="title"
@@ -188,7 +189,7 @@ const UpdateDeleteMember = () => {
           </div>
 
           <div className="mb-4">
-            <label className="font-semibold text-sm">Description:</label>
+            <label className=" text-sm">Description:</label>
             <input
               type="text"
               name="description"
@@ -213,47 +214,48 @@ const UpdateDeleteMember = () => {
 
           <div className="flex gap-4">
             <button
-              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 shadow-lg text-sm"
+              className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow-lg text-sm"
               onClick={updateMemberWithContext}
             >
-              Update
+              UPDATE
             </button>
             <button
               className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow-lg text-sm"
               onClick={deleteMemberWithContext}
             >
-              Delete
+              DELETE
             </button>
           </div>
         </div>
       </section>
 
-      <div
-        className="flex-1 p-4 shadow-md rounded-sm h-[42rem] overflow-x-hidden overflow-y-auto"
-        style={{ flex: "1 1 60%" }}
-      >
+      <div className="flex-1 " style={{ flex: "1 1 60%" }}>
         {currentImageName && (
-          <div className="grid gap-2 text-center">
+          <div className="flex justify-evenly m-24 h-1/2 w-2/3 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow justify-center items-center">
             <div>
-              <span className="font-bold">ID:</span> {id}
+              <img
+                src={StaffMembersService.getImageEndpoint() + currentImageName}
+                alt={name}
+                className=" w-40 h-40 object-cover mx-auto ml-4 "
+              />
             </div>
-            <div>
-              <span className="font-bold">Name:</span> {name}
+            <div className="p-4">
+              <div>
+                <span className="">ID:</span> {id}
+              </div>
+              <div>
+                <span className="">Name:</span> {name}
+              </div>
+              <div>
+                <span className="">Description:</span> {description}
+              </div>
+              <div>
+                <span className="">Email:</span> {email}
+              </div>
+              <div>
+                <span className="f">Title:</span> {title}
+              </div>
             </div>
-            <div>
-              <span className="font-bold">Description:</span> {description}
-            </div>
-            <div>
-              <span className="font-bold">Email:</span> {email}
-            </div>
-            <div>
-              <span className="font-bold">Title:</span> {title}
-            </div>
-            <img
-              src={StaffMembersService.getImageEndpoint() + currentImageName}
-              alt={name}
-              className="w-40 h-40 object-cover mx-auto border rounded-sm"
-            />
           </div>
         )}
       </div>
