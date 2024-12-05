@@ -5,15 +5,17 @@ import UpdateDeleteMerch from "./UpdateDeleteMerch";
 import MerchList from "./MerchList";
 
 const RegisterMerch = () => {
-  const { postMerch } = useContext(MerchandiseContext) as IMerchContext;
+  const { merchandise, postMerch } = useContext(
+    MerchandiseContext
+  ) as IMerchContext;
 
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
-  const [description, setDescription] = useState<string>("");
   const [price, setPrice] = useState<number | string>("");
   const [quantity, setQuantity] = useState<number | string>("");
+  const [description, setDescription] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
 
-  //const [filterCategory, setFilterCategory] = useState<string>("All");
   const [activePage, setActivePage] = useState<"register" | "admin">(
     () =>
       (localStorage.getItem("activePage") as "register" | "admin") || "register"
@@ -23,7 +25,7 @@ const RegisterMerch = () => {
     localStorage.setItem("activePage", activePage);
   }, [activePage]);
 
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const file = e.target.files ? e.target.files[0] : null;
     switch (e.target.name) {
       case "name":
@@ -32,14 +34,17 @@ const RegisterMerch = () => {
       case "image":
         setImage(file);
         break;
-      case "description":
-        setDescription(e.target.value);
-        break;
       case "price":
         setPrice(e.target.value ?? parseFloat(e.target.value));
         break;
       case "quantity":
         setQuantity(e.target.value ?? parseInt(e.target.value));
+        break;
+      case "description":
+        setDescription(e.target.value);
+        break;
+      case "category":
+        setCategory(e.target.value);
         break;
     }
   }
@@ -56,6 +61,7 @@ const RegisterMerch = () => {
       price,
       quantity,
       description,
+      category,
     };
 
     postMerch(newMerch, image);
@@ -66,18 +72,20 @@ const RegisterMerch = () => {
     setPrice("");
     setQuantity("");
     setDescription("");
+    setCategory("");
   };
 
   const switchPage = (page: "register" | "admin") => {
     setActivePage(page);
   };
 
-  //   const filteredTitle =
-  //     filterCategory === "All"
-  //       ? merchandise
-  //       : merchandise.filter(
-  //           (merchandise) => merchandise.category === filterCategory
-  //         );
+  const choosenCategoriy = [
+    "Select a category",
+    "Hats",
+    "T-shirts",
+    "Hoodies",
+    "Accessories",
+  ];
 
   return (
     <section className="flex">
@@ -130,7 +138,7 @@ const RegisterMerch = () => {
                     onChange={handleChange}
                   />
                 </div>
-                {/* Title input */}
+                {/* Price input */}
                 <div className="mb-4 flex flex-col">
                   <label className="w-24 mr-2 text-sm">Price:</label>
                   <input
@@ -141,8 +149,7 @@ const RegisterMerch = () => {
                     onChange={handleChange}
                   />
                 </div>
-
-                {/* Description input */}
+                {/* Quantity input */}
                 <div className="mb-4 flex flex-col">
                   <label className="w-24 mr-2 text-sm">Quantity</label>
                   <input
@@ -153,8 +160,7 @@ const RegisterMerch = () => {
                     onChange={handleChange}
                   />
                 </div>
-
-                {/* Email input */}
+                {/* Description input */}
                 <div className="mb-4 flex flex-col">
                   <label className="w-24 mr-2 text-sm">Description</label>
                   <input
@@ -163,6 +169,24 @@ const RegisterMerch = () => {
                     value={description}
                     onChange={handleChange}
                   />
+                </div>
+                {/* category input */}
+                <div className="mb-2 flex flex-col">
+                  <label className="w-24 mr-2 text-[0.625rem]">
+                    Select Category
+                  </label>
+                  <select
+                    className="w-full text-zinc-700 bg-gray-200"
+                    name="category"
+                    value={category}
+                    onChange={handleChange}
+                  >
+                    {choosenCategoriy.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
               {/* Add Member button */}
@@ -184,7 +208,7 @@ const RegisterMerch = () => {
             className="flex-1 m-4 p-4 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-auto overflow-x-hidden overflow-y-auto"
             style={{ flex: "1 1 60%" }}
           >
-            <MerchList />
+            <MerchList merchs={merchandise} />
           </div>
         </>
       )}

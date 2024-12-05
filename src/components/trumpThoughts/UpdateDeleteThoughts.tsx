@@ -15,7 +15,7 @@ const UpdateDeleteThoughts = () => {
   const [matchingThoughts, setMatchingThoughts] = useState<IThoughts[]>([]);
 
   const choosenCategories = [
-    "",
+    "Select a category",
     "Politic",
     "Economy",
     "History",
