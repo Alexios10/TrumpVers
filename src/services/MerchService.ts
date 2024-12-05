@@ -17,7 +17,7 @@ const MerchService = (() => {
   };
 
   const getMerchById = async (id: number): Promise<IMerch | null> => {
-    const result = await axios.get(merchContollerEndpoint + id);
+    const result = await axios.get(merchContollerEndpoint + "byid/" + id);
     return result.data as IMerch;
   };
 
