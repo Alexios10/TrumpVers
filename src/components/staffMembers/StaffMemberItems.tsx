@@ -1,6 +1,7 @@
 import { FC } from "react";
 import IStaff from "../../interfaces/staffMembers/Istaff";
 import StaffMembersService from "../../services/StaffMembersService";
+import { LuMail } from "react-icons/lu";
 
 const StaffMemberItems: FC<IStaff> = ({
   name,
@@ -10,9 +11,9 @@ const StaffMemberItems: FC<IStaff> = ({
   email,
 }) => {
   return (
-    <article className="flex p-4 ">
-      <div className="flex flex-col w-96 h-auto">
-        <div className="flex-1 ">
+    <article className="flex justify-center p-4 ">
+      <div className="flex flex-col  w-80 h-auto">
+        <div className="flex-1 justify-center ">
           <img
             src={StaffMembersService.getImageEndpoint() + image}
             alt={name}
@@ -20,11 +21,15 @@ const StaffMemberItems: FC<IStaff> = ({
           />
         </div>
 
-        <div className="flex flex-col justify-center text-center bg-blue-950 bg-opacity-30 text-white font-bold m-2 h-36 ">
+        <div className="flex flex-col justify-center text-center rounded-sm bg-blue-950 bg-opacity-30 text-white font-bold m-2 h-36 shadow-lg">
           <h3 className="text-xl">{name}</h3>
           <p>{title}</p>
           <p>{description}</p>
 
+<<<<<<< HEAD
+          <p className="flex items-center justify-center text-sm">
+            <LuMail className="mr-2" />
+=======
           <p className="flex justify-center text-sm">
             <svg
               className="mr-2"
@@ -41,6 +46,7 @@ const StaffMemberItems: FC<IStaff> = ({
               <rect x="3" y="5" width="18" height="14" rx="2" />{" "}
               <polyline points="3 7 12 13 21 7" />
             </svg>{" "}
+>>>>>>> 58226e10cb2eb2e19fa3d5b518bfa2e5300d9a32
             {email}
           </p>
         </div>
