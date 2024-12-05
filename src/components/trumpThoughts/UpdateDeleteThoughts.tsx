@@ -154,33 +154,27 @@ const UpdateDeleteThoughts = () => {
         </div>
       </div>
 
-      <hr className="w-4/5 h-0.5 mx-auto rounded mt-6 bg-slate-400" />
-
       {/* Display Matching Thoughts */}
       <div className="h-60 overflow-x-hidden overflow-y-auto w-auto mt-4">
-        {matchingThoughts.length > 0 ? (
-          matchingThoughts.map((thought) => (
-            <div
-              key={thought.id}
-              className="mx-5 my-4 rounded-md p-4 shadow-lg h-40 w-96 border border-gray-300 bg-white flex flex-col overflow-y-auto"
-              onClick={() => handleThoughtClick(thought)}
-            >
-              <div className="flex justify-between mb-2">
-                <h3 className="text-sm font-bold">{thought.name}</h3>
-                <p className="text-xs text-blue-500 cursor-pointer hover:underline">
-                  Edit
-                </p>
-              </div>
+        {matchingThoughts.length > 0
+          ? matchingThoughts.map((thought) => (
+              <div
+                key={thought.id}
+                className="mx-5 my-4 rounded-md p-4 shadow-lg h-40 w-96 border border-gray-300 bg-white flex flex-col overflow-y-auto"
+                onClick={() => handleThoughtClick(thought)}
+              >
+                <div className="flex justify-between mb-2">
+                  <h3 className="text-sm font-bold">{thought.name}</h3>
+                  <p className="text-xs text-blue-500 cursor-pointer hover:underline">
+                    Edit
+                  </p>
+                </div>
 
-              <p className="text-xs mb-2 text-gray-500">{thought.category}</p>
-              <p className="text-sm text-gray-700">{thought.thought}</p>
-            </div>
-          ))
-        ) : (
-          <p className="text-gray-500 text-center mt-4">
-            Use the "Get" button to search for a thought by name.
-          </p>
-        )}
+                <p className="text-xs mb-2 text-gray-500">{thought.category}</p>
+                <p className="text-sm text-gray-700">{thought.thought}</p>
+              </div>
+            ))
+          : ""}
       </div>
     </section>
   );

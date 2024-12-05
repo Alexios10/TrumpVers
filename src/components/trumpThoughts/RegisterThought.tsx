@@ -166,40 +166,8 @@ const RegisterThought = () => {
         className="flex-1 m-4 p-4 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-auto overflow-x-hidden overflow-y-auto"
         style={{ flex: "1 1 60%" }}
       >
-        {activePage === "register" ? (
-          <>
-            <ThoughtList thoughts={filteredThoughts} />
-          </>
-        ) : (
-          <div>
-            {selectedThought ? (
-              <div>
-                <div className="flex justify-between">
-                  <h3 className="text-lg font-bold mb-2 text-gray-700">
-                    {selectedThought.name}
-                  </h3>
-                  <p className="text-xs text-gray-500">
-                    <span className="font-semibold">Date Published: </span>{" "}
-                    {selectedThought.dateCreated
-                      ? new Date(
-                          selectedThought.dateCreated
-                        ).toLocaleDateString()
-                      : "N/A"}
-                  </p>
-                </div>
-                <p className="text-xs text-gray-500 mb-1">
-                  <span className="font-semibold"></span>{" "}
-                  {selectedThought.category}
-                </p>
-
-                <p className="text-lg text-gray-700 mt-4">
-                  {selectedThought.thought}
-                </p>
-              </div>
-            ) : (
-              <p>Use the "Get" button to search for a thought by name.</p>
-            )}
-          </div>
+        {activePage === "register" && (
+          <ThoughtList thoughts={filteredThoughts} />
         )}
       </div>
     </section>
