@@ -231,7 +231,7 @@ const UpdateDeleteMember = () => {
 
       <div className="flex-1 " style={{ flex: "1 1 60%" }}>
         {currentImageName && (
-          <div className="flex justify-evenly m-24 h-1/2 w-2/3 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow justify-center items-center">
+          <div className="flex     m-24 h-1/2 w-2/3 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow justify-center items-center">
             <div>
               <img
                 src={StaffMembersService.getImageEndpoint() + currentImageName}
