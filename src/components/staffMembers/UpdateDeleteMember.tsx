@@ -120,43 +120,46 @@ const UpdateDeleteMember = () => {
 
   return (
     <section className="flex flex-col md:flex-row gap-6 p-4">
-      <section className="bg-white w-full md:w-1/3 p-6 shadow-md rounded-lg">
-        <header className="text-3xl mb-4 text-blue-950">
+      <section
+        className="flex flex-col items-center "
+        style={{ flex: "1 1 40%" }}
+      >
+        <header className="text-3xl mb-2 text-blue-950">
           Update or Delete Member
         </header>
-        <div className="space-y-4">
+        <div className="mx-3 mb-5">
           <div className="mb-4">
             <label className="font-semibold text-sm">Get Member by Name:</label>
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-2 items-center">
               <input
                 type="text"
                 name="name"
                 value={name}
                 onChange={handleChange}
-                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+                className="flex-grow text-zinc-700 bg-gray-200 p-2 rounded-sm"
                 aria-label="Member Name"
               />
               <button
-                className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-500 shadow-lg text-sm"
+                className="w-35 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
                 onClick={getByNameFromContext}
               >
-                Get By Name
+                GET BY NAME
               </button>
             </div>
             {/* get by ID */}
-            <div className="flex mt-5 gap-4 items-center">
+            <div className="flex mt-5 gap-2 items-center">
               <input
                 type="number"
                 name="id"
                 onChange={handleChange}
-                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+                className="flex-grow text-zinc-700 bg-gray-200 p-2 rounded-sm"
                 aria-label="Member Name"
               />
               <button
-                className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-500 shadow-lg text-sm"
+                className="h-auto w-35 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
                 onClick={getByIdFromContext}
               >
-                Get By ID
+                GET BY ID
               </button>
             </div>
           </div>
@@ -167,7 +170,7 @@ const UpdateDeleteMember = () => {
               type="file"
               name="image"
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               aria-label="Member Image"
             />
           </div>
@@ -179,7 +182,7 @@ const UpdateDeleteMember = () => {
               name="title"
               value={title}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               aria-label="Member Title"
             />
           </div>
@@ -191,7 +194,7 @@ const UpdateDeleteMember = () => {
               name="description"
               value={description}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               aria-label="Member Title"
             />
           </div>
@@ -203,7 +206,7 @@ const UpdateDeleteMember = () => {
               name="email"
               value={email}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               aria-label="Member Email"
             />
           </div>
@@ -216,7 +219,7 @@ const UpdateDeleteMember = () => {
               Update
             </button>
             <button
-              className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 shadow-lg text-sm"
+              className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow-lg text-sm"
               onClick={deleteMemberWithContext}
             >
               Delete
@@ -225,7 +228,10 @@ const UpdateDeleteMember = () => {
         </div>
       </section>
 
-      <div className="flex-1 p-4 shadow-md rounded-sm h-[42rem] overflow-x-hidden overflow-y-auto">
+      <div
+        className="flex-1 p-4 shadow-md rounded-sm h-[42rem] overflow-x-hidden overflow-y-auto"
+        style={{ flex: "1 1 60%" }}
+      >
         {currentImageName && (
           <div className="grid gap-2 text-center">
             <div>
@@ -246,7 +252,7 @@ const UpdateDeleteMember = () => {
             <img
               src={StaffMembersService.getImageEndpoint() + currentImageName}
               alt={name}
-              className="w-40 h-40 object-cover mx-auto border rounded-md"
+              className="w-40 h-40 object-cover mx-auto border rounded-sm"
             />
           </div>
         )}

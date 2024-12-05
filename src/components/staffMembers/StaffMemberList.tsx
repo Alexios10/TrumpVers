@@ -6,7 +6,7 @@ import StaffMemberItems from "./StaffMemberItems";
 const StaffmemberList = () => {
   const { members } = useContext(StaffMemberContext) as IStaffContext;
 
-  const createAndGetThoughtJSX = () => {
+  const createAndGetStaffAdminJSX = () => {
     const staffMemberJSX = members.map((member) => {
       return (
         <StaffMemberItems
@@ -24,10 +24,8 @@ const StaffmemberList = () => {
   };
 
   return (
-    <section className="">
-      <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-2">
-        {createAndGetThoughtJSX()}
-      </div>
+    <section className="grid sm:grid-cols-1 lg:grid-cols-2 gap-2">
+      <div className="">{createAndGetStaffAdminJSX()}</div>
     </section>
   );
 };

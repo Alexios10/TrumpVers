@@ -23,7 +23,11 @@ const Staff = () => {
     return staffMemberJSX;
   };
 
-  return <div>{createAndGetStaffJSX()}</div>;
+  return (
+    <div className="grid sm:grid-cols-1 lg:grid-cols-4 gap-2">
+      {createAndGetStaffJSX()}
+    </div>
+  );
 };
 
 export default Staff;
