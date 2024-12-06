@@ -35,6 +35,14 @@ const MainNavigation = () => {
               STAFF
             </Link>
           </li>
+          <li>
+            <Link
+              to="/thoughts"
+              className=" hover:text-red-600 transition duration-150"
+            >
+              THOUGHTS
+            </Link>
+          </li>
 
           <li>
             <Link

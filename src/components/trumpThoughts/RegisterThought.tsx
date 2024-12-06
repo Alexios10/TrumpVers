@@ -3,7 +3,6 @@ import { ThoughtsContext } from "../../contexts/ThoughtsContext";
 import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 import ThoughtList from "./ThoughtList";
 import UpdateDeleteThoughts from "./UpdateDeleteThoughts";
-import IThoughts from "../../interfaces/thoughts/IThoughts";
 
 const RegisterThought = () => {
   const { postThought, thoughts } = useContext(
@@ -17,10 +16,6 @@ const RegisterThought = () => {
   const [activePage, setActivePage] = useState<"register" | "admin">(
     () =>
       (localStorage.getItem("activePage") as "register" | "admin") || "register"
-  );
-  // State to manage selected thought
-  const [selectedThought, setSelectedThought] = useState<IThoughts | null>(
-    null
   );
 
   useEffect(() => {

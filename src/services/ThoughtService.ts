@@ -10,7 +10,7 @@ const ThoughtsService = (() => {
   };
 
   const getThoughtById = async (id: number): Promise<IThoughts | null> => {
-    const result = await axios.get(thoughtContollerEndpoint + id);
+    const result = await axios.get(thoughtContollerEndpoint + "byid/" + id);
     return result.data as IThoughts;
   };
 

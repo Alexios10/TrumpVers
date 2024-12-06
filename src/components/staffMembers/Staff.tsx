@@ -25,7 +25,7 @@ const Staff = () => {
 
   return (
     <section>
-      <div className="grid sm:grid-cols-1 lg:grid-cols-4 gap-2">
+      <div className="grid sm:grid-cols-4 lg:grid-cols-6 gap-2">
         {createAndGetStaffJSX()}
       </div>
     </section>

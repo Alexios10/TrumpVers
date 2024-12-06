@@ -3,6 +3,7 @@ import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaffContext from "../../interfaces/staffMembers/IStaffContext";
 import StaffmemberList from "./StaffMemberList";
 import UpdateDeleteMember from "./UpdateDeleteMember";
+import StaffMembersService from "../../services/StaffMembersService";
 
 const RegisterMember = () => {
   const { postMember } = useContext(StaffMemberContext) as IStaffContext;
@@ -86,7 +87,6 @@ const RegisterMember = () => {
           >
             Register New Member
           </button>
-
           <button
             onClick={() => switchPage("admin")}
             className={`p-2 text-white rounded-md shadow-md text-sm transition ${
@@ -149,7 +149,39 @@ const RegisterMember = () => {
         )}
       </div>
       <div className="flex-1 m-4 p-4 border border-opacity-20 border-blue-900 rounded-md shadow-md overflow-hidden">
-        {activePage === "register" && <StaffmemberList />}
+        {activePage === "register" ? (
+          <div className=" visible">
+            <StaffmemberList />
+          </div>
+        ) : (
+          ""
+        )}
+        {activePage === "admin" ? (
+          <div className="space-y-2 flex flex-col w-80 border-2 border-cyan-400 p-5">
+            <img
+              src={StaffMembersService.getImageEndpoint() + image}
+              alt={name}
+              className="w-32 h-32 object-cover rounded-md"
+            />
+            <p>
+              <strong>ID:</strong>
+            </p>
+            <p>
+              <strong>Name:</strong> {name}
+            </p>
+            <p>
+              <strong>Description:</strong> {description}
+            </p>
+            <p>
+              <strong>Email:</strong> {email}
+            </p>
+            <p>
+              <strong>Title:</strong> {title}
+            </p>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </section>
   );
