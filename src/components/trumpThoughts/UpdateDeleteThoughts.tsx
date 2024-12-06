@@ -81,26 +81,26 @@ const UpdateDeleteThoughts = () => {
 
   return (
     <section className="flex flex-col items-center">
-      <h3 className="text-3xl mb-4 text-blue-950 font-bold">Thoughts Admin</h3>
+      <h3 className="text-3xl mb-4 text-blue-950 ">Thoughts Admin</h3>
 
       {/* Input and Buttons */}
-      <div className="flex-1/2 flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-md w-11/12 max-w-xl">
-        <div className="w-full">
+      <div className="bg-white h-auto flex flex-col ">
+        <div className="w-96 items-start">
           {/* Get Thought by Name */}
-          <div className="mb-6">
-            <label className="block text-sm font-semibold mb-2">
+          <div className="mb-4 flex flex-col">
+            <label className="w-40 mr-2 text-sm mb-2">
               Get Thought by Name
             </label>
             <div className="flex gap-3">
               <input
-                className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
                 type="text"
                 name="name"
                 value={name}
                 onChange={handleChange}
               />
               <button
-                className="px-4 bg-blue-900 text-white rounded-md hover:bg-blue-500 shadow-lg text-xs"
+                className="px-4 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-xs"
                 onClick={getByNameFromContext}
               >
                 GET
@@ -109,10 +109,10 @@ const UpdateDeleteThoughts = () => {
           </div>
 
           {/* Category Input */}
-          <div className="mb-6">
-            <label className="block text-sm font-semibold mb-2">Category</label>
+          <div className="mb-4 flex flex-col">
+            <label className="w-24 mr-2 text-sm">Category</label>
             <select
-              className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               name="category"
               value={category}
               onChange={handleChange}
@@ -126,10 +126,10 @@ const UpdateDeleteThoughts = () => {
           </div>
 
           {/* Thought Input */}
-          <div className="mb-6">
-            <label className="block text-sm font-semibold mb-2">Thought</label>
+          <div className="mb-4 flex flex-col">
+            <label className="w-24 mr-2 text-sm">Thought</label>
             <textarea
-              className="w-full h-24 border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full h-24 text-zinc-700 bg-gray-200 p-2 rounded-sm"
               name="thought"
               value={thought}
               onChange={handleChange}
@@ -138,15 +138,15 @@ const UpdateDeleteThoughts = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-4 mt-4">
+        <div className="flex justify-center gap-2 p-2">
           <button
-            className="p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-xs"
+            className="p-2 w-20 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-xs"
             onClick={updateThoughtWithContext}
           >
             UPDATE
           </button>
           <button
-            className="p-2 bg-red-700 text-white rounded-sm hover:bg-red-500 shadow-lg text-xs"
+            className="p-2 w-20 bg-red-700 text-white rounded-sm hover:bg-red-500 shadow-lg text-xs"
             onClick={deleteThoughtWithContext}
           >
             DELETE
