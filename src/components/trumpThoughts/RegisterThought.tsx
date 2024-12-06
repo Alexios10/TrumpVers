@@ -166,8 +166,16 @@ const RegisterThought = () => {
         className="flex-1 m-4 p-4 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-auto overflow-x-hidden overflow-y-auto"
         style={{ flex: "1 1 60%" }}
       >
-        {activePage === "register" && (
-          <ThoughtList thoughts={filteredThoughts} />
+        {activePage === "register" ? (
+          <>
+            <ThoughtList thoughts={filteredThoughts} />
+          </>
+        ) : (
+          <>
+            <div className="hidden">
+              <ThoughtList thoughts={filteredThoughts} />
+            </div>
+          </>
         )}
       </div>
     </section>
