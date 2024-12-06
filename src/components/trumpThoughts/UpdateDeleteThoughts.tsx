@@ -84,6 +84,7 @@ const UpdateDeleteThoughts = () => {
       <h3 className="text-3xl mb-4 text-blue-950 ">Thoughts Admin</h3>
 
       {/* Input and Buttons */}
+
       <div className="bg-white h-auto flex flex-col ">
         <div className="w-96 items-start">
           {/* Get Thought by Name */}
