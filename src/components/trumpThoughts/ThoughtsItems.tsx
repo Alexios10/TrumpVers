@@ -2,6 +2,7 @@ import { FC } from "react";
 import IThoughts from "../../interfaces/thoughts/IThoughts";
 
 const ThoughtItem: FC<IThoughts> = ({
+  id,
   name,
   thought,
   category,
@@ -20,7 +21,7 @@ const ThoughtItem: FC<IThoughts> = ({
             {dateCreated ? new Date(dateCreated).toLocaleDateString() : "N/A"}
           </p>
         </div>
-
+        <p className="text-xs">ID: {id}</p>
         <p className="text-xs">{category}</p>
         <p className="mt-2 text-base">{truncatedThought}</p>
         {thought.length > 100 && (

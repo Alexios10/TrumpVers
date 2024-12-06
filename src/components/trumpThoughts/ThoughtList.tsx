@@ -11,6 +11,7 @@ const ThoughtList = () => {
       return (
         <ThoughtItem
           key={thought.id}
+          id={thought.id}
           name={thought.name}
           category={thought.category}
           thought={thought.thought}
