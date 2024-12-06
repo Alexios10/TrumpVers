@@ -3,7 +3,7 @@ import MerchList from "./MerchList";
 import { MerchandiseContext } from "../../contexts/MerchandiseContext";
 import IMerchContext from "../../interfaces/merchandise/IMerchContexts";
 
-const GetAllMerchandises = () => {
+const Merchandises = () => {
   const { merchandise } = useContext(MerchandiseContext) as IMerchContext;
 
   const [filterCategory, setFilterCategory] = useState<string>("All");
@@ -46,4 +46,4 @@ const GetAllMerchandises = () => {
   );
 };
 
-export default GetAllMerchandises;
+export default Merchandises;

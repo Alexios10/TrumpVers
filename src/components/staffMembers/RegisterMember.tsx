@@ -8,8 +8,6 @@ import StaffMembersService from "../../services/StaffMembersService";
 const RegisterMember = () => {
   const { postMember } = useContext(StaffMemberContext) as IStaffContext;
 
-  const [currentImageName, setCurrentImageName] = useState<string | null>(null); // Stores current image
-  const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
   const [title, setTitle] = useState<string>("");
@@ -89,7 +87,6 @@ const RegisterMember = () => {
           >
             Register New Member
           </button>
-
           <button
             onClick={() => switchPage("admin")}
             className={`p-2 text-white rounded-md shadow-md text-sm transition ${
@@ -167,7 +164,7 @@ const RegisterMember = () => {
               className="w-32 h-32 object-cover rounded-md"
             />
             <p>
-              <strong>ID:</strong> {id}
+              <strong>ID:</strong>
             </p>
             <p>
               <strong>Name:</strong> {name}

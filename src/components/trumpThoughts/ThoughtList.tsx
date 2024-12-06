@@ -1,19 +1,28 @@
-import { FC } from "react";
-import IThoughts from "../../interfaces/thoughts/IThoughts";
+import { useContext } from "react";
 import ThoughtItem from "./ThoughtsItems";
+import { ThoughtsContext } from "../../contexts/ThoughtsContext";
+import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 
-interface ThoughtListProps {
-  thoughts: IThoughts[];
-}
+const ThoughtList = () => {
+  const { thoughts } = useContext(ThoughtsContext) as IThoughtsContext;
 
-const ThoughtList: FC<ThoughtListProps> = ({ thoughts }) => {
-  return (
-    <section>
-      {thoughts.map((thought) => (
-        <ThoughtItem key={thought.id} {...thought} />
-      ))}
-    </section>
-  );
+  const createAndGetStaffAdminJSX = () => {
+    const thoughtMemberJSX = thoughts.map((thought) => {
+      return (
+        <ThoughtItem
+          key={thought.id}
+          name={thought.name}
+          category={thought.category}
+          thought={thought.thought}
+          dateCreated={thought.dateCreated}
+        />
+      );
+    });
+
+    return thoughtMemberJSX;
+  };
+
+  return <section>{createAndGetStaffAdminJSX()}</section>;
 };
 
 export default ThoughtList;
