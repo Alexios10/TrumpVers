@@ -1,59 +1,81 @@
+import { FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaTiktok } from "react-icons/fa";
+import { FaSnapchat } from "react-icons/fa6";
+import { FaFacebookF } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
+
 const HomePage = () => {
   return (
-    <section className="flex flex-col items-center py-10">
-      <div className="relative">
+    <section className="flex flex-col items-center">
+      <div className="flex items-center justify-center bg-red-600 text-white w-full h-12 text-lg font-semibold shadow-md">
+        TEXT TRUMP TO 88022
+      </div>
+
+      <div className="mb-8">
         <img
-          src="src/assets/image/TrumpIntro.png"
+          src="src/assets/image/Welcome.jpeg"
           alt="Trumpverse Intro"
-          className="max-w-full h-auto rounded-lg shadow-lg"
+          className="max-w-full h-auto shadow-2xl"
         />
+      </div>
 
-        <div className="absolute top-20 left-8 flex flex-col w-1/3 text-white text-left p-8">
-          <h1 className="text-4xl font-bold mb-4">Welcome to the Trumpverse</h1>
-          <p className="text-2xl mb-6 max-w-2xl">
-            Immerse yourself in our exclusive collection of premium merchandise,
-            thought-provoking insights, and innovative ideas.
-          </p>
-        </div>
+      <div className="max-w-3xl text-center px-4 py-6 bg-white rounded-lg shadow-lg my-8">
+        <h3 className="text-3xl font-bold text-gray-800 mb-4">Our Agenda</h3>
+        <p className="text-lg text-gray-700 mb-6">
+          My fellow Americans, our mission is clear: to put America first and
+          ensure our nation’s greatness for generations to come. Together, we’ve
+          already accomplished so much—reviving our economy, securing our
+          borders, strengthening our military, and standing up to global
+          adversaries. But there is still more to do. We will continue to fight
+          for fair trade, bring jobs back to our shores, and unleash American
+          energy to lower costs and achieve true independence. We’ll protect our
+          elections, our borders, and our freedoms. I am committed to defending
+          your values, your families, and your future. Together, we will finish
+          what we started and make America greater than ever before.
+          <br />
+          <span className="font-bold">Donald J. Trump</span>
+        </p>
 
-        <div className="absolute bottom-56 left-8 flex flex-col w-1/4 text-white text-left p-8">
-          <blockquote className="text-2xl italic mb-4">
-            "The best way to predict the future is to create it."
-          </blockquote>
-          <p className="font-semibold text-lg">- Donald Trump</p>
-        </div>
-
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/6 bg-red-900 opacity-75 text-white flex items-center justify-center p-4">
-          <div className="text-center">
-            <h3 className="text-xl">JOIN OUR MOVEMENT!</h3>
-            <h1 className="text-2xl font-bold">TEXT TRUMP TO 88022!</h1>
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 right-0 w-1/2 h-1/6 bg-blue-900 opacity-75 text-white flex items-center justify-center p-4">
-          <div className="text-center">
-            <h3 className="text-xl">
-              SUPPORT DONALD J. TRUMP, THE 45TH PRESIDENT OF THE UNITED STATES
-            </h3>
-          </div>
+        <div className="flex justify-center">
+          <img
+            src="src/assets/image/Trump-icon.jpg"
+            alt="Trump Poster"
+            className="w-24 h-24 rounded-full border-4 border-gray-200 shadow-md"
+          />
         </div>
       </div>
 
-      <div className="w-full text-blue-950 py-8 mt-2">
-        <div className="max-w-6xl ml-4">
+      <div className="flex justify-center items-center gap-4">
+        <FaInstagram className="w-8 h-8 transition-transform duration-200 hover:scale-110" />
+        <FaXTwitter className="w-8 h-8 transition-transform duration-200 hover:scale-110" />
+        <FaTiktok className="w-8 h-8 transition-transform duration-200 hover:scale-110" />
+        <FaSnapchat className="w-8 h-8 transition-transform duration-200 hover:scale-110" />
+        <FaFacebookF className="w-8 h-8 transition-transform duration-200 hover:scale-110" />
+        <FaYoutube className="w-8 h-8 transition-transform duration-200 hover:scale-110" />
+      </div>
+
+      <div className="w-full bg-blue-950 border-t-2 border-red-700 text-white py-10 mt-8">
+        <div className="max-w-6xl mx-auto text-center">
           <p className="text-lg mb-6">
             We’d love to hear from you! For inquiries, support, or feedback,
             feel free to get in touch.
           </p>
           <p className="text-lg mb-2">
             Email:{" "}
-            <a href="mailto:contact@trumpverse.com" className="text-blue-400">
+            <a
+              href="mailto:contact@trumpverse.com"
+              className="text-blue-400 hover:text-blue-500"
+            >
               contact@trumpverse.com
             </a>
           </p>
           <p className="text-lg">
             Phone:{" "}
-            <a href="tel:+1234567890" className="text-blue-400">
+            <a
+              href="tel:+1234567890"
+              className="text-blue-400 hover:text-blue-500"
+            >
               +1 (234) 567-890
             </a>
           </p>

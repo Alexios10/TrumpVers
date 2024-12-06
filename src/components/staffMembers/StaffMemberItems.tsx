@@ -28,7 +28,7 @@ const StaffMemberItems: FC<IStaff> = ({
             <p>{description}</p>
 
             <p className="flex items-center justify-center text-sm">
-              <LuMail className="mr-2" />D
+              <LuMail className="mr-2" />
             </p>
             <p className="flex justify-center text-sm">{email}</p>
           </div>

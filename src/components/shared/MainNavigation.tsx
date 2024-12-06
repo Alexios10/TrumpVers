@@ -6,7 +6,7 @@ const MainNavigation = () => {
       <div className="max-w-screen-2xl mx-auto flex items-center justify-between">
         {/* Logo with link */}
         <div>
-          <Link to="/home">
+          <Link to="/">
             <img
               className="w-56 mb-4"
               src="./src/assets/image/trumplogo.png"
