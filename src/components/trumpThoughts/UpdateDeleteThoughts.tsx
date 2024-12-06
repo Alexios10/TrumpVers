@@ -4,9 +4,8 @@ import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 import IThoughts from "../../interfaces/thoughts/IThoughts";
 
 const UpdateDeleteThoughts = () => {
-  const { getThoughtByName, putThought, deleteThought } = useContext(
-    ThoughtsContext
-  ) as IThoughtsContext;
+  const { getThoughtById, getThoughtByName, putThought, deleteThought } =
+    useContext(ThoughtsContext) as IThoughtsContext;
 
   const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
@@ -27,20 +26,56 @@ const UpdateDeleteThoughts = () => {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
-    if (name === "name") setName(value);
-    if (name === "thought") setThought(value);
-    if (name === "category") setCategory(value);
+    switch (e.target.name) {
+      case "id":
+        setId(Number(e.target.value));
+        break;
+      case "name":
+        setName(e.target.value);
+        break;
+      case "thought":
+        setThought(e.target.value);
+        break;
+      case "category":
+        setCategory(e.target.value);
+        break;
+    }
+  };
+
+  const getByIdFromContext = async () => {
+    if (!id) {
+      alert("Please enter thought id");
+      return;
+    }
+    try {
+      const thought = await getThoughtById(id);
+      if (thought) {
+        setId(thought.id ?? null);
+        setName(thought.name ?? "");
+        setThought(thought.thought ?? "");
+        setCategory(thought.category ?? "");
+      } else {
+        alert(`Thought with id "${id}" not found.`);
+      }
+    } catch (error) {
+      console.error("Error fetching thought:", error);
+    }
   };
 
   const getByNameFromContext = async () => {
-    const thoughtResults = await getThoughtByName(name);
+    if (!name) {
+      alert("Please enter a name");
+      return;
+    }
 
-    if (thoughtResults && thoughtResults.length > 0) {
-      setMatchingThoughts(thoughtResults);
-    } else {
-      alert(`No thoughts found with the name "${name}".`);
-      setMatchingThoughts([]);
+    try {
+      const thought = await getThoughtByName(name);
+      if (thought && thought.length > 0) {
+        setMatchingThoughts(thought);
+      }
+    } catch (error) {
+      console.error("Error fetching thought:", error);
+      alert(`Thought with name "${name}" not found.`);
     }
     setThought("");
     setCategory("");
@@ -84,7 +119,6 @@ const UpdateDeleteThoughts = () => {
       <h3 className="text-3xl mb-4 text-blue-950 ">Thoughts Admin</h3>
 
       {/* Input and Buttons */}
-
       <div className="bg-white h-auto flex flex-col ">
         <div className="w-96 items-start">
           {/* Get Thought by Name */}
@@ -104,7 +138,26 @@ const UpdateDeleteThoughts = () => {
                 className="px-4 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-xs"
                 onClick={getByNameFromContext}
               >
-                GET
+                GET BY NAME
+              </button>
+            </div>
+          </div>
+
+          {/* Get Thought by ID */}
+          <div className="mb-4 flex flex-col">
+            <label className="w-40 mr-2 text-sm mb-2">Get Thought by ID</label>
+            <div className="flex gap-3">
+              <input
+                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
+                type="number"
+                name="id"
+                onChange={handleChange}
+              />
+              <button
+                className="px-4 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-xs"
+                onClick={getByIdFromContext}
+              >
+                GET BY ID
               </button>
             </div>
           </div>
