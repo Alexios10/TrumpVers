@@ -70,7 +70,7 @@ const UpdateDeleteMerch = () => {
         setCurrentImageName(merch.image ?? null);
         setImage(null);
       } else {
-        alert(`Member with id "${id}" not found.`);
+        alert(`Merch with id "${id}" not found.`);
       }
     } catch (error) {
       console.error("Error fetching merch:", error);

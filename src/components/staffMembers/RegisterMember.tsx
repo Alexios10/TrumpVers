@@ -16,7 +16,6 @@ const RegisterMember = () => {
     () =>
       (localStorage.getItem("activePage") as "register" | "admin") || "register"
   );
-  // const [filterCategory, setFilterCategory] = useState<string>("All");
 
   useEffect(() => {
     localStorage.setItem("activePage", activePage);
@@ -28,23 +27,18 @@ const RegisterMember = () => {
       case "name":
         setName(e.target.value);
         break;
-
       case "image":
         setImage(file);
         break;
-
       case "title":
         setTitle(e.target.value);
         break;
-
       case "description":
         setDescription(e.target.value);
         break;
-
       case "email":
         setEmail(e.target.value);
         break;
-
       default:
         break;
     }
@@ -78,19 +72,16 @@ const RegisterMember = () => {
     setActivePage(page);
   };
 
-  // const filteredTitle =
-  //   filterCategory === "All"
-  //     ? members
-  //     : members.filter((member) => member.title === filterCategory);
-
   return (
-    <section className="flex">
-      <div className="bg-white  flex flex-col " style={{ flex: "1 1 40%" }}>
-        <div className="flex justify-center gap-4 mx-3 mb-5">
+    <section className="flex flex-wrap gap-6 p-4 lg:flex-nowrap">
+      <div className="bg-white flex flex-col p-4 rounded-md shadow-md w-full lg:w-2/5">
+        <div className="flex justify-center gap-4 mb-6">
           <button
             onClick={() => switchPage("register")}
-            className={`p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm ${
-              activePage === "register" ? "bg-blue-500" : ""
+            className={`p-2 text-white rounded-md shadow-md text-sm transition ${
+              activePage === "register"
+                ? "bg-blue-600"
+                : "bg-blue-900 hover:bg-blue-700"
             }`}
           >
             Register New Member
@@ -98,8 +89,10 @@ const RegisterMember = () => {
 
           <button
             onClick={() => switchPage("admin")}
-            className={`p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm ${
-              activePage === "admin" ? "bg-blue-500" : ""
+            className={`p-2 text-white rounded-md shadow-md text-sm transition ${
+              activePage === "admin"
+                ? "bg-blue-600"
+                : "bg-blue-900 hover:bg-blue-700"
             }`}
           >
             Members Admin
@@ -108,88 +101,56 @@ const RegisterMember = () => {
         {activePage === "admin" && <UpdateDeleteMember />}
 
         {activePage === "register" && (
-          <div className="flex flex-col items-center">
-            <h3 className="text-3xl mb-2 text-blue-950">Register new Member</h3>
-            {/* Registration container */}
-            <div className="bg-white h-screen flex flex-col">
-              <div className="w-96 items-start">
-                {/* Name input */}
-                <div className="mb-4 flex flex-col">
-                  <label className="w-24 mr-2 text-sm">Name</label>
+          <div className="flex flex-col">
+            <h3 className="text-2xl font-semibold mb-4 text-blue-900">
+              Register New Member
+            </h3>
+            <div className="space-y-4">
+              {[
+                { label: "Name", name: "name", value: name },
+                { label: "Title", name: "title", value: title },
+                {
+                  label: "Description",
+                  name: "description",
+                  value: description,
+                },
+                { label: "Email", name: "email", value: email },
+              ].map(({ label, name, value }) => (
+                <div key={name} className="flex flex-col">
+                  <label className="text-sm font-medium">{label}</label>
                   <input
-                    className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
+                    className="w-full text-zinc-700 bg-gray-100 p-2 rounded-md"
                     type="text"
-                    name="name"
-                    value={name}
+                    name={name}
+                    value={value}
                     onChange={handleChange}
                   />
                 </div>
-                {/* Image input */}
-                <div className="mb-4 flex flex-col">
-                  <label className="w-24 mr-2 text-sm">Image</label>
-                  <input
-                    className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                    name="image"
-                    type="file"
-                    onChange={handleChange}
-                  />
-                </div>
-                {/* Title input */}
-                <div className="mb-4 flex flex-col">
-                  <label className="w-24 mr-2 text-sm">Title</label>
-                  <input
-                    className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                    name="title"
-                    value={title}
-                    onChange={handleChange}
-                  />
-                </div>
+              ))}
 
-                {/* Description input */}
-                <div className="mb-4 flex flex-col">
-                  <label className="w-24 mr-2 text-sm">Description</label>
-                  <input
-                    className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                    name="description"
-                    value={description}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                {/* Email input */}
-                <div className="mb-4 flex flex-col">
-                  <label className="w-24 mr-2 text-sm">Email</label>
-                  <input
-                    className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                    name="email"
-                    value={email}
-                    onChange={handleChange}
-                  />
-                </div>
+              <div className="flex flex-col">
+                <label className="text-sm font-medium">Image</label>
+                <input
+                  className="w-full text-zinc-700 bg-gray-100 p-2 rounded-md"
+                  name="image"
+                  type="file"
+                  onChange={handleChange}
+                />
               </div>
-              {/* Add Member button */}
-              <button
-                onClick={registerMember}
-                className="mb-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
-              >
-                ADD MEMBER
-              </button>
             </div>
+
+            <button
+              onClick={registerMember}
+              className="mt-4 bg-blue-900 text-white p-2 rounded-md hover:bg-blue-700 shadow-md"
+            >
+              ADD MEMBER
+            </button>
           </div>
         )}
       </div>
-
-      {/* Right Container for Selected Member */}
-      {activePage === "register" && (
-        <>
-          <div
-            className="flex-1 m-4 p-4 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-auto overflow-x-hidden overflow-y-auto"
-            style={{ flex: "1 1 60%" }}
-          >
-            <StaffmemberList />
-          </div>
-        </>
-      )}
+      <div className="flex-1 m-4 p-4 border border-opacity-20 border-blue-900 rounded-md shadow-md overflow-hidden">
+        {activePage === "register" && <StaffmemberList />}
+      </div>
     </section>
   );
 };

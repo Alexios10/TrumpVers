@@ -1,6 +1,6 @@
 const HomePage = () => {
   return (
-    <section className="flex flex-col items-center relative py-10">
+    <section className="flex flex-col items-center py-10">
       <div className="relative">
         <img
           src="src/assets/image/TrumpIntro.png"
