@@ -16,7 +16,7 @@ const StaffMemberItems: FC<IStaff> = ({
         <img
           src={StaffMembersService.getImageEndpoint() + image}
           alt={name}
-          className="w-60 h-56 border-2 border-red-600 rounded-full mx-auto shadow-md"
+          className="w-60 h-56 border-2 border-red-600 rounded-full mx-auto shadow-md object-cover"
         />
         <h3 className="text-lg font-bold text-blue-700 mt-4">{name}</h3>
         <p className="text-sm font-medium text-red-500">{title}</p>

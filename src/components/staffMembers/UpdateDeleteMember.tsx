@@ -131,18 +131,18 @@ const UpdateDeleteMember = () => {
         </header>
         <div className="space-y-4 ">
           <div>
-            <label className="text-sm">Get Member by Name:</label>
+            <label className="text-sm">Get Member by Name</label>
             <div className="flex gap-2 items-center">
               <input
                 type="text"
                 name="name"
                 value={name}
                 onChange={handleChange}
-                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-md border focus:ring focus:ring-blue-500"
+                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-sm border "
                 aria-label="Member Name"
               />
               <button
-                className="w-28 bg-blue-900 text-white p-2 rounded-md hover:bg-blue-500 shadow text-xs"
+                className="w-28 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
                 onClick={getByNameFromContext}
               >
                 GET NAME
@@ -150,17 +150,17 @@ const UpdateDeleteMember = () => {
             </div>
           </div>
           <div>
-            <label className="text-sm">Get Member by ID:</label>
+            <label className="text-sm">Get Member by ID</label>
             <div className="flex gap-2 items-center">
               <input
                 type="number"
                 name="id"
                 onChange={handleChange}
-                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-md border focus:ring focus:ring-blue-500"
+                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-sm border "
                 aria-label="Member ID"
               />
               <button
-                className="w-28 bg-blue-900 text-white p-2 rounded-md hover:bg-blue-500 shadow text-xs"
+                className="w-28 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
                 onClick={getByIdFromContext}
               >
                 GET ID
@@ -168,57 +168,57 @@ const UpdateDeleteMember = () => {
             </div>
           </div>
           <div>
-            <label className="text-sm">Image:</label>
+            <label className="text-sm">Image</label>
             <input
               type="file"
               name="image"
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-md border focus:ring focus:ring-blue-500"
+              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
               aria-label="Member Image"
             />
           </div>
           <div>
-            <label className="text-sm">Title:</label>
+            <label className="text-sm">Title</label>
             <input
               type="text"
               name="title"
               value={title}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-md border focus:ring focus:ring-blue-500"
+              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
               aria-label="Member Title"
             />
           </div>
           <div>
-            <label className="text-sm">Description:</label>
+            <label className="text-sm">Description</label>
             <input
               type="text"
               name="description"
               value={description}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-md border focus:ring focus:ring-blue-500"
+              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
               aria-label="Member Description"
             />
           </div>
           <div>
-            <label className="text-sm">Email:</label>
+            <label className="text-sm">Email</label>
             <input
               type="text"
               name="email"
               value={email}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-md border focus:ring focus:ring-blue-500"
+              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
               aria-label="Member Email"
             />
           </div>
           <div className="flex gap-4 justify-center">
             <button
-              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 shadow"
+              className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow"
               onClick={updateMemberWithContext}
             >
               UPDATE
             </button>
             <button
-              className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 shadow"
+              className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow"
               onClick={deleteMemberWithContext}
             >
               DELETE
@@ -228,28 +228,20 @@ const UpdateDeleteMember = () => {
       </section>
 
       {currentImageName && (
-        <div className="space-y-2 ml-80 flex flex-col w-80 h-fit border-2 border-cyan-400 p-5">
-          <div className="w-80 ">
+        <div className="flex flex-row justify-between m-28 ml-72  h-1/2 w-3/4 border-2 border-opacity-20 border-blue-950 rounded-sm shadow items-center p-4">
+          <div className="w-40 flex-none">
             <img
               src={StaffMembersService.getImageEndpoint() + currentImageName}
               alt={name}
-              className="w-32 h-32 object-cover rounded-md"
+              className="w-auto h-40 object-cover mx-auto "
             />
-            <p>
-              <strong>ID:</strong> {id}
-            </p>
-            <p>
-              <strong>Name:</strong> {name}
-            </p>
-            <p>
-              <strong>Description:</strong> {description}
-            </p>
-            <p>
-              <strong>Email:</strong> {email}
-            </p>
-            <p>
-              <strong>Title:</strong> {title}
-            </p>
+          </div>
+          <div className="flex-col justify-center w-60 ml-4">
+            <p>ID: {id}</p>
+            <p>Name: {name}</p>
+            <p>Description: {description}</p>
+            <p>Email: {email}</p>
+            <p>Title: {title}</p>
           </div>
         </div>
       )}
