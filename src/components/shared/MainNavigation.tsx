@@ -18,6 +18,15 @@ const MainNavigation = () => {
         <ul className="flex space-x-8 text-xl text-sky-950">
           {/* Makes all navbar items spaced 8px apart using flexbox */}
 
+           <li>
+            <Link
+              to="/thoughts"
+              className=" hover:text-red-600 transition duration-150"
+            >
+              THOUGHTS
+            </Link>
+          </li>
+
           <li>
             <Link
               to="/shop"
@@ -35,15 +44,7 @@ const MainNavigation = () => {
               STAFF
             </Link>
           </li>
-          <li>
-            <Link
-              to="/thoughts"
-              className=" hover:text-red-600 transition duration-150"
-            >
-              THOUGHTS
-            </Link>
-          </li>
-
+         
           <li>
             <Link
               to="/thoughtsAdmin"
