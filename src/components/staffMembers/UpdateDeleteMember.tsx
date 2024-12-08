@@ -123,7 +123,7 @@ const UpdateDeleteMember = () => {
   return (
     <section className="flex -ml-10 flex-col lg:flex-row gap-6">
       <section
-        className="flex flex-col items-center bg-white rounded-lg p-2 flex-1"
+        className="flex flex-col justify-center items-center bg-white rounded-lg p-2 flex-1"
         style={{ minWidth: "460px" }}
       >
         <header className="text-xl font-bold mb-4 text-blue-900 text-center">
@@ -228,7 +228,7 @@ const UpdateDeleteMember = () => {
       </section>
 
       {currentImageName && (
-        <div className="flex flex-row justify-between m-28 ml-72  h-1/2 w-3/4 border-2 border-opacity-20 border-blue-950 rounded-sm shadow items-center p-4">
+        <div className="flex flex-row justify-center m-28 ml-72  h-1/2 w-auto border-2 border-opacity-20 border-blue-950 rounded-sm shadow items-center p-4">
           <div className="w-40 flex-none">
             <img
               src={StaffMembersService.getImageEndpoint() + currentImageName}
@@ -236,12 +236,12 @@ const UpdateDeleteMember = () => {
               className="w-auto h-40 object-cover mx-auto "
             />
           </div>
-          <div className="flex-col justify-center w-60 ml-4">
+          <div className="flex-col justify-end w-60 ml-4">
             <p>ID: {id}</p>
-            <p>Name: {name}</p>
-            <p>Description: {description}</p>
+            <p>{name}</p>
+            <p>{description}</p>
+            <p>{title}</p>
             <p>Email: {email}</p>
-            <p>Title: {title}</p>
           </div>
         </div>
       )}
