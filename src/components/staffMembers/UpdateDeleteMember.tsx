@@ -228,27 +228,29 @@ const UpdateDeleteMember = () => {
       </section>
 
       {currentImageName && (
-        <div className="space-y-2 flex flex-col w-80 border-2 border-cyan-400 p-5">
-          <img
-            src={StaffMembersService.getImageEndpoint() + currentImageName}
-            alt={name}
-            className="w-32 h-32 object-cover rounded-md"
-          />
-          <p>
-            <strong>ID:</strong> {id}
-          </p>
-          <p>
-            <strong>Name:</strong> {name}
-          </p>
-          <p>
-            <strong>Description:</strong> {description}
-          </p>
-          <p>
-            <strong>Email:</strong> {email}
-          </p>
-          <p>
-            <strong>Title:</strong> {title}
-          </p>
+        <div className="space-y-2 ml-80 flex flex-col w-80 h-fit border-2 border-cyan-400 p-5">
+          <div className="w-80 ">
+            <img
+              src={StaffMembersService.getImageEndpoint() + currentImageName}
+              alt={name}
+              className="w-32 h-32 object-cover rounded-md"
+            />
+            <p>
+              <strong>ID:</strong> {id}
+            </p>
+            <p>
+              <strong>Name:</strong> {name}
+            </p>
+            <p>
+              <strong>Description:</strong> {description}
+            </p>
+            <p>
+              <strong>Email:</strong> {email}
+            </p>
+            <p>
+              <strong>Title:</strong> {title}
+            </p>
+          </div>
         </div>
       )}
     </section>
