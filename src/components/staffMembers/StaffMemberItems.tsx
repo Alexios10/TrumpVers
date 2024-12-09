@@ -11,29 +11,24 @@ const StaffMemberItems: FC<IStaff> = ({
   email,
 }) => {
   return (
-    <section>
-      {" "}
-      <article className="flex justify-center p-4 ">
-        <div className="flex flex-col  w-80 h-auto">
-          <div className="flex-1 justify-center ">
-            <img
-              src={StaffMembersService.getImageEndpoint() + image}
-              alt={name}
-              className="object-contain w-full h-40"
-            />
-          </div>
-          <div className="flex flex-col justify-center text-center rounded-sm bg-blue-950 bg-opacity-30 text-white font-bold m-2 h-36 shadow-lg">
-            <h3 className="text-xl">{name}</h3>
-            <p>{title}</p>
-            <p>{description}</p>
-
-            <p className="flex items-center justify-center text-sm">
-              <LuMail className="mr-2" />
-            </p>
-            <p className="flex justify-center text-sm">{email}</p>
-          </div>
-        </div>
-      </article>
+    <section className="flex justify-center p-2">
+      <div className="bg-zinc-100 border border-solid border-blue-500 rounded-xl shadow-xl px-16 py-4 text-center overflow-hidden">
+        <img
+          src={StaffMembersService.getImageEndpoint() + image}
+          alt={name}
+          className="w-60 h-56 border-2 border-red-600 rounded-full mx-auto shadow-md object-cover"
+        />
+        <h3 className="text-lg font-bold text-blue-700 mt-4">{name}</h3>
+        <p className="text-sm font-medium text-red-500">{title}</p>
+        <p className="text-xs italic text-gray-600 mt-2">{description}</p>
+        <a
+          href={`mailto:${email}`}
+          className="w-full text-xs inline-flex items-center justify-center mt-4 font-medium text-blue-600 hover:text-red-600 transition"
+        >
+          <LuMail className="mr-2" />
+          {email}
+        </a>
+      </div>
     </section>
   );
 };

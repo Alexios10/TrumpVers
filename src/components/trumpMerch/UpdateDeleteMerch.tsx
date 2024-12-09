@@ -135,95 +135,102 @@ const UpdateDeleteMerch = () => {
   };
 
   return (
-    <section className="flex flex-col md:flex-row gap-6 p-4">
-      <section className="bg-white w-full md:w-1/3 p-6 shadow-md rounded-lg">
-        <header className="text-3xl mb-4 text-blue-950">
+    <section className="flex -ml-10 flex-col lg:flex-row gap-6">
+      <section
+        className="flex flex-col justify-center items-center bg-white rounded-lg p-2 flex-1"
+        style={{ minWidth: "460px" }}
+      >
+        <header className="text-xl font-bold mb-4 text-blue-900 text-center">
           Update or Delete Merch
         </header>
         <div className="space-y-4">
           <div className="mb-4">
-            <label className="font-semibold text-sm">Get Merch by Name:</label>
+            <label className="text-sm">Get Merch by Name</label>
             <div className="flex gap-4 items-center">
               <input
                 type="text"
                 name="name"
                 value={name}
                 onChange={handleChange}
-                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-sm border"
                 aria-label="Merch Name"
               />
               <button
-                className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-500 shadow-lg text-sm"
+                className="w-28 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
                 onClick={getByNameFromContext}
               >
                 Get By Name
               </button>
             </div>
           </div>
-          {/* get by ID */}
-          <div className="flex mt-5 gap-4 items-center">
-            <input
-              type="number"
-              name="id"
-              onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
-              aria-label="Member Name"
-            />
-            <button
-              className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-500 shadow-lg text-sm"
-              onClick={getByIdFromContext}
-            >
-              Get By ID
-            </button>
-          </div>
+
           <div className="mb-4">
-            <label className="font-semibold text-sm">Image:</label>
+            <label className="text-sm">Get Merch by ID</label>
+            <div className="flex gap-4 items-center">
+              <input
+                type="number"
+                name="id"
+                onChange={handleChange}
+                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-sm border"
+                aria-label="Member Name"
+              />
+              <button
+                className="w-28 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
+                onClick={getByIdFromContext}
+              >
+                Get By Id
+              </button>
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <label className="text-sm">Image</label>
             <input
               type="file"
               name="image"
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               aria-label="Merch Image"
             />
           </div>
           <div className="mb-4">
-            <label className="font-semibold text-sm">Price:</label>
+            <label className="text-sm">Price</label>
             <input
               type="number"
               name="price"
               value={price || ""}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
             />
           </div>
           <div className="mb-4">
-            <label className="font-semibold text-sm">Quantity:</label>
+            <label className="text-sm">Quantity</label>
             <input
               type="number"
               name="quantity"
               value={quantity || ""}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               aria-label="Quantity"
             />
           </div>
           <div className="mb-4">
-            <label className="font-semibold text-sm">Description:</label>
+            <label className="text-sm">Description</label>
             <input
               type="text"
               name="description"
               value={description || ""}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-md"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               aria-label="Description"
             />
           </div>
 
           {/* Category Input */}
           <div className="mb-2 flex flex-col">
-            <label className="w-24 mr-2 text-[0.625rem]">Category</label>
+            <label className="w-24 mr-2 text-sm">Category</label>
             <select
-              className="w-full text-zinc-700 bg-gray-200"
+              className="w-full h-8 text-zinc-700 bg-gray-200"
               name="category"
               value={category}
               onChange={handleChange}
@@ -235,15 +242,15 @@ const UpdateDeleteMerch = () => {
               ))}
             </select>
           </div>
-          <div className="flex gap-4">
+          <div className="flex justify-center gap-4">
             <button
-              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 shadow-lg text-sm"
+              className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow-lg text-sm"
               onClick={updateMerchWithContext}
             >
               Update
             </button>
             <button
-              className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 shadow-lg text-sm"
+              className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow-lg text-sm"
               onClick={deleteMerchWithContext}
             >
               Delete

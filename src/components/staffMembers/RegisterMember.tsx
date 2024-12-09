@@ -79,30 +79,30 @@ const RegisterMember = () => {
         <div className="flex justify-center gap-4 mb-6">
           <button
             onClick={() => switchPage("register")}
-            className={`p-2 text-white rounded-md shadow-md text-sm transition ${
+            className={`p-2 text-white rounded-sm shadow-md text-sm transition ${
               activePage === "register"
                 ? "bg-blue-600"
                 : "bg-blue-900 hover:bg-blue-700"
             }`}
           >
-            Register New Member
+            REGISTER NEW MEMEBER
           </button>
           <button
             onClick={() => switchPage("admin")}
-            className={`p-2 text-white rounded-md shadow-md text-sm transition ${
+            className={`p-2 text-white rounded-sm shadow-md text-sm transition ${
               activePage === "admin"
                 ? "bg-blue-600"
                 : "bg-blue-900 hover:bg-blue-700"
             }`}
           >
-            Members Admin
+            MEMEBERS ADMIN
           </button>
         </div>
         {activePage === "admin" && <UpdateDeleteMember />}
 
         {activePage === "register" && (
           <div className="flex flex-col">
-            <h3 className="text-2xl font-semibold mb-4 text-blue-900">
+            <h3 className="text-xl font-bold mb-4 text-blue-900 text-center">
               Register New Member
             </h3>
             <div className="space-y-4">
@@ -119,7 +119,7 @@ const RegisterMember = () => {
                 <div key={name} className="flex flex-col">
                   <label className="text-sm font-medium">{label}</label>
                   <input
-                    className="w-full text-zinc-700 bg-gray-100 p-2 rounded-md"
+                    className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm"
                     type="text"
                     name={name}
                     value={value}
@@ -131,7 +131,7 @@ const RegisterMember = () => {
               <div className="flex flex-col">
                 <label className="text-sm font-medium">Image</label>
                 <input
-                  className="w-full text-zinc-700 bg-gray-100 p-2 rounded-md"
+                  className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm"
                   name="image"
                   type="file"
                   onChange={handleChange}
@@ -141,7 +141,7 @@ const RegisterMember = () => {
 
             <button
               onClick={registerMember}
-              className="mt-4 bg-blue-900 text-white p-2 rounded-md hover:bg-blue-700 shadow-md"
+              className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md"
             >
               ADD MEMBER
             </button>

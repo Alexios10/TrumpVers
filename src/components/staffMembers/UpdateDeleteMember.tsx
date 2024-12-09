@@ -3,6 +3,7 @@ import IStaffContext from "../../interfaces/staffMembers/IStaffContext";
 import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaff from "../../interfaces/staffMembers/Istaff";
 import StaffMembersService from "../../services/StaffMembersService";
+import { LuMail } from "react-icons/lu";
 
 const UpdateDeleteMember = () => {
   const { getMemberById, getMemberByName, putMember, deleteMember } =
@@ -123,7 +124,7 @@ const UpdateDeleteMember = () => {
   return (
     <section className="flex -ml-10 flex-col lg:flex-row gap-6">
       <section
-        className="flex flex-col items-center bg-white rounded-lg p-2 flex-1"
+        className="flex flex-col justify-center items-center bg-white rounded-lg p-2 flex-1"
         style={{ minWidth: "460px" }}
       >
         <header className="text-xl font-bold mb-4 text-blue-900 text-center">
@@ -131,18 +132,18 @@ const UpdateDeleteMember = () => {
         </header>
         <div className="space-y-4 ">
           <div>
-            <label className="text-sm">Get Member by Name:</label>
+            <label className="text-sm">Get Member by Name</label>
             <div className="flex gap-2 items-center">
               <input
                 type="text"
                 name="name"
                 value={name}
                 onChange={handleChange}
-                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-md border focus:ring focus:ring-blue-500"
+                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-sm border "
                 aria-label="Member Name"
               />
               <button
-                className="w-28 bg-blue-900 text-white p-2 rounded-md hover:bg-blue-500 shadow text-xs"
+                className="w-28 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
                 onClick={getByNameFromContext}
               >
                 GET NAME
@@ -150,17 +151,17 @@ const UpdateDeleteMember = () => {
             </div>
           </div>
           <div>
-            <label className="text-sm">Get Member by ID:</label>
+            <label className="text-sm">Get Member by ID</label>
             <div className="flex gap-2 items-center">
               <input
                 type="number"
                 name="id"
                 onChange={handleChange}
-                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-md border focus:ring focus:ring-blue-500"
+                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-sm border "
                 aria-label="Member ID"
               />
               <button
-                className="w-28 bg-blue-900 text-white p-2 rounded-md hover:bg-blue-500 shadow text-xs"
+                className="w-28 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
                 onClick={getByIdFromContext}
               >
                 GET ID
@@ -168,57 +169,57 @@ const UpdateDeleteMember = () => {
             </div>
           </div>
           <div>
-            <label className="text-sm">Image:</label>
+            <label className="text-sm">Image</label>
             <input
               type="file"
               name="image"
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-md border focus:ring focus:ring-blue-500"
+              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
               aria-label="Member Image"
             />
           </div>
           <div>
-            <label className="text-sm">Title:</label>
+            <label className="text-sm">Title</label>
             <input
               type="text"
               name="title"
               value={title}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-md border focus:ring focus:ring-blue-500"
+              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
               aria-label="Member Title"
             />
           </div>
           <div>
-            <label className="text-sm">Description:</label>
+            <label className="text-sm">Description</label>
             <input
               type="text"
               name="description"
               value={description}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-md border focus:ring focus:ring-blue-500"
+              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
               aria-label="Member Description"
             />
           </div>
           <div>
-            <label className="text-sm">Email:</label>
+            <label className="text-sm">Email</label>
             <input
               type="text"
               name="email"
               value={email}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-md border focus:ring focus:ring-blue-500"
+              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
               aria-label="Member Email"
             />
           </div>
           <div className="flex gap-4 justify-center">
             <button
-              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 shadow"
+              className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow"
               onClick={updateMemberWithContext}
             >
               UPDATE
             </button>
             <button
-              className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 shadow"
+              className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow"
               onClick={deleteMemberWithContext}
             >
               DELETE
@@ -228,28 +229,26 @@ const UpdateDeleteMember = () => {
       </section>
 
       {currentImageName && (
-        <div className="space-y-2 ml-80 flex flex-col w-80 h-fit border-2 border-cyan-400 p-5">
-          <div className="w-80">
+        <div className="flex justify-center m-28 ml-72 h-96 w-full border-2 border-opacity-20 border-blue-500 rounded-md shadow-lg items-center p-6 bg-zinc-100">
+          <div className="w-40 flex-none">
             <img
               src={StaffMembersService.getImageEndpoint() + currentImageName}
               alt={name}
-              className="w-32 h-32 object-cover rounded-md"
+              className="w-60 h-56 object-cover mx-auto rounded-full border-2 border-red-600 shadow-md"
             />
-            <p>
-              <strong>ID:</strong> {id}
-            </p>
-            <p>
-              <strong>Name:</strong> {name}
-            </p>
-            <p>
-              <strong>Description:</strong> {description}
-            </p>
-            <p>
-              <strong>Email:</strong> {email}
-            </p>
-            <p>
-              <strong>Title:</strong> {title}
-            </p>
+          </div>
+          <div className="flex flex-col justify-end w-60 ml-4 text-gray-800">
+            <p className="text-sm font-medium">ID: {id}</p>
+            <p className="text-lg font-bold text-blue-700 mt-4">{name}</p>
+            <p className="text-sm font-medium text-red-500">{title}</p>
+            <p className="text-xs italic text-gray-600 mt-2">{description}</p>
+            <a
+              href={`mailto:${email}`}
+              className="w-full text-xs inline-flex items-center justify-center mt-4 font-medium text-blue-600 hover:text-red-600 hover:underline transition duration-200"
+            >
+              <LuMail className="mr-2" />
+              {email}
+            </a>
           </div>
         </div>
       )}
