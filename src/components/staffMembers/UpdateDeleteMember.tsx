@@ -124,8 +124,8 @@ const UpdateDeleteMember = () => {
   return (
     <section className="flex -ml-10 flex-col lg:flex-row gap-6">
       <section
-        className="flex flex-col justify-center items-center bg-white rounded-lg p-2 flex-1"
-        style={{ minWidth: "460px" }}
+        className="flex flex-col justify-center items-center bg-white rounded-lg p-2 "
+        style={{ flex: "1 1 40%" }}
       >
         <header className="text-xl font-bold mb-4 text-blue-900 text-center">
           Update or Delete Member
@@ -229,17 +229,17 @@ const UpdateDeleteMember = () => {
       </section>
 
       {currentImageName && (
-        <div className="flex justify-center m-28 ml-72 h-96 w-full border-2 border-opacity-20 border-blue-500 rounded-md shadow-lg items-center p-6 bg-zinc-100">
-          <div className="w-40 flex-none">
+        <div className="flex flex-col justify-center items-center ml-20 h-auto w-[80%] max-w-[800px] border-2 border-opacity-20 border-blue-500 rounded-md shadow-lg p-6 bg-zinc-100">
+          <div className="w-40 h-40 mb-4" >
             <img
               src={StaffMembersService.getImageEndpoint() + currentImageName}
               alt={name}
-              className="w-60 h-56 object-cover mx-auto rounded-full border-2 border-red-600 shadow-md"
+              className="w-40 h-40 object-cover mx-auto rounded-full border-2 border-red-600 shadow-md"
             />
           </div>
-          <div className="flex flex-col justify-end w-60 ml-4 text-gray-800">
-            <p className="text-sm font-medium">ID: {id}</p>
+          <div className="flex flex-col justify-start w-full text-center text-gray-800">
             <p className="text-lg font-bold text-blue-700 mt-4">{name}</p>
+            <p className="text-sm font-medium">ID: {id}</p>
             <p className="text-sm font-medium text-red-500">{title}</p>
             <p className="text-xs italic text-gray-600 mt-2">{description}</p>
             <a

@@ -4,6 +4,7 @@ import IStaffContext from "../../interfaces/staffMembers/IStaffContext";
 import StaffmemberList from "./StaffMemberList";
 import UpdateDeleteMember from "./UpdateDeleteMember";
 import StaffMembersService from "../../services/StaffMembersService";
+import StaffMemberItems from "./StaffMemberItems";
 
 const RegisterMember = () => {
   const { postMember } = useContext(StaffMemberContext) as IStaffContext;
@@ -148,7 +149,7 @@ const RegisterMember = () => {
           </div>
         )}
       </div>
-      <div className="flex-1 m-4 p-4 border border-opacity-20 border-blue-900 rounded-md shadow-md overflow-hidden">
+      <div className="flex-1 m-4 p-4 border border-opacity-20 border-red-900 rounded-md shadow-md overflow-hidden">
         {activePage === "register" && <StaffmemberList />}
       </div>
     </section>
