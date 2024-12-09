@@ -19,7 +19,6 @@ const RegisterThought = () => {
   );
 
   useEffect(() => {
-    // Save activePage to localStorage whenever it changes
     localStorage.setItem("activePage", activePage);
   }, [activePage]);
 
@@ -46,6 +45,11 @@ const RegisterThought = () => {
   };
 
   const registerThought = () => {
+    if (!name || !thought || !category || category === "Select a category") {
+      alert("All fields are required.");
+      return;
+    }
+
     const newThought = {
       name,
       thought,
@@ -60,8 +64,8 @@ const RegisterThought = () => {
     setCategory("");
   };
 
-  const choosenCategoriy = [
-    "Select a catagory",
+  const choosenCategories = [
+    "Select a category",
     "Politic",
     "Economy",
     "History",
@@ -75,35 +79,29 @@ const RegisterThought = () => {
       ? thoughts
       : thoughts.filter((thought) => thought.category === filterCategory);
 
-  const switchPage = (page: "register" | "admin") => {
-    setActivePage(page);
-  };
+  const renderPageSwitchButtons = () => (
+    <div className="flex justify-center gap-4 mx-3 mb-5">
+      {["register", "admin"].map((page) => (
+        <button
+          key={page}
+          onClick={() => setActivePage(page as "register" | "admin")}
+          className={`p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm ${
+            activePage === page ? "bg-blue-500" : ""
+          }`}
+          aria-label={`Switch to ${page} page`}
+        >
+          {page === "register" ? "Register New Thought" : "Thought Admin"}
+        </button>
+      ))}
+    </div>
+  );
 
   return (
     <section className="flex">
-      <div className="bg-white flex flex-col " style={{ flex: "1 1 40%" }}>
-        <div className="flex justify-center gap-4 mx-3 mb-5">
-          <button
-            onClick={() => switchPage("register")}
-            className={`p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm ${
-              activePage === "register" ? "bg-blue-500" : ""
-            }`}
-          >
-            Register New Thought
-          </button>
-
-          <button
-            onClick={() => switchPage("admin")}
-            className={`p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm ${
-              activePage === "admin" ? "bg-blue-500" : ""
-            }`}
-          >
-            Thought Admin
-          </button>
-        </div>
+      <div className="bg-white flex flex-col" style={{ flex: "1 1 40%" }}>
+        {renderPageSwitchButtons()}
 
         {activePage === "admin" && <UpdateDeleteThoughts />}
-
         {activePage === "register" && (
           <div className="flex flex-col items-center">
             <h3 className="text-3xl mb-2 text-blue-950">
@@ -129,7 +127,7 @@ const RegisterThought = () => {
                     value={category}
                     onChange={handleChange}
                   >
-                    {choosenCategoriy.map((category) => (
+                    {choosenCategories.map((category) => (
                       <option key={category} value={category}>
                         {category}
                       </option>
@@ -158,18 +156,31 @@ const RegisterThought = () => {
       </div>
 
       <div
-        className="flex justify-center m-4 p-4 w-max border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-screen overflow-x-hidden overflow-y-auto"
+        className="flex flex-col justify-center m-4 p-4 w-max border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-auto overflow-x-hidden overflow-y-auto"
         style={{ flex: "1 1 60%" }}
       >
-        {activePage === "register" ? (
+        {activePage === "register" && (
           <>
-            <ThoughtList thoughts={filteredThoughts} />
-          </>
-        ) : (
-          <>
-            <div className="hidden">
-              <ThoughtList thoughts={filteredThoughts} />
+            {/* Filter Dropdown */}
+            <div className="flex justify-start mb-4">
+              <select
+                className="w-64 p-2 rounded-sm bg-gray-200 text-zinc-700"
+                name="filterCategory"
+                value={filterCategory}
+                onChange={handleChange}
+              >
+                <option value="All">All Categories</option>
+                {choosenCategories
+                  .filter((cat) => cat !== "Select a category")
+                  .map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+              </select>
             </div>
+
+            <ThoughtList thoughts={filteredThoughts} />
           </>
         )}
       </div>
