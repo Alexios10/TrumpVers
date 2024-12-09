@@ -138,9 +138,9 @@ const UpdateDeleteMerch = () => {
     <section className="flex -ml-10 flex-col lg:flex-row gap-6">
       <section
         className="flex flex-col justify-center items-center bg-white rounded-lg p-2 flex-1"
-        style={{ minWidth: "460px" }}
+        style={{ flex: "1 1 40%" }}
       >
-        <header className="text-xl font-bold mb-4 text-blue-900 text-center">
+        <header className="text-3xl mb-2 text-blue-950">
           Update or Delete Merch
         </header>
         <div className="space-y-4">
@@ -152,14 +152,14 @@ const UpdateDeleteMerch = () => {
                 name="name"
                 value={name}
                 onChange={handleChange}
-                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-sm border"
+                className="flex-grow text-zinc-700 bg-gray-200 p-2 rounded-sm border"
                 aria-label="Merch Name"
               />
               <button
                 className="w-28 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
                 onClick={getByNameFromContext}
               >
-                Get By Name
+                GET BY NAME
               </button>
             </div>
           </div>
@@ -171,14 +171,14 @@ const UpdateDeleteMerch = () => {
                 type="number"
                 name="id"
                 onChange={handleChange}
-                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-sm border"
+                className="flex-grow text-zinc-700 bg-gray-200 p-2 rounded-sm border"
                 aria-label="Member Name"
               />
               <button
                 className="w-28 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
                 onClick={getByIdFromContext}
               >
-                Get By Id
+                GET BY ID
               </button>
             </div>
           </div>
@@ -247,41 +247,48 @@ const UpdateDeleteMerch = () => {
               className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow-lg text-sm"
               onClick={updateMerchWithContext}
             >
-              Update
+              UPDATE
             </button>
             <button
               className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow-lg text-sm"
               onClick={deleteMerchWithContext}
             >
-              Delete
+              DELETE
             </button>
           </div>
         </div>
       </section>
 
-      <div className="flex-1 p-6 bg-white shadow-md rounded-lg overflow-auto">
+      <div
+        className="flex justify-center items-center m-4 p-4 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-auto overflow-x-hidden overflow-y-auto"
+        style={{ flex: "1 1 60%" }}
+      >
         {currentImageName && (
-          <div className="grid gap-4 text-center">
-            <div>
-              <span className="font-bold">Name:</span> {name}
+          <div className="flex flex-col w-80 rounded-sm p-1 shadow-lg border-solid border-2 border-blue-800 border-opacity-20 ">
+            <div className="flex-1 m-8">
+              <img
+                src={MerchService.getImageEndpoint() + currentImageName}
+                alt={name}
+                className="object-contain w-full"
+              />
             </div>
-            <div>
-              <span className="font-bold">Price:</span> {price}
+            <hr />
+
+            <div className="grid m-2">
+              <div className=" bg-white flex flex-col text-center justify-between mb-4">
+                <h3 className="text-2xl font-semibold text-gray-800">{name}</h3>
+
+                <p className="text-sm text-center text-gray-800">
+                  {description}
+                </p>
+                <p className="text-2xl text-gray-900 text-start">{price} $</p>
+              </div>
+
+              <div className="text-xs">
+                <p className="mt-2  text-gray-800">Category: {category}</p>
+                <p className="mt-2  text-gray-800">{quantity} left</p>
+              </div>
             </div>
-            <div>
-              <span className="font-bold">Quantity:</span> {quantity}
-            </div>
-            <div>
-              <span className="font-bold">Description:</span> {description}
-            </div>
-            <div>
-              <span className="font-bold">Category:</span> {category}
-            </div>
-            <img
-              src={MerchService.getImageEndpoint() + currentImageName}
-              alt={name}
-              className="w-40 h-40 object-cover mx-auto border rounded-md"
-            />
           </div>
         )}
       </div>

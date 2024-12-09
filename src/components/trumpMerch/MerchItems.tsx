@@ -23,8 +23,8 @@ const MerchItem: FC<IMerch> = ({
         <div className="p-2 bg-white flex flex-col justify-between">
           <h3 className="text-xl font-semibold text-gray-800">{name}</h3>
           <div className="flex justify-between">
-            <p className="text-sm text-gray-600  line-clamp-3">{description}</p>
-            <p className="text-lg font-medium text-gray-900">{price} $</p>
+            <p className="text-sm text-gray-600 line-clamp-3">{description}</p>
+            <p className="text-xl font-medium text-gray-900">{price} $</p>
           </div>
         </div>
         <button className="bg-blue-700 text-white font-semibold py-2 px-3 rounded-md hover:bg-blue-600 transition-colors duration-300">
