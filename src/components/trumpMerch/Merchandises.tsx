@@ -23,7 +23,12 @@ const Merchandises = () => {
   return (
     <section className="flex">
       <div className="w-96 p-12 text-lg border-r-2 border-slate-400 text-blue-950 ">
-        <h2 className="text-2xl font-bold">Trump Merchandise</h2>
+        <h2 className="sm:text-md md:text-lg lg:text-xl text-center font-bold">
+          America First:
+        </h2>
+        <h3 className="sm:text-sm md:text-md lg:text-lg text-center">
+          Official Trump Merchandise
+        </h3>
         <hr className="w-full h-0.5 mx-auto rounded m-2 bg-slate-400" />
 
         <ul className="list-group space-y-4 font-semibold mt-8">
