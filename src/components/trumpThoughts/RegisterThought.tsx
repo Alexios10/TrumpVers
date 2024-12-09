@@ -158,7 +158,7 @@ const RegisterThought = () => {
       </div>
 
       <div
-        className="flex justify-center m-4 p-4 w-max border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-auto overflow-x-hidden overflow-y-auto"
+        className="flex justify-center m-4 p-4 w-max border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-screen overflow-x-hidden overflow-y-auto"
         style={{ flex: "1 1 60%" }}
       >
         {activePage === "register" ? (

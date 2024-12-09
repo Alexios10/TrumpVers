@@ -16,13 +16,14 @@ const ThoughtItem: FC<IThoughts> = ({
   return (
     <article className="mx-5 my-4 rounded-sm p-1 shadow-lg h-auto w-auto border-solid border-2 border-blue-950 border-opacity-20 overflow-hidden">
       <div className="m-2">
+        <p className="text-xs">ID: {id}</p>
+
         <div className="flex justify-between items-center">
           <h3 className="text-sm align-text-top">{name}</h3>
-          <p className="text-end text-[0.625rem]">
+          <p className="text-end text-xs">
             {dateCreated ? new Date(dateCreated).toLocaleDateString() : "N/A"}
           </p>
         </div>
-        <p className="text-xs">ID: {id}</p>
         <p className="text-xs">{category}</p>
         <p className="mt-2 text-base">
           {isExpanded ? thought : truncatedThought}
