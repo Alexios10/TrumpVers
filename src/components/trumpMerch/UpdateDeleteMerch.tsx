@@ -268,14 +268,22 @@ const UpdateDeleteMerch = () => {
             <div>
               <span className="font-bold">Price:</span> {price}
             </div>
-            <div>
-              <span className="font-bold">Quantity:</span> {quantity}
-            </div>
-            <div>
-              <span className="font-bold">Description:</span> {description}
-            </div>
-            <div>
-              <span className="font-bold">Category:</span> {category}
+            <hr />
+
+            <div className="grid m-2">
+              <div className=" bg-white flex flex-col text-center justify-between mb-4">
+                <h3 className="text-2xl font-semibold text-gray-800">{name}</h3>
+
+                <p className="text-sm text-center text-gray-800">
+                  {description}
+                </p>
+                <p className="text-2xl text-gray-900 text-start">{price} $</p>
+              </div>
+
+              <div className="text-xs">
+                <p className="mt-2 text-gray-800">Category: {category}</p>
+                <p className="mt-2 text-gray-800">{quantity} left</p>
+              </div>
             </div>
             <img
               src={MerchService.getImageEndpoint() + currentImageName}
