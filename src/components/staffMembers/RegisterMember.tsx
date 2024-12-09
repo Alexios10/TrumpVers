@@ -125,7 +125,7 @@ const RegisterMember = () => {
                     name={name}
                     value={value}
                     onChange={handleChange}
-                  />
+                  />{" "}
                 </div>
               ))}
 
@@ -149,7 +149,8 @@ const RegisterMember = () => {
           </div>
         )}
       </div>
-      <div className="flex-1 m-4 p-4 border border-opacity-20 border-red-900 rounded-md shadow-md overflow-hidden">
+
+      <div className="flex-1 m-4 p-4 border border-opacity-20 border-blue-950 rounded-sm shadow-md overflow-hidden">
         {activePage === "register" && <StaffmemberList />}
       </div>
     </section>
