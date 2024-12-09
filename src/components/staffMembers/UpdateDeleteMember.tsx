@@ -3,6 +3,7 @@ import IStaffContext from "../../interfaces/staffMembers/IStaffContext";
 import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaff from "../../interfaces/staffMembers/Istaff";
 import StaffMembersService from "../../services/StaffMembersService";
+import { LuMail } from "react-icons/lu";
 
 const UpdateDeleteMember = () => {
   const { getMemberById, getMemberByName, putMember, deleteMember } =
@@ -228,20 +229,26 @@ const UpdateDeleteMember = () => {
       </section>
 
       {currentImageName && (
-        <div className="flex flex-row justify-center m-28 ml-72  h-1/2 w-auto border-2 border-opacity-20 border-blue-950 rounded-sm shadow items-center p-4">
+        <div className="flex justify-center m-28 ml-72 h-96 w-full border-2 border-opacity-20 border-blue-500 rounded-md shadow-lg items-center p-6 bg-zinc-100">
           <div className="w-40 flex-none">
             <img
               src={StaffMembersService.getImageEndpoint() + currentImageName}
               alt={name}
-              className="w-auto h-40 object-cover mx-auto "
+              className="w-60 h-56 object-cover mx-auto rounded-full border-2 border-red-600 shadow-md"
             />
           </div>
-          <div className="flex-col justify-end w-60 ml-4">
-            <p>ID: {id}</p>
-            <p>{name}</p>
-            <p>{description}</p>
-            <p>{title}</p>
-            <p>Email: {email}</p>
+          <div className="flex flex-col justify-end w-60 ml-4 text-gray-800">
+            <p className="text-sm font-medium">ID: {id}</p>
+            <p className="text-lg font-bold text-blue-700 mt-4">{name}</p>
+            <p className="text-sm font-medium text-red-500">{title}</p>
+            <p className="text-xs italic text-gray-600 mt-2">{description}</p>
+            <a
+              href={`mailto:${email}`}
+              className="w-full text-xs inline-flex items-center justify-center mt-4 font-medium text-blue-600 hover:text-red-600 hover:underline transition duration-200"
+            >
+              <LuMail className="mr-2" />
+              {email}
+            </a>
           </div>
         </div>
       )}

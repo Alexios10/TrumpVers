@@ -12,7 +12,7 @@ const StaffMemberItems: FC<IStaff> = ({
 }) => {
   return (
     <section className="flex justify-center p-2">
-      <div className="bg-white border border-blue-500 rounded-xl shadow-xl px-16 py-4 text-center overflow-hidden">
+      <div className="bg-zinc-100 border border-solid border-blue-500 rounded-xl shadow-xl px-16 py-4 text-center overflow-hidden">
         <img
           src={StaffMembersService.getImageEndpoint() + image}
           alt={name}
