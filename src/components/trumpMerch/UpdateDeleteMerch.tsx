@@ -285,8 +285,8 @@ const UpdateDeleteMerch = () => {
               </div>
 
               <div className="text-xs">
-                <p className="mt-2  text-gray-800">Category: {category}</p>
-                <p className="mt-2  text-gray-800">{quantity} left</p>
+                <p className="mt-2 text-gray-800">Category: {category}</p>
+                <p className="mt-2 text-gray-800">{quantity} left</p>
               </div>
             </div>
           </div>
