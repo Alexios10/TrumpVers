@@ -15,7 +15,7 @@ const UpdateDeleteMember = () => {
   const [currentImageName, setCurrentImageName] = useState<string | null>(null); // Stores current image
   const [description, setDescription] = useState<string>("");
   const [title, setTitle] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
+  const [email, setEmail] = useState<string>(""); 
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;

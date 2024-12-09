@@ -96,7 +96,7 @@ const RegisterMember = () => {
                 : "bg-blue-900 hover:bg-blue-700"
             }`}
           >
-            MEMEBERS ADMIN
+            MEMBERS ADMIN
           </button>
         </div>
         {activePage === "admin" && <UpdateDeleteMember />}
