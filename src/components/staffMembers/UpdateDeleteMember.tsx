@@ -229,7 +229,7 @@ const UpdateDeleteMember = () => {
 
       {currentImageName && (
         <div className="space-y-2 ml-80 flex flex-col w-80 h-fit border-2 border-cyan-400 p-5">
-          <div className="w-80 ">
+          <div className="w-80">
             <img
               src={StaffMembersService.getImageEndpoint() + currentImageName}
               alt={name}
