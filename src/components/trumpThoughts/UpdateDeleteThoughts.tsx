@@ -2,6 +2,8 @@ import { ChangeEvent, useContext, useState } from "react";
 import { ThoughtsContext } from "../../contexts/ThoughtsContext";
 import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 import IThoughts from "../../interfaces/thoughts/IThoughts";
+import Container from "../shared/Container";
+import SwitchPageButtons from "../shared/SwitchPageButtons";
 
 const UpdateDeleteThoughts = () => {
   const { getThoughtById, getThoughtByName, putThought, deleteThought } =
@@ -12,6 +14,9 @@ const UpdateDeleteThoughts = () => {
   const [thought, setThought] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [matchingThoughts, setMatchingThoughts] = useState<IThoughts[]>([]);
+  const [activePage, setActivePage] = useState<"register" | "admin">(
+    "register"
+  );
 
   const choosenCategories = [
     "Select a category",
@@ -115,11 +120,14 @@ const UpdateDeleteThoughts = () => {
   };
 
   return (
-    <section className="flex flex-col items-center">
-      <h3 className="text-3xl mb-4 text-blue-950 ">Thoughts Admin</h3>
-
+    <section className="flex">
       {/* Input and Buttons */}
-      <div className="bg-white h-auto flex flex-col ">
+      <div className="flex flex-col items-center ">
+        <SwitchPageButtons
+          activePage={activePage}
+          setActivePage={setActivePage}
+        />
+        <h3 className="text-3xl mb-4 text-blue-950 ">Thoughts Admin</h3>
         <div className="w-96 items-start">
           {/* Get Thought by Name */}
           <div className="mb-4 flex flex-col">
@@ -209,9 +217,10 @@ const UpdateDeleteThoughts = () => {
       </div>
 
       {/* Display Matching Thoughts */}
-      <div className="h-60 overflow-x-hidden overflow-y-auto w-auto mt-4">
-        {matchingThoughts.length > 0
-          ? matchingThoughts.map((thought) => (
+      <Container>
+        <div className=" ">
+          {matchingThoughts.length > 0 &&
+            matchingThoughts.map((thought) => (
               <div
                 key={thought.id}
                 className="mx-5 my-4 rounded-md p-4 shadow-lg h-40 w-96 border border-gray-300 bg-white flex flex-col overflow-y-auto"
@@ -227,9 +236,9 @@ const UpdateDeleteThoughts = () => {
                 <p className="text-xs mb-2 text-gray-500">{thought.category}</p>
                 <p className="text-sm text-gray-700">{thought.thought}</p>
               </div>
-            ))
-          : ""}
-      </div>
+            ))}
+        </div>
+      </Container>
     </section>
   );
 };

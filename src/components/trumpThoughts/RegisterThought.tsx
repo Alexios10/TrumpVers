@@ -1,8 +1,10 @@
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { ThoughtsContext } from "../../contexts/ThoughtsContext";
 import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 import ThoughtList from "./ThoughtList";
 import UpdateDeleteThoughts from "./UpdateDeleteThoughts";
+import Container from "../shared/Container";
+import SwitchPageButtons from "../shared/SwitchPageButtons";
 
 const RegisterThought = () => {
   const { postThought, thoughts } = useContext(
@@ -14,13 +16,8 @@ const RegisterThought = () => {
   const [category, setCategory] = useState<string>("");
   const [filterCategory, setFilterCategory] = useState<string>("All");
   const [activePage, setActivePage] = useState<"register" | "admin">(
-    () =>
-      (localStorage.getItem("activePage") as "register" | "admin") || "register"
+    "register"
   );
-
-  useEffect(() => {
-    localStorage.setItem("activePage", activePage);
-  }, [activePage]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -79,31 +76,16 @@ const RegisterThought = () => {
       ? thoughts
       : thoughts.filter((thought) => thought.category === filterCategory);
 
-  const renderPageSwitchButtons = () => (
-    <div className="flex justify-center gap-4 mx-3 mb-5">
-      {["register", "admin"].map((page) => (
-        <button
-          key={page}
-          onClick={() => setActivePage(page as "register" | "admin")}
-          className={`p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm ${
-            activePage === page ? "bg-blue-500" : ""
-          }`}
-          aria-label={`Switch to ${page} page`}
-        >
-          {page === "register" ? "Register New Thought" : "Thought Admin"}
-        </button>
-      ))}
-    </div>
-  );
-
   return (
     <section className="flex">
-      <div className="bg-white flex flex-col" style={{ flex: "1 1 40%" }}>
-        {renderPageSwitchButtons()}
-
+      <div className="bg-white flex flex-col flex-grow basis-[40%]">
         {activePage === "admin" && <UpdateDeleteThoughts />}
         {activePage === "register" && (
           <div className="flex flex-col items-center">
+            <SwitchPageButtons
+              activePage={activePage}
+              setActivePage={setActivePage}
+            />
             <h3 className="text-3xl mb-2 text-blue-950">
               Register New Thought
             </h3>
@@ -155,35 +137,36 @@ const RegisterThought = () => {
         )}
       </div>
 
-      <div
-        className="flex flex-col justify-center m-4 p-4 w-max border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-auto overflow-x-hidden overflow-y-auto"
-        style={{ flex: "1 1 60%" }}
-      >
-        {activePage === "register" && (
-          <>
-            {/* Filter Dropdown */}
-            <div className="flex justify-start mb-4">
-              <select
-                className="w-64 p-2 rounded-sm bg-gray-200 text-zinc-700"
-                name="filterCategory"
-                value={filterCategory}
-                onChange={handleChange}
-              >
-                <option value="All">All Categories</option>
-                {choosenCategories
-                  .filter((cat) => cat !== "Select a category")
-                  .map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-              </select>
-            </div>
+      {/* right container */}
+      {activePage === "register" ? (
+        <Container>
+          {/* Filter Dropdown*/}
+          <div className="sticky top-0 z-10 bg-white p-2 mb-4 border-b border-gray-300">
+            <select
+              className="w-64 p-2 rounded-sm bg-gray-200 text-zinc-700"
+              name="filterCategory"
+              value={filterCategory}
+              onChange={handleChange}
+            >
+              <option value="All">All Categories</option>
+              {choosenCategories
+                .filter((cat) => cat !== "Select a category")
+                .map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+            </select>
+          </div>
 
+          {/* Scrollable Thoughts List */}
+          <div className="overflow-y-auto flex-grow">
             <ThoughtList thoughts={filteredThoughts} />
-          </>
-        )}
-      </div>
+          </div>
+        </Container>
+      ) : (
+        ""
+      )}
     </section>
   );
 };

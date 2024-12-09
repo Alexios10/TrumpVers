@@ -3,7 +3,7 @@ import ThoughtItem from "./ThoughtsItems";
 import IThoughts from "../../interfaces/thoughts/IThoughts";
 
 interface ThoughtListProps {
-  thoughts: IThoughts[]; // Declare the prop type
+  thoughts: IThoughts[];
 }
 
 const ThoughtList: FC<ThoughtListProps> = ({ thoughts }) => {
@@ -12,6 +12,7 @@ const ThoughtList: FC<ThoughtListProps> = ({ thoughts }) => {
       {thoughts.map((thought, id) => (
         <ThoughtItem
           key={"thought" + id}
+          id={thought.id}
           name={thought.name}
           thought={thought.thought}
           category={thought.category}
