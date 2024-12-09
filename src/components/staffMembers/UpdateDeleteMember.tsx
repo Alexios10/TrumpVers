@@ -127,7 +127,7 @@ const UpdateDeleteMember = () => {
         className="flex flex-col justify-center items-center bg-white rounded-lg p-2 "
         style={{ flex: "1 1 40%" }}
       >
-        <header className="text-xl font-bold mb-4 text-blue-900 text-center">
+        <header className="text-3xl mb-2 text-blue-950 text-centerr">
           Update or Delete Member
         </header>
         <div className="space-y-4 ">
@@ -139,7 +139,7 @@ const UpdateDeleteMember = () => {
                 name="name"
                 value={name}
                 onChange={handleChange}
-                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-sm border "
+                className="flex-grow text-zinc-700 bg-gray-200 p-2 rounded-sm border "
                 aria-label="Member Name"
               />
               <button
@@ -157,7 +157,7 @@ const UpdateDeleteMember = () => {
                 type="number"
                 name="id"
                 onChange={handleChange}
-                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-sm border "
+                className="flex-grow text-zinc-700 bg-gray-200 p-2 rounded-sm border "
                 aria-label="Member ID"
               />
               <button
@@ -174,7 +174,7 @@ const UpdateDeleteMember = () => {
               type="file"
               name="image"
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
               aria-label="Member Image"
             />
           </div>
@@ -185,7 +185,7 @@ const UpdateDeleteMember = () => {
               name="title"
               value={title}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
               aria-label="Member Title"
             />
           </div>
@@ -196,7 +196,7 @@ const UpdateDeleteMember = () => {
               name="description"
               value={description}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
               aria-label="Member Description"
             />
           </div>
@@ -207,7 +207,7 @@ const UpdateDeleteMember = () => {
               name="email"
               value={email}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
               aria-label="Member Email"
             />
           </div>
@@ -230,7 +230,7 @@ const UpdateDeleteMember = () => {
 
       {currentImageName && (
         <div className="flex flex-col justify-center items-center ml-20 h-auto w-[80%] max-w-[800px] border-2 border-opacity-20 border-blue-500 rounded-md shadow-lg p-6 bg-zinc-100">
-          <div className="w-40 h-40 mb-4" >
+          <div className="w-40 h-40 mb-4">
             <img
               src={StaffMembersService.getImageEndpoint() + currentImageName}
               alt={name}
