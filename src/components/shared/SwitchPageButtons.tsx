@@ -17,10 +17,7 @@ const SwitchPageButtons: React.FC<SwitchPageButtonsProps> = ({
         <button
           key={page.id}
           onClick={() => setActivePage(page.id)}
-          className={`p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm ${
-            activePage === page.id ? "bg-blue-500" : ""
-          }`}
-          aria-label={`Switch to ${page.label}`}
+          className="p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm"
         >
           {page.label}
         </button>

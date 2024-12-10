@@ -13,7 +13,7 @@ const UpdateDeleteMember = () => {
   const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
-  const [currentImageName, setCurrentImageName] = useState<string | null>(null); // Stores current image
+  const [currentImageName, setCurrentImageName] = useState<string | null>(null);
   const [description, setDescription] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [email, setEmail] = useState<string>("");
