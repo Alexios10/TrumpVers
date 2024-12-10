@@ -142,7 +142,7 @@ const RegisterThought = () => {
         </div>
 
         {/* right container */}
-        {activePage === "register" ? (
+        {activePage === "register" && (
           <Container>
             {/* Filter Dropdown*/}
             <div className="sticky top-0 z-10 bg-white p-2 mb-4 border-b border-gray-300">
@@ -168,8 +168,6 @@ const RegisterThought = () => {
               <ThoughtList thoughts={filteredThoughts} />
             </div>
           </Container>
-        ) : (
-          ""
         )}
       </section>
     </>
