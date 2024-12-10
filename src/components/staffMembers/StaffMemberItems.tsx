@@ -4,6 +4,7 @@ import StaffMembersService from "../../services/StaffMembersService";
 import { LuMail } from "react-icons/lu";
 
 const StaffMemberItems: FC<IStaff> = ({
+  id,
   name,
   image,
   description,
@@ -28,6 +29,7 @@ const StaffMemberItems: FC<IStaff> = ({
           <LuMail className="mr-2" />
           {email}
         </a>
+        <p className="text-start text-xs">ID: {id}</p>
       </div>
     </section>
   );

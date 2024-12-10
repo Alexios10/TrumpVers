@@ -101,8 +101,8 @@ const RegisterMember = () => {
         {activePage === "admin" && <UpdateDeleteMember />}
 
         {activePage === "register" && (
-          <div className="flex flex-col">
-            <h3 className="text-xl font-bold mb-4 text-blue-900 text-center">
+          <div className="flex flex-col mx-20">
+            <h3 className="text-3xl mb-2 text-blue-950 text-center">
               Register New Member
             </h3>
             <div className="space-y-4">
@@ -117,9 +117,9 @@ const RegisterMember = () => {
                 { label: "Email", name: "email", value: email },
               ].map(({ label, name, value }) => (
                 <div key={name} className="flex flex-col">
-                  <label className="text-sm font-medium">{label}</label>
+                  <label className="text-sm">{label}</label>
                   <input
-                    className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm"
+                    className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
                     type="text"
                     name={name}
                     value={value}
@@ -131,7 +131,7 @@ const RegisterMember = () => {
               <div className="flex flex-col">
                 <label className="text-sm font-medium">Image</label>
                 <input
-                  className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm"
+                  className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
                   name="image"
                   type="file"
                   onChange={handleChange}
@@ -148,7 +148,7 @@ const RegisterMember = () => {
           </div>
         )}
       </div>
-      <div className="flex-1 m-4 p-4 border border-opacity-20 border-blue-900 rounded-md shadow-md overflow-hidden">
+      <div className="flex-1 m-4 p-4 border border-opacity-20 border-blue-950 rounded-sm shadow-md overflow-hidden">
         {activePage === "register" && <StaffmemberList />}
       </div>
     </section>

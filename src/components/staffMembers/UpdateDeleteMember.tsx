@@ -127,7 +127,7 @@ const UpdateDeleteMember = () => {
         className="flex flex-col justify-center items-center bg-white rounded-lg p-2 flex-1"
         style={{ minWidth: "460px" }}
       >
-        <header className="text-xl font-bold mb-4 text-blue-900 text-center">
+        <header className="text-3xl mb-2 text-blue-950 text-center">
           Update or Delete Member
         </header>
         <div className="space-y-4 ">
@@ -139,7 +139,7 @@ const UpdateDeleteMember = () => {
                 name="name"
                 value={name}
                 onChange={handleChange}
-                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-sm border "
+                className="flex-grow text-zinc-700 bg-gray-200 p-2 rounded-sm border"
                 aria-label="Member Name"
               />
               <button
@@ -157,7 +157,7 @@ const UpdateDeleteMember = () => {
                 type="number"
                 name="id"
                 onChange={handleChange}
-                className="flex-grow text-zinc-700 bg-gray-100 p-2 rounded-sm border "
+                className="flex-grow text-zinc-700 bg-gray-200 p-2 rounded-sm border"
                 aria-label="Member ID"
               />
               <button
@@ -174,7 +174,7 @@ const UpdateDeleteMember = () => {
               type="file"
               name="image"
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
               aria-label="Member Image"
             />
           </div>
@@ -185,7 +185,7 @@ const UpdateDeleteMember = () => {
               name="title"
               value={title}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
               aria-label="Member Title"
             />
           </div>
@@ -196,7 +196,7 @@ const UpdateDeleteMember = () => {
               name="description"
               value={description}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
               aria-label="Member Description"
             />
           </div>
@@ -207,7 +207,7 @@ const UpdateDeleteMember = () => {
               name="email"
               value={email}
               onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-100 p-2 rounded-sm border"
+              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
               aria-label="Member Email"
             />
           </div>
@@ -229,16 +229,15 @@ const UpdateDeleteMember = () => {
       </section>
 
       {currentImageName && (
-        <div className="space-y-2 ml-80 flex flex-col w-80 h-fit border-2 border-cyan-400 p-5">
-          <div className="w-80 ">
+        <div className="flex flex-col justify-center items-center ml-96 w-fit h-fit border-2 border-blue-500 p-6 bg-zinc-100">
+          <div className="w-40 h-40 mb-4 ">
             <img
               src={StaffMembersService.getImageEndpoint() + currentImageName}
               alt={name}
-              className="w-60 h-56 object-cover mx-auto rounded-full border-2 border-red-600 shadow-md"
+              className=" w-40 h-40 object-cover mx-auto rounded-full border-2 border-red-600 shadow-md"
             />
           </div>
-          <div className="flex flex-col justify-end w-60 ml-4 text-gray-800">
-            <p className="text-sm font-medium">ID: {id}</p>
+          <div className="w-60 text-center text-gray-800">
             <p className="text-lg font-bold text-blue-700 mt-4">{name}</p>
             <p className="text-sm font-medium text-red-500">{title}</p>
             <p className="text-xs italic text-gray-600 mt-2">{description}</p>
@@ -249,6 +248,7 @@ const UpdateDeleteMember = () => {
               <LuMail className="mr-2" />
               {email}
             </a>
+            <p className="text-start text-xs">ID: {id}</p>
           </div>
         </div>
       )}
