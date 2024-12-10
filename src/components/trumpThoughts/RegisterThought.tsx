@@ -79,13 +79,16 @@ const RegisterThought = () => {
   return (
     <section className="flex">
       <div className="bg-white flex flex-col flex-grow basis-[40%]">
+        <div className="flex w-fit ml-[6rem]">
+          <SwitchPageButtons
+            activePage={activePage}
+            setActivePage={setActivePage}
+          />
+        </div>
         {activePage === "admin" && <UpdateDeleteThoughts />}
+
         {activePage === "register" && (
           <div className="flex flex-col items-center">
-            <SwitchPageButtons
-              activePage={activePage}
-              setActivePage={setActivePage}
-            />
             <h3 className="text-3xl mb-2 text-blue-950">
               Register New Thought
             </h3>

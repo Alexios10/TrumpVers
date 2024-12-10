@@ -3,7 +3,6 @@ import { ThoughtsContext } from "../../contexts/ThoughtsContext";
 import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 import IThoughts from "../../interfaces/thoughts/IThoughts";
 import Container from "../shared/Container";
-import SwitchPageButtons from "../shared/SwitchPageButtons";
 
 const UpdateDeleteThoughts = () => {
   const { getThoughtById, getThoughtByName, putThought, deleteThought } =
@@ -14,9 +13,6 @@ const UpdateDeleteThoughts = () => {
   const [thought, setThought] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [matchingThoughts, setMatchingThoughts] = useState<IThoughts[]>([]);
-  const [activePage, setActivePage] = useState<"register" | "admin">(
-    "register"
-  );
 
   const choosenCategories = [
     "Select a category",
@@ -121,12 +117,8 @@ const UpdateDeleteThoughts = () => {
 
   return (
     <section className="flex">
-      {/* Input and Buttons */}
-      <div className="flex flex-col items-center ">
-        <SwitchPageButtons
-          activePage={activePage}
-          setActivePage={setActivePage}
-        />
+      {/* left container */}
+      <div className="flex flex-col items-center mx-10">
         <h3 className="text-3xl mb-4 text-blue-950 ">Thoughts Admin</h3>
         <div className="w-96 items-start">
           {/* Get Thought by Name */}
@@ -216,28 +208,26 @@ const UpdateDeleteThoughts = () => {
         </div>
       </div>
 
-      {/* Display Matching Thoughts */}
+      {/* right container */}
       <Container>
-        <div className=" ">
-          {matchingThoughts.length > 0 &&
-            matchingThoughts.map((thought) => (
-              <div
-                key={thought.id}
-                className="mx-5 my-4 rounded-md p-4 shadow-lg h-40 w-96 border border-gray-300 bg-white flex flex-col overflow-y-auto"
-                onClick={() => handleThoughtClick(thought)}
-              >
-                <div className="flex justify-between mb-2">
-                  <h3 className="text-sm font-bold">{thought.name}</h3>
-                  <p className="text-xs text-blue-500 cursor-pointer hover:underline">
-                    Edit
-                  </p>
-                </div>
-
-                <p className="text-xs mb-2 text-gray-500">{thought.category}</p>
-                <p className="text-sm text-gray-700">{thought.thought}</p>
+        {matchingThoughts.length > 0 &&
+          matchingThoughts.map((thought) => (
+            <div
+              key={thought.id}
+              className="mx-5 my-4 rounded-md p-4 shadow-lg h-40 w-96 border border-gray-300 bg-white flex flex-col overflow-y-auto"
+              onClick={() => handleThoughtClick(thought)}
+            >
+              <div className="flex justify-between mb-2">
+                <h3 className="text-sm font-bold">{thought.name}</h3>
+                <p className="text-xs text-blue-500 cursor-pointer hover:underline">
+                  Edit
+                </p>
               </div>
-            ))}
-        </div>
+
+              <p className="text-xs mb-2 text-gray-500">{thought.category}</p>
+              <p className="text-sm text-gray-700">{thought.thought}</p>
+            </div>
+          ))}
       </Container>
     </section>
   );

@@ -10,17 +10,12 @@ const SwitchPageButtons: React.FC<SwitchPageButtonsProps> = ({
   activePage,
   setActivePage,
 }) => {
-  const handleClick = (page: "register" | "admin") => {
-    console.log(`Switching to: ${page}`); // Debug log
-    setActivePage(page);
-  };
-
   const renderPageSwitchButtons = () => (
     <div className="flex justify-center gap-4 mx-3 mb-5">
       {["register", "admin"].map((page) => (
         <button
           key={page}
-          onClick={() => handleClick(page as "register" | "admin")}
+          onClick={() => setActivePage(page as "register" | "admin")}
           className={`p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm ${
             activePage === page ? "bg-blue-500" : ""
           }`}

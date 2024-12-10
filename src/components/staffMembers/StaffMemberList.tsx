@@ -11,6 +11,7 @@ const StaffmemberList = () => {
       return (
         <StaffMemberItems
           key={member.id}
+          id={member.id}
           name={member.name}
           image={member.image}
           description={member.description}
