@@ -3,6 +3,7 @@ import { MerchandiseContext } from "../../contexts/MerchandiseContext";
 import IMerchContext from "../../interfaces/merchandise/IMerchContexts";
 import IMerch from "../../interfaces/merchandise/IMerch";
 import MerchService from "../../services/MerchService";
+import Container from "../shared/Container";
 
 const UpdateDeleteMerch = () => {
   const { getMerchById, getMerchByName, putMerch, deleteMerch } = useContext(
@@ -136,10 +137,7 @@ const UpdateDeleteMerch = () => {
 
   return (
     <section className="flex -ml-10 flex-col lg:flex-row gap-6">
-      <section
-        className="flex flex-col justify-center items-center bg-white rounded-lg p-2 flex-1"
-        style={{ flex: "1 1 40%" }}
-      >
+      <section className="flex flex-col justify-center items-center bg-white rounded-lg p-2 flex-grow basis-[40%]">
         <header className="text-3xl mb-2 text-blue-950">
           Update or Delete Merch
         </header>
@@ -259,10 +257,7 @@ const UpdateDeleteMerch = () => {
         </div>
       </section>
 
-      <div
-        className="flex justify-center items-center m-4 p-4 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-auto overflow-x-hidden overflow-y-auto"
-        style={{ flex: "1 1 60%" }}
-      >
+      <Container>
         {currentImageName && (
           <div className="flex flex-col w-80 rounded-sm p-1 shadow-lg border-solid border-2 border-blue-800 border-opacity-20 ">
             <div className="flex-1 m-8">
@@ -291,7 +286,7 @@ const UpdateDeleteMerch = () => {
             </div>
           </div>
         )}
-      </div>
+      </Container>
     </section>
   );
 };
