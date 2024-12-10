@@ -4,6 +4,7 @@ import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaff from "../../interfaces/staffMembers/Istaff";
 import StaffMembersService from "../../services/StaffMembersService";
 import { LuMail } from "react-icons/lu";
+import Container from "../shared/Container";
 
 const UpdateDeleteMember = () => {
   const { getMemberById, getMemberByName, putMember, deleteMember } =
@@ -122,15 +123,12 @@ const UpdateDeleteMember = () => {
   };
 
   return (
-    <section className="flex -ml-10 flex-col lg:flex-row gap-6">
-      <section
-        className="flex flex-col justify-center items-center bg-white rounded-lg p-2 flex-1"
-        style={{ minWidth: "460px" }}
-      >
+    <section className="flex">
+      <section className="flex flex-col items-center mx-10">
         <header className="text-3xl mb-2 text-blue-950 text-center">
           Update or Delete Member
         </header>
-        <div className="space-y-4 ">
+        <div className="w-96 items-start space-y-2">
           <div>
             <label className="text-sm">Get Member by Name</label>
             <div className="flex gap-2 items-center">
@@ -229,28 +227,28 @@ const UpdateDeleteMember = () => {
       </section>
 
       {currentImageName && (
-        <div className="flex flex-col justify-center items-center ml-96 w-fit h-fit border-2 border-blue-500 p-6 bg-zinc-100">
-          <div className="w-40 h-40 mb-4 ">
-            <img
-              src={StaffMembersService.getImageEndpoint() + currentImageName}
-              alt={name}
-              className=" w-40 h-40 object-cover mx-auto rounded-full border-2 border-red-600 shadow-md"
-            />
+        <Container>
+          <div className="w-60 text-center text-gray-800 ml-32 h-fit">
+            <div className="w-60 border-2 mt-10 p-5">
+              <img
+                src={StaffMembersService.getImageEndpoint() + currentImageName}
+                alt={name}
+                className=" w-40 h-40 object-cover mx-auto rounded-full border-2 border-red-600 shadow-md"
+              />
+              <p className="text-lg font-bold text-blue-700 mt-4">{name}</p>
+              <p className="text-sm font-medium text-red-500">{title}</p>
+              <p className="text-xs italic text-gray-600 mt-2">{description}</p>
+              <a
+                href={`mailto:${email}`}
+                className="w-full text-xs inline-flex items-center justify-center mt-4 font-medium text-blue-600 hover:text-red-600 hover:underline transition duration-200"
+              >
+                <LuMail className="mr-2" />
+                {email}
+              </a>
+              <p className="text-start text-xs">ID: {id}</p>
+            </div>
           </div>
-          <div className="w-60 text-center text-gray-800">
-            <p className="text-lg font-bold text-blue-700 mt-4">{name}</p>
-            <p className="text-sm font-medium text-red-500">{title}</p>
-            <p className="text-xs italic text-gray-600 mt-2">{description}</p>
-            <a
-              href={`mailto:${email}`}
-              className="w-full text-xs inline-flex items-center justify-center mt-4 font-medium text-blue-600 hover:text-red-600 hover:underline transition duration-200"
-            >
-              <LuMail className="mr-2" />
-              {email}
-            </a>
-            <p className="text-start text-xs">ID: {id}</p>
-          </div>
-        </div>
+        </Container>
       )}
     </section>
   );

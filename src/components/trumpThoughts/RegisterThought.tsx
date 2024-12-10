@@ -15,9 +15,7 @@ const RegisterThought = () => {
   const [thought, setThought] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [filterCategory, setFilterCategory] = useState<string>("All");
-  const [activePage, setActivePage] = useState<"register" | "admin">(
-    "register"
-  );
+  const [activePage, setActivePage] = useState<string>("register");
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -76,10 +74,16 @@ const RegisterThought = () => {
       ? thoughts
       : thoughts.filter((thought) => thought.category === filterCategory);
 
+  const pages = [
+    { id: "register", label: "Register New Thought" },
+    { id: "admin", label: "Thought Admin" },
+  ];
+
   return (
     <>
       <div className="flex w-fit ml-[6rem]">
         <SwitchPageButtons
+          pages={pages}
           activePage={activePage}
           setActivePage={setActivePage}
         />

@@ -17,7 +17,7 @@ const RegisterMerch = () => {
   const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
 
-  const [activePage, setActivePage] = useState<"register" | "admin">(
+  const [activePage, setActivePage] = useState<string>(
     () =>
       (localStorage.getItem("activePage") as "register" | "admin") || "register"
   );
@@ -76,10 +76,6 @@ const RegisterMerch = () => {
     setCategory("");
   };
 
-  const switchPage = (page: "register" | "admin") => {
-    setActivePage(page);
-  };
-
   const choosenCategoriy = [
     "Select a category",
     "Hats",
@@ -88,10 +84,16 @@ const RegisterMerch = () => {
     "Accessories",
   ];
 
+  const pages = [
+    { id: "register", label: "Register New Merch" },
+    { id: "admin", label: "Merch Admin" },
+  ];
+
   return (
     <>
       <div className="flex w-fit ml-[6rem]">
         <SwitchPageButtons
+          pages={pages}
           activePage={activePage}
           setActivePage={setActivePage}
         />

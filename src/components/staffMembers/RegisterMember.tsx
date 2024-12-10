@@ -3,7 +3,8 @@ import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaffContext from "../../interfaces/staffMembers/IStaffContext";
 import StaffmemberList from "./StaffMemberList";
 import UpdateDeleteMember from "./UpdateDeleteMember";
-import StaffMembersService from "../../services/StaffMembersService";
+import SwitchPageButtons from "../shared/SwitchPageButtons";
+import Container from "../shared/Container";
 
 const RegisterMember = () => {
   const { postMember } = useContext(StaffMemberContext) as IStaffContext;
@@ -13,7 +14,7 @@ const RegisterMember = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [activePage, setActivePage] = useState<"register" | "admin">(
+  const [activePage, setActivePage] = useState<string>(
     () =>
       (localStorage.getItem("activePage") as "register" | "admin") || "register"
   );
@@ -69,14 +70,23 @@ const RegisterMember = () => {
     setEmail("");
   };
 
-  const switchPage = (page: "register" | "admin") => {
-    setActivePage(page);
-  };
+  const pages = [
+    { id: "register", label: "Register New Member" },
+    { id: "admin", label: "Member Admin" },
+  ];
 
   return (
-    <section className="flex flex-wrap gap-6 p-4 lg:flex-nowrap">
-      <div className="bg-white flex flex-col p-4 rounded-md shadow-md w-full lg:w-2/5">
-        <div className="flex justify-center gap-4 mb-6">
+    <>
+      <div className="flex w-fit ml-[6rem]">
+        <SwitchPageButtons
+          pages={pages}
+          activePage={activePage}
+          setActivePage={setActivePage}
+        />
+      </div>
+      <section className="flex flex-wrap gap-6 p-4 lg:flex-nowrap ">
+        <div className="bg-white flex flex-col p-4  w-full lg:w-2/5">
+          {/* <div className="flex justify-center gap-4 mb-6">
           <button
             onClick={() => switchPage("register")}
             className={`p-2 text-white rounded-sm shadow-md text-sm transition ${
@@ -97,61 +107,62 @@ const RegisterMember = () => {
           >
             MEMEBERS ADMIN
           </button>
-        </div>
-        {activePage === "admin" && <UpdateDeleteMember />}
+        </div> */}
+          {activePage === "admin" && <UpdateDeleteMember />}
 
-        {activePage === "register" && (
-          <div className="flex flex-col mx-20">
-            <h3 className="text-3xl mb-2 text-blue-950 text-center">
-              Register New Member
-            </h3>
-            <div className="space-y-4">
-              {[
-                { label: "Name", name: "name", value: name },
-                { label: "Title", name: "title", value: title },
-                {
-                  label: "Description",
-                  name: "description",
-                  value: description,
-                },
-                { label: "Email", name: "email", value: email },
-              ].map(({ label, name, value }) => (
-                <div key={name} className="flex flex-col">
-                  <label className="text-sm">{label}</label>
+          {activePage === "register" && (
+            <div className="flex flex-col mx-20">
+              <h3 className="text-3xl mb-2 text-blue-950 text-center">
+                Register New Member
+              </h3>
+              <div className="space-y-4">
+                {[
+                  { label: "Name", name: "name", value: name },
+                  { label: "Title", name: "title", value: title },
+                  {
+                    label: "Description",
+                    name: "description",
+                    value: description,
+                  },
+                  { label: "Email", name: "email", value: email },
+                ].map(({ label, name, value }) => (
+                  <div key={name} className="flex flex-col">
+                    <label className="text-sm">{label}</label>
+                    <input
+                      className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
+                      type="text"
+                      name={name}
+                      value={value}
+                      onChange={handleChange}
+                    />
+                  </div>
+                ))}
+
+                <div className="flex flex-col">
+                  <label className="text-sm font-medium">Image</label>
                   <input
                     className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                    type="text"
-                    name={name}
-                    value={value}
+                    name="image"
+                    type="file"
                     onChange={handleChange}
                   />
                 </div>
-              ))}
-
-              <div className="flex flex-col">
-                <label className="text-sm font-medium">Image</label>
-                <input
-                  className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                  name="image"
-                  type="file"
-                  onChange={handleChange}
-                />
               </div>
-            </div>
 
-            <button
-              onClick={registerMember}
-              className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md"
-            >
-              ADD MEMBER
-            </button>
-          </div>
-        )}
-      </div>
-      <div className="flex-1 m-4 p-4 border border-opacity-20 border-blue-950 rounded-sm shadow-md overflow-hidden">
-        {activePage === "register" && <StaffmemberList />}
-      </div>
-    </section>
+              <button
+                onClick={registerMember}
+                className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md"
+              >
+                ADD MEMBER
+              </button>
+            </div>
+          )}
+        </div>
+        <Container>
+          {activePage === "register" && <StaffmemberList />}
+        </Container>
+      </section>
+    </>
   );
 };
 

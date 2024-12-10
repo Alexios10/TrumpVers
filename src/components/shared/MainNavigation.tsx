@@ -29,9 +29,9 @@ const MainNavigation = () => {
             className="flex items-center justify-center w-10 h-10 bg-blue-900 text-white rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none"
           >
             {isOpen ? (
-              <span className="text-xl">✖</span> 
+              <span className="text-xl">✖</span>
             ) : (
-              <span className="text-xl">☰</span> 
+              <span className="text-xl">☰</span>
             )}
           </button>
         </div>
