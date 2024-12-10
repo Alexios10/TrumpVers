@@ -118,7 +118,7 @@ const UpdateDeleteThoughts = () => {
   return (
     <section className="flex">
       {/* left container */}
-      <div className="flex flex-col items-center mx-10">
+      <div className="flex flex-col items-center mx-10 basis-[40%]">
         <h3 className="text-3xl mb-4 text-blue-950 ">Thoughts Admin</h3>
         <div className="w-96 items-start">
           {/* Get Thought by Name */}
@@ -210,24 +210,27 @@ const UpdateDeleteThoughts = () => {
 
       {/* right container */}
       <Container>
-        <div className="flex flex-col flex-grow basis-[40%]">
-          {" "}
+        <div className="flex flex-col flex-grow basis-[60%] overflow-hidden overflow-y-auto">
           {matchingThoughts.length > 0 &&
             matchingThoughts.map((thought) => (
               <div
                 key={thought.id}
-                className="mx-5 my-4 rounded-md p-4 shadow-lg h-40 w-96 border border-gray-300 bg-white flex flex-col overflow-y-auto"
+                className="mx-5 my-4 rounded-sm p-1 shadow-lg h-auto w-auto border-solid border-2 border-blue-950 border-opacity-20"
                 onClick={() => handleThoughtClick(thought)}
               >
-                <div className="flex justify-between mb-2">
-                  <h3 className="text-sm font-bold">{thought.name}</h3>
-                  <p className="text-xs text-blue-500 cursor-pointer hover:underline">
-                    Edit
-                  </p>
+                <div className="m-2">
+                  <p className="text-xs">ID: {thought.id}</p>
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-sm align-text-top">{thought.name}</h3>
+                    <p className="text-end text-xs">
+                      {thought.dateCreated
+                        ? new Date(thought.dateCreated).toLocaleDateString()
+                        : "N/A"}
+                    </p>
+                  </div>
+                  <p className="text-xs">{thought.category}</p>
+                  <p className="mt-2 text-base">{thought.thought}</p>
                 </div>
-
-                <p className="text-xs mb-2 text-gray-500">{thought.category}</p>
-                <p className="text-sm text-gray-700">{thought.thought}</p>
               </div>
             ))}
         </div>
