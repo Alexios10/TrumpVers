@@ -211,13 +211,13 @@ const UpdateDeleteMember = () => {
           </div>
           <div className="flex gap-4 justify-center">
             <button
-              className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow"
+              className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow-lg text-sm"
               onClick={updateMemberWithContext}
             >
               UPDATE
             </button>
             <button
-              className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow"
+              className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow-lg text-sm"
               onClick={deleteMemberWithContext}
             >
               DELETE

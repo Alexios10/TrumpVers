@@ -194,13 +194,13 @@ const UpdateDeleteThoughts = () => {
         {/* Action Buttons */}
         <div className="flex justify-center gap-2 p-2">
           <button
-            className="p-2 w-20 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-xs"
+            className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow-lg text-sm"
             onClick={updateThoughtWithContext}
           >
             UPDATE
           </button>
           <button
-            className="p-2 w-20 bg-red-700 text-white rounded-sm hover:bg-red-500 shadow-lg text-xs"
+            className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow-lg text-sm"
             onClick={deleteThoughtWithContext}
           >
             DELETE
