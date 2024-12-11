@@ -75,8 +75,8 @@ const RegisterThought = () => {
       : thoughts.filter((thought) => thought.category === filterCategory);
 
   const pages = [
-    { id: "register", label: "Register Thought" },
-    { id: "admin", label: "Thought Admin" },
+    { id: "register", label: "REGISTER THOUGHT" },
+    { id: "admin", label: "THOUGHT ADMIN" },
   ];
 
   return (

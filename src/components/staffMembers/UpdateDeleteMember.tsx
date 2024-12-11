@@ -124,11 +124,11 @@ const UpdateDeleteMember = () => {
 
   return (
     <section className="flex flex-col md:flex-row ">
-      <div className="flex flex-col justify-center items-center mx-10 basis-[40%]">
+      <div className="flex flex-col items-center mx-10 basis-[40%]">
         <h3 className=" text-3xl mb-2 text-blue-950">
           Update or Delete Member
         </h3>
-        <div className="w-96 items-start">
+        <div className="items-start">
           <div className="mb-4 flex flex-col">
             <label className="w-40 mr-2 text-sm mb-2">Get Member by Name</label>
             <div className="flex gap-3">
@@ -141,16 +141,16 @@ const UpdateDeleteMember = () => {
                 aria-label="Member Name"
               />
               <button
-                className="w-28 h-10 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
+                className="w-36 h-10 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
                 onClick={getByNameFromContext}
               >
-                GET NAME
+                GET BY NAME
               </button>
             </div>
           </div>
 
           <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm mb-2">Get Member by ID</label>
+            <label className="w-40 mr-2 text-sm ">Get Member by ID</label>
             <div className="flex gap-3 items-center">
               <input
                 className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
@@ -160,10 +160,10 @@ const UpdateDeleteMember = () => {
                 aria-label="Member ID"
               />
               <button
-                className="w-28 h-10 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
+                className="w-36 h-10 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
                 onClick={getByIdFromContext}
               >
-                GET ID
+                GET BY ID
               </button>
             </div>
           </div>

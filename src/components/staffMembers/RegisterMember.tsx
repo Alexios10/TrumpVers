@@ -71,8 +71,8 @@ const RegisterMember = () => {
   };
 
   const pages = [
-    { id: "register", label: "Register New Member" },
-    { id: "admin", label: "Member Admin" },
+    { id: "register", label: "REGISTER NEW STAFF" },
+    { id: "admin", label: "STAFF ADMIN" },
   ];
 
   return (
@@ -84,8 +84,8 @@ const RegisterMember = () => {
           setActivePage={setActivePage}
         />
       </div>
-      <section className="flex flex-wrap gap-6 p-4 lg:flex-nowrap ">
-        <div className="bg-white flex flex-col p-4  w-full lg:w-2/5">
+      <section className="flex flex-col md:flex-row ">
+        <div className="bg-white flex flex-col flex-grow basis-[40%] ">
           {/* <div className="flex justify-center gap-4 mb-6">
           <button
             onClick={() => switchPage("register")}
@@ -111,8 +111,8 @@ const RegisterMember = () => {
           {activePage === "admin" && <UpdateDeleteMember />}
 
           {activePage === "register" && (
-            <div className="flex flex-col mx-20">
-              <h3 className="text-3xl mb-2 text-blue-950 text-center">
+            <div className="flex flex-col items-center">
+              <h3 className="text-3xl mb-2 text-blue-950">
                 Register New Member
               </h3>
               <div className="space-y-4">
@@ -126,8 +126,8 @@ const RegisterMember = () => {
                   },
                   { label: "Email", name: "email", value: email },
                 ].map(({ label, name, value }) => (
-                  <div key={name} className="flex flex-col">
-                    <label className="text-sm">{label}</label>
+                  <div key={name} className="mb-4 flex flex-col">
+                    <label className="w-24 mr-2 text-sm">{label}</label>
                     <input
                       className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
                       type="text"

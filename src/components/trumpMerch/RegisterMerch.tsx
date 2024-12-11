@@ -85,8 +85,8 @@ const RegisterMerch = () => {
   ];
 
   const pages = [
-    { id: "register", label: "Register Merch" },
-    { id: "admin", label: "Merch Admin" },
+    { id: "register", label: "REGISTER MERCH" },
+    { id: "admin", label: "MERCH ADMIN" },
   ];
 
   return (
