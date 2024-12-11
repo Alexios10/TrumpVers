@@ -75,7 +75,7 @@ const RegisterThought = () => {
       : thoughts.filter((thought) => thought.category === filterCategory);
 
   const pages = [
-    { id: "register", label: "Register New Thought" },
+    { id: "register", label: "Register Thought" },
     { id: "admin", label: "Thought Admin" },
   ];
 
@@ -124,7 +124,7 @@ const RegisterThought = () => {
                       ))}
                     </select>
                   </div>
-                  <div className="mb-4 flex flex-col">
+                  <div className="flex flex-col">
                     <label className="w-24 mr-2 text-sm">Thought</label>
                     <textarea
                       className="w-full h-24 text-zinc-700 bg-gray-200 p-2 rounded-sm"
@@ -136,7 +136,7 @@ const RegisterThought = () => {
                 </div>
                 <button
                   onClick={registerThought}
-                  className="mb-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
+                  className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
                 >
                   PUBLISH
                 </button>

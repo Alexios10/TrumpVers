@@ -85,7 +85,7 @@ const RegisterMerch = () => {
   ];
 
   const pages = [
-    { id: "register", label: "Register New Merch" },
+    { id: "register", label: "Register Merch" },
     { id: "admin", label: "Merch Admin" },
   ];
 
@@ -164,7 +164,7 @@ const RegisterMerch = () => {
                     />
                   </div>
                   {/* category input */}
-                  <div className="mb-2 flex flex-col">
+                  <div className="flex flex-col">
                     <label className="w-24 mr-2 text-[0.625rem]">
                       Select Category
                     </label>
@@ -182,12 +182,12 @@ const RegisterMerch = () => {
                     </select>
                   </div>
                 </div>
-                {/* Add Member button */}
+                {/* Add Merch button */}
                 <button
                   onClick={registerMerch}
-                  className="mb-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
+                  className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
                 >
-                  ADD Merch
+                  ADD MERCH
                 </button>
               </div>
             </div>

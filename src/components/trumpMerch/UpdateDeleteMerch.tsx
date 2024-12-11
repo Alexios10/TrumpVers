@@ -139,11 +139,13 @@ const UpdateDeleteMerch = () => {
     <section className="flex">
       {/* Left container */}
       <div className="flex flex-col items-center mx-10 basis-[40%]">
-        <h3 className="text-3xl mb-2 text-blue-950">Update or Delete Merch</h3>
+        <h3 className="text-3xl mb-2 text-blue-950 ">Thoughts Admin</h3>
         <div className="w-96 items-start">
-          {/* Get Merch by Name */}
+          {/* Get Thought by Name */}
           <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm mb-2">Get Merch by Name</label>
+            <label className="w-40 mr-2 text-sm mb-2">
+              Get Thought by Name
+            </label>
             <div className="flex gap-3">
               <input
                 className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
@@ -151,37 +153,35 @@ const UpdateDeleteMerch = () => {
                 name="name"
                 value={name}
                 onChange={handleChange}
-                aria-label="Merch Name"
               />
               <button
-                className="w-28 h-10 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
+                className="px-4 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-xs"
                 onClick={getByNameFromContext}
               >
                 GET BY NAME
               </button>
             </div>
           </div>
-  
-          {/* Get Merch by ID */}
+
+          {/* Get Thought by ID */}
           <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm mb-2">Get Merch by ID</label>
+            <label className="w-40 mr-2 text-sm mb-2">Get Thought by ID</label>
             <div className="flex gap-3">
               <input
                 className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
                 type="number"
                 name="id"
                 onChange={handleChange}
-                aria-label="Merch ID"
               />
               <button
-                className="w-28 h-10 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
+                className="px-4 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-xs"
                 onClick={getByIdFromContext}
               >
                 GET BY ID
               </button>
             </div>
           </div>
-  
+
           {/* Image Upload */}
           <div className="mb-4 flex flex-col">
             <label className="w-40 mr-2 text-sm mb-2">Image</label>
@@ -193,7 +193,7 @@ const UpdateDeleteMerch = () => {
               aria-label="Merch Image"
             />
           </div>
-  
+
           {/* Price Input */}
           <div className="mb-4 flex flex-col">
             <label className="w-40 mr-2 text-sm mb-2">Price</label>
@@ -205,7 +205,7 @@ const UpdateDeleteMerch = () => {
               onChange={handleChange}
             />
           </div>
-  
+
           {/* Quantity Input */}
           <div className="mb-4 flex flex-col">
             <label className="w-40 mr-2 text-sm mb-2">Quantity</label>
@@ -218,7 +218,7 @@ const UpdateDeleteMerch = () => {
               aria-label="Quantity"
             />
           </div>
-  
+
           {/* Description Input */}
           <div className="mb-4 flex flex-col">
             <label className="w-40 mr-2 text-sm mb-2">Description</label>
@@ -231,7 +231,7 @@ const UpdateDeleteMerch = () => {
               aria-label="Description"
             />
           </div>
-  
+
           {/* Category Input */}
           <div className="mb-4 flex flex-col">
             <label className="w-40 mr-2 text-sm mb-2">Category</label>
@@ -249,7 +249,7 @@ const UpdateDeleteMerch = () => {
             </select>
           </div>
         </div>
-  
+
         {/* Action Buttons */}
         <div className="flex justify-center gap-2 p-2">
           <button
@@ -266,7 +266,7 @@ const UpdateDeleteMerch = () => {
           </button>
         </div>
       </div>
-    
+
       <Container>
         {currentImageName && (
           <div className="flex flex-col w-80 rounded-sm p-1 shadow-lg border-solid border-2 border-blue-800 border-opacity-20  ">
