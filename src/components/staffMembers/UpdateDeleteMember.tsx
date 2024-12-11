@@ -123,17 +123,15 @@ const UpdateDeleteMember = () => {
   };
 
   return (
-    <section className="flex">
-      <div className="flex flex-col items-center mx-10">
-        <h3 className="text-3xl mb-2 text-blue-950 text-center">
-          Update or Delete Member
-        </h3>
+    <section className="flex flex-col md:flex-row">
+      <div className="flex flex-col items-center mx-10 basis-[40%]">
+        <h3 className="text-3xl mb-2 text-blue-950">Update or Delete Member</h3>
         <div className="w-96 items-start">
           <div className="mb-4 flex flex-col">
             <label className="w-40 mr-2 text-sm mb-2">Get Member by Name</label>
             <div className="flex gap-3">
               <input
-               className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
+                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
                 type="text"
                 name="name"
                 value={name}
@@ -211,7 +209,7 @@ const UpdateDeleteMember = () => {
               aria-label="Member Email"
             />
           </div>
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-4 justify-center mt-4">
             <button
               className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow-lg text-sm"
               onClick={updateMemberWithContext}
@@ -229,28 +227,26 @@ const UpdateDeleteMember = () => {
       </div>
 
       {currentImageName && (
-        <Container>
-          <div className="w-60 text-center text-gray-800 ml-32 h-fit">
-            <div className="w-60 border-2 mt-10 p-5">
-              <img
-                src={StaffMembersService.getImageEndpoint() + currentImageName}
-                alt={name}
-                className=" w-40 h-40 object-cover mx-auto rounded-full border-2 border-red-600 shadow-md"
-              />
-              <p className="text-lg font-bold text-blue-700 mt-4">{name}</p>
-              <p className="text-sm font-medium text-red-500">{title}</p>
-              <p className="text-xs italic text-gray-600 mt-2">{description}</p>
-              <a
-                href={`mailto:${email}`}
-                className="w-full text-xs inline-flex items-center justify-center mt-4 font-medium text-blue-600 hover:text-red-600 hover:underline transition duration-200"
-              >
-                <LuMail className="mr-2" />
-                {email}
-              </a>
-              <p className="text-start text-xs">ID: {id}</p>
-            </div>
+        <section className="pl-[50%]">
+          <div className="text-center bg-zinc-100 border-solid border-blue-500 rounded-xl overflow-hidden w-60 border mt-10 p-5">
+            <img
+              src={StaffMembersService.getImageEndpoint() + currentImageName}
+              alt={name}
+              className=" items-center w-44 h-44 object-cover border-2 border-red-600  rounded-full shadow-md"
+            />
+            <h3 className="text-lg font-bold text-blue-700 mt-4">{name}</h3>
+            <p className="text-sm font-medium text-red-500">{title}</p>
+            <p className="text-xs italic text-gray-600 mt-2">{description}</p>
+            <a
+              href={`mailto:${email}`}
+              className="w-full text-xs inline-flex items-center justify-center mt-4 font-medium text-blue-600 hover:text-red-600 hover:underline transition"
+            >
+              <LuMail className="mr-2" />
+              {email}
+            </a>
+            <p className="text-start text-xs">ID: {id}</p>
           </div>
-        </Container>
+        </section>
       )}
     </section>
   );

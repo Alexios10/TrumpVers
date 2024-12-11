@@ -158,9 +158,11 @@ const RegisterMember = () => {
             </div>
           )}
         </div>
-        <Container>
-          {activePage === "register" && <StaffmemberList />}
-        </Container>
+        {activePage === "register" && (
+          <Container>
+            <StaffmemberList />
+          </Container>
+        )}
       </section>
     </>
   );
