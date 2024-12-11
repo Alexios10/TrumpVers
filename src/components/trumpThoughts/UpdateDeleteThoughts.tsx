@@ -210,7 +210,7 @@ const UpdateDeleteThoughts = () => {
 
       {/* right container */}
       <Container>
-        <div className="flex flex-col flex-grow basis-[60%] overflow-hidden overflow-y-auto">
+        <div className="flex flex-col flex-grow overflow-hidden overflow-y-auto basis-[60%]">
           {matchingThoughts.length > 0 &&
             matchingThoughts.map((thought) => (
               <div
