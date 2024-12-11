@@ -98,7 +98,7 @@ const RegisterMerch = () => {
           setActivePage={setActivePage}
         />
       </div>
-      <section className="flex">
+      <section className="flex flex-col md:flex-row">
         <div className="bg-white  flex flex-col flex-grow basis-[40%]">
           {activePage === "admin" && <UpdateDeleteMerch />}
 

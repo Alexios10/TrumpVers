@@ -136,7 +136,7 @@ const UpdateDeleteMerch = () => {
   };
 
   return (
-    <section className="flex">
+    <section className="flex flex-col md:flex-row ">
       {/* Left container */}
       <div className="flex flex-col items-center mx-10 basis-[40%]">
         <h3 className="text-3xl mb-2 text-blue-950 ">Thoughts Admin</h3>

@@ -123,9 +123,11 @@ const UpdateDeleteMember = () => {
   };
 
   return (
-    <section className="flex flex-col md:flex-row">
-      <div className="flex flex-col items-center mx-10 basis-[40%]">
-        <h3 className="text-3xl mb-2 text-blue-950">Update or Delete Member</h3>
+    <section className="flex flex-col md:flex-row ">
+      <div className="flex flex-col justify-center items-center mx-10 basis-[40%]">
+        <h3 className=" text-3xl mb-2 text-blue-950">
+          Update or Delete Member
+        </h3>
         <div className="w-96 items-start">
           <div className="mb-4 flex flex-col">
             <label className="w-40 mr-2 text-sm mb-2">Get Member by Name</label>
@@ -228,11 +230,11 @@ const UpdateDeleteMember = () => {
 
       {currentImageName && (
         <section className="pl-[50%]">
-          <div className="text-center bg-zinc-100 border-solid border-blue-500 rounded-xl overflow-hidden w-60 border mt-10 p-5">
+          <div className="flex flex-col text-center bg-zinc-100 border-solid border-blue-500 rounded-xl overflow-hidden w-96 h-96 border mt-10 p-5">
             <img
               src={StaffMembersService.getImageEndpoint() + currentImageName}
               alt={name}
-              className=" items-center w-44 h-44 object-cover border-2 border-red-600  rounded-full shadow-md"
+              className=" w-44 h-44 object-cover border-2 border-red-600  rounded-full shadow-md"
             />
             <h3 className="text-lg font-bold text-blue-700 mt-4">{name}</h3>
             <p className="text-sm font-medium text-red-500">{title}</p>
