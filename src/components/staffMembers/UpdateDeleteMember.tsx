@@ -124,48 +124,50 @@ const UpdateDeleteMember = () => {
 
   return (
     <section className="flex">
-      <section className="flex flex-col items-center mx-10">
-        <header className="text-3xl mb-2 text-blue-950 text-center">
+      <div className="flex flex-col items-center mx-10">
+        <h3 className="text-3xl mb-2 text-blue-950 text-center">
           Update or Delete Member
-        </header>
-        <div className="w-96 items-start space-y-2">
-          <div>
-            <label className="text-sm">Get Member by Name</label>
-            <div className="flex gap-2 items-center">
+        </h3>
+        <div className="w-96 items-start">
+          <div className="mb-4 flex flex-col">
+            <label className="w-40 mr-2 text-sm mb-2">Get Member by Name</label>
+            <div className="flex gap-3">
               <input
+               className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
                 type="text"
                 name="name"
                 value={name}
                 onChange={handleChange}
-                className="flex-grow text-zinc-700 bg-gray-200 p-2 rounded-sm border"
                 aria-label="Member Name"
               />
               <button
-                className="w-28 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
+                className="w-28 h-10 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
                 onClick={getByNameFromContext}
               >
                 GET NAME
               </button>
             </div>
           </div>
-          <div>
-            <label className="text-sm">Get Member by ID</label>
-            <div className="flex gap-2 items-center">
+
+          <div className="mb-4 flex flex-col">
+            <label className="w-40 mr-2 text-sm mb-2">Get Member by ID</label>
+            <div className="flex gap-3 items-center">
               <input
+                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
                 type="number"
                 name="id"
                 onChange={handleChange}
-                className="flex-grow text-zinc-700 bg-gray-200 p-2 rounded-sm border"
                 aria-label="Member ID"
               />
               <button
-                className="w-28 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow text-xs"
+                className="w-28 h-10 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
                 onClick={getByIdFromContext}
               >
                 GET ID
               </button>
             </div>
           </div>
+
           <div>
             <label className="text-sm">Image</label>
             <input
@@ -224,7 +226,7 @@ const UpdateDeleteMember = () => {
             </button>
           </div>
         </div>
-      </section>
+      </div>
 
       {currentImageName && (
         <Container>

@@ -119,7 +119,7 @@ const UpdateDeleteThoughts = () => {
     <section className="flex flex-col md:flex-row ">
       {/* left container */}
       <div className="flex flex-col items-center mx-10 basis-[40%]">
-        <h3 className="text-3xl mb-4 text-blue-950 ">Thoughts Admin</h3>
+        <h3 className="text-3xl mb-2 text-blue-950 ">Thoughts Admin</h3>
         <div className="w-96 items-start">
           {/* Get Thought by Name */}
           <div className="mb-4 flex flex-col">
