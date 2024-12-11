@@ -88,7 +88,7 @@ const RegisterThought = () => {
           setActivePage={setActivePage}
         />
       </div>
-      <section className="flex">
+      <section className="flex flex-col md:flex-row">
         <div className="bg-white flex flex-col flex-grow basis-[40%]">
           {activePage === "admin" && <UpdateDeleteThoughts />}
 
@@ -97,7 +97,7 @@ const RegisterThought = () => {
               <h3 className="text-3xl mb-2 text-blue-950">
                 Register New Thought
               </h3>
-              <div className="bg-white h-screen flex flex-col">
+              <div className="bg-white h-auto flex flex-col">
                 <div className="w-96 items-start">
                   <div className="mb-4 flex flex-col">
                     <label className="w-24 mr-2 text-sm">Name</label>

@@ -31,8 +31,8 @@ const ThoughtItem: FC<IThoughts> = ({
           <button
             className="text-blue-800 font-bold text-xs cursor-pointer"
             onClick={(e) => {
-              e.stopPropagation(); // Prevent event bubbling to the parent
-              setIsExpanded(!isExpanded); // Toggle the expanded state
+              e.stopPropagation();
+              setIsExpanded(!isExpanded);
             }}
           >
             {isExpanded ? "Read less" : "...Read more"}

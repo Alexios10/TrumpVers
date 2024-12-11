@@ -12,7 +12,7 @@ const SwitchPageButtons: React.FC<SwitchPageButtonsProps> = ({
   setActivePage,
 }) => {
   return (
-    <div className="flex justify-center gap-4 mx-3 mb-5">
+    <div className="flex justify-center gap-4 mx-4 mb-4">
       {pages.map((page) => (
         <button
           key={page.id}
