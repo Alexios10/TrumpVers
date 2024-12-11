@@ -71,7 +71,7 @@ const MainNavigation = () => {
                 "/shop"
               )}`}
             >
-              SHOP
+              MERCH
             </Link>
           </li>
           <li>
@@ -101,7 +101,7 @@ const MainNavigation = () => {
                 "/merchAdmin"
               )}`}
             >
-              SHOP ADMIN
+              MERCH ADMIN
             </Link>
           </li>
           <li>
