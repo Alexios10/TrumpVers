@@ -56,7 +56,7 @@ const UpdateDeleteMerch = () => {
 
   const getByIdFromContext = async () => {
     if (!id) {
-      alert("Please enter merch id");
+      alert("Please enter item id");
       return;
     }
     try {
@@ -71,16 +71,16 @@ const UpdateDeleteMerch = () => {
         setCurrentImageName(merch.image ?? null);
         setImage(null);
       } else {
-        alert(`Merch with id "${id}" not found.`);
+        alert(`Item with id "${id}" not found.`);
       }
     } catch (error) {
-      console.error("Error fetching merch:", error);
+      console.error("Error fetching item:", error);
     }
   };
 
   const getByNameFromContext = async () => {
     if (!name) {
-      alert("Please enter members name");
+      alert("Please enter item name");
       return;
     }
 
@@ -96,16 +96,16 @@ const UpdateDeleteMerch = () => {
         setCurrentImageName(member.image ?? null);
         setImage(null);
       } else {
-        alert(`Merch with name "${name}" not found.`);
+        alert(`Item with name "${name}" not found.`);
       }
     } catch (error) {
-      console.error("Error fetching merch:", error);
+      console.error("Error fetching item:", error);
     }
   };
 
   const updateMerchWithContext = async () => {
     if (!id) {
-      alert("Cannot update. Merch not found.");
+      alert("Cannot update. Item not found.");
       return;
     }
 
@@ -121,18 +121,18 @@ const UpdateDeleteMerch = () => {
 
     const result = await putMerch(merchToUpdate, image);
     if (result) {
-      alert("Merch updated successfully.");
+      alert("Item updated successfully.");
     }
   };
 
   const deleteMerchWithContext = async () => {
     if (id === null) {
-      alert("Cannot delete. Merch not found.");
+      alert("Cannot delete. Item not found.");
       return;
     }
 
     deleteMerch(id);
-    alert(`Merch with ID ${id} deleted.`);
+    alert(`Item with ID ${id} deleted.`);
   };
 
   return (

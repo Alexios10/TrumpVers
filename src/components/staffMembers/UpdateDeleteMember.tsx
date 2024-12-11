@@ -126,7 +126,7 @@ const UpdateDeleteMember = () => {
     <section className="flex flex-col md:flex-row ">
       <div className="flex flex-col items-center mx-10 basis-[40%]">
         <h3 className=" text-3xl mb-2 text-blue-950">
-          Update or Delete Member
+          Update or Delete Staff
         </h3>
         <div className="items-start">
           <div className="mb-4 flex flex-col">
