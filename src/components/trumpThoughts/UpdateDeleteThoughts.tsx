@@ -3,6 +3,7 @@ import { ThoughtsContext } from "../../contexts/ThoughtsContext";
 import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 import IThoughts from "../../interfaces/thoughts/IThoughts";
 import Container from "../shared/Container";
+import UpdateDeleteBtns from "../shared/UpdateDeleteBtns";
 
 const UpdateDeleteThoughts = () => {
   const { getThoughtById, getThoughtByName, putThought, deleteThought } =
@@ -116,17 +117,17 @@ const UpdateDeleteThoughts = () => {
   };
 
   return (
-    <section className="flex">
-      {/* left container */}
-      <div className="flex flex-col items-center mx-10 basis-[40%]">
-        <h3 className="text-3xl mb-2 text-blue-950 ">Thoughts Admin</h3>
-        <div className="w-96 items-start">
-          {/* Get Thought by Name */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm">Get Thought by Name</label>
+    <section className="flex flex-col md:flex-row">
+      {/* form container */}
+      <div className="flex flex-col items-center basis-[40%]">
+        <h3 className="text-3xl mb-5 text-blue-950">Thoughts Admin</h3>
+        <div className="space-y-3">
+          {/* Get by Name */}
+          <div className="flex flex-col space-y-1">
+            <label className="text-sm">Get Thought by Name:</label>
             <div className="flex gap-3">
               <input
-                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
+                className="input"
                 type="text"
                 name="name"
                 value={name}
@@ -142,11 +143,11 @@ const UpdateDeleteThoughts = () => {
           </div>
 
           {/* Get Thought by ID */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm">Get Thought by ID</label>
+          <div className="flex flex-col space-y-1">
+            <label className="text-sm">Get Thought by ID:</label>
             <div className="flex gap-3">
               <input
-                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
+                className="input"
                 type="number"
                 name="id"
                 onChange={handleChange}
@@ -161,8 +162,8 @@ const UpdateDeleteThoughts = () => {
           </div>
 
           {/* Category Input */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-24 mr-2 text-sm">Category</label>
+          <div className="flex flex-col space-y-1">
+            <label className="text-sm">Category:</label>
             <select
               className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               name="category"
@@ -178,10 +179,10 @@ const UpdateDeleteThoughts = () => {
           </div>
 
           {/* Thought Input */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-24 mr-2 text-sm">Thought</label>
+          <div className="flex flex-col space-y-1">
+            <label className="text-sm">Thought:</label>
             <textarea
-              className="w-full h-24 text-zinc-700 bg-gray-200 p-2 rounded-sm"
+              className="input"
               name="thought"
               value={thought}
               onChange={handleChange}
@@ -189,21 +190,11 @@ const UpdateDeleteThoughts = () => {
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex justify-center gap-2 p-2">
-          <button
-            className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow-lg text-sm"
-            onClick={updateThoughtWithContext}
-          >
-            UPDATE
-          </button>
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow-lg text-sm"
-            onClick={deleteThoughtWithContext}
-          >
-            DELETE
-          </button>
-        </div>
+        {/* update & delete buttons */}
+        <UpdateDeleteBtns
+          update={updateThoughtWithContext}
+          onDelete={deleteThoughtWithContext}
+        />
       </div>
 
       {/* right container */}

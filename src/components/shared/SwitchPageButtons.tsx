@@ -12,12 +12,12 @@ const SwitchPageButtons: React.FC<SwitchPageButtonsProps> = ({
   setActivePage,
 }) => {
   return (
-    <div className="flex justify-center gap-2 mb-4">
+    <div className="flex gap-2 mb-4 justify-center w-[32.2rem]">
       {pages.map((page) => (
         <button
           key={page.id}
           onClick={() => setActivePage(page.id)}
-          className="w-48 ml-4 p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm"
+          className="p-2 bg-blue-900 text-white rounded-sm hover:bg-blue-500 shadow-lg text-sm"
         >
           {page.label}
         </button>
