@@ -1,19 +1,18 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom"; 
+import { Link, useLocation } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosClose } from "react-icons/io";
 
 const MainNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation(); 
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  
   const isActive = (path) => {
-    return location.pathname === path ? "text-red-600" : "text-sky-950"; 
+    return location.pathname === path ? "text-red-600" : "text-sky-950";
   };
 
   return (
@@ -57,39 +56,25 @@ const MainNavigation = () => {
           <li>
             <Link
               to="/thoughts"
-              className={`hover:text-red-600 transition duration-150 ${isActive(
-                "/thoughts"
-              )}`}
+              className={`nav-links ${isActive("/thoughts")}`}
             >
               THOUGHTS
             </Link>
           </li>
           <li>
-            <Link
-              to="/shop"
-              className={`hover:text-red-600 transition duration-150 ${isActive(
-                "/shop"
-              )}`}
-            >
+            <Link to="/shop" className={`nav-links ${isActive("/shop")}`}>
               MERCH
             </Link>
           </li>
           <li>
-            <Link
-              to="/staff"
-              className={`hover:text-red-600 transition duration-150 ${isActive(
-                "/staff"
-              )}`}
-            >
+            <Link to="/staff" className={`nav-links ${isActive("/staff")}`}>
               STAFF
             </Link>
           </li>
           <li>
             <Link
               to="/thoughtsAdmin"
-              className={`hover:text-red-600 transition duration-150 ${isActive(
-                "/thoughtsAdmin"
-              )}`}
+              className={`nav-links ${isActive("/thoughtsAdmin")}`}
             >
               THOUGHTS ADMIN
             </Link>
@@ -97,9 +82,7 @@ const MainNavigation = () => {
           <li>
             <Link
               to="/merchAdmin"
-              className={`hover:text-red-600 transition duration-150 ${isActive(
-                "/merchAdmin"
-              )}`}
+              className={`nav-links ${isActive("/merchAdmin")}`}
             >
               MERCH ADMIN
             </Link>
@@ -107,9 +90,7 @@ const MainNavigation = () => {
           <li>
             <Link
               to="/registerMembers"
-              className={`hover:text-red-600 transition duration-150 ${isActive(
-                "/registerMembers"
-              )}`}
+              className={`nav-links ${isActive("/registerMembers")}`}
             >
               STAFF ADMIN
             </Link>
