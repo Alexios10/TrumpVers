@@ -216,12 +216,13 @@ const UpdateDeleteMember = () => {
 
       {/* Seksjon som vise medlemmene */}
       {currentImageName && (
-        <section className="pl-[50%]">
-          <div className="flex flex-col text-center bg-zinc-100 border-solid border-blue-500 rounded-xl overflow-hidden w-96 h-96 border mt-10 p-5">
+        <section className="flex justify-center p-4">
+          <div className="relative flex flex-col items-center text-center bg-zinc-100 border border-blue-500 rounded-xl overflow-hidden w-80 p-5">
+            <p className="absolute top-2 left-2 text-start text-xs">ID: {id}</p>
             <img
               src={StaffMembersService.getImageEndpoint() + currentImageName}
               alt={name}
-              className=" w-44 h-44 object-cover border-2 border-red-600  rounded-full shadow-md"
+              className="w-44 h-44 object-cover border-2 border-red-600 rounded-full shadow-md"
             />
             <h3 className="text-lg font-bold text-blue-700 mt-4">{name}</h3>
             <p className="text-sm font-medium text-red-500">{title}</p>
@@ -233,7 +234,6 @@ const UpdateDeleteMember = () => {
               <LuMail className="mr-2" />
               {email}
             </a>
-            <p className="text-start text-xs">ID: {id}</p>
           </div>
         </section>
       )}
