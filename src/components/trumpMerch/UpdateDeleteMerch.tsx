@@ -4,6 +4,7 @@ import IMerchContext from "../../interfaces/merchandise/IMerchContexts";
 import IMerch from "../../interfaces/merchandise/IMerch";
 import MerchService from "../../services/MerchService";
 import Container from "../shared/Container";
+import UpdateDeleteBtns from "../shared/UpdateDeleteBtns";
 
 const UpdateDeleteMerch = () => {
   const { getMerchById, getMerchByName, putMerch, deleteMerch } = useContext(
@@ -136,7 +137,6 @@ const UpdateDeleteMerch = () => {
   };
 
   const inputfields = [
-    { label: "Name:", name: "name", value: name, type: "text" },
     { label: "Price:", name: "price", value: price, type: "number" },
     { label: "Quantity:", name: "quantity", value: quantity, type: "number" },
     {
@@ -151,9 +151,9 @@ const UpdateDeleteMerch = () => {
   return (
     <section className="flex flex-col md:flex-row">
       {/* form container */}
-      <div className="flex flex-col items-center mx-10 basis-[40%]">
-        <h3 className="text-3xl mb-2 text-blue-950 ">Update or Delete Merch</h3>
-        <div className="mb-5 flex flex-col space-y-3">
+      <div className="flex flex-col items-center basis-[40%]">
+        <h3 className="text-3xl mb-5 text-blue-950 ">Update or Delete Merch</h3>
+        <div className="space-y-3">
           {/* Get by Name */}
           <div className="flex flex-col">
             <label className="text-sm">Get item by Name</label>
@@ -193,55 +193,19 @@ const UpdateDeleteMerch = () => {
             </div>
           </div>
 
-          {/* Image Upload */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm">Image</label>
-            <input
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-              type="file"
-              name="image"
-              onChange={handleChange}
-              aria-label="Merch Image"
-            />
-          </div>
-
-          {/* Price Input */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm">Price</label>
-            <input
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-              type="number"
-              name="price"
-              value={price || ""}
-              onChange={handleChange}
-            />
-          </div>
-
-          {/* Quantity Input */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm">Quantity</label>
-            <input
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-              type="number"
-              name="quantity"
-              value={quantity || ""}
-              onChange={handleChange}
-              aria-label="Quantity"
-            />
-          </div>
-
-          {/* Description Input */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm">Description</label>
-            <input
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-              type="text"
-              name="description"
-              value={description || ""}
-              onChange={handleChange}
-              aria-label="Description"
-            />
-          </div>
+          {/* input fields */}
+          {inputfields.map(({ label, name, value, type }) => (
+            <div key={name} className="mb-4 flex flex-col">
+              <label className="text-sm">{label}</label>
+              <input
+                className="input"
+                type={type}
+                name={name}
+                value={value}
+                onChange={handleChange}
+              />
+            </div>
+          ))}
 
           {/* Category Input */}
           <div className="mb-4 flex flex-col">
@@ -261,21 +225,11 @@ const UpdateDeleteMerch = () => {
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex justify-center gap-2 p-2">
-          <button
-            className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow-lg text-sm"
-            onClick={updateMerchWithContext}
-          >
-            UPDATE
-          </button>
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow-lg text-sm"
-            onClick={deleteMerchWithContext}
-          >
-            DELETE
-          </button>
-        </div>
+        {/* update & delete buttons */}
+        <UpdateDeleteBtns
+          update={updateMerchWithContext}
+          onDelete={deleteMerchWithContext}
+        />
       </div>
 
       <Container>

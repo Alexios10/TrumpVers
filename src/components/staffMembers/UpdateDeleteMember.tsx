@@ -138,9 +138,7 @@ const UpdateDeleteMember = () => {
     <section className="flex flex-col md:flex-row">
       {/* form container */}
       <div className="flex flex-col items-center basis-[40%]">
-        <h3 className=" text-3xl mb-2 text-blue-950">
-          Update or Delete Member
-        </h3>
+        <h3 className="text-3xl mb-5 text-blue-950">Update or Delete Member</h3>
         <div className="mb-5 flex flex-col space-y-3">
           {/* get by name */}
           <div className="flex flex-col">
