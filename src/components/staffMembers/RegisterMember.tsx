@@ -75,87 +75,68 @@ const RegisterMember = () => {
     { id: "admin", label: "STAFF ADMIN" },
   ];
 
+  const inputfields = [
+    { label: "Name:", name: "name", value: name },
+    { label: "Title:", name: "title", value: title },
+    {
+      label: "Description:",
+      name: "description",
+      value: description,
+    },
+    { label: "Email:", name: "email", value: email },
+  ];
+
   return (
     <>
-      <div className="flex w-fit ml-[6rem]">
+      <div className="flex w-fit ml-[3rem]">
         <SwitchPageButtons
           pages={pages}
           activePage={activePage}
           setActivePage={setActivePage}
         />
       </div>
-      <section className="flex flex-col md:flex-row ">
-        <div className="bg-white flex flex-col flex-grow basis-[40%] ">
-          {/* <div className="flex justify-center gap-4 mb-6">
-          <button
-            onClick={() => switchPage("register")}
-            className={`p-2 text-white rounded-sm shadow-md text-sm transition ${
-              activePage === "register"
-                ? "bg-blue-600"
-                : "bg-blue-900 hover:bg-blue-700"
-            }`}
-          >
-            REGISTER NEW MEMEBER
-          </button>
-          <button
-            onClick={() => switchPage("admin")}
-            className={`p-2 text-white rounded-sm shadow-md text-sm transition ${
-              activePage === "admin"
-                ? "bg-blue-600"
-                : "bg-blue-900 hover:bg-blue-700"
-            }`}
-          >
-            MEMEBERS ADMIN
-          </button>
-        </div> */}
-          {activePage === "admin" && <UpdateDeleteMember />}
-
+      {activePage === "admin" && <UpdateDeleteMember />}
+      <section className="flex flex-col md:flex-row">
+        <div className="flex flex-col h-fit items-center basis-[40%]">
           {activePage === "register" && (
-            <div className="flex flex-col items-center">
-              <h3 className="text-3xl mb-2 text-blue-950">
+            <>
+              <h3 className="text-3xl mb-2 text-blue-950 border-b-2">
                 Register New Member
               </h3>
-              <div className="space-y-4">
-                {[
-                  { label: "Name", name: "name", value: name },
-                  { label: "Title", name: "title", value: title },
-                  {
-                    label: "Description",
-                    name: "description",
-                    value: description,
-                  },
-                  { label: "Email", name: "email", value: email },
-                ].map(({ label, name, value }) => (
-                  <div key={name} className="mb-4 flex flex-col">
-                    <label className="w-24 mr-2 text-sm">{label}</label>
+              <div className="flex flex-col">
+                <div className="space-y-4">
+                  {inputfields.map(({ label, name, value }) => (
+                    <div key={name} className="mb-4 flex flex-col">
+                      <label className="text-sm">{label}</label>
+                      <input
+                        className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+                        type="text"
+                        name={name}
+                        value={value}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  ))}
+
+                  <div className="flex flex-col">
+                    <label className="text-sm">Image:</label>
                     <input
                       className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                      type="text"
-                      name={name}
-                      value={value}
+                      name="image"
+                      type="file"
                       onChange={handleChange}
                     />
                   </div>
-                ))}
-
-                <div className="flex flex-col">
-                  <label className="text-sm font-medium">Image</label>
-                  <input
-                    className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                    name="image"
-                    type="file"
-                    onChange={handleChange}
-                  />
                 </div>
-              </div>
 
-              <button
-                onClick={registerMember}
-                className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md"
-              >
-                ADD MEMBER
-              </button>
-            </div>
+                <button
+                  onClick={registerMember}
+                  className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md"
+                >
+                  ADD MEMBER
+                </button>
+              </div>
+            </>
           )}
         </div>
         {activePage === "register" && (

@@ -4,7 +4,6 @@ import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaff from "../../interfaces/staffMembers/Istaff";
 import StaffMembersService from "../../services/StaffMembersService";
 import { LuMail } from "react-icons/lu";
-import Container from "../shared/Container";
 
 const UpdateDeleteMember = () => {
   const { getMemberById, getMemberByName, putMember, deleteMember } =
@@ -122,18 +121,25 @@ const UpdateDeleteMember = () => {
     alert(`Member with ID ${id} deleted.`);
   };
 
+  const inputfields = [
+    { label: "Title:", name: "name", value: title },
+    { label: "Description:", name: "description", value: description },
+    { label: "Email:", name: "email", value: email },
+  ];
+
   return (
-    <section className="flex flex-col md:flex-row ">
-      <div className="flex flex-col items-center mx-10 basis-[40%]">
+    <section className="flex flex-col md:flex-row">
+      <div className="flex flex-col items-center basis-[40%]">
         <h3 className=" text-3xl mb-2 text-blue-950">
-          Update or Delete Staff
+          Update or Delete Member
         </h3>
-        <div className="items-start">
-          <div className="mb-4 flex flex-col">
+        <div className="mb-5 flex flex-col">
+          {/* get by name */}
+          <div className="flex flex-col">
             <label className="w-40 mr-2 text-sm mb-2">Get Member by Name</label>
             <div className="flex gap-3">
               <input
-                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
+                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
                 type="text"
                 name="name"
                 value={name}
@@ -148,12 +154,12 @@ const UpdateDeleteMember = () => {
               </button>
             </div>
           </div>
-
-          <div className="mb-4 flex flex-col">
+          {/* get by id */}
+          <div className="flex flex-col">
             <label className="w-40 mr-2 text-sm ">Get Member by ID</label>
             <div className="flex gap-3 items-center">
               <input
-                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
+                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
                 type="number"
                 name="id"
                 onChange={handleChange}
@@ -168,8 +174,21 @@ const UpdateDeleteMember = () => {
             </div>
           </div>
 
+          {inputfields.map(({ label, name, value }) => (
+            <div key={name} className=" flex flex-col">
+              <label className="text-sm">{label}</label>
+              <input
+                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+                type="text"
+                name={name}
+                value={value}
+                onChange={handleChange}
+              />
+            </div>
+          ))}
+
           <div>
-            <label className="text-sm">Image</label>
+            <label className="text-sm">Image:</label>
             <input
               type="file"
               name="image"
@@ -178,39 +197,7 @@ const UpdateDeleteMember = () => {
               aria-label="Member Image"
             />
           </div>
-          <div>
-            <label className="text-sm">Title</label>
-            <input
-              type="text"
-              name="title"
-              value={title}
-              onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
-              aria-label="Member Title"
-            />
-          </div>
-          <div>
-            <label className="text-sm">Description</label>
-            <input
-              type="text"
-              name="description"
-              value={description}
-              onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
-              aria-label="Member Description"
-            />
-          </div>
-          <div>
-            <label className="text-sm">Email</label>
-            <input
-              type="text"
-              name="email"
-              value={email}
-              onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
-              aria-label="Member Email"
-            />
-          </div>
+          {/* update & delete buttons */}
           <div className="flex gap-4 justify-center mt-4">
             <button
               className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow-lg text-sm"
