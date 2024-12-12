@@ -3,7 +3,6 @@ import { MerchandiseContext } from "../../contexts/MerchandiseContext";
 import IMerchContext from "../../interfaces/merchandise/IMerchContexts";
 import IMerch from "../../interfaces/merchandise/IMerch";
 import MerchService from "../../services/MerchService";
-import Container from "../shared/Container";
 import UpdateDeleteBtns from "../shared/UpdateDeleteBtns";
 
 const UpdateDeleteMerch = () => {
@@ -249,7 +248,6 @@ const UpdateDeleteMerch = () => {
       </div>
 
       {/* Vist bilde og info om varen */}
-
       {currentImageName && (
         <div className="flex flex-col w-80 rounded-sm p-1 shadow-lg border-solid border-2 border-blue-800 border-opacity-20">
           <p className="text-start text-xs">ID: {id}</p>
