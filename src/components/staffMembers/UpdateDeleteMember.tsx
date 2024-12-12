@@ -4,6 +4,7 @@ import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaff from "../../interfaces/staffMembers/Istaff";
 import StaffMembersService from "../../services/StaffMembersService";
 import { LuMail } from "react-icons/lu";
+import UpdateDeleteBtns from "../shared/UpdateDeleteBtns";
 
 const UpdateDeleteMember = () => {
   const { getMemberById, getMemberByName, putMember, deleteMember } =
@@ -201,20 +202,12 @@ const UpdateDeleteMember = () => {
             />
           </div>
 
-          {/* update & delete buttons */}
+          {/* update & delete */}
           <div className="flex gap-4 justify-center mt-4">
-            <button
-              className="update-delete-btns bg-green-500 hover:bg-green-600"
-              onClick={updateMemberWithContext}
-            >
-              UPDATE
-            </button>
-            <button
-              className="update-delete-btns bg-red-500 hover:bg-red-600"
-              onClick={deleteMemberWithContext}
-            >
-              DELETE
-            </button>
+            <UpdateDeleteBtns
+              update={updateMemberWithContext}
+              onDelete={deleteMemberWithContext}
+            />
           </div>
         </div>
       </div>
