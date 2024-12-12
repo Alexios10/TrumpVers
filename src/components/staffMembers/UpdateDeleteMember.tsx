@@ -122,7 +122,7 @@ const UpdateDeleteMember = () => {
   };
 
   const inputfields = [
-    { label: "Title:", name: "name", value: title },
+    { label: "Title:", name: "title", value: title },
     { label: "Description:", name: "description", value: description },
     { label: "Email:", name: "email", value: email },
   ];
