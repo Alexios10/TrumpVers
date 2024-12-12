@@ -12,6 +12,7 @@ const StaffMemberItems: FC<IStaff> = ({
   email,
 }) => {
   return (
+    // Stilsetter Staff kortene
     <section className="flex justify-center p-4">
       <div className="bg-zinc-100 border border-solid border-blue-500 rounded-xl shadow-xl px-16 py-4 text-center overflow-hidden">
         <img
@@ -26,6 +27,7 @@ const StaffMemberItems: FC<IStaff> = ({
           href={`mailto:${email}`}
           className="w-full text-xs inline-flex items-center justify-center mt-4 font-medium text-blue-600 hover:text-red-600 transition"
         >
+          {/* Epost ikon gjennom React icons */}
           <LuMail className="mr-2" />
           {email}
         </a>

@@ -6,9 +6,11 @@ import UpdateDeleteMember from "./UpdateDeleteMember";
 import SwitchPageButtons from "../shared/SwitchPageButtons";
 import Container from "../shared/Container";
 
+// Komponenter for å registrere et nytt Staff medlem
 const RegisterMember = () => {
   const { postMember } = useContext(StaffMemberContext) as IStaffContext;
 
+  // State for inputfeltene og aktiv side
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
   const [title, setTitle] = useState<string>("");
@@ -19,10 +21,12 @@ const RegisterMember = () => {
       (localStorage.getItem("activePage") as "register" | "admin") || "register"
   );
 
+  // useEffect for å lagre den aktive siden i lokal lagring
   useEffect(() => {
     localStorage.setItem("activePage", activePage);
   }, [activePage]);
 
+  // Håndterer endringer i inputfeltene
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     switch (e.target.name) {
@@ -46,12 +50,14 @@ const RegisterMember = () => {
     }
   };
 
+  // Funskjon for å registrere et nytt medlem
   const registerMember = () => {
     if (!name || !email || !image) {
       alert("Please fill in all fields.");
       return;
     }
 
+    // Opprette et nytt medlem - objekt
     const newMember = {
       name,
       image: image.name,
@@ -75,6 +81,7 @@ const RegisterMember = () => {
     { id: "admin", label: "STAFF ADMIN" },
   ];
 
+  // Array med konfigurasjoner for imputfelt
   const inputfields = [
     { label: "Name:", name: "name", value: name },
     { label: "Title:", name: "title", value: title },
@@ -139,6 +146,8 @@ const RegisterMember = () => {
               </div>
             </div>
           )}
+
+          {/*  Vil at "Container" skal kun vise i register siden */}
         </div>
         {activePage === "register" && (
           <Container>
