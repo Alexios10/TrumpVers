@@ -130,6 +130,7 @@ const UpdateDeleteMember = () => {
 
   return (
     <section className="flex flex-col md:flex-row">
+      {/* form container */}
       <div className="flex flex-col items-center basis-[40%]">
         <h3 className=" text-3xl mb-2 text-blue-950">
           Update or Delete Member
@@ -202,7 +203,7 @@ const UpdateDeleteMember = () => {
             />
           </div>
 
-          {/* update & delete */}
+          {/* update & delete buttons */}
           <UpdateDeleteBtns
             update={updateMemberWithContext}
             onDelete={deleteMemberWithContext}
@@ -210,6 +211,7 @@ const UpdateDeleteMember = () => {
         </div>
       </div>
 
+      {/* result conatiner */}
       {currentImageName && (
         <section className="pl-[50%]">
           <div className="flex flex-col text-center bg-zinc-100 border-solid border-blue-500 rounded-xl overflow-hidden w-96 h-96 border mt-10 p-5">

@@ -91,17 +91,17 @@ const RegisterMerch = () => {
 
   return (
     <>
-      <div className="flex w-fit ml-[6rem]">
+      <div className="flex w-fit ml-[3rem]">
         <SwitchPageButtons
           pages={pages}
           activePage={activePage}
           setActivePage={setActivePage}
         />
       </div>
-      <section className="flex flex-col md:flex-row">
-        <div className="bg-white  flex flex-col flex-grow basis-[40%]">
-          {activePage === "admin" && <UpdateDeleteMerch />}
+      {activePage === "admin" && <UpdateDeleteMerch />}
 
+      <section className="flex flex-col md:flex-row">
+        <div className="flex flex-col h-fit items-center basis-[40%]">
           {activePage === "register" && (
             <div className="flex flex-col items-center">
               <h3 className="text-3xl mb-2 text-blue-950">

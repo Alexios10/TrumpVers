@@ -96,6 +96,7 @@ const RegisterMember = () => {
         />
       </div>
       {activePage === "admin" && <UpdateDeleteMember />}
+
       <section className="flex flex-col md:flex-row">
         <div className="flex flex-col h-fit items-center basis-[40%]">
           {activePage === "register" && (
