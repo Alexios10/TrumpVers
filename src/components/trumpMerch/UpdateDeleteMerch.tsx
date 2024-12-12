@@ -248,35 +248,32 @@ const UpdateDeleteMerch = () => {
       </div>
 
       {/* Vist bilde og info om varen */}
-      <Container>
-        {currentImageName && (
-          <div className="flex flex-col w-80 rounded-sm p-1 shadow-lg border-solid border-2 border-blue-800 border-opacity-20">
-            <div className="flex-1 m-8">
-              <img
-                src={MerchService.getImageEndpoint() + currentImageName}
-                alt={name}
-                className="object-contain w-full"
-              />
+
+      {currentImageName && (
+        <div className="flex flex-col w-80 rounded-sm p-1 shadow-lg border-solid border-2 border-blue-800 border-opacity-20">
+          <div className="flex-1 m-8">
+            <img
+              src={MerchService.getImageEndpoint() + currentImageName}
+              alt={name}
+              className="object-contain w-full"
+            />
+          </div>
+          <hr />
+          <div className="grid m-2">
+            <div className=" bg-white flex flex-col text-center justify-between mb-4">
+              <h3 className="text-2xl font-semibold text-gray-800">{name}</h3>
+
+              <p className="text-sm text-center text-gray-800">{description}</p>
+              <p className="text-2xl text-gray-900 text-start">{price} $</p>
             </div>
-            <hr />
-            <div className="grid m-2">
-              <div className=" bg-white flex flex-col text-center justify-between mb-4">
-                <h3 className="text-2xl font-semibold text-gray-800">{name}</h3>
 
-                <p className="text-sm text-center text-gray-800">
-                  {description}
-                </p>
-                <p className="text-2xl text-gray-900 text-start">{price} $</p>
-              </div>
-
-              <div className="text-xs">
-                <p className="mt-2 text-gray-800">Category: {category}</p>
-                <p className="mt-2 text-gray-800">{quantity} left</p>
-              </div>
+            <div className="text-xs">
+              <p className="mt-2 text-gray-800">Category: {category}</p>
+              <p className="mt-2 text-gray-800">{quantity} left</p>
             </div>
           </div>
-        )}
-      </Container>
+        </div>
+      )}
     </section>
   );
 };
