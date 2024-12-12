@@ -1,7 +1,7 @@
-import { useState } from "react"; 
-import { Link, useLocation } from "react-router-dom"; 
-import { RxHamburgerMenu } from "react-icons/rx"; 
-import { IoIosClose } from "react-icons/io"; 
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoIosClose } from "react-icons/io";
 
 const MainNavigation = () => {
   // Lokal tilstand for å spore om menyen er åpen eller lukket
@@ -21,92 +21,160 @@ const MainNavigation = () => {
   };
 
   return (
-    <nav className="bg-white mx-8 mb-6">
-      <div className="max-w-screen-2xl mx-auto flex items-center justify-between">
+    <>
+      <nav className="bg-white mx-8 mb-6">
         {/* Logo med en lenke tilbake til hovedsiden */}
-        <div>
-          <Link to="/">
-            <img
-              className="w-56 mb-4"
-              src="./src/assets/image/trumplogo.png"
-              alt="trump logo"
-            />
-          </Link>
-        </div>
 
-        {/* Hamburger Meny: Vises kun på mindre skjermer (md:hidden) */}
-        <div className="md:hidden">
-          <button
-            onClick={toggleMenu}
-            className="flex items-center justify-center w-10 h-10 bg-white text-gray-600 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none"
-          >
-            {/* Viser enten et lukk-ikon eller hamburger-ikon basert på isOpen-tilstanden */}
-            {isOpen ? (
-              <span className="text-xl">
+        <div className=" flex items-center justify-between mb-4 ">
+          <div>
+            <Link to="/">
+              <img
+                className="w-44"
+                src="./src/assets/image/trumplogo.png"
+                alt="trump logo"
+              />
+            </Link>
+          </div>
+          {/* Navigation Meny: Flex-meny for navigasjon */}
+          <ul className="hidden md:flex md:flex-row md:space-x-8 text-xl">
+            {/* Liste over navigasjonslenker med dynamisk klasse basert på aktiv rute */}
+            <li>
+              <Link
+                to="/thoughts"
+                className={`nav-links ${isActive("/thoughts")}`}
+              >
+                THOUGHTS
+              </Link>
+            </li>
+            <li>
+              <Link to="/shop" className={`nav-links ${isActive("/shop")}`}>
+                MERCH
+              </Link>
+            </li>
+            <li>
+              <Link to="/staff" className={`nav-links ${isActive("/staff")}`}>
+                STAFF
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/thoughtsAdmin"
+                className={`nav-links ${isActive("/thoughtsAdmin")}`}
+              >
+                THOUGHTS ADMIN
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/merchAdmin"
+                className={`nav-links ${isActive("/merchAdmin")}`}
+              >
+                MERCH ADMIN
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/registerMembers"
+                className={`nav-links ${isActive("/registerMembers")}`}
+              >
+                STAFF ADMIN
+              </Link>
+            </li>
+          </ul>
+        </div>
+        {/* Horisontal linje som skiller navigasjonsbaren fra annet innhold */}
+        <hr className="border-red-600" />
+      </nav>
+
+      {/* Mobil Nav */}
+      <div
+        className={`${
+          isOpen &&
+          "w-screen h-screen  top-0 left-0 bg-black/30 fixed md:hidden"
+        }`}
+      ></div>
+      <div className="md:hidden flex flex-col absolute right-0 top-0">
+        {/* Viser enten et lukk-ikon eller hamburger-ikon basert på isOpen-tilstanden */}
+        {isOpen ? (
+          <div className="flex flex-col bg-black/60 p-5">
+            <div className="flex justify-end">
+              <button
+                onClick={toggleMenu}
+                className="flex items-center justify-center border-2 mb-2 w-10 h-10 bg-white rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+              >
                 <IoIosClose />
-              </span>
-            ) : (
-              <span className="text-xl">
-                <RxHamburgerMenu />
-              </span>
-            )}
-          </button>
-        </div>
+              </button>
+            </div>
 
-        {/* Navigation Meny: Flex-meny for navigasjon */}
-        <ul
-          className={`flex-col md:flex md:flex-row md:space-x-8 text-xl ${
-            isOpen ? "flex" : "hidden"
-          } md:visible`}
-        >
-          {/* Liste over navigasjonslenker med dynamisk klasse basert på aktiv rute */}
-          <li>
-            <Link
-              to="/thoughts"
-              className={`nav-links ${isActive("/thoughts")}`}
+            {/* nav links */}
+            <ul className="flex flex-col text-xl space-y-10">
+              <li className="">
+                <Link
+                  to="/thoughts"
+                  className={`nav-links text-white ${isActive("/thoughts")}`}
+                >
+                  THOUGHTS
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop"
+                  className={`nav-links text-white ${isActive("/shop")}`}
+                >
+                  MERCH
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/staff"
+                  className={`nav-links text-white ${isActive("/staff")}`}
+                >
+                  STAFF
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/thoughtsAdmin"
+                  className={`nav-links text-white ${isActive(
+                    "/thoughtsAdmin"
+                  )}`}
+                >
+                  THOUGHTS ADMIN
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/merchAdmin"
+                  className={`nav-links text-white ${isActive("/merchAdmin")}`}
+                >
+                  MERCH ADMIN
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/registerMembers"
+                  className={`nav-links text-white ${isActive(
+                    "/registerMembers"
+                  )}`}
+                >
+                  STAFF ADMIN
+                </Link>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <div className="p-5">
+            {" "}
+            <button
+              onClick={toggleMenu}
+              className="flex items-center justify-center border-2 w-10 h-10 bg-white rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105"
             >
-              THOUGHTS
-            </Link>
-          </li>
-          <li>
-            <Link to="/shop" className={`nav-links ${isActive("/shop")}`}>
-              MERCH
-            </Link>
-          </li>
-          <li>
-            <Link to="/staff" className={`nav-links ${isActive("/staff")}`}>
-              STAFF
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/thoughtsAdmin"
-              className={`nav-links ${isActive("/thoughtsAdmin")}`}
-            >
-              THOUGHTS ADMIN
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/merchAdmin"
-              className={`nav-links ${isActive("/merchAdmin")}`}
-            >
-              MERCH ADMIN
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/registerMembers"
-              className={`nav-links ${isActive("/registerMembers")}`}
-            >
-              STAFF ADMIN
-            </Link>
-          </li>
-        </ul>
+              <RxHamburgerMenu />
+            </button>
+          </div>
+        )}
       </div>
-      {/* Horisontal linje som skiller navigasjonsbaren fra annet innhold */}
-      <hr className="border-red-600" />
-    </nav>
+    </>
   );
 };
 
