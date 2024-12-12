@@ -19,3 +19,7 @@
 .nav-links {
   @apply hover:text-red-600 transition duration-150;
 }
+
+.add-btn {
+  @apply mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md w-full;
+}

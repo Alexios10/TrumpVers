@@ -127,10 +127,7 @@ const RegisterMember = () => {
                 ))}
               </div>
 
-              <button
-                onClick={registerMember}
-                className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md w-full"
-              >
+              <button onClick={registerMember} className="add-btn">
                 ADD MEMBER
               </button>
             </div>

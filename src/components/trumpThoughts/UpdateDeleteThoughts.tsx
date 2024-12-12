@@ -199,30 +199,28 @@ const UpdateDeleteThoughts = () => {
 
       {/* right container */}
       <Container>
-        <div className="flex flex-col flex-grow overflow-hidden overflow-y-auto basis-[60%]">
-          {matchingThoughts.length > 0 &&
-            matchingThoughts.map((thought) => (
-              <div
-                key={thought.id}
-                className="mx-5 my-4 rounded-sm p-1 shadow-lg h-auto w-auto border-solid border-2 border-blue-950 border-opacity-20"
-                onClick={() => handleThoughtClick(thought)}
-              >
-                <div className="m-2">
-                  <p className="text-xs">ID: {thought.id}</p>
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-sm align-text-top">{thought.name}</h3>
-                    <p className="text-end text-xs">
-                      {thought.dateCreated
-                        ? new Date(thought.dateCreated).toLocaleDateString()
-                        : "N/A"}
-                    </p>
-                  </div>
-                  <p className="text-xs">{thought.category}</p>
-                  <p className="mt-2 text-base">{thought.thought}</p>
+        {matchingThoughts.length > 0 &&
+          matchingThoughts.map((thought) => (
+            <div
+              key={thought.id}
+              className="mx-5 my-4 rounded-sm p-1 shadow-lg h-auto w-auto border-solid border-2 border-blue-950 border-opacity-20"
+              onClick={() => handleThoughtClick(thought)}
+            >
+              <div className="m-2">
+                <p className="text-xs">ID: {thought.id}</p>
+                <div className="flex justify-between items-center">
+                  <h3 className="text-sm align-text-top">{thought.name}</h3>
+                  <p className="text-end text-xs">
+                    {thought.dateCreated
+                      ? new Date(thought.dateCreated).toLocaleDateString()
+                      : "N/A"}
+                  </p>
                 </div>
+                <p className="text-xs">{thought.category}</p>
+                <p className="mt-2 text-base">{thought.thought}</p>
               </div>
-            ))}
-        </div>
+            </div>
+          ))}
       </Container>
     </section>
   );

@@ -160,7 +160,7 @@ const UpdateDeleteMerch = () => {
       value: description,
       type: "text",
     },
-    { label: "Image::", name: "image", type: "file" },
+    { label: "Image:", name: "image", type: "file" },
   ];
 
   return (
@@ -170,7 +170,7 @@ const UpdateDeleteMerch = () => {
         <h3 className="text-3xl mb-5 text-blue-950 ">Update or Delete Merch</h3>
         <div className="space-y-3">
           {/* Get item by Name */}
-          <div className="flex flex-col">
+          <div className="flex flex-col space-y-1">
             <label className="text-sm">Get item by Name</label>
             <div className="flex gap-3">
               <input
@@ -190,7 +190,7 @@ const UpdateDeleteMerch = () => {
           </div>
 
           {/* Get item by ID */}
-          <div className=" flex flex-col">
+          <div className=" flex flex-col space-y-1">
             <label className="w-40 mr-2 text-sm ">Get item by ID</label>
             <div className="flex gap-3">
               <input
@@ -210,7 +210,7 @@ const UpdateDeleteMerch = () => {
 
           {/* Inputfelter for pris, kvantitet og beskrivelse */}
           {inputfields.map(({ label, name, value, type }) => (
-            <div key={name} className="mb-4 flex flex-col">
+            <div key={name} className="mb-4 flex flex-col space-y-1">
               <label className="text-sm">{label}</label>
               <input
                 className="input"
@@ -223,8 +223,8 @@ const UpdateDeleteMerch = () => {
           ))}
 
           {/* Kategorivelger */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm">Category</label>
+          <div className="mb-4 flex flex-col space-y-1">
+            <label className="text-sm">Category</label>
             <select
               className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
               name="category"

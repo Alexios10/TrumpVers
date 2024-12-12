@@ -137,10 +137,7 @@ const RegisterThought = () => {
                   />
                 </div>
               </div>
-              <button
-                onClick={registerThought}
-                className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs w-full"
-              >
+              <button onClick={registerThought} className="add-btn">
                 PUBLISH
               </button>
             </div>

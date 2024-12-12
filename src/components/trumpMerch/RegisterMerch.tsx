@@ -167,10 +167,7 @@ const RegisterMerch = () => {
               </div>
 
               {/* Knapp for å registrere vare */}
-              <button
-                onClick={registerMerch}
-                className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md w-full"
-              >
+              <button onClick={registerMerch} className="add-btn">
                 ADD MERCH
               </button>
             </div>

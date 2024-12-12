@@ -151,8 +151,8 @@ const UpdateDeleteMember = () => {
         </h3>
         <div className="mb-5 flex flex-col space-y-3">
           {/* Stylingen til Get member by Name */}
-          <div className="flex flex-col">
-            <label className="text-sm mb-2">Get Member by Name</label>
+          <div className="flex flex-col space-y-1">
+            <label className="text-sm">Get Member by Name</label>
             <div className="flex gap-3">
               <input
                 className="input"
@@ -172,8 +172,8 @@ const UpdateDeleteMember = () => {
           </div>
 
           {/* Stylingen til Get Member by ID */}
-          <div className="flex flex-col">
-            <label className="mb-2 text-sm ">Get Member by ID</label>
+          <div className="flex flex-col space-y-1">
+            <label className="text-sm ">Get Member by ID</label>
             <div className="flex gap-3 items-center">
               <input
                 className="input"
@@ -193,8 +193,8 @@ const UpdateDeleteMember = () => {
 
           {/* Input feltene */}
           {inputfields.map(({ label, name, value, type }) => (
-            <div key={name} className=" flex flex-col">
-              <label className="text-sm mb-2">{label}</label>
+            <div key={name} className=" flex flex-col space-y-1">
+              <label className="text-sm">{label}</label>
               <input
                 className="input"
                 type={type}
