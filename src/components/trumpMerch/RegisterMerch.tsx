@@ -117,14 +117,12 @@ const RegisterMerch = () => {
 
   return (
     <>
-      <div className="flex w-fit ml-[3rem]">
-        {/* Knapp for å bytte mellom ulike sider (registrering eller admin) */}
-        <SwitchPageButtons
-          pages={pages}
-          activePage={activePage}
-          setActivePage={setActivePage}
-        />
-      </div>
+      {/* Knapp for å bytte mellom ulike sider (registrering eller admin) */}
+      <SwitchPageButtons
+        pages={pages}
+        activePage={activePage}
+        setActivePage={setActivePage}
+      />
       {activePage === "admin" && <UpdateDeleteMerch />}
 
       <section className="flex flex-col md:flex-row">
@@ -135,48 +133,46 @@ const RegisterMerch = () => {
                 Register new Merch
               </h3>
               {/* Registreringsskjema */}
-              <div className="flex flex-col">
-                <div className="space-y-4">
-                  {/* Løkke for å vise inputfeltene */}
-                  {inputfields.map(({ label, name, value, type }) => (
-                    <div key={name} className="mb-4 flex flex-col">
-                      <label className="text-sm">{label}</label>
-                      <input
-                        className="input"
-                        type={type}
-                        name={name}
-                        value={value}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  ))}
-
-                  {/* Kategorivalg */}
-                  <div className="flex flex-col">
-                    <label className="w-25 text-sm">Select Category:</label>
-                    <select
-                      className="w-full text-zinc-700 bg-gray-200"
-                      name="category"
-                      value={category}
+              <div className="space-y-4">
+                {/* Løkke for å vise inputfeltene */}
+                {inputfields.map(({ label, name, value, type }) => (
+                  <div key={name} className="mb-4 flex flex-col space-y-1">
+                    <label className="text-sm">{label}</label>
+                    <input
+                      className="input"
+                      type={type}
+                      name={name}
+                      value={value}
                       onChange={handleChange}
-                    >
-                      {choosenCategoriy.map((category) => (
-                        <option key={category} value={category}>
-                          {category}
-                        </option>
-                      ))}
-                    </select>
+                    />
                   </div>
-                </div>
+                ))}
 
-                {/* Knapp for å registrere vare */}
-                <button
-                  onClick={registerMerch}
-                  className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md"
-                >
-                  ADD MERCH
-                </button>
+                {/* Kategorivalg */}
+                <div className="flex flex-col space-y-1">
+                  <label className="text-sm">Select Category:</label>
+                  <select
+                    className="w-full text-zinc-700 bg-gray-200"
+                    name="category"
+                    value={category}
+                    onChange={handleChange}
+                  >
+                    {choosenCategoriy.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
+
+              {/* Knapp for å registrere vare */}
+              <button
+                onClick={registerMerch}
+                className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md w-full"
+              >
+                ADD MERCH
+              </button>
             </div>
           )}
         </div>

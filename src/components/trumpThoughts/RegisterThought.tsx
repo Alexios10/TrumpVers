@@ -96,55 +96,53 @@ const RegisterThought = () => {
                 Register New Thought
               </h3>
               {/* form container */}
-              <div className="flex flex-col">
-                <div className="space-y-4">
-                  {/* name input */}
-                  <div className="flex flex-col space-y-1">
-                    <label className="w-24 mr-2 text-sm">Name</label>
-                    <input
-                      className="input"
-                      type="text"
-                      name="name"
-                      value={name}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  {/* category input */}
-                  <div className="flex flex-col">
-                    <label className="w-24 mr-2 text-sm">Category</label>
-                    <select
-                      className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                      name="category"
-                      value={category}
-                      onChange={handleChange}
-                    >
-                      {choosenCategories.map((category) => (
-                        <option key={category} value={category}>
-                          {category}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* thought input */}
-                  <div className="flex flex-col">
-                    <label className="text-sm">Thought</label>
-                    <textarea
-                      className="input"
-                      name="thought"
-                      value={thought}
-                      onChange={handleChange}
-                    />
-                  </div>
+              <div className="space-y-4">
+                {/* name input */}
+                <div className="flex flex-col space-y-1">
+                  <label className="w-24 mr-2 text-sm">Name:</label>
+                  <input
+                    className="input"
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={handleChange}
+                  />
                 </div>
-                <button
-                  onClick={registerThought}
-                  className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
-                >
-                  PUBLISH
-                </button>
+
+                {/* category input */}
+                <div className="flex flex-col space-y-1">
+                  <label className="w-24 mr-2 text-sm">Category:</label>
+                  <select
+                    className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
+                    name="category"
+                    value={category}
+                    onChange={handleChange}
+                  >
+                    {choosenCategories.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* thought input */}
+                <div className="flex flex-col space-y-1">
+                  <label className="text-sm">Thought:</label>
+                  <textarea
+                    className="input"
+                    name="thought"
+                    value={thought}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
+              <button
+                onClick={registerThought}
+                className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs w-full"
+              >
+                PUBLISH
+              </button>
             </div>
           )}
         </div>

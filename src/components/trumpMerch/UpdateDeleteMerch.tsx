@@ -12,8 +12,6 @@ const UpdateDeleteMerch = () => {
     MerchandiseContext
   ) as IMerchContext;
 
-
-  
   // State variabler for inputfeltene
   const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
@@ -80,7 +78,7 @@ const UpdateDeleteMerch = () => {
         setQuantity(merch.quantity ?? "");
         setCategory(merch.category ?? "");
         setCurrentImageName(merch.image ?? null);
-        setImage(null); 
+        setImage(null);
       } else {
         alert(`Item with id "${id}" not found.`);
       }
@@ -192,7 +190,7 @@ const UpdateDeleteMerch = () => {
           </div>
 
           {/* Get item by ID */}
-          <div className="mb-4 flex flex-col">
+          <div className=" flex flex-col">
             <label className="w-40 mr-2 text-sm ">Get item by ID</label>
             <div className="flex gap-3">
               <input

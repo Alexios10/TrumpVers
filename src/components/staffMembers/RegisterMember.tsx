@@ -83,25 +83,26 @@ const RegisterMember = () => {
 
   // Array med konfigurasjoner for imputfelt
   const inputfields = [
-    { label: "Name:", name: "name", value: name },
-    { label: "Title:", name: "title", value: title },
+    { label: "Name:", name: "name", value: name, type: "text" },
+    { label: "Title:", name: "title", value: title, type: "text" },
     {
       label: "Description:",
       name: "description",
       value: description,
+      type: "text",
     },
-    { label: "Email:", name: "email", value: email },
+    { label: "Email:", name: "email", value: email, type: "text" },
+    { label: "Image:", name: "image", type: "file" },
   ];
 
   return (
     <>
-      <div className="flex w-fit ml-[3rem]">
-        <SwitchPageButtons
-          pages={pages}
-          activePage={activePage}
-          setActivePage={setActivePage}
-        />
-      </div>
+      <SwitchPageButtons
+        pages={pages}
+        activePage={activePage}
+        setActivePage={setActivePage}
+      />
+
       {activePage === "admin" && <UpdateDeleteMember />}
 
       <section className="flex flex-col md:flex-row">
@@ -111,39 +112,27 @@ const RegisterMember = () => {
               <h3 className="text-3xl mb-2 text-blue-950 border-b-2">
                 Register New Member
               </h3>
-              <div className="flex flex-col">
-                <div className="space-y-4">
-                  {inputfields.map(({ label, name, value }) => (
-                    <div key={name} className="mb-4 flex flex-col">
-                      <label className="text-sm">{label}</label>
-                      <input
-                        className="input"
-                        type="text"
-                        name={name}
-                        value={value}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  ))}
-
-                  <div className="flex flex-col">
-                    <label className="text-sm">Image:</label>
+              <div className="space-y-4">
+                {inputfields.map(({ label, name, value, type }) => (
+                  <div key={name} className="mb-4 flex flex-col space-y-1">
+                    <label className="text-sm">{label}</label>
                     <input
-                      className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                      name="image"
-                      type="file"
+                      className="input"
+                      type={type}
+                      name={name}
+                      value={value}
                       onChange={handleChange}
                     />
                   </div>
-                </div>
-
-                <button
-                  onClick={registerMember}
-                  className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md"
-                >
-                  ADD MEMBER
-                </button>
+                ))}
               </div>
+
+              <button
+                onClick={registerMember}
+                className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md w-full"
+              >
+                ADD MEMBER
+              </button>
             </div>
           )}
 
