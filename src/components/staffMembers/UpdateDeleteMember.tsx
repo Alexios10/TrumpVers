@@ -113,7 +113,7 @@ const UpdateDeleteMember = () => {
       email: email,
     };
 
-    const result = await putMember(memberToUpdate, image);
+    const result = await putMember(memberToUpdate, image || undefined);
     if (result) {
       alert("Member updated successfully.");
     }

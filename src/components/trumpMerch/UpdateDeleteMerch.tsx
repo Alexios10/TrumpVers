@@ -132,7 +132,7 @@ const UpdateDeleteMerch = () => {
     };
 
     // Sender oppdaterte data til konteksten for å oppdatere varen
-    const result = await putMerch(merchToUpdate, image);
+    const result = await putMerch(merchToUpdate, image || undefined);
     if (result) {
       alert("Item updated successfully.");
     }
