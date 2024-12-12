@@ -15,6 +15,7 @@ const MerchItem: FC<IMerch> = ({
     <article className="flex justify-center my-4">
       {/* Container for hver vare, med bilde og detaljer */}
       <div className="w-80 h-auto cursor-pointer flex flex-col rounded-sm p-1 shadow-lg border-solid border-2 border-blue-800 border-opacity-20 hover:border-4">
+        <p className="text-start text-xs">ID: {id}</p>
         <div className="flex-1 m-8">
           <img
             src={MerchService.getImageEndpoint() + image}
@@ -40,7 +41,6 @@ const MerchItem: FC<IMerch> = ({
         <div className="flex justify-between items-center text-xs">
           <p className="text-green-600">In stock</p>
           <p className="mt-2 text-gray-500 text-end">{quantity} left</p>{" "}
-          <p>Id: {id}</p>
         </div>
       </div>
     </article>
