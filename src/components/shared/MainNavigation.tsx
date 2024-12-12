@@ -20,7 +20,7 @@ const MainNavigation = () => {
     return location.pathname === path ? "text-red-600" : "text-sky-950";
   };
 
-  const links = [
+  const navLinks = [
     {
       path: "/thoughts",
       name: "THOUGHTS",
@@ -62,7 +62,7 @@ const MainNavigation = () => {
             </Link>
           </div>
           {/* Nav Links */}
-          {links.map((link, index) => {
+          {navLinks.map((link, index) => {
             return (
               <ul
                 key={index}
@@ -115,7 +115,7 @@ const MainNavigation = () => {
           </button>
         </div>
         {/* Nav links */}
-        {links.map((link, index) => {
+        {navLinks.map((link, index) => {
           return (
             <ul key={index} className="flex flex-col text-xl space-y-10 mt-5">
               <li>
