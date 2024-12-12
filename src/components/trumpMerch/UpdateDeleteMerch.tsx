@@ -252,6 +252,7 @@ const UpdateDeleteMerch = () => {
 
       {currentImageName && (
         <div className="flex flex-col w-80 rounded-sm p-1 shadow-lg border-solid border-2 border-blue-800 border-opacity-20">
+          <p className="text-start text-xs">ID: {id}</p>
           <div className="flex-1 m-8">
             <img
               src={MerchService.getImageEndpoint() + currentImageName}
