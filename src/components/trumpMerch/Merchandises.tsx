@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import MerchList from "./MerchList"; 
-import { MerchandiseContext } from "../../contexts/MerchandiseContext"; 
-import IMerchContext from "../../interfaces/merchandise/IMerchContexts"; 
+import MerchList from "./MerchList";
+import { MerchandiseContext } from "../../contexts/MerchandiseContext";
+import IMerchContext from "../../interfaces/merchandise/IMerchContexts";
 
 const Merchandises = () => {
   // Henter merchandise (varer) fra konteksten
@@ -16,24 +16,24 @@ const Merchandises = () => {
   // Filtrerer varene basert på valgt kategori
   const filteredMerch =
     filterCategory === "All"
-      ? merchandise 
+      ? merchandise
       : merchandise.filter(
-          (merchandise) => merchandise.category === filterCategory 
+          (merchandise) => merchandise.category === filterCategory
         );
 
   // Funksjon som håndterer når en kategori blir klikket
   const handleCategoryClick = (category: string) => {
-    setFilterCategory(category); 
+    setFilterCategory(category);
   };
 
   return (
     <section className="flex">
       {/* Venstre sidepanel med tittel */}
-      <div className="w-96 p-12 text-lg border-r-2 border-slate-400 text-blue-950 ">
-        <h2 className="sm:text-md md:text-lg lg:text-xl text-center font-bold">
+      <div className="w-auto p-10 text-lg border-r-2 border-slate-400 text-blue-950 ">
+        <h2 className="sm:text-sm md:text-md lg:text-lg text-center font-bold">
           America First:
         </h2>
-        <h3 className="sm:text-sm md:text-md lg:text-lg text-center">
+        <h3 className="sm:text-xs md:text-sm lg:text-md text-center">
           Official Trump Merchandise
         </h3>
         <hr className="w-full h-0.5 mx-auto rounded m-2 bg-slate-400" />
