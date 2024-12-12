@@ -13,6 +13,7 @@ const MerchList: FC<MerchListProps> = ({ merchs }) => {
         {merchs.map((merch) => (
           <MerchItem
             key={merch.id}
+            id={merch.id}
             name={merch.name}
             image={merch.image}
             description={merch.description}

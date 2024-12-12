@@ -4,6 +4,7 @@ import MerchService from "../../services/MerchService";
 
 // MerchItem-komponenten tar inn en vare (IMerch) som prop
 const MerchItem: FC<IMerch> = ({
+  id,
   name,
   image,
   description,
@@ -39,6 +40,7 @@ const MerchItem: FC<IMerch> = ({
         <div className="flex justify-between items-center text-xs">
           <p className="text-green-600">In stock</p>
           <p className="mt-2 text-gray-500 text-end">{quantity} left</p>{" "}
+          <p>Id: {id}</p>
         </div>
       </div>
     </article>
