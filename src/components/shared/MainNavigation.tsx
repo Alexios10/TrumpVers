@@ -82,7 +82,7 @@ const MainNavigation = () => {
       {/* Mobile Nav Overlay */}
       {isOpen && (
         <div
-          className="w-screen h-screen top-0 left-0 bg-black/30 fixed md:hidden"
+          className="w-screen h-screen top-0 left-0 bg-black/30 fixed md:hidden z-20"
           onClick={toggleMenu}
         ></div>
       )}
@@ -101,7 +101,7 @@ const MainNavigation = () => {
 
       {/* Mobil Nav Meny */}
       <div
-        className={`md:hidden flex flex-col fixed top-0 right-0 h-screen bg-black/60 p-5 transform ${
+        className={`md:hidden flex flex-col fixed top-0 right-0 h-screen bg-black/60 p-5 transform z-40 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >
