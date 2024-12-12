@@ -118,10 +118,10 @@ const RegisterMerch = () => {
         <div className="flex flex-col h-fit items-center basis-[40%]">
           {activePage === "register" && (
             <div className="flex flex-col items-center">
-              <h3 className="text-3xl mb-2 text-blue-950 border-b-2">
+              <h3 className="text-3xl mb-2 text-blue-950">
                 Register new Merch
               </h3>
-              {/* Registration container */}
+              {/* form container */}
               <div className="flex flex-col">
                 <div className="space-y-4">
                   {/* input fields */}
@@ -170,11 +170,9 @@ const RegisterMerch = () => {
 
         {/* Right Container for Selected Member */}
         {activePage === "register" && (
-          <>
-            <Container>
-              <MerchList merchs={merchandise} />
-            </Container>
-          </>
+          <Container>
+            <MerchList merchs={merchandise} />
+          </Container>
         )}
       </section>
     </>

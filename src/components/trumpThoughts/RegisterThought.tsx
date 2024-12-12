@@ -81,35 +81,37 @@ const RegisterThought = () => {
 
   return (
     <>
-      <div className="flex w-fit ml-[6rem]">
-        <SwitchPageButtons
-          pages={pages}
-          activePage={activePage}
-          setActivePage={setActivePage}
-        />
-      </div>
-      <section className="flex flex-col md:flex-row">
-        <div className="bg-white flex flex-col flex-grow basis-[40%]">
-          {activePage === "admin" && <UpdateDeleteThoughts />}
+      <SwitchPageButtons
+        pages={pages}
+        activePage={activePage}
+        setActivePage={setActivePage}
+      />
+      {activePage === "admin" && <UpdateDeleteThoughts />}
 
+      <section className="flex flex-col md:flex-row">
+        <div className="flex flex-col h-fit items-center basis-[40%]">
           {activePage === "register" && (
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col">
               <h3 className="text-3xl mb-2 text-blue-950">
                 Register New Thought
               </h3>
-              <div className="bg-white h-auto flex flex-col">
-                <div className="w-96 items-start">
-                  <div className="mb-4 flex flex-col">
+              {/* form container */}
+              <div className="flex flex-col">
+                <div className="space-y-4">
+                  {/* name input */}
+                  <div className="flex flex-col space-y-1">
                     <label className="w-24 mr-2 text-sm">Name</label>
                     <input
-                      className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
+                      className="input"
                       type="text"
                       name="name"
                       value={name}
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="mb-4 flex flex-col">
+
+                  {/* category input */}
+                  <div className="flex flex-col">
                     <label className="w-24 mr-2 text-sm">Category</label>
                     <select
                       className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
@@ -124,10 +126,12 @@ const RegisterThought = () => {
                       ))}
                     </select>
                   </div>
+
+                  {/* thought input */}
                   <div className="flex flex-col">
-                    <label className="w-24 mr-2 text-sm">Thought</label>
+                    <label className="text-sm">Thought</label>
                     <textarea
-                      className="w-full h-24 text-zinc-700 bg-gray-200 p-2 rounded-sm"
+                      className="input"
                       name="thought"
                       value={thought}
                       onChange={handleChange}
@@ -158,7 +162,7 @@ const RegisterThought = () => {
               >
                 <option value="All">All Categories</option>
                 {choosenCategories
-                  .filter((cat) => cat !== "Select a category")
+                  .filter((category) => category !== "Select a category")
                   .map((category) => (
                     <option key={category} value={category}>
                       {category}
