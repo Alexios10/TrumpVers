@@ -6,6 +6,7 @@ import IStaffContext from "../../interfaces/staffMembers/IStaffContext";
 const Staff = () => {
   const { members } = useContext(StaffMemberContext) as IStaffContext;
 
+  // Funksjon for å lage JSX for ansatte
   const createAndGetStaffJSX = () => {
     const staffMemberJSX = members.map((member) => {
       return (
@@ -25,6 +26,7 @@ const Staff = () => {
   };
 
   return (
+    // Stilsetter Staff siden
     <section>
       <h2 className="text-center font-bold sm:text-2xl lg:text-4xl text-blue-950 mb-2">
         President & Staff:
@@ -32,6 +34,7 @@ const Staff = () => {
       <h3 className="text-center font-bold sm:text-xl lg:text-3xl text-blue-950 mb-8">
         Building a Stronger Future Together
       </h3>
+      {/* gjør siden responsiv utifra skjermstørrelse */}
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-28">
         {createAndGetStaffJSX()}
       </div>

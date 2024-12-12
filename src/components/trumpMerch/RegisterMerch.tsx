@@ -7,10 +7,12 @@ import SwitchPageButtons from "../shared/SwitchPageButtons";
 import Container from "../shared/Container";
 
 const RegisterMerch = () => {
+  // Henter konteksten for merchandise (varer) og funksjonen for å legge til nye varer
   const { merchandise, postMerch } = useContext(
     MerchandiseContext
   ) as IMerchContext;
 
+  // State variabler for inputfeltene
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
   const [price, setPrice] = useState<number | string>("");
@@ -18,15 +20,18 @@ const RegisterMerch = () => {
   const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
 
+  // Holder styr på hvilken side som er aktiv (registrering eller administrasjon)
   const [activePage, setActivePage] = useState<string>(
     () =>
       (localStorage.getItem("activePage") as "register" | "admin") || "register"
   );
 
+  // Oppdaterer aktiv side i lokal lagring når den endres
   useEffect(() => {
     localStorage.setItem("activePage", activePage);
   }, [activePage]);
 
+  // Funksjon for å håndtere endringer i inputfeltene
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const file = e.target.files ? e.target.files[0] : null;
     switch (e.target.name) {
@@ -51,7 +56,9 @@ const RegisterMerch = () => {
     }
   }
 
+  // Funksjon for å registrere en ny vare
   const registerMerch = () => {
+    // Sjekker at alle nødvendige felter er fylt ut
     if (!name || !image || !price || !quantity) {
       alert("Please fill in all fields.");
       return;
@@ -66,9 +73,11 @@ const RegisterMerch = () => {
       category,
     };
 
+    // Sender data til backend for å registrere varen
     postMerch(newMerch, image);
 
     alert("Merch registered successfully!");
+    // Tilbakestiller inputfeltene etter registrering
     setName("");
     setImage(null);
     setPrice("");
@@ -77,6 +86,7 @@ const RegisterMerch = () => {
     setCategory("");
   };
 
+  // Kategorier som kan velges
   const choosenCategoriy = [
     "Select a category",
     "Hats",
@@ -85,11 +95,13 @@ const RegisterMerch = () => {
     "Accessories",
   ];
 
+  // Sider som kan velges
   const pages = [
     { id: "register", label: "REGISTER MERCH" },
     { id: "admin", label: "MERCH ADMIN" },
   ];
 
+  // Definerer inputfeltene for registreringen
   const inputfields = [
     { label: "Name:", name: "name", value: name, type: "text" },
     { label: "Price:", name: "price", value: price, type: "number" },
@@ -106,6 +118,7 @@ const RegisterMerch = () => {
   return (
     <>
       <div className="flex w-fit ml-[3rem]">
+        {/* Knapp for å bytte mellom ulike sider (registrering eller admin) */}
         <SwitchPageButtons
           pages={pages}
           activePage={activePage}
@@ -121,10 +134,10 @@ const RegisterMerch = () => {
               <h3 className="text-3xl mb-2 text-blue-950">
                 Register new Merch
               </h3>
-              {/* form container */}
+              {/* Registreringsskjema */}
               <div className="flex flex-col">
                 <div className="space-y-4">
-                  {/* input fields */}
+                  {/* Løkke for å vise inputfeltene */}
                   {inputfields.map(({ label, name, value, type }) => (
                     <div key={name} className="mb-4 flex flex-col">
                       <label className="text-sm">{label}</label>
@@ -138,7 +151,7 @@ const RegisterMerch = () => {
                     </div>
                   ))}
 
-                  {/* category input */}
+                  {/* Kategorivalg */}
                   <div className="flex flex-col">
                     <label className="w-25 text-sm">Select Category:</label>
                     <select
@@ -156,7 +169,7 @@ const RegisterMerch = () => {
                   </div>
                 </div>
 
-                {/* Add Merch button */}
+                {/* Knapp for å registrere vare */}
                 <button
                   onClick={registerMerch}
                   className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md"
@@ -168,7 +181,7 @@ const RegisterMerch = () => {
           )}
         </div>
 
-        {/* Right Container for Selected Member */}
+        {/* Høyre seksjon for å vise varer */}
         {activePage === "register" && (
           <Container>
             <MerchList merchs={merchandise} />

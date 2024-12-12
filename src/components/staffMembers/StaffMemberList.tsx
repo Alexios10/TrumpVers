@@ -6,6 +6,7 @@ import StaffMemberItems from "./StaffMemberItems";
 const StaffmemberList = () => {
   const { members } = useContext(StaffMemberContext) as IStaffContext;
 
+  // Funskjon for å lage JSX for ansatte
   const createAndGetStaffAdminJSX = () => {
     const staffMemberJSX = members.map((member) => {
       return (
@@ -25,9 +26,10 @@ const StaffmemberList = () => {
   };
 
   return (
+    // Plassering av kortene i admin siden og gjør siden responsiv utifra skjermstørrelse
     <section className="">
       <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-2">
-        {createAndGetStaffAdminJSX()}
+        {createAndGetStaffAdminJSX()} {/* Viser ansatte*/}
       </div>
     </section>
   );
