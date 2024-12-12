@@ -2,15 +2,15 @@ import { FC } from "react";
 
 interface UpdateDeleteButtonsProps {
   update: () => void;
-  ondelete: () => void;
+  onDelete: () => void;
 }
 
 const UpdateDeleteBtns: FC<UpdateDeleteButtonsProps> = ({
   update,
-  ondelete,
+  onDelete,
 }) => {
   return (
-    <div>
+    <div className="flex gap-4 justify-center mt-4">
       <button
         className="update-delete-btns bg-green-500 hover:bg-green-600"
         onClick={update}
@@ -19,7 +19,7 @@ const UpdateDeleteBtns: FC<UpdateDeleteButtonsProps> = ({
       </button>
       <button
         className="update-delete-btns bg-red-500 hover:bg-red-600"
-        onClick={ondelete}
+        onClick={onDelete}
       >
         DELETE
       </button>

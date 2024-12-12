@@ -123,7 +123,7 @@ const UpdateDeleteMember = () => {
   };
 
   const inputfields = [
-    { label: "Title:", name: "name", value: title },
+    { label: "Title:", name: "title", value: title },
     { label: "Description:", name: "description", value: description },
     { label: "Email:", name: "email", value: email },
   ];
@@ -203,12 +203,10 @@ const UpdateDeleteMember = () => {
           </div>
 
           {/* update & delete */}
-          <div className="flex gap-4 justify-center mt-4">
-            <UpdateDeleteBtns
-              update={updateMemberWithContext}
-              onDelete={deleteMemberWithContext}
-            />
-          </div>
+          <UpdateDeleteBtns
+            update={updateMemberWithContext}
+            onDelete={deleteMemberWithContext}
+          />
         </div>
       </div>
 
