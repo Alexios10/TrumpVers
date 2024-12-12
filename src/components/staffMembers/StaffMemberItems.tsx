@@ -15,6 +15,7 @@ const StaffMemberItems: FC<IStaff> = ({
     // Stilsetter Staff kortene
     <section className="flex justify-center p-4">
       <div className="bg-zinc-100 border border-solid border-blue-500 rounded-xl shadow-xl px-16 py-4 text-center overflow-hidden">
+        <p className="text-start text-xs">ID: {id}</p>
         <img
           src={StaffMembersService.getImageEndpoint() + image}
           alt={name}
@@ -31,7 +32,6 @@ const StaffMemberItems: FC<IStaff> = ({
           <LuMail className="mr-2" />
           {email}
         </a>
-        <p className="text-start text-xs">ID: {id}</p>
       </div>
     </section>
   );
