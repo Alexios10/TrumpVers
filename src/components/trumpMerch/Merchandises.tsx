@@ -29,11 +29,11 @@ const Merchandises = () => {
   return (
     <section className="flex">
       {/* Venstre sidepanel med tittel */}
-      <div className="w-full max-w-xs md:max-w-sm lg:max-w-lg p-6 text-lg border-r-2 border-slate-400 text-blue-950">
-        <h2 className="text-center font-bold text-lg sm:text-md md:text-lg lg:text-lg">
+      <div className="w-full max-w-xs md:max-w-sm lg:max-w-lg p-6 text-lg border-r-2 border-slate-400 text-blue-950 bg-white rounded-lg shadow-md">
+        <h2 className="text-center font-bold text-xl sm:text-lg md:text-xl lg:text-xl text-blue-900">
           America First:
         </h2>
-        <h3 className="text-center text-md sm:text-sm md:text-md lg:text-md">
+        <h3 className="text-center text-lg sm:text-md md:text-lg lg:text-lg text-gray-700">
           Official Trump Merchandise
         </h3>
         <hr className="w-full h-0.5 mx-auto rounded m-2 bg-slate-400" />
@@ -43,8 +43,10 @@ const Merchandises = () => {
           {categories.map((category) => (
             <li
               key={category}
-              className={`cursor-pointer hover:text-red-600 ${
-                filterCategory === category ? "text-red-600" : ""
+              className={`cursor-pointer transition-colors duration-200 ease-in-out hover:text-red-600 ${
+                filterCategory === category
+                  ? "text-red-600 font-bold"
+                  : "text-gray-800"
               }`}
               onClick={() => handleCategoryClick(category)}
             >

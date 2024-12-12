@@ -204,9 +204,12 @@ const UpdateDeleteThoughts = () => {
           matchingThoughts.map((thought) => (
             <div
               key={thought.id}
-              className="mx-5 my-4 rounded-sm p-1 shadow-lg h-auto w-auto border-solid border-2 border-blue-950 border-opacity-20"
+              className="relative mx-5 my-4 rounded-sm p-1 shadow-lg h-auto w-auto border-solid border-2 border-blue-950 border-opacity-20"
               onClick={() => handleThoughtClick(thought)}
             >
+              <button className=" mb-2 absolute top-2 right-2 text-gray-600 text-xs font-semibold py-1 px-2 rounded transition-colors duration-300">
+                Edit
+              </button>
               <div className="m-2">
                 <p className="text-xs">ID: {thought.id}</p>
                 <div className="flex justify-between items-center">
