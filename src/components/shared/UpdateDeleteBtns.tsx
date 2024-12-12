@@ -10,7 +10,7 @@ const UpdateDeleteBtns: FC<UpdateDeleteButtonsProps> = ({
   onDelete,
 }) => {
   return (
-    <div>
+    <div className="flex gap-4 justify-center mt-4">
       <button
         className="update-delete-btns bg-green-500 hover:bg-green-600"
         onClick={update}

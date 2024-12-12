@@ -96,10 +96,11 @@ const RegisterMember = () => {
         />
       </div>
       {activePage === "admin" && <UpdateDeleteMember />}
+
       <section className="flex flex-col md:flex-row">
         <div className="flex flex-col h-fit items-center basis-[40%]">
           {activePage === "register" && (
-            <>
+            <div className="flex flex-col items-center">
               <h3 className="text-3xl mb-2 text-blue-950 border-b-2">
                 Register New Member
               </h3>
@@ -136,7 +137,7 @@ const RegisterMember = () => {
                   ADD MEMBER
                 </button>
               </div>
-            </>
+            </div>
           )}
         </div>
         {activePage === "register" && (

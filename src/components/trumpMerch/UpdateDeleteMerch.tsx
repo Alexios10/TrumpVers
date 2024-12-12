@@ -135,17 +135,28 @@ const UpdateDeleteMerch = () => {
     alert(`Item with ID ${id} deleted.`);
   };
 
+  const inputfields = [
+    { label: "Name:", name: "name", value: name, type: "text" },
+    { label: "Price:", name: "price", value: price, type: "number" },
+    { label: "Quantity:", name: "quantity", value: quantity, type: "number" },
+    {
+      label: "Description:",
+      name: "description",
+      value: description,
+      type: "text",
+    },
+    { label: "Image::", name: "image", type: "file" },
+  ];
+
   return (
     <section className="flex flex-col md:flex-row">
-      {/* Left container */}
+      {/* form container */}
       <div className="flex flex-col items-center mx-10 basis-[40%]">
-        <h3 className="text-3xl mb-2 text-blue-950 ">Merch Admin</h3>
-        <div className="w-96 items-start">
-          {/* Get Thought by Name */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm">
-              Get item by Name
-            </label>
+        <h3 className="text-3xl mb-2 text-blue-950 ">Update or Delete Merch</h3>
+        <div className="mb-5 flex flex-col space-y-3">
+          {/* Get by Name */}
+          <div className="flex flex-col">
+            <label className="text-sm">Get item by Name</label>
             <div className="flex gap-3">
               <input
                 className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
