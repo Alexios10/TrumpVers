@@ -1,3 +1,4 @@
+// Importerer nødvendige moduler fra React Router og komponenter som brukes i appen
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainNavigation from "../components/shared/MainNavigation";
 import HomePage from "../pages/HomePage";
@@ -8,10 +9,14 @@ import RegisterThought from "../components/trumpThoughts/RegisterThought";
 import Staff from "../components/staffMembers/Staff";
 import Thoughts from "../components/trumpThoughts/Thoughts";
 
+// AppRouting-komponenten styrer navigasjon og ruteoppsett
 const AppRouting = () => {
   return (
+    // BrowserRouter gir kontekst for navigasjon i appen
     <BrowserRouter>
+      {/* Felles navigasjonsmeny som vises på alle sider */}
       <MainNavigation />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<Merchandises />} />

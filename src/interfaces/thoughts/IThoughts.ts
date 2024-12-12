@@ -3,7 +3,7 @@ interface IThoughts {
   name?: string;
   thought?: string;
   category?: string;
-  dateCreated?: Date;
+  dateCreated?: Date; 
 }
 
 export default IThoughts;

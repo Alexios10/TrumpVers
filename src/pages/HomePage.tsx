@@ -5,13 +5,16 @@ import { FaSnapchat } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 
+// Komponent for hjemmesiden
 const HomePage = () => {
   return (
     <section className="flex flex-col items-center">
+      {/* Toppbanner med melding */}
       <div className="flex items-center justify-center bg-red-600 text-white w-full h-12 text-lg font-semibold shadow-md">
         TEXT TRUMP TO 88022
       </div>
 
+      {/* Velkomstbilde */}
       <div className="mb-8">
         <img
           src="src/assets/image/Welcome.jpeg"
@@ -20,6 +23,7 @@ const HomePage = () => {
         />
       </div>
 
+      {/* Agenda-seksjonen */}
       <div className="max-w-3xl text-center px-4 py-6 bg-white rounded-lg shadow-lg my-8">
         <h3 className="text-3xl font-bold text-gray-800 mb-4">Our Agenda</h3>
         <p className="text-lg text-gray-700 mb-6">
@@ -37,6 +41,7 @@ const HomePage = () => {
           <span className="font-bold">Donald J. Trump</span>
         </p>
 
+        {/* Bilde av Trump */}
         <div className="flex justify-center">
           <img
             src="src/assets/image/Trump-icon.jpg"
@@ -46,6 +51,7 @@ const HomePage = () => {
         </div>
       </div>
 
+      {/* Sosiale medier ikoner */}
       <div className="flex justify-center items-center gap-4">
         <FaInstagram className="w-8 h-8 transition-transform duration-200 hover:scale-110" />
         <FaXTwitter className="w-8 h-8 transition-transform duration-200 hover:scale-110" />
@@ -55,6 +61,7 @@ const HomePage = () => {
         <FaYoutube className="w-8 h-8 transition-transform duration-200 hover:scale-110" />
       </div>
 
+      {/* Kontaktseksjon */}
       <div className="w-full bg-blue-950 border-t-2 border-red-700 text-white py-10 mt-8">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-lg mb-6">
