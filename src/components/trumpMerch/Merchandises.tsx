@@ -29,17 +29,17 @@ const Merchandises = () => {
   return (
     <section className="flex">
       {/* Venstre sidepanel med tittel */}
-      <div className="w-auto p-10 text-lg border-r-2 border-slate-400 text-blue-950 ">
-        <h2 className="sm:text-sm md:text-md lg:text-lg text-center font-bold">
+      <div className="w-full max-w-xs md:max-w-sm lg:max-w-lg p-6 text-lg border-r-2 border-slate-400 text-blue-950">
+        <h2 className="text-center font-bold text-lg sm:text-md md:text-lg lg:text-lg">
           America First:
         </h2>
-        <h3 className="sm:text-xs md:text-sm lg:text-md text-center">
+        <h3 className="text-center text-md sm:text-sm md:text-md lg:text-md">
           Official Trump Merchandise
         </h3>
         <hr className="w-full h-0.5 mx-auto rounded m-2 bg-slate-400" />
 
         {/* Kategorilisten */}
-        <ul className="list-group space-y-4 font-semibold mt-8">
+        <ul className="list-group space-y-4 font-semibold mt-6">
           {categories.map((category) => (
             <li
               key={category}
