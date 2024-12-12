@@ -9,5 +9,13 @@
 } */
 
 .input {
-  @apply bg-gray-50 font-medium border mx-2 border-gray-300 text-gray-900 text-sm rounded-lg p-1;
+  @apply w-full text-zinc-700 bg-gray-200 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white;
+}
+
+.update-delete-btns {
+  @apply text-white px-4 py-2 rounded-sm shadow-lg text-sm;
+}
+
+.nav-links {
+  @apply hover:text-red-600 transition duration-150;
 }

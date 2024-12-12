@@ -109,7 +109,7 @@ const RegisterMember = () => {
                     <div key={name} className="mb-4 flex flex-col">
                       <label className="text-sm">{label}</label>
                       <input
-                        className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+                        className="input"
                         type="text"
                         name={name}
                         value={value}

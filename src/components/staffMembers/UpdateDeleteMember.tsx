@@ -4,6 +4,7 @@ import { StaffMemberContext } from "../../contexts/StaffMembersContext";
 import IStaff from "../../interfaces/staffMembers/Istaff";
 import StaffMembersService from "../../services/StaffMembersService";
 import { LuMail } from "react-icons/lu";
+import UpdateDeleteBtns from "../shared/UpdateDeleteBtns";
 
 const UpdateDeleteMember = () => {
   const { getMemberById, getMemberByName, putMember, deleteMember } =
@@ -139,7 +140,7 @@ const UpdateDeleteMember = () => {
             <label className="w-40 mr-2 text-sm mb-2">Get Member by Name</label>
             <div className="flex gap-3">
               <input
-                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+                className="input"
                 type="text"
                 name="name"
                 value={name}
@@ -154,12 +155,13 @@ const UpdateDeleteMember = () => {
               </button>
             </div>
           </div>
+
           {/* get by id */}
           <div className="flex flex-col">
             <label className="w-40 mr-2 text-sm ">Get Member by ID</label>
             <div className="flex gap-3 items-center">
               <input
-                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+                className="input"
                 type="number"
                 name="id"
                 onChange={handleChange}
@@ -174,11 +176,12 @@ const UpdateDeleteMember = () => {
             </div>
           </div>
 
+          {/* input fields */}
           {inputfields.map(({ label, name, value }) => (
             <div key={name} className=" flex flex-col">
               <label className="text-sm">{label}</label>
               <input
-                className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+                className="input"
                 type="text"
                 name={name}
                 value={value}
@@ -187,6 +190,7 @@ const UpdateDeleteMember = () => {
             </div>
           ))}
 
+          {/* image input */}
           <div>
             <label className="text-sm">Image:</label>
             <input
@@ -197,20 +201,13 @@ const UpdateDeleteMember = () => {
               aria-label="Member Image"
             />
           </div>
-          {/* update & delete buttons */}
+
+          {/* update & delete */}
           <div className="flex gap-4 justify-center mt-4">
-            <button
-              className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow-lg text-sm"
-              onClick={updateMemberWithContext}
-            >
-              UPDATE
-            </button>
-            <button
-              className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow-lg text-sm"
-              onClick={deleteMemberWithContext}
-            >
-              DELETE
-            </button>
+            <UpdateDeleteBtns
+              update={updateMemberWithContext}
+              onDelete={deleteMemberWithContext}
+            />
           </div>
         </div>
       </div>
