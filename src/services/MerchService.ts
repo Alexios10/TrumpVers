@@ -8,8 +8,13 @@ const MerchService = (() => {
     "http://localhost:5068/api/MerchImageUpload/";
 
   const getAllMerchandises = async (): Promise<IMerch[]> => {
-    const result = await axios.get(merchContollerEndpoint);
-    return result.data as IMerch[];
+    try {
+      const result = await axios.get(merchContollerEndpoint);
+      return result.data as IMerch[];
+    } catch (error) {
+      console.error("Error fetching all merchandises:", error);
+      return [];
+    }
   };
 
   const getImageEndpoint = () => {
@@ -17,15 +22,25 @@ const MerchService = (() => {
   };
 
   const getMerchById = async (id: number): Promise<IMerch | null> => {
-    const result = await axios.get(merchContollerEndpoint + "byid/" + id);
-    return result.data as IMerch;
+    try {
+      const result = await axios.get(`${merchContollerEndpoint}byid/${id}`);
+      return result.data as IMerch;
+    } catch (error) {
+      console.error(`Error fetching merch with ID ${id}:`, error);
+      return null;
+    }
   };
 
   const getMerchByName = async (name: string): Promise<IMerch | null> => {
-    const result = await axios.get(
-      merchContollerEndpoint + "byname/" + encodeURIComponent(name)
-    );
-    return result.data as IMerch;
+    try {
+      const result = await axios.get(
+        `${merchContollerEndpoint}byname/${encodeURIComponent(name)}`
+      );
+      return result.data as IMerch;
+    } catch (error) {
+      console.error(`Error fetching merch with name ${name}:`, error);
+      return null;
+    }
   };
 
   const postMerch = async (
@@ -75,8 +90,13 @@ const MerchService = (() => {
   };
 
   const deleteMerch = async (id: number): Promise<IMerch | null> => {
-    const result = await axios.delete(merchContollerEndpoint + id);
-    return result.data;
+    try {
+      const result = await axios.delete(`${merchContollerEndpoint}${id}`);
+      return result.data;
+    } catch (error) {
+      console.error(`Error deleting merch with ID ${id}:`, error);
+      return null;
+    }
   };
 
   return {

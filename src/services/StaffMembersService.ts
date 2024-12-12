@@ -8,8 +8,13 @@ const StaffMembersService = (() => {
     "http://localhost:5068/api/StaffImageUpload/";
 
   const getAllStaffMembers = async (): Promise<IStaff[]> => {
-    const result = await axios.get(staffContollerEndpoint);
-    return result.data as IStaff[];
+    try {
+      const result = await axios.get(staffContollerEndpoint);
+      return result.data as IStaff[];
+    } catch (error) {
+      console.error("Error fetching all staff members:", error);
+      return [];
+    }
   };
 
   const getImageEndpoint = () => {
@@ -17,15 +22,25 @@ const StaffMembersService = (() => {
   };
 
   const getMemberById = async (id: number): Promise<IStaff | null> => {
-    const result = await axios.get(staffContollerEndpoint + "byid/" + id);
-    return result.data as IStaff;
+    try {
+      const result = await axios.get(`${staffContollerEndpoint}byid/${id}`);
+      return result.data as IStaff;
+    } catch (error) {
+      console.error(`Error fetching member with ID ${id}:`, error);
+      return null;
+    }
   };
 
   const getMemberByName = async (name: string): Promise<IStaff | null> => {
-    const result = await axios.get(
-      staffContollerEndpoint + "byname/" + encodeURIComponent(name)
-    );
-    return result.data as IStaff;
+    try {
+      const result = await axios.get(
+        `${staffContollerEndpoint}byname/${encodeURIComponent(name)}`
+      );
+      return result.data as IStaff;
+    } catch (error) {
+      console.error(`Error fetching member with name ${name}:`, error);
+      return null;
+    }
   };
 
   const postMember = async (
