@@ -23,18 +23,18 @@ const MainNavigation = () => {
   return (
     <>
       <nav className="bg-white mx-8 mb-6">
-        <div>
-          <Link to="/">
-            <img
-              className="w-44 ml-4"
-              src="./src/assets/image/trumplogo.png"
-              alt="trump logo"
-            />
-          </Link>
-        </div>
         {/* Logo med en lenke tilbake til hovedsiden */}
 
-        <div className=" flex items-center justify-center ml-40 mb-4 md:mr-10 xl:mr-0">
+        <div className=" flex items-center justify-between mb-4 ">
+          <div>
+            <Link to="/">
+              <img
+                className="w-44"
+                src="./src/assets/image/trumplogo.png"
+                alt="trump logo"
+              />
+            </Link>
+          </div>
           {/* Navigation Meny: Flex-meny for navigasjon */}
           <ul className="hidden md:flex md:flex-row md:space-x-8 text-xl">
             {/* Liste over navigasjonslenker med dynamisk klasse basert på aktiv rute */}
