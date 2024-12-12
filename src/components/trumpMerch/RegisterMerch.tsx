@@ -34,24 +34,25 @@ const RegisterMerch = () => {
   // Funksjon for å håndtere endringer i inputfeltene
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const file = e.target.files ? e.target.files[0] : null;
-    switch (e.target.name) {
+    const { name, value } = e.target;
+    switch (name) {
       case "name":
-        setName(e.target.value);
+        setName(value);
         break;
       case "image":
         setImage(file);
         break;
       case "price":
-        setPrice(e.target.value ?? parseFloat(e.target.value));
+        setPrice(value);
         break;
       case "quantity":
-        setQuantity(e.target.value ?? parseInt(e.target.value));
+        setQuantity(value);
         break;
       case "description":
-        setDescription(e.target.value);
+        setDescription(value);
         break;
       case "category":
-        setCategory(e.target.value);
+        setCategory(value);
         break;
     }
   }

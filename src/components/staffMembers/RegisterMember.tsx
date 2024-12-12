@@ -29,21 +29,22 @@ const RegisterMember = () => {
   // Håndterer endringer i inputfeltene
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
-    switch (e.target.name) {
+    const { name, value } = e.target;
+    switch (name) {
       case "name":
-        setName(e.target.value);
+        setName(value);
         break;
       case "image":
         setImage(file);
         break;
       case "title":
-        setTitle(e.target.value);
+        setTitle(value);
         break;
       case "description":
-        setDescription(e.target.value);
+        setDescription(value);
         break;
       case "email":
-        setEmail(e.target.value);
+        setEmail(value);
         break;
       default:
         break;

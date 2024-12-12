@@ -28,6 +28,7 @@ const RegisterThought = () => {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
+    // henter de spesefikke propertiene fra event.target
     const { name, value } = e.target;
     switch (name) {
       case "name":
