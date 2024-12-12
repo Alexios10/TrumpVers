@@ -157,7 +157,7 @@ const RegisterThought = () => {
         {activePage === "register" && (
           <Container>
             {/* Filter Dropdown*/}
-            <div className="sticky top-0 z-10 bg-white p-2 mb-4 border-b border-gray-300">
+            <div className="sticky left-0 top-0 z-10 bg-white pl-2 border-b border-gray-300">
               <select
                 className="w-64 p-2 rounded-sm bg-gray-200 text-zinc-700"
                 name="filterCategory"
@@ -176,9 +176,7 @@ const RegisterThought = () => {
             </div>
 
             {/* Scrollable Thoughts List */}
-            <div className="overflow-y-auto flex-grow">
-              <ThoughtList thoughts={filteredThoughts} />
-            </div>
+            <ThoughtList thoughts={filteredThoughts} />
           </Container>
         )}
       </section>
