@@ -28,18 +28,19 @@ const UpdateDeleteThoughts = () => {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
-    switch (e.target.name) {
+    const { name, value } = e.target;
+    switch (name) {
       case "id":
-        setId(Number(e.target.value));
+        setId(Number(value));
         break;
       case "name":
-        setName(e.target.value);
+        setName(value);
         break;
       case "thought":
-        setThought(e.target.value);
+        setThought(value);
         break;
       case "category":
-        setCategory(e.target.value);
+        setCategory(value);
         break;
     }
   };

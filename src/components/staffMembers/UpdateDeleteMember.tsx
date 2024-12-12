@@ -22,24 +22,25 @@ const UpdateDeleteMember = () => {
   // Håndterer endringer i input-feltene
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
-    switch (e.target.name) {
+    const { name, value } = e.target;
+    switch (name) {
       case "id":
-        setId(Number(e.target.value));
+        setId(Number(value));
         break;
       case "name":
-        setName(e.target.value);
+        setName(value);
         break;
       case "image":
         setImage(file);
         break;
       case "description":
-        setDescription(e.target.value);
+        setDescription(value);
         break;
       case "title":
-        setTitle(e.target.value);
+        setTitle(value);
         break;
       case "email":
-        setEmail(e.target.value);
+        setEmail(value);
         break;
       default:
         break;
