@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { ThoughtsContext } from "../../contexts/ThoughtsContext";
 import IThoughtsContext from "../../interfaces/thoughts/IThoughtsContext";
 import ThoughtList from "./ThoughtList";
@@ -15,7 +15,15 @@ const RegisterThought = () => {
   const [thought, setThought] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [filterCategory, setFilterCategory] = useState<string>("All");
-  const [activePage, setActivePage] = useState<string>("register");
+  const [activePage, setActivePage] = useState<string>(
+    () =>
+      (localStorage.getItem("activePage") as "register" | "admin") || "register"
+  );
+
+  // Oppdaterer aktiv side i lokal lagring når den endres
+  useEffect(() => {
+    localStorage.setItem("activePage", activePage);
+  }, [activePage]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
