@@ -4,6 +4,7 @@ import IMerchContext from "../../interfaces/merchandise/IMerchContexts";
 import UpdateDeleteMerch from "./UpdateDeleteMerch";
 import MerchList from "./MerchList";
 import SwitchPageButtons from "../shared/SwitchPageButtons";
+import Container from "../shared/Container";
 
 const RegisterMerch = () => {
   const { merchandise, postMerch } = useContext(
@@ -89,6 +90,19 @@ const RegisterMerch = () => {
     { id: "admin", label: "MERCH ADMIN" },
   ];
 
+  const inputfields = [
+    { label: "Name:", name: "name", value: name, type: "text" },
+    { label: "Price:", name: "price", value: price, type: "number" },
+    { label: "Quantity:", name: "quantity", value: quantity, type: "number" },
+    {
+      label: "Description:",
+      name: "description",
+      value: description,
+      type: "text",
+    },
+    { label: "Image::", name: "image", type: "file" },
+  ];
+
   return (
     <>
       <div className="flex w-fit ml-[3rem]">
@@ -104,70 +118,29 @@ const RegisterMerch = () => {
         <div className="flex flex-col h-fit items-center basis-[40%]">
           {activePage === "register" && (
             <div className="flex flex-col items-center">
-              <h3 className="text-3xl mb-2 text-blue-950">
+              <h3 className="text-3xl mb-2 text-blue-950 border-b-2">
                 Register new Merch
               </h3>
               {/* Registration container */}
-              <div className="bg-white h-screen flex flex-col">
-                <div className="w-96 items-start">
-                  {/* Name input */}
-                  <div className="mb-4 flex flex-col">
-                    <label className="w-24 mr-2 text-sm">Name</label>
-                    <input
-                      className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                      type="text"
-                      name="name"
-                      value={name}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  {/* Image input */}
-                  <div className="mb-4 flex flex-col">
-                    <label className="w-24 mr-2 text-sm">Image</label>
-                    <input
-                      className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                      name="image"
-                      type="file"
-                      onChange={handleChange}
-                    />
-                  </div>
-                  {/* Price input */}
-                  <div className="mb-4 flex flex-col">
-                    <label className="w-24 mr-2 text-sm">Price:</label>
-                    <input
-                      className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                      type="number"
-                      name="price"
-                      value={price}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  {/* Quantity input */}
-                  <div className="mb-4 flex flex-col">
-                    <label className="w-24 mr-2 text-sm">Quantity</label>
-                    <input
-                      className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                      type="number"
-                      name="quantity"
-                      value={quantity}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  {/* Description input */}
-                  <div className="mb-4 flex flex-col">
-                    <label className="w-24 mr-2 text-sm">Description</label>
-                    <input
-                      className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-                      name="description"
-                      value={description}
-                      onChange={handleChange}
-                    />
-                  </div>
+              <div className="flex flex-col">
+                <div className="space-y-4">
+                  {/* input fields */}
+                  {inputfields.map(({ label, name, value, type }) => (
+                    <div key={name} className="mb-4 flex flex-col">
+                      <label className="text-sm">{label}</label>
+                      <input
+                        className="input"
+                        type={type}
+                        name={name}
+                        value={value}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  ))}
+
                   {/* category input */}
                   <div className="flex flex-col">
-                    <label className="w-24 mr-2 text-[0.625rem]">
-                      Select Category
-                    </label>
+                    <label className="w-25 text-sm">Select Category:</label>
                     <select
                       className="w-full text-zinc-700 bg-gray-200"
                       name="category"
@@ -182,10 +155,11 @@ const RegisterMerch = () => {
                     </select>
                   </div>
                 </div>
+
                 {/* Add Merch button */}
                 <button
                   onClick={registerMerch}
-                  className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-500 shadow-lg text-xs"
+                  className="mt-4 bg-blue-900 text-white p-2 rounded-sm hover:bg-blue-700 shadow-md"
                 >
                   ADD MERCH
                 </button>
@@ -197,9 +171,9 @@ const RegisterMerch = () => {
         {/* Right Container for Selected Member */}
         {activePage === "register" && (
           <>
-            <div className="flex flex-grow basis-[60%] m-4 p-4 border-solid border-2 border-opacity-20 border-blue-950 rounded-sm shadow h-auto overflow-x-hidden overflow-y-auto">
+            <Container>
               <MerchList merchs={merchandise} />
-            </div>
+            </Container>
           </>
         )}
       </section>

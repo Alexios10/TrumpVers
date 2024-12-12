@@ -123,9 +123,15 @@ const UpdateDeleteMember = () => {
   };
 
   const inputfields = [
-    { label: "Title:", name: "title", value: title },
-    { label: "Description:", name: "description", value: description },
-    { label: "Email:", name: "email", value: email },
+    { label: "Title:", name: "title", value: title, type: "text" },
+    {
+      label: "Description:",
+      name: "description",
+      value: description,
+      type: "text",
+    },
+    { label: "Email:", name: "email", value: email, type: "text" },
+    { label: "Image:", name: "image", type: "file" },
   ];
 
   return (
@@ -135,10 +141,10 @@ const UpdateDeleteMember = () => {
         <h3 className=" text-3xl mb-2 text-blue-950">
           Update or Delete Member
         </h3>
-        <div className="mb-5 flex flex-col">
+        <div className="mb-5 flex flex-col space-y-3">
           {/* get by name */}
           <div className="flex flex-col">
-            <label className="w-40 mr-2 text-sm mb-2">Get Member by Name</label>
+            <label className="text-sm mb-2">Get Member by Name</label>
             <div className="flex gap-3">
               <input
                 className="input"
@@ -159,7 +165,7 @@ const UpdateDeleteMember = () => {
 
           {/* get by id */}
           <div className="flex flex-col">
-            <label className="w-40 mr-2 text-sm ">Get Member by ID</label>
+            <label className="mb-2 text-sm ">Get Member by ID</label>
             <div className="flex gap-3 items-center">
               <input
                 className="input"
@@ -178,30 +184,18 @@ const UpdateDeleteMember = () => {
           </div>
 
           {/* input fields */}
-          {inputfields.map(({ label, name, value }) => (
+          {inputfields.map(({ label, name, value, type }) => (
             <div key={name} className=" flex flex-col">
-              <label className="text-sm">{label}</label>
+              <label className="text-sm mb-2">{label}</label>
               <input
                 className="input"
-                type="text"
+                type={type}
                 name={name}
                 value={value}
                 onChange={handleChange}
               />
             </div>
           ))}
-
-          {/* image input */}
-          <div>
-            <label className="text-sm">Image:</label>
-            <input
-              type="file"
-              name="image"
-              onChange={handleChange}
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm border"
-              aria-label="Member Image"
-            />
-          </div>
 
           {/* update & delete buttons */}
           <UpdateDeleteBtns
