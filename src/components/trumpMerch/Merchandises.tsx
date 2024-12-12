@@ -1,27 +1,34 @@
 import { useContext, useState } from "react";
-import MerchList from "./MerchList";
-import { MerchandiseContext } from "../../contexts/MerchandiseContext";
-import IMerchContext from "../../interfaces/merchandise/IMerchContexts";
+import MerchList from "./MerchList"; 
+import { MerchandiseContext } from "../../contexts/MerchandiseContext"; 
+import IMerchContext from "../../interfaces/merchandise/IMerchContexts"; 
 
 const Merchandises = () => {
+  // Henter merchandise (varer) fra konteksten
   const { merchandise } = useContext(MerchandiseContext) as IMerchContext;
 
+  // Setter opp en state for å filtrere varer basert på kategori
   const [filterCategory, setFilterCategory] = useState<string>("All");
 
+  // Definerer tilgjengelige kategorier
   const categories = ["All", "Hats", "T-shirts", "Hoodies", "Accessories"];
+
+  // Filtrerer varene basert på valgt kategori
   const filteredMerch =
     filterCategory === "All"
-      ? merchandise
+      ? merchandise 
       : merchandise.filter(
-          (merchandise) => merchandise.category === filterCategory
+          (merchandise) => merchandise.category === filterCategory 
         );
 
+  // Funksjon som håndterer når en kategori blir klikket
   const handleCategoryClick = (category: string) => {
-    setFilterCategory(category);
+    setFilterCategory(category); 
   };
 
   return (
     <section className="flex">
+      {/* Venstre sidepanel med tittel */}
       <div className="w-96 p-12 text-lg border-r-2 border-slate-400 text-blue-950 ">
         <h2 className="sm:text-md md:text-lg lg:text-xl text-center font-bold">
           America First:
@@ -31,6 +38,7 @@ const Merchandises = () => {
         </h3>
         <hr className="w-full h-0.5 mx-auto rounded m-2 bg-slate-400" />
 
+        {/* Kategorilisten */}
         <ul className="list-group space-y-4 font-semibold mt-8">
           {categories.map((category) => (
             <li
@@ -46,6 +54,7 @@ const Merchandises = () => {
         </ul>
       </div>
 
+      {/* MerchList-komponenten som viser filtrerte varer */}
       <MerchList merchs={filteredMerch} />
     </section>
   );

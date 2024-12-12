@@ -4,12 +4,17 @@ import IMerchContext from "../../interfaces/merchandise/IMerchContexts";
 import IMerch from "../../interfaces/merchandise/IMerch";
 import MerchService from "../../services/MerchService";
 import Container from "../shared/Container";
+import UpdateDeleteBtns from "../shared/UpdateDeleteBtns";
 
 const UpdateDeleteMerch = () => {
+  // Henter funksjoner fra MerchandiseContext for å håndtere varer
   const { getMerchById, getMerchByName, putMerch, deleteMerch } = useContext(
     MerchandiseContext
   ) as IMerchContext;
 
+
+  
+  // State variabler for inputfeltene
   const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
@@ -17,8 +22,11 @@ const UpdateDeleteMerch = () => {
   const [quantity, setQuantity] = useState<number | string>("");
   const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
-  // state for å beholder den eksisterende bilde hvis den ikke blir enderet
+
+  // Holder på det nåværende bilde-navnet hvis bildet ikke endres
   const [currentImageName, setCurrentImageName] = useState<string | null>(null);
+
+  // Kategorier som kan velges for produktet
   const choosenCategories = [
     "Select a category",
     "Hats",
@@ -27,6 +35,7 @@ const UpdateDeleteMerch = () => {
     "Accessories",
   ];
 
+  // Funksjon for å håndtere endringer i inputfeltene
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const file = e.target.files ? e.target.files[0] : null;
     switch (e.target.name) {
@@ -54,6 +63,7 @@ const UpdateDeleteMerch = () => {
     }
   }
 
+  // Funksjon for å hente en vare ved ID fra konteksten
   const getByIdFromContext = async () => {
     if (!id) {
       alert("Please enter item id");
@@ -62,6 +72,7 @@ const UpdateDeleteMerch = () => {
     try {
       const merch = await getMerchById(id);
       if (merch) {
+        // Fyller inputfeltene med informasjonen til varen som ble funnet
         setId(merch.id ?? null);
         setName(merch.name ?? "");
         setDescription(merch.description ?? "");
@@ -69,7 +80,7 @@ const UpdateDeleteMerch = () => {
         setQuantity(merch.quantity ?? "");
         setCategory(merch.category ?? "");
         setCurrentImageName(merch.image ?? null);
-        setImage(null);
+        setImage(null); 
       } else {
         alert(`Item with id "${id}" not found.`);
       }
@@ -78,6 +89,7 @@ const UpdateDeleteMerch = () => {
     }
   };
 
+  // Funksjon for å hente en vare ved navn fra konteksten
   const getByNameFromContext = async () => {
     if (!name) {
       alert("Please enter item name");
@@ -87,6 +99,7 @@ const UpdateDeleteMerch = () => {
     try {
       const member = await getMerchByName(name);
       if (member) {
+        // Fyller inputfeltene med informasjonen til varen som ble funnet
         setId(member.id ?? null);
         setName(member.name ?? "");
         setDescription(member.description ?? "");
@@ -94,7 +107,7 @@ const UpdateDeleteMerch = () => {
         setQuantity(member.quantity ?? "");
         setCategory(member.category ?? "");
         setCurrentImageName(member.image ?? null);
-        setImage(null);
+        setImage(null); // Nullstiller bildet etter henting
       } else {
         alert(`Item with name "${name}" not found.`);
       }
@@ -103,6 +116,7 @@ const UpdateDeleteMerch = () => {
     }
   };
 
+  // Funksjon for å oppdatere varen med de nye verdiene
   const updateMerchWithContext = async () => {
     if (!id) {
       alert("Cannot update. Item not found.");
@@ -112,31 +126,34 @@ const UpdateDeleteMerch = () => {
     const merchToUpdate: IMerch = {
       id: id,
       name: name,
-      image: image ? image.name : currentImageName,
+      image: image ? image.name : currentImageName, // Bruker nytt bilde hvis valgt, ellers beholder gammel
       description: description,
       category: category,
       price: parseInt(price.toString()),
       quantity: parseInt(quantity.toString()),
     };
 
+    // Sender oppdaterte data til konteksten for å oppdatere varen
     const result = await putMerch(merchToUpdate, image);
     if (result) {
       alert("Item updated successfully.");
     }
   };
 
+  // Funksjon for å slette varen
   const deleteMerchWithContext = async () => {
     if (id === null) {
       alert("Cannot delete. Item not found.");
       return;
     }
 
+    // Sletter varen fra konteksten
     deleteMerch(id);
     alert(`Item with ID ${id} deleted.`);
   };
 
+  // Inputfeltene for pris, kvantitet, beskrivelse, og bilde
   const inputfields = [
-    { label: "Name:", name: "name", value: name, type: "text" },
     { label: "Price:", name: "price", value: price, type: "number" },
     { label: "Quantity:", name: "quantity", value: quantity, type: "number" },
     {
@@ -150,11 +167,11 @@ const UpdateDeleteMerch = () => {
 
   return (
     <section className="flex flex-col md:flex-row">
-      {/* form container */}
-      <div className="flex flex-col items-center mx-10 basis-[40%]">
-        <h3 className="text-3xl mb-2 text-blue-950 ">Update or Delete Merch</h3>
-        <div className="mb-5 flex flex-col space-y-3">
-          {/* Get by Name */}
+      {/* Form for oppdatering og sletting av varer */}
+      <div className="flex flex-col items-center basis-[40%]">
+        <h3 className="text-3xl mb-5 text-blue-950 ">Update or Delete Merch</h3>
+        <div className="space-y-3">
+          {/* Get item by Name */}
           <div className="flex flex-col">
             <label className="text-sm">Get item by Name</label>
             <div className="flex gap-3">
@@ -174,7 +191,7 @@ const UpdateDeleteMerch = () => {
             </div>
           </div>
 
-          {/* Get Thought by ID */}
+          {/* Get item by ID */}
           <div className="mb-4 flex flex-col">
             <label className="w-40 mr-2 text-sm ">Get item by ID</label>
             <div className="flex gap-3">
@@ -193,57 +210,21 @@ const UpdateDeleteMerch = () => {
             </div>
           </div>
 
-          {/* Image Upload */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm">Image</label>
-            <input
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-              type="file"
-              name="image"
-              onChange={handleChange}
-              aria-label="Merch Image"
-            />
-          </div>
+          {/* Inputfelter for pris, kvantitet og beskrivelse */}
+          {inputfields.map(({ label, name, value, type }) => (
+            <div key={name} className="mb-4 flex flex-col">
+              <label className="text-sm">{label}</label>
+              <input
+                className="input"
+                type={type}
+                name={name}
+                value={value}
+                onChange={handleChange}
+              />
+            </div>
+          ))}
 
-          {/* Price Input */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm">Price</label>
-            <input
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-              type="number"
-              name="price"
-              value={price || ""}
-              onChange={handleChange}
-            />
-          </div>
-
-          {/* Quantity Input */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm">Quantity</label>
-            <input
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-              type="number"
-              name="quantity"
-              value={quantity || ""}
-              onChange={handleChange}
-              aria-label="Quantity"
-            />
-          </div>
-
-          {/* Description Input */}
-          <div className="mb-4 flex flex-col">
-            <label className="w-40 mr-2 text-sm">Description</label>
-            <input
-              className="w-full text-zinc-700 bg-gray-200 p-2 rounded-sm"
-              type="text"
-              name="description"
-              value={description || ""}
-              onChange={handleChange}
-              aria-label="Description"
-            />
-          </div>
-
-          {/* Category Input */}
+          {/* Kategorivelger */}
           <div className="mb-4 flex flex-col">
             <label className="w-40 mr-2 text-sm">Category</label>
             <select
@@ -261,26 +242,17 @@ const UpdateDeleteMerch = () => {
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex justify-center gap-2 p-2">
-          <button
-            className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 shadow-lg text-sm"
-            onClick={updateMerchWithContext}
-          >
-            UPDATE
-          </button>
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded-sm hover:bg-red-600 shadow-lg text-sm"
-            onClick={deleteMerchWithContext}
-          >
-            DELETE
-          </button>
-        </div>
+        {/* Oppdater og slett knapper */}
+        <UpdateDeleteBtns
+          update={updateMerchWithContext}
+          onDelete={deleteMerchWithContext}
+        />
       </div>
 
+      {/* Vist bilde og info om varen */}
       <Container>
         {currentImageName && (
-          <div className="flex flex-col w-80 rounded-sm p-1 shadow-lg border-solid border-2 border-blue-800 border-opacity-20  ">
+          <div className="flex flex-col w-80 rounded-sm p-1 shadow-lg border-solid border-2 border-blue-800 border-opacity-20">
             <div className="flex-1 m-8">
               <img
                 src={MerchService.getImageEndpoint() + currentImageName}
@@ -289,7 +261,6 @@ const UpdateDeleteMerch = () => {
               />
             </div>
             <hr />
-
             <div className="grid m-2">
               <div className=" bg-white flex flex-col text-center justify-between mb-4">
                 <h3 className="text-2xl font-semibold text-gray-800">{name}</h3>

@@ -10,6 +10,7 @@ const UpdateDeleteMember = () => {
   const { getMemberById, getMemberByName, putMember, deleteMember } =
     useContext(StaffMemberContext) as IStaffContext;
 
+  // Tilstander for medlemsinformasjon
   const [id, setId] = useState<number | null>(null);
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
@@ -18,6 +19,7 @@ const UpdateDeleteMember = () => {
   const [title, setTitle] = useState<string>("");
   const [email, setEmail] = useState<string>("");
 
+  // Håndterer endringer i input-feltene
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     switch (e.target.name) {
@@ -44,6 +46,7 @@ const UpdateDeleteMember = () => {
     }
   };
 
+  // Henter medlem basert på ID fra Context
   const getByIdFromContext = async () => {
     if (!id) {
       alert("Please enter member ID");
@@ -52,6 +55,7 @@ const UpdateDeleteMember = () => {
     try {
       const member = await getMemberById(id);
       if (member) {
+        // Setter medlemsinformasjon i tilstandene
         setId(member.id ?? null);
         setName(member.name ?? "");
         setDescription(member.description ?? "");
@@ -67,6 +71,7 @@ const UpdateDeleteMember = () => {
     }
   };
 
+  // Henter medlem basert på navn fra Context
   const getByNameFromContext = async () => {
     if (!name) {
       alert("Please enter member name");
@@ -76,6 +81,7 @@ const UpdateDeleteMember = () => {
     try {
       const member = await getMemberByName(name);
       if (member) {
+        // Setter medlemsinformasjon i tilstandene
         setId(member.id ?? null);
         setName(member.name ?? "");
         setDescription(member.description ?? "");
@@ -91,6 +97,7 @@ const UpdateDeleteMember = () => {
     }
   };
 
+  // Oppdaterer medlem med informasjon fra tilstandene
   const updateMemberWithContext = async () => {
     if (!id) {
       alert("Cannot update. Member not found.");
@@ -112,6 +119,7 @@ const UpdateDeleteMember = () => {
     }
   };
 
+  // Sletter medlemmet
   const deleteMemberWithContext = async () => {
     if (id === null) {
       alert("Cannot delete. Member not found.");
@@ -122,6 +130,7 @@ const UpdateDeleteMember = () => {
     alert(`Member with ID ${id} deleted.`);
   };
 
+  // Definerer inputfeltene
   const inputfields = [
     { label: "Title:", name: "title", value: title, type: "text" },
     {
@@ -136,13 +145,12 @@ const UpdateDeleteMember = () => {
 
   return (
     <section className="flex flex-col md:flex-row">
-      {/* form container */}
       <div className="flex flex-col items-center basis-[40%]">
         <h3 className=" text-3xl mb-2 text-blue-950">
           Update or Delete Member
         </h3>
         <div className="mb-5 flex flex-col space-y-3">
-          {/* get by name */}
+          {/* Stylingen til Get member by Name */}
           <div className="flex flex-col">
             <label className="text-sm mb-2">Get Member by Name</label>
             <div className="flex gap-3">
@@ -163,7 +171,7 @@ const UpdateDeleteMember = () => {
             </div>
           </div>
 
-          {/* get by id */}
+          {/* Stylingen til Get Member by ID */}
           <div className="flex flex-col">
             <label className="mb-2 text-sm ">Get Member by ID</label>
             <div className="flex gap-3 items-center">
@@ -183,7 +191,7 @@ const UpdateDeleteMember = () => {
             </div>
           </div>
 
-          {/* input fields */}
+          {/* Input feltene */}
           {inputfields.map(({ label, name, value, type }) => (
             <div key={name} className=" flex flex-col">
               <label className="text-sm mb-2">{label}</label>
@@ -197,7 +205,7 @@ const UpdateDeleteMember = () => {
             </div>
           ))}
 
-          {/* update & delete buttons */}
+          {/* Update og delete knapp */}
           <UpdateDeleteBtns
             update={updateMemberWithContext}
             onDelete={deleteMemberWithContext}
@@ -205,7 +213,7 @@ const UpdateDeleteMember = () => {
         </div>
       </div>
 
-      {/* result conatiner */}
+      {/* Seksjon som vise medlemmene */}
       {currentImageName && (
         <section className="pl-[50%]">
           <div className="flex flex-col text-center bg-zinc-100 border-solid border-blue-500 rounded-xl overflow-hidden w-96 h-96 border mt-10 p-5">
