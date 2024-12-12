@@ -250,7 +250,7 @@ const UpdateDeleteMerch = () => {
       {/* Vist bilde og info om varen */}
       {currentImageName && (
         <div className="flex flex-col w-80 rounded-sm p-1 shadow-lg border-solid border-2 border-blue-800 border-opacity-20">
-          <p className="text-start text-xs">ID: {id}</p>
+          <p className="">ID: {id}</p>
           <div className="flex-1 m-8">
             <img
               src={MerchService.getImageEndpoint() + currentImageName}
@@ -259,17 +259,22 @@ const UpdateDeleteMerch = () => {
             />
           </div>
           <hr />
-          <div className="grid m-2">
-            <div className=" bg-white flex flex-col text-center justify-between mb-4">
-              <h3 className="text-2xl font-semibold text-gray-800">{name}</h3>
+          <div className="grid m-2 text-gray-900">
+            <div className="bg-white flex flex-col justify-between mb-4">
+              <h3
+                className=" 
+              text-gray-800"
+              >
+                Name: {name}
+              </h3>
 
-              <p className="text-sm text-center text-gray-800">{description}</p>
-              <p className="text-2xl text-gray-900 text-start">{price} $</p>
+              <p>Description: {description}</p>
+              <p>Price: {price} $</p>
             </div>
 
-            <div className="text-xs">
-              <p className="mt-2 text-gray-800">Category: {category}</p>
-              <p className="mt-2 text-gray-800">{quantity} left</p>
+            <div className="">
+              <p className="mt-2">Category: {category}</p>
+              <p>Quantity: {quantity} left</p>
             </div>
           </div>
         </div>
