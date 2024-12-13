@@ -53,7 +53,7 @@ const RegisterMember = () => {
 
   // Funskjon for å registrere et nytt medlem
   const registerMember = () => {
-    if (!name || !email || !image) {
+    if (!name || !image || !title) {
       alert("Please fill in all fields.");
       return;
     }
@@ -84,8 +84,8 @@ const RegisterMember = () => {
 
   // Array med konfigurasjoner for inputfelt
   const inputfields = [
-    { label: "Name:", name: "name", value: name, type: "text" },
-    { label: "Title:", name: "title", value: title, type: "text" },
+    { label: "* Name:", name: "name", value: name, type: "text" },
+    { label: "* Title:", name: "title", value: title, type: "text" },
     {
       label: "Description:",
       name: "description",
@@ -93,7 +93,7 @@ const RegisterMember = () => {
       type: "text",
     },
     { label: "Email:", name: "email", value: email, type: "text" },
-    { label: "Image:", name: "image", type: "file" },
+    { label: "* Image:", name: "image", type: "file" },
   ];
 
   return (

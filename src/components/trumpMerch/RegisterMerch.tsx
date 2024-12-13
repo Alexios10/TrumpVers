@@ -60,7 +60,7 @@ const RegisterMerch = () => {
   // Funksjon for å registrere en ny vare
   const registerMerch = () => {
     // Sjekker at alle nødvendige felter er fylt ut
-    if (!name || !image || !price || !quantity) {
+    if (!name || !image || !price || !quantity || !category) {
       alert("Please fill in all fields.");
       return;
     }
@@ -104,16 +104,16 @@ const RegisterMerch = () => {
 
   // Definerer inputfeltene for registreringen
   const inputfields = [
-    { label: "Name:", name: "name", value: name, type: "text" },
-    { label: "Price:", name: "price", value: price, type: "number" },
-    { label: "Quantity:", name: "quantity", value: quantity, type: "number" },
+    { label: "* Name:", name: "name", value: name, type: "text" },
+    { label: "* Price:", name: "price", value: price, type: "number" },
+    { label: "* Quantity:", name: "quantity", value: quantity, type: "number" },
     {
       label: "Description:",
       name: "description",
       value: description,
       type: "text",
     },
-    { label: "Image::", name: "image", type: "file" },
+    { label: "* Image:", name: "image", type: "file" },
   ];
 
   return (
@@ -151,7 +151,7 @@ const RegisterMerch = () => {
 
                 {/* Kategorivalg */}
                 <div className="flex flex-col space-y-1">
-                  <label className="text-sm">Select Category:</label>
+                  <label className="text-sm">* Select Category:</label>
                   <select
                     className="w-full text-zinc-700 bg-gray-200"
                     name="category"

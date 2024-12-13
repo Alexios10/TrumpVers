@@ -49,7 +49,7 @@ const RegisterThought = () => {
   };
 
   const registerThought = () => {
-    if (!name || !thought || !category || category === "Select a category") {
+    if (!name || !thought) {
       alert("All fields are required.");
       return;
     }
@@ -109,7 +109,7 @@ const RegisterThought = () => {
               <div className="space-y-4">
                 {/* Navn input */}
                 <div className="flex flex-col space-y-1">
-                  <label className="w-24 mr-2 text-sm">Name:</label>
+                  <label className="w-24 mr-2 text-sm">* Name:</label>
                   <input
                     className="input"
                     type="text"
@@ -138,7 +138,7 @@ const RegisterThought = () => {
 
                 {/* Thought input */}
                 <div className="flex flex-col space-y-1">
-                  <label className="text-sm">Thought:</label>
+                  <label className="text-sm">* Thought:</label>
                   <textarea
                     className="input"
                     name="thought"
