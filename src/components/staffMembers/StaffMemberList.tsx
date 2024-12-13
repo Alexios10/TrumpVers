@@ -6,7 +6,7 @@ import StaffMemberItems from "./StaffMemberItems";
 const StaffmemberList = () => {
   const { members } = useContext(StaffMemberContext) as IStaffContext;
 
-  // Funskjon for lage og hente JSX for ansatte
+  // Funskjon for lage og hente JSX
   const createAndGetStaffAdminJSX = () => {
     const staffMemberJSX = members.map((member) => {
       return (

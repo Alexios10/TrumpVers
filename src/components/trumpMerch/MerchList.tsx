@@ -7,7 +7,7 @@ interface MerchListProps {
 }
 
 const MerchList: FC<MerchListProps> = ({ merchs }) => {
-  // Funskjon for lage og hente JSX for varene
+  // Funskjon for lage og hente JSX
   const createAndGetMerchJSX = () => {
     const merchJSX = merchs.map((merch) => {
       return (

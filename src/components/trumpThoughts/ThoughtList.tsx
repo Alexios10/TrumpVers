@@ -7,7 +7,7 @@ interface ThoughtListProps {
 }
 
 const ThoughtList: FC<ThoughtListProps> = ({ thoughts }) => {
-  // Funskjon for lage og hente JSX for thoughts
+  // Funskjon for lage og hente JSX
   const createAndGetThoughtJSX = () => {
     const thoughtJSX = thoughts.map((thought) => {
       return (

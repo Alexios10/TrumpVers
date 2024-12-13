@@ -56,7 +56,7 @@ const Merchandises = () => {
         </ul>
       </div>
 
-      {/* MerchList-komponenten som viser filtrerte varer */}
+      {/* MerchList-komponenten, i tillegg kan vise filtrerte varer */}
       <MerchList merchs={filteredMerch} />
     </section>
   );

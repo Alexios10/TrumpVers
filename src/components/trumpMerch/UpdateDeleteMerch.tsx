@@ -71,6 +71,7 @@ const UpdateDeleteMerch = () => {
       const merch = await getMerchById(id);
       if (merch) {
         // Fyller inputfeltene med informasjonen til varen som ble funnet
+        // "??" vil si Hvis venstre side er undefined eller null, sett det til en tom streng eller null.
         setId(merch.id ?? null);
         setName(merch.name ?? "");
         setDescription(merch.description ?? "");
