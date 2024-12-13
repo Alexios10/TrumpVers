@@ -131,7 +131,7 @@ const UpdateDeleteMember = () => {
     alert(`Member with ID ${id} deleted.`);
   };
 
-  // Definerer inputfeltene
+  // Definerer inputfeltene i en array av objekter
   const inputfields = [
     { label: "Title:", name: "title", value: title, type: "text" },
     {
@@ -151,7 +151,7 @@ const UpdateDeleteMember = () => {
           Update or Delete Member
         </h3>
         <div className="mb-5 flex flex-col space-y-3">
-          {/* Stylingen til Get member by Name */}
+          {/* Get member by Name */}
           <div className="flex flex-col space-y-1">
             <label className="text-sm">Get Member by Name</label>
             <div className="flex gap-3">
@@ -172,7 +172,7 @@ const UpdateDeleteMember = () => {
             </div>
           </div>
 
-          {/* Stylingen til Get Member by ID */}
+          {/* Get Member by ID */}
           <div className="flex flex-col space-y-1">
             <label className="text-sm ">Get Member by ID</label>
             <div className="flex gap-3 items-center">
@@ -206,7 +206,7 @@ const UpdateDeleteMember = () => {
             </div>
           ))}
 
-          {/* Update og delete knapp */}
+          {/* Oppdater og slett knappene */}
           <UpdateDeleteBtns
             update={updateMemberWithContext}
             onDelete={deleteMemberWithContext}
@@ -214,7 +214,7 @@ const UpdateDeleteMember = () => {
         </div>
       </div>
 
-      {/* Seksjon som vise medlemmene */}
+      {/* Seksjon som viser medlemmene */}
       {currentImageName && (
         <section className="flex justify-center p-4">
           <div className="relative flex flex-col items-center text-center bg-zinc-100 border border-blue-500 rounded-xl overflow-hidden w-80 p-5">

@@ -98,14 +98,16 @@ const RegisterMember = () => {
 
   return (
     <>
+      {/* Navigerings knappene */}
       <SwitchPageButtons
         pages={pages}
         activePage={activePage}
         setActivePage={setActivePage}
       />
-
+      {/* Navigere til oppdater/slett komponent */}
       {activePage === "admin" && <UpdateDeleteMember />}
 
+      {/* Hoved kontainer */}
       <section className="flex flex-col md:flex-row">
         <div className="flex flex-col h-fit items-center basis-[40%]">
           {activePage === "register" && (
@@ -133,9 +135,9 @@ const RegisterMember = () => {
               </button>
             </div>
           )}
-
-          {/*  Vil at "Container" skal kun vise i register siden */}
         </div>
+
+        {/*  Høyre(resultat) kontainer kunn i registrerings side */}
         {activePage === "register" && (
           <Container>
             <StaffmemberList />

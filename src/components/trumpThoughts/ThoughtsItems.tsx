@@ -11,7 +11,9 @@ const ThoughtItem: FC<IThoughts> = ({
   const [isExpanded, setIsExpanded] = useState(false);
 
   const truncatedThought =
-    thought.length > 50 ? `${thought.slice(0, 400)}...` : thought;
+    (thought ?? "").length > 50
+      ? `${(thought ?? "").slice(0, 400)}...`
+      : thought;
 
   return (
     <article className="mx-5 my-4 rounded-sm p-1 shadow-lg h-auto w-auto border-solid border-2 border-blue-950 border-opacity-20 overflow-hidden">
@@ -27,7 +29,7 @@ const ThoughtItem: FC<IThoughts> = ({
         <p className="mt-2 text-base">
           {isExpanded ? thought : truncatedThought}
         </p>
-        {thought.length > 400 && (
+        {(thought ?? "").length > 400 && (
           <button
             className="text-blue-800 font-bold text-xs cursor-pointer"
             onClick={(e) => {
