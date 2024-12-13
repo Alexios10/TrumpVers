@@ -7,20 +7,24 @@ interface ThoughtListProps {
 }
 
 const ThoughtList: FC<ThoughtListProps> = ({ thoughts }) => {
-  return (
-    <section>
-      {thoughts.map((thought, id) => (
+  // Funskjon for lage og hente JSX for thoughts
+  const createAndGetThoughtJSX = () => {
+    const thoughtJSX = thoughts.map((thought) => {
+      return (
         <ThoughtItem
-          key={"thought" + id}
+          key={"thought" + thought.id}
           id={thought.id}
           name={thought.name}
           thought={thought.thought}
           category={thought.category}
           dateCreated={thought.dateCreated}
         />
-      ))}
-    </section>
-  );
+      );
+    });
+    return thoughtJSX;
+  };
+
+  return <section>{createAndGetThoughtJSX()}</section>;
 };
 
 export default ThoughtList;

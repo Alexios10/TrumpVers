@@ -8,7 +8,6 @@ interface SwitchPageButtonsProps {
 
 const SwitchPageButtons: React.FC<SwitchPageButtonsProps> = ({
   pages,
-  activePage,
   setActivePage,
 }) => {
   return (

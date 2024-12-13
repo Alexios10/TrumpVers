@@ -97,6 +97,7 @@ const RegisterThought = () => {
       />
       {activePage === "admin" && <UpdateDeleteThoughts />}
 
+      {/* Hoved kontainer */}
       <section className="flex flex-col md:flex-row">
         <div className="flex flex-col h-fit items-center basis-[40%]">
           {activePage === "register" && (
@@ -104,9 +105,9 @@ const RegisterThought = () => {
               <h3 className="text-3xl mb-2 text-blue-950">
                 Register New Thought
               </h3>
-              {/* form container */}
+              {/* Form kontainer */}
               <div className="space-y-4">
-                {/* name input */}
+                {/* Navn input */}
                 <div className="flex flex-col space-y-1">
                   <label className="w-24 mr-2 text-sm">Name:</label>
                   <input
@@ -118,7 +119,7 @@ const RegisterThought = () => {
                   />
                 </div>
 
-                {/* category input */}
+                {/* Category input */}
                 <div className="flex flex-col space-y-1">
                   <label className="w-24 mr-2 text-sm">Category:</label>
                   <select
@@ -135,7 +136,7 @@ const RegisterThought = () => {
                   </select>
                 </div>
 
-                {/* thought input */}
+                {/* Thought input */}
                 <div className="flex flex-col space-y-1">
                   <label className="text-sm">Thought:</label>
                   <textarea
@@ -153,10 +154,10 @@ const RegisterThought = () => {
           )}
         </div>
 
-        {/* right container */}
+        {/* Høyre(resultat) kontainer */}
         {activePage === "register" && (
           <Container>
-            {/* Filter Dropdown*/}
+            {/* Filter Dropdown kontainer*/}
             <div className="sticky left-0 top-0 z-10 bg-white pl-2 border-b border-gray-300">
               <select
                 className="w-64 p-2 rounded-sm bg-gray-200 text-zinc-700"
@@ -175,7 +176,7 @@ const RegisterThought = () => {
               </select>
             </div>
 
-            {/* Scrollable Thoughts List */}
+            {/* Vise thoughts listen */}
             <ThoughtList thoughts={filteredThoughts} />
           </Container>
         )}
