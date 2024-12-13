@@ -20,6 +20,7 @@ const MainNavigation = () => {
     return location.pathname === path ? "text-red-600" : "text-sky-950";
   };
 
+  // Navigasjons linkene
   const navLinks = [
     {
       path: "/thoughts",
