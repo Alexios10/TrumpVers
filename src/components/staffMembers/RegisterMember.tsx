@@ -10,7 +10,6 @@ import Container from "../shared/Container";
 const RegisterMember = () => {
   const { postMember } = useContext(StaffMemberContext) as IStaffContext;
 
-  // State for inputfeltene og aktiv side
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<null | File>(null);
   const [title, setTitle] = useState<string>("");
@@ -21,7 +20,8 @@ const RegisterMember = () => {
       (localStorage.getItem("activePage") as "register" | "admin") || "register"
   );
 
-  // useEffect for å lagre den aktive siden i lokal lagring
+  // Lagre den aktive siden i lokal lagring.
+  // For å beholde den nåværende siden ved "refresh" av nettsiden
   useEffect(() => {
     localStorage.setItem("activePage", activePage);
   }, [activePage]);
@@ -82,7 +82,7 @@ const RegisterMember = () => {
     { id: "admin", label: "STAFF ADMIN" },
   ];
 
-  // Array med konfigurasjoner for imputfelt
+  // Array med konfigurasjoner for inputfelt
   const inputfields = [
     { label: "Name:", name: "name", value: name, type: "text" },
     { label: "Title:", name: "title", value: title, type: "text" },
