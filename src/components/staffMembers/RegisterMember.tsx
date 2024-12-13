@@ -54,7 +54,7 @@ const RegisterMember = () => {
   // Funskjon for å registrere et nytt medlem
   const registerMember = () => {
     if (!name || !image || !title) {
-      alert("Please fill in all fields.");
+      alert("Please fill in all fields with *.");
       return;
     }
 

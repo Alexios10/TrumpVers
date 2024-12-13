@@ -50,7 +50,7 @@ const RegisterThought = () => {
 
   const registerThought = () => {
     if (!name || !thought) {
-      alert("All fields are required.");
+      alert("Please fill in fields with *.");
       return;
     }
 

@@ -61,7 +61,7 @@ const RegisterMerch = () => {
   const registerMerch = () => {
     // Sjekker at alle nødvendige felter er fylt ut
     if (!name || !image || !price || !quantity || !category) {
-      alert("Please fill in all fields.");
+      alert("Please fill in all fields with *");
       return;
     }
 
